@@ -1,0 +1,39 @@
+.centered-container {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .centered-container img {
+    width: auto;
+    height: 100%;
+  }
+  
+  .centered-container p {
+    font-size: 1.2em;
+    color: white;
+    }
+
+    .centered-container p:last-child {
+        font-size: 1.2em;
+        color: white;
+        padding-bottom: 50px;
+    }
+  
+  .centered-container button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .centered-container button:hover {
+    background-color: #0056b3;
+  }

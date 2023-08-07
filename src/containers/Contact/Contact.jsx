@@ -19,8 +19,8 @@ const Contact = () => {
             <p>Our Contacts</p>
         </div>
         <div className="opacity-texts-row">
-            <p className="opacity-text">Text 3</p>
-            <p className="opacity-text">Text 4</p>
+            <p className="opacity-text">Asgard wherever you ared</p>
+            <p className="opacity-text">odins@gmail.com</p>
         </div>
     </div>
     <div className="right-section">
@@ -32,7 +32,7 @@ const Contact = () => {
             <p>Message</p>
             <input type="text" />
         </div>
-        <button className="send-button">Send</button>
+        <button className="send-button">Send Message</button>
     </div>
 </div>
   )

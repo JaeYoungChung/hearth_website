@@ -13,6 +13,8 @@
     display: flex;
     flex-direction: column;
     width: 45%;
+    padding-left: 50px;
+
 }
 
 .images-container {
@@ -33,13 +35,20 @@
     padding-top: 50px;
 }
 
-.two-texts-row, .opacity-texts-row {
+.two-texts-row {
     display: flex;
     justify-content: space-between;
     padding-top: 100px;
-    padding-right: 250px;
-    padding-left: 50px;
-    text-align: center;
+    padding-right: 150px;
+    text-align: left;
+}
+
+.opacity-texts-row {
+display: flex;
+justify-content: space-between;
+padding-top: 30px;
+padding-right: 150px;
+text-align: left;
 }
 
 .opacity-text {
@@ -47,11 +56,11 @@
 }
 
 .text-field-container input {
-    width: 300px;
+    width: 500px;
     border: none;
-    border-bottom: 2px solid white; /* Adjust color as needed */
+    border-bottom: 1px solid white;
     background: transparent;
-    margin-bottom: 20px; /* Adjust this value to your needs */
+    margin-bottom: 70px; 
     color: white;
     outline: none;
 }
@@ -62,7 +71,11 @@
 }
 
 .send-button {
+    width: 120px;
+    height: 42px;
+    margin-top: 100px;
     margin-bottom: 100px;
     align-self: flex-end;
-    background-color: darkgrey;
+    background-color: grey;
+    color: white;
 }

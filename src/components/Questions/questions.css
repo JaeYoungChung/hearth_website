@@ -1,0 +1,28 @@
+.question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .question-container p {
+    margin: 20px 0;
+    font-size: 1.2em;
+  }
+  
+  .question-container button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .question-container button:hover {
+    background-color: #0056b3;
+  }
