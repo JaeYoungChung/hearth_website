@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    background-color: black;
+    color: white;
+    margin: 0;
+    height: 100%; 
+    overflow: hidden;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.left-section, .right-section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.images-container {
+    display: flex;
+}
+
+.images-container img {
+    margin-right: 30px; /* Adjust this value to your needs */
+}
+
+.images-container img:last-child {
+    margin-right: 0;
+}
+
+.big-text {
+    font-size: 80px;
+    display: flex;
+    padding-top: 50px;
+}
+
+.two-texts-row, .opacity-texts-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 100px;
+    padding-right: 250px;
+    padding-left: 50px;
+    text-align: center;
+}
+
+.opacity-text {
+    opacity: 0.5;
+}
+
+.text-field-container input {
+    width: 300px;
+    border: none;
+    border-bottom: 2px solid white; /* Adjust color as needed */
+    background: transparent;
+    margin-bottom: 20px; /* Adjust this value to your needs */
+    color: white;
+    outline: none;
+}
+
+
+.text-field-container input:last-child {
+    margin-bottom: 0;
+}
+
+.send-button {
+    margin-bottom: 100px;
+    align-self: flex-end;
+    background-color: darkgrey;
+}

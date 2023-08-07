@@ -1,0 +1,40 @@
+.aboutContainer {
+    display: flex;
+    box-sizing: border-box;
+    height: 100%; 
+    overflow: hidden;
+    background: black url('../../assets/home_flame.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.gradientOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,1));
+    pointer-events: none;
+}
+
+.content {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 60%; /* or any other percentage you want to give for horizontal padding */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 50px; /* You can adjust this to your preference */
+}
+
+.description {
+    padding-top: 2em;
+    font-size: 15px;
+    line-height: 150%;
+}
