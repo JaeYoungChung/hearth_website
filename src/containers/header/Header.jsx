@@ -15,21 +15,21 @@ const Header = () => {
   };
 
   return (
-    <div className='gpt3__header section__padding' id='home'>
-      <div className='gpt3__header-content'>
+    <div className='header section__padding' id='home'>
+      <div className='header-content'>
         <h1 className='gradient__text'>H E A R T H</h1>
         <p>Here to Help</p> 
-        <div className='gpt3__header-content__input'>
+        <div className='header-content__input'>
         <button type="button" onClick={handleButtonClick}>Take Test</button>
         </div>
-        <div className = "gpt3__header-image">
+        <div className = "header-image">
          <img src = {home_flame} alt="home_flame"/>
         </div>
-        <div className='gpt3__header section__padding' id='home'>
-      <div className="gpt3__icons">
-        <img src = {icon_instagram} className="gpt3__icon"/>
-        <img src = {icon_facebook} className="gpt3__icon"/>
-        <img src = {icon_twitter} className="gpt3__icon"/>
+        <div className='header section__padding' id='home'>
+      <div className="icons">
+        <img src = {icon_instagram} className="icon"/>
+        <img src = {icon_facebook} className="icon"/>
+        <img src = {icon_twitter} className="icon"/>
       </div>
 </div>
       </div>

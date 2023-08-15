@@ -24,7 +24,7 @@
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    width: 60%; /* or any other percentage you want to give for horizontal padding */
+    width: 60%;
     max-height: 90vh;
     overflow-y: auto;
 }

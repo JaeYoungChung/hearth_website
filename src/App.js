@@ -3,6 +3,8 @@ import {Navbar, Questions, Test} from './components';
 import {Header, About, Apps, Contact} from './containers';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useState } from 'react';
+
 
 const App = () => {
   return (
@@ -15,7 +17,7 @@ const App = () => {
                   <Route path="/apps" element = {<Apps/>} />
                   <Route path="/contact" element = {<Contact/>} />
                   <Route path="/test" element={<Test/>} />
-                  <Route path="/questions/:questionId" element={<Questions/>} />
+                  <Route path="/questions" element={<Questions />} />
                   </Routes>
           </div>
     </div>

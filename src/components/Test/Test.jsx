@@ -7,7 +7,7 @@ const Test = () => {
     const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/question/1'); // start from the first question
+    navigate('/questions');
   };
 
   return (
