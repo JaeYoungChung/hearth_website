@@ -44,10 +44,10 @@
   }
 
   .question-counter {
-    position: absolute; /* place the text relative to the survey-container */
+    position: absolute;
     bottom: 200px;
     left: 50%; /* Center it horizontally */
-    transform: translateX(-50%); /* Adjust for perfect centering */
+    transform: translateX(-50%); /* centering */
     z-index: 2; 
   }
   

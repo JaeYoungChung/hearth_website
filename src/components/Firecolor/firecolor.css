@@ -1,0 +1,39 @@
+.results-container {
+    text-align: center;
+    color: white;
+}
+
+.results-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.results-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.values-container p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.next-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+.next-text {
+    cursor: pointer;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    transition: opacity 0.3s;
+}
+
+
+
+
+

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Questions, Test} from './components';
+import {Navbar, Questions, Test, Firecolor} from './components';
 import {Header, About, Apps, Contact} from './containers';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -18,6 +18,7 @@ const App = () => {
                   <Route path="/contact" element = {<Contact/>} />
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
+                  <Route path="/firecolor" element={<Firecolor />} />
                   </Routes>
           </div>
     </div>

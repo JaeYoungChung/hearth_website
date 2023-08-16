@@ -15,6 +15,8 @@ const Questions = () => {
   
 
 function Survey() {
+    const navigate = useNavigate();
+
     const totalQuestions = 20;
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [answers, setAnswers] = useState(Array(totalQuestions).fill(null));
@@ -27,14 +29,32 @@ function Survey() {
     ];
   
     const handleAnswer = (score) => {
+        const adjustedScore = score - 3;
         const newScores = [...selectedScores]; 
-        newScores[currentQuestion - 1] = score; // Store the selected score for the current question
+        newScores[currentQuestion - 1] = adjustedScore;
         setSelectedScores(newScores);
     
         // Move to the next question
         if (currentQuestion < totalQuestions) {
           setCurrentQuestion(currentQuestion + 1);
         }
+      };
+
+      const handleSubmit = () => {
+        const Value1 = selectedScores[0] + selectedScores[2] + 0.5 * selectedScores[8];
+        const Value2 = 0.5 * selectedScores[8] + selectedScores[10] + 0.5 * selectedScores[11];
+        const Value3 = 0.5 * selectedScores[11] + selectedScores[16];
+      
+        const NewValue1 = 27 + 2 * (Value1 - (-36));
+        const NewValue2 = 27 + 2 * (Value2 - (-36));
+        const NewValue3 = 27 + 2 * (Value3 - (-36));
+
+        sessionStorage.setItem('surveyResults', JSON.stringify({
+          NewValue1: NewValue1,
+          NewValue2: NewValue2,
+          NewValue3: NewValue3,
+        }));
+        navigate('/firecolor');
       };
  
     return (
@@ -58,7 +78,7 @@ function Survey() {
             {currentQuestion > 1 && (
               <span className="back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
             )}
-            {currentQuestion === totalQuestions && <span className="submit-button">Submit</span>}
+            {currentQuestion === totalQuestions && <span className="submit-button" onClick={handleSubmit}>Submit</span>}
           </div>
         </div>
       );
