@@ -38,3 +38,60 @@
     font-size: 15px;
     line-height: 150%;
 }
+
+@media screen and (max-width: 1050px) {
+    .title {
+        font-size: 40px;
+    }
+    
+    .description {
+        padding-top: 2em;
+        font-size: 20px;
+        line-height: 150%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .title {
+        font-size: 40px;
+    }
+    
+    .description {
+        padding-top: 2em;
+        font-size: 18px;
+        line-height: 150%;
+    }
+    
+}
+
+@media screen and (max-width: 490px) {
+    .content {
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        width: 60%;
+        overflow-y: auto;
+    }
+
+    .title {
+        padding-top: 2em;
+        font-size: 30px;
+    }
+    
+    .description {
+        padding-top: 2em;
+        font-size: 16px;
+        line-height: 150%;
+        overflow-y: auto;
+    }
+
+    .aboutContainer {
+        display: flex;
+        overflow: auto;
+        background: black url('../../assets/home_flame.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+}

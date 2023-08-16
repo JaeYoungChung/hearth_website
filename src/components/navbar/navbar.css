@@ -127,4 +127,9 @@ opacity: 1;
     .gpt3__navbar-menu_container-links-login{
         display: block;
     }
+    .gpt3_navbar-links_logo img{
+        width: 24px;
+        height: 44px;
+        opacity: 1;
+    }
 }

@@ -13,8 +13,8 @@ const Test = () => {
   return (
     <div className='centered-container'>
       <img src={logo} alt='logo' />
-      <p>First piece of text</p>
-      <p>Second piece of text</p>
+      <p>HEARTH</p>
+      <div className = 'second-text'>T E S T</div>
       <button type="button" onClick={handleButtonClick}>Start</button>
     </div>
   )

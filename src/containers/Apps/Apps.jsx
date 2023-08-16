@@ -38,7 +38,7 @@ function TextSection({ color, text }) {
     <hr />
     <p>{text[2]}</p>
   </div>
-  );
+  ); 
 }
 
 function ButtonSection({ setSelected, selected }) {

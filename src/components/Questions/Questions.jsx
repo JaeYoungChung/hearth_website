@@ -21,9 +21,9 @@ function Survey() {
     const [selectedScores, setSelectedScores] = useState(Array(totalQuestions).fill(null)); // Initialize an array of null values
 
     const questions = [
-      "What's your favorite color?",
-      "Do you like ice cream?",      
-      "Do you like ice cream?",
+      "I am curious about the unknown.",
+      "I often find myself questioning conventional beliefs",      
+      "I like yoda",
     ];
   
     const handleAnswer = (score) => {
@@ -36,7 +36,7 @@ function Survey() {
           setCurrentQuestion(currentQuestion + 1);
         }
       };
-
+ 
     return (
         <div className="wrapper">
           <div className="background-image-container"></div>

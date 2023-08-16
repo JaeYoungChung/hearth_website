@@ -1,6 +1,8 @@
 
 .header {
     display: flex;
+    overflow: hidden;
+
 }
 
 .header-content{
@@ -10,6 +12,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .header-content h1 {
@@ -92,7 +95,7 @@
     mix-blend-mode: luminosity;
     opacity: 1;
 }
-
+ 
 @media screen and (max-width: 1050px) {
     .header {
         flex-direction: column;
@@ -126,17 +129,47 @@
     .header h1{
         font-size: 36px;
         line-height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 150px;
+        width: 282px;
+        height: 59px;
     }
 
     .header p{
-        font-size: 14px;
+        font-size: 18px;
         line-height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 30px;
+        width: 282px;
+        height: 59px;
     }
 
     .header-content__input,
     .header-content__input button {
-        font-size: 12px;
+        width: 164px;
+        min-height: 35px;
+        font-size: 16px;
         line-height: 16px;
+        top: 400px;
     }
+
+    .icons {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .icon {
+        width: 0%;
+        margin: 10px 0;
+      }
     
 }

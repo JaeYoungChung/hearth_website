@@ -8,11 +8,20 @@
   }
   
   .centered-container img {
-    width: auto;
-    height: 100%;
+    width: 60px;
+    height: 120px;
   }
+
+  .second-text {
+    letter-spacing: 5px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: white;
+    }
   
   .centered-container p {
+    letter-spacing: 3px;
+    margin-top: 15px;
     font-size: 1.2em;
     color: white;
     }
@@ -24,14 +33,14 @@
     }
   
   .centered-container button {
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-size: 1.2em;
-    background-color: #007BFF;
+    background-color: rgb(48, 47, 47);
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid white;
+    border-radius: 50px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 50px;
   }
   
   .centered-container button:hover {
