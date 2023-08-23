@@ -5,7 +5,7 @@
     font-family: 'Helvetica Neue', sans-serif;
   }
   
-.app {
+.apps {
   background: black;
   display: flex;
   margin: 0;
@@ -15,14 +15,13 @@
 
 .full-screen-image {
   height: 80vh;
-  width: 50vw;
   object-fit: cover;
 }
 
 .right-section {
   color: white;
-  padding: 50px;
-  width: 50vw;
+  padding: 30px;
+  width: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,10 +38,16 @@
     font-size: 121px;
   }
   
-  .text-medium {
-    font-size: 73px;
+.text-medium {
+    opacity: 0.3;
+    font-size: 63px;
+    padding-bottom: 20px;
   }
-  
+
+.text-small {
+    padding-top: 20px;
+    font-size: 15px;
+  }
 
 .text-section hr {
   width: 100%;
@@ -50,17 +55,20 @@
 }
 
 .button-container {
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
 .button-section {
+  padding-right: 300px;
   display: flex;
   justify-content: space-around;
 }
 
 .square-button {
+  margin-bottom: 5px;
   background-color: grey;
   width: 50px;
   height: 50px;

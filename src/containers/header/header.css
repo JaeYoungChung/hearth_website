@@ -1,4 +1,3 @@
-
 .header {
     display: flex;
     overflow: hidden;
@@ -63,16 +62,13 @@
 
 .icons {
     position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex; 
     flex-direction: column;
     align-items: center;
   }
   
   .icon {
-    size: 30px;
+    size: 10px;
     margin: 10px 0;
   }
 

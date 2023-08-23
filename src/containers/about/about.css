@@ -1,4 +1,4 @@
-.App {
+.About {
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
   }
@@ -19,7 +19,7 @@
   
   .square {
     position: absolute;
-    width: 20vw; /* using viewport width unit for both width and height */
+    width: 20vw;
     height: 20vw; 
     border: 2px solid white;
     background-color: transparent;

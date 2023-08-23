@@ -1,12 +1,10 @@
 import React from 'react';
 import './about.css';
 import { Route } from 'react-router-dom';
-import home_flame from '../../assets/home_flame.png'
-
 
 const About = () => {
     return (
-        <div className="App">
+        <div className="About">
       <div className="section">
         <div className="squares-container">
           <div className="square square1"></div>
