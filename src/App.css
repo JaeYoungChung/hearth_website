@@ -15,3 +15,11 @@ a {
     color: unset;
     text-decoration: none;
 }
+
+.section__padding {
+    padding: 4rem 6rem;
+  }
+  
+  .section__margin {
+    margin: 4rem 6rem;
+  }

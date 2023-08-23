@@ -2,26 +2,30 @@ import React, {useState} from 'react';
 import {RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import './navbar.css';
 import logo from '../../assets/logo.png'
-
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => (
   <>
-    <p><Link to="/">HOME</Link></p>
-    <p><Link to="/about">ABOUT</Link></p>
-    <p><Link to="/apps">APPS</Link></p>
-    <p><Link to="/contact">CONTACT</Link></p>
+    <p><NavLink to="/" exact activeClassName="selected">HOME</NavLink></p>
+    <p><NavLink to="/about" activeClassName="selected">ABOUT</NavLink></p>
+    <p><NavLink to="/apps" activeClassName="selected">APPS</NavLink></p>
+    <p><NavLink to="/team" activeClassName="selected">TEAM</NavLink></p>
+    <p><NavLink to="/community" activeClassName="selected">COMMUNITY</NavLink></p>
   </>
 );
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const navigate = useNavigate();
 
+  const handleButtonClick = () => {
+    navigate('/test');
+  };
+  const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div className = "navbar">
       <div className = "navbar-links_logo">
          <img src={logo} alt = "logo"></img>
-         <p className="logo-text">HEARTH</p>
       </div>
         <div className = "navbar-links">      
             <div className="navbar-links_container">
@@ -29,8 +33,13 @@ const Navbar = () => {
             </div>
         </div>
         <div className='navbar-login'>
-          <p>Log in</p>
-          <button type = "button">Sign Up</button>
+          <select>
+            <option value="english">English <span class="flag english"></span></option>
+            <option value="japanese">Japanese <span class="flag japanese"></span></option>
+            <option value="korean">Korean <span class="flag korean"></span></option>
+          </select>
+          <p>BLOG</p>
+          <button type="button" onClick={handleButtonClick}>TAKE TEST</button>
         </div>
         <div className = "navbar-menu">
           {toggleMenu
@@ -40,11 +49,7 @@ const Navbar = () => {
         {toggleMenu &&(
           <div className='navbar-menu_container scale-up-center'>
             <div className='navbar-menu_container-links'>
-<Menu/>
-<div className='navbar-menu_container-links-login'>
-          <p>Log in</p>
-          <button type = "button">Sign Up</button>
-        </div>
+              <Menu/>
             </div>
           </div>
         )}

@@ -22,7 +22,7 @@
 }
 
 .images-container img {
-    margin-right: 30px; /* Adjust this value to your needs */
+    margin-right: 30px; 
 }
 
 .images-container img:last-child {

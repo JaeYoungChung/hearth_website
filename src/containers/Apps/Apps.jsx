@@ -16,7 +16,7 @@ function Apps() {
   const [selected, setSelected] = useState(0);
 
   return (
-    <div className="app">
+    <div id="apps" className="app">
       <ImageSection image={imageData[selected].src} />
       <div className="right-section">
         <TextSection color={imageData[selected].color} text={imageData[selected].text} />

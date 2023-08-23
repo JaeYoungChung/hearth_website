@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navbar, Questions, Test, Firecolor} from './components';
-import {Header, About, Apps, Contact} from './containers';
+import {Header, About, Apps, Team, Community} from './containers';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState } from 'react';
@@ -15,7 +15,9 @@ const App = () => {
                   <Route path="/" element = {<Header/>} />
                   <Route path="/about" element = {<About/>} />
                   <Route path="/apps" element = {<Apps/>} />
-                  <Route path="/contact" element = {<Contact/>} />
+                  <Route path="/team" element = {<Team/>} />
+                  <Route path="/community" element = {<Community/>} />
+                  {/* <Route path="/contact" element = {<Contact/>} /> */}
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
                   <Route path="/firecolor" element={<Firecolor />} />

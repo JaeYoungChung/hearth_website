@@ -6,7 +6,7 @@ import icon_twitter from '../../assets/icon_twitter.png'
 
 const Contact = () => {
   return (
-    <div className="container">
+    <div id="contact" className="container">
     <div className="left-section">
         <div className="images-container">
             <img src={icon_instagram} alt="first"/>
