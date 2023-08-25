@@ -21,6 +21,9 @@ const Navbar = () => {
   const handleButtonClick = () => {
     navigate('/test');
   };
+  const handleBlogClick = () => {
+    navigate('/blog');
+  };
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div className = "navbar">
@@ -38,7 +41,7 @@ const Navbar = () => {
             <option value="japanese">Japanese <span class="flag japanese"></span></option>
             <option value="korean">Korean <span class="flag korean"></span></option>
           </select>
-          <p>BLOG</p>
+          <p onClick={handleBlogClick}>BLOG</p>
           <button type="button" onClick={handleButtonClick}>TAKE TEST</button>
         </div>
         <div className = "navbar-menu">

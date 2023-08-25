@@ -3,7 +3,7 @@
     overflow-x: hidden;
   }
   
-  .about-section {
+  .section {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,13 +11,13 @@
     padding: 5%;
   }
   
-  .about-squares-container {
+  .squares-container {
     position: relative;
     width: 40%;
     height: 60vh;
   }
   
-  .about-square {
+  .square {
     position: absolute;
     width: 20vw;
     height: 20vw; 
