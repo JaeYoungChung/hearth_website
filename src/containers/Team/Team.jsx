@@ -30,8 +30,8 @@ const Team = () => {
     ];
     
     return (
-        <div className="container">
-            <div className="left">
+        <div className="team">
+            <div className="team-left">
                 <h1>Team Cycology</h1>
                 <p className='first-para'>Team Cycology is founded by four members who are devoted to providing a personalized method for a “Well-being for all”. 
                     We fully recognize the interconnection between the Body-Mind-Soul, and believe that genuine happiness and content stems from a healthy development of the triad. Our aim is to help everyone who are in need, regardless of age, gender or culture, via creative methods in a sustainable manner. </p>
@@ -39,8 +39,8 @@ const Team = () => {
                 </p>
                 <p className='third-para'>As you navigate through life, which is your life and your life only, Team Cycology wish to always be there to assist and consult you to wisdom on philosophical & psychological grounds. As we would like to help you, you can also help us, by participating in our programs and building a healthy community. You can join us via submitting your E-mail down below, and please feel free to contact us on cycologically@gmail.com.</p>
             </div>
-            <div className="right" style={{ backgroundColor: `${tabData[selected].color.slice(0, -1)}, 0.3)` }}>
-            <div className="tabs">
+            <div className="team-right" style={{ backgroundColor: `${tabData[selected].color.slice(0, -1)}, 0.3)` }}>
+            <div className="team-tabs">
             {tabData.map((tab, index) => (
         <div
             key={index}
@@ -55,9 +55,9 @@ const Team = () => {
             {tabData[selected].paragraphs.map((para, index) => (
                  <p className='para-texts' key={index}>{para}</p>
             ))}
-                <div className="footer">
+                <div className="team-footer">
                 <div className="square" style={{ backgroundColor: tabData[selected].color }}></div>
-                <p className='footer-text' style={{ color: tabData[selected].color }}>{tabData[selected].footerText}</p>
+                <p className='team-footer-text' style={{ color: tabData[selected].color }}>{tabData[selected].footerText}</p>
             </div>
             </div>
         </div>

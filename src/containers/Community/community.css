@@ -1,34 +1,58 @@
-.container {
+.community {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 300px;
+    justify-content: center;
+    padding-top: 100px;
     height: 100%;
+    overflow: hidden;
 }
 
-.left, .right {
+.left-side {
     flex: 1;
-    padding: 20px;
+    padding-left: 50px;
+    color: white;
 }
 
-.inputBox {
+.right-side {
+    flex: 1;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.big-text {
+    font-size: 40px;
+}
+
+.bigger-text {
+    font-size: 60px;
+}
+
+.small-text {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.c-inputBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid white;
     border-radius: 20px;
+    margin-top: 50px;
     padding: 10px;
     background: transparent;
 }
 
+input[type="text"], textarea {
+    width: 300px;
+    color: white;
+    background-color : transparent;
+    border: none;
+    outline: none;
+  }
+
 .register {
     cursor: pointer;
-}
-
-.right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .card {
@@ -47,8 +71,8 @@
     transform: scale(1.3);
 }
 
-.card.selected img {
-    opacity: 0.4; 
+.card.selected > img {
+    opacity: 0.4;
 }
 
 .card-content {
@@ -64,7 +88,6 @@
     display: flex;          
     flex-direction: column;  
     justify-content: center; 
-    align-items: center; 
 }
 
 .card span {
@@ -73,49 +96,63 @@
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    padding: 2px 5px;
+    padding: 1px 5px;
     border-radius: 4px;
 }
 
 .original-text {
-    display: block;
+    text-align: start;
+    display: flex;
 }
 
 .original-text.moved {
-    margin-bottom: 90px;
+    text-align: start;
+    margin-bottom: 10px;
 }
 
-.add-text{
-    margin-bottom: 40px;
+.additional-text{
+    text-align: start;
+    font-size: 12px;
+    padding-bottom: 10px;
 }
 
-.card button, .iconRow span {
-    display: block;
-    margin: 3px 0;
+.iconRow {
+    padding-bottom: 15px;
 }
 
-  .iconRow img {
-    width: 30px;  
-    height: 30px; 
-    padding: 5px;
+.iconRow img {
+    width: 35px;  
+    height: 35px; 
+    padding: 3px;
 }
 
 .card button {
-    background-color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 0.7px solid white;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 15px;
 }
 
-.footer {
-    width: 100%;
-    padding-bottom: 20px;
-    justify-content: center;
+.blank-text{
+    padding-bottom: 50px;
 }
 
-.footerTexts {
+.c-footer {
+    position: absolute;
+    bottom: 50px;
+    width: 80%;
+}
+
+.c-footerTexts {
+    padding-top: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;

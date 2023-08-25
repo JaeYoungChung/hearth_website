@@ -13,58 +13,83 @@ import icon_twitter from '../../assets/icon_twitter.png'
 const Community = () => {
     const [selectedCard, setSelectedCard] = useState(null);
 
-    const cardImages = [
-      blog_image, sns_image, news_image
+    const cardDetails = [
+        { 
+            image: blog_image, 
+            originalText: "BLOG posts", 
+            additionalText: "weekly essays on\npsychology and philosophy" 
+        },
+        { 
+            image: sns_image, 
+            originalText: "SNS posts", 
+            additionalText: "weekly posts on\nmotivational quotes" 
+        },
+        { 
+            image: news_image,
+            originalText: "Newsletters \n & Channels", 
+            additionalText: "weekly notifications on\nOur Blog and SNS posts" 
+        }
     ];
   
     return (
-        <div className="container">
-            <div className="left">
-                <h1>Big Text</h1>
-                <h2>Bigger Text</h2>
-                <p>Smaller Text</p>
-                <div className="inputBox">
+        <div className="community">
+            <div className="left-side">
+                <p className='big-text'>Join our</p>
+                <p className='bigger-text'>Community</p>
+                <p className='small-text'>and gain access to HEARTH's free contents</p>
+                <div className="c-inputBox">
                     <input type="text" placeholder="Type here..."/>
                     <span className="register">Register</span>
                 </div>
             </div>
-            <div className="right">
-                {cardImages.map((image, index) => (
+            <div className="right-side">
+                {cardDetails.map((card, index) => (
                     <Card
                         key={index}
-                        image={image}
+                        image={card.image}
                         selected={selectedCard === index}
                         onClick={() => setSelectedCard(index)}
+                        originalText={card.originalText}
+                        additionalText={card.additionalText}
                         index={index}
                     />
                 ))}
             </div>
-            <div className="footer">
+            <div className="c-footer">
                 <hr />
-                <div className="footerTexts">
-                    <span>Text 1</span>
-                    <span>Text 2</span>
-                    <span>Text 3</span>
+                <div className="c-footerTexts">
+                    <p>Privacy Policy</p>
+                    <p>Copyrights</p>
+                    <p>Cookie Policy</p>
                 </div>
             </div>
         </div>
     );
 }
 
-function Card({ image, selected, onClick, index }) {
+function Card({ image, selected, onClick, originalText, additionalText, index }) {
     return (
         <div className={`card ${selected ? 'selected' : ''}`} onClick={onClick}>
             <img src={image} alt="" />
             <div className="card-content">
-                <span className={selected ? "original-text moved" : "original-text"}>Original Text</span>
-                {selected && <span className='add-text'>Additional Text</span>}
+            <p className={selected ? "original-text moved" : "original-text"}>{originalText}</p>
+                {selected && <p className='additional-text'>{additionalText.split('\n').map((str, index, array) => 
+                 index === array.length - 1 ? str : <>
+                {str} <br />
+                </>
+            )}</p>}
                 {selected && index === 0 && <button>Visit BLOG</button>}
                 {selected && index === 1 && (
-                    <div className="iconRow">
+                      <div className="iconRow">
                     <img src = {icon_instagram} className="icon"/>
                     <img src = {icon_facebook} className="icon"/>
                     <img src = {icon_twitter} className="icon"/>
                   </div>
+                )}
+                {selected && index === 2 && (
+                    <div className='blank-text'>
+                        <p></p>
+                    </div>
                 )}
             </div>
         </div>

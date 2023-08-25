@@ -5,11 +5,11 @@ import { Route } from 'react-router-dom';
 const About = () => {
     return (
         <div className="About">
-      <div className="section">
-        <div className="squares-container">
-          <div className="square square1"></div>
-          <div className="square square2"></div>
-          <div className="big-text">
+      <div className="about-section">
+        <div className="about-squares-container">
+          <div className="about-square square1"></div>
+          <div className="about-square square2"></div>
+          <div className="about-big-text">
             <p className="line1">W H Y</p>
             <p className="line2">do we have</p>
             <p className="line3">Emotions?</p>
@@ -21,11 +21,11 @@ const About = () => {
         </div>
       </div>
 
-      <div className="section inverted">
-        <div className="squares-container">
-          <div className="square square1"></div>
-          <div className="square square2"></div>
-          <div className="big-text">
+      <div className="about-section inverted">
+        <div className="about-squares-container">
+          <div className="about-square square1"></div>
+          <div className="about-square square2"></div>
+          <div className="about-big-text">
             <p className="line1">Logics</p>
             <p className="line2">&</p>
             <p className="line3">Emotions</p>
