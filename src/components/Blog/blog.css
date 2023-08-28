@@ -4,6 +4,7 @@
   }
   
   .page-header {
+    flex-direction: column;
     background-image: url('../../assets/blogimg_1.png');
     background-size: cover;
     height: 400px;
@@ -12,13 +13,13 @@
     align-items: center;
     z-index: 1;
     position: relative;
-    overflow: hidden; /* Make sure the pseudo-element doesn't spill out */
+    overflow: hidden;
   }
 
   .page-header::before {
     content: "";
     position: absolute;
-    top: 90%;  /* Start from halfway up the header */
+    top: 90%;
     right: 0;
     bottom: 0;
     left: 0;
@@ -26,8 +27,13 @@
     pointer-events: none; /* Ensure it doesn't interfere with any interactions */
   }
   
-  h1 {
-    font-size: 2rem;
+  .page-header p {
+    font-size: 70px;
+    color: white;
+  }
+
+  .page-header .blog-header {
+    font-size: 90px;
     color: white;
   }
   
@@ -50,8 +56,8 @@
   }
   
   .post {
-    width: 250px; /* Adjust width */
-    height: 450px; /* Adjust height */
+    width: 250px; 
+    height: 450px; 
     border-radius: 15px;
     overflow: hidden;
     margin: 20px;
@@ -79,15 +85,16 @@
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     padding: 5px;
     border-radius: 5px;
+    ;
   }
   
   .post-image .overlay-bottom-right {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    width: 50px; /* Adjust size as needed */
+    width: 50px; 
     height: 50px;
-    border-radius: 50%; /* Makes it circular */
+    border-radius: 50%; 
     object-fit: cover;
   }
 
@@ -116,11 +123,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.6); 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* high z-index so it's on top of everything else */
+    z-index: 1000; 
   }
   
   .modal-content {
@@ -167,6 +174,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     padding: 5px 10px;
     border-radius: 5px;
+    flex-direction: column;
   }
 
   .overlay-top-left2 {

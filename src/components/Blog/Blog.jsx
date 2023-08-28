@@ -38,7 +38,8 @@ function handlePostClick(post) {
 function PageHeader({ backgroundImage }) {
     return (
         <div className="page-header" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <h1>YOUR_BIG_TEXT_HERE</h1>
+        <p>HEARTH</p>
+        <p className="blog-header">B L O G</p>
       </div>
     );
   }

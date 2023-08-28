@@ -87,5 +87,27 @@ export const mockPosts = [
         icon2Text: "1K",
         overlayImage: blogimg_1
       },
-    
+  ];
+
+  export const questions = [
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",      
+    "I like yoda",
+    "I am curious about the unknown.",
+    "I often find myself questioning conventional beliefs",   
   ];

@@ -34,6 +34,109 @@
 }
 
 
+.div-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 150px;
+  }
+  
+  svg {
+    width: 400px; 
+    height: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
 
+  text {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
 
+  /* Tilted Animation */
+.tilted {
+    transform: perspective(600px) rotateX(60deg);
+    transition: transform 2s ease-in-out;
+  }
+  
+  .fading-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 300px;
+    margin-left: -100px;
+    margin-top: -270px;
+    opacity: 0;
+    animation: fadeIn 2s forwards 2s;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right-side {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    position: relative;
+  }
+  
+  .progress-filled {
+    height: 100%;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transition: width 0.3s ease-in-out;  }
+  
+  .div-container.move-left {
+    flex: 1;
+    transform: translateX(-20%);
+    transition: transform 2s ease-in-out;
+
+  }
+
+  .arrows {
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .arrow.left::before {
+    content: '<';
+    font-size: 2rem;
+  }
+  
+  .arrow.right::before {
+    content: '>';
+    font-size: 2rem;
+  }
 
