@@ -1,4 +1,5 @@
 .results-container {
+  margin-top: 100px;
     text-align: center;
     color: white;
 }
@@ -40,6 +41,8 @@
     align-items: center;
     min-height: 100vh;
     padding-top: 150px;
+    transform-style: preserve-3d; /* Allow 3D transformations */
+    position: absolute;
   }
   
   svg {
@@ -47,20 +50,41 @@
     height: 400px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    transform-style: preserve-3d;  /* This ensures children obey the 3D rotation */
   }
   
 
   text {
     font-family: Arial, sans-serif;
     font-weight: bold;
+    transform: rotateY(0deg);  /* By default, text is not rotated */
   }
 
-  /* Tilted Animation */
-.tilted {
-    transform: perspective(600px) rotateX(60deg);
+  .tilted {
+    transform: rotate3d(1, 0, 0, 60deg);
+    transform-origin: center;
     transition: transform 2s ease-in-out;
-  }
-  
+}
+
+.rotation-container {
+  position: relative; /* So that it can control the position of absolute child elements */
+  width: 400px; /* Matches SVG width */
+  height: 400px; /* Matches SVG height */
+  transform-style: preserve-3d; /* Allow 3D transformations */
+  margin: 0;  /* Ensure there's no margin */
+  padding: 0;  /* Ensure there's no padding */
+  transition: transform 1s ease-in-out;  /* Smoothly animate the rotation */
+}
+
+.moving-container {
+  position: relative;
+  display: inline-block;
+}
+
+.moving-container.animate-move {
+  animation: moveToLeft 2s forwards;
+}
+
   .fading-image {
     position: absolute;
     top: 50%;
@@ -87,11 +111,14 @@
   
   .right-side {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
+    position: absolute;
+    width: 40%;
+    right: 5%;
   }
   
   .progress-bar {
-    width: 100%;
+    width: 50%;
     height: 20px;
     background-color: white;
     border: 1px solid #ccc;
@@ -107,29 +134,34 @@
     left: 0;
     z-index: 2;
     transition: width 0.3s ease-in-out;  }
-  
-  .div-container.move-left {
-    flex: 1;
-    transform: translateX(-20%);
-    transition: transform 2s ease-in-out;
-
-  }
 
   .arrows {
     position: absolute;
-    top: 70%;
-    width: 100%;
+    top: 50%;
+    left: 0;
+    right: 0; 
     display: flex;
     justify-content: space-between;
-    z-index: 2;
-  }
-  
-  .arrow {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
-  
+    transform: translateY(-50%); /* Center the arrows vertically */
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 3; /* Make sure arrows are above the image and hexagon */
+  position: absolute; /* Set the position to absolute */
+}
+
+
+.arrow.left {
+  left: -40px; /* This value will place the arrow just outside the hexagon container. Adjust if needed */
+}
+
+.arrow.right {
+  right: -40px; /* Similarly for the right arrow */
+}
+
   .arrow.left::before {
     content: '<';
     font-size: 2rem;
@@ -140,3 +172,8 @@
     font-size: 2rem;
   }
 
+  @keyframes moveToLeft {
+    to {
+      transform: translateX(-70%);
+    }
+  }

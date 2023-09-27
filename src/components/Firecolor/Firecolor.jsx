@@ -5,48 +5,50 @@ import result_fire from '../../assets/result_fire.png';
 
 
 const Firecolor = () => {
-    const navigate = useNavigate();
-    const storedResults = sessionStorage.getItem('surveyResults');
-    const values = storedResults ? JSON.parse(storedResults) : {};
+  const navigate = useNavigate();
+  const storedResults = sessionStorage.getItem('surveyResults');
+  const values = storedResults ? JSON.parse(storedResults) : {};
 
-    const surveyResults = JSON.parse(sessionStorage.getItem('surveyResults'));
+  const hexagonScores = JSON.parse(sessionStorage.getItem('hexagonScores'));
+  const colors = ["red", "green", "blue", "orange", "purple", "pink"];
 
-    const hexagonScores = JSON.parse(sessionStorage.getItem('hexagonScores'));
+  const [tilted, setTilted] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [changeTextColor, setChangeTextColor] = useState(false);
+  const [rotation, setRotation] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [moveToLeft, setMoveToLeft] = useState(false);
+  const [showRightSide, setShowRightSide] = useState(false);
 
-    const [tilted, setTilted] = useState(false);
-    const [showImage, setShowImage] = useState(false);
-    const [changeTextColor, setChangeTextColor] = useState(false);
-    const [moveLeft, setMoveLeft] = useState(false);
-    const colors = ["red", "green", "blue", "orange", "purple", "pink"];
-
-    const [rotation, setRotation] = useState(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-
-    useEffect(() => {
+  useEffect(() => {
+    setTimeout(() => {
+      setTilted(true);
       setTimeout(() => {
-        setTilted(true);
+        setShowImage(true);
         setTimeout(() => {
-          setShowImage(true);
           setChangeTextColor(true);
           setTimeout(() => {
-            setMoveLeft(true);
-          }, 3000);
-        }, 2000);
-      }, 2000);
-    }, []);
+            setMoveToLeft(true);
+            setTimeout(() => {
+              setShowRightSide(true);
+              setRotation(-30);  // Set the rotation state to -60
+            }, 2000);  // Duration for the moveToLeft animation
+          }, 2000); // Time to wait after text color changes before starting the moveToLeft animation
+        }, 2000);  // Time after setting the tilted state to showing the image
+      }, 2000);  // Initial delay to start the sequence
+    }, 2000);
+  }, []);
+
 
   const rotateClockwise = () => {
     const newRotation = rotation - 60;
-    setCurrentIndex((currentIndex + 5) % 6);
     setRotation(newRotation);
-  };
+};
 
-  const rotateCounterClockwise = () => {
+const rotateCounterClockwise = () => {
     const newRotation = rotation + 60;
-    setCurrentIndex((currentIndex + 1) % 6);
     setRotation(newRotation);
-  };
+};
 
     const getHexagonPoints = (centerX, centerY, radius) => {
       const points = [];
@@ -70,21 +72,12 @@ const Firecolor = () => {
   
   
     return (
-        <div className="results-container">
-        {/* <h2 className="results-title">Your Results</h2>
-        <div>
-        <div className="values-container">
-          <p>Red: {values.NewValue1}</p>
-          <p>Green: {values.NewValue2}</p>
-          <p>Blue: {values.NewValue3}</p>
-        </div>
-        <div className="next-container">
-          <span onClick={() => navigate('/nextPagePath')} className="next-text">Next</span>
-        </div>
-      </div> */}
+<div className="results-container">
   <div className='container'>
-    <div className={`div-container ${moveLeft ? 'move-left' : ''}`} style={{transform: `rotate(${rotation}deg)`}}>
-      <svg className={tilted ? 'tilted' : ''}>
+    <div className={`moving-container ${moveToLeft ? 'animate-move' : ''}`}>
+      <div className="rotation-container"
+   style={{transform: `rotate3d(0, -1.732, 1, ${rotation}deg)`}}>
+   <svg className={tilted ? 'tilted' : '' }>
         {/* Outer grey hexagon */}
         <polygon
           points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -105,44 +98,48 @@ const Firecolor = () => {
         <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke="black" />
         
         {/* labels */}
-        {
-          outerHexagonPoints.map((point, i) => (
-            <text 
-              x={point.x - 10} 
-              y={point.y + 10} 
-              fontSize="24" 
-              fill={changeTextColor ? colors[i] : "white"}  // Change the text color based on the state
-              key={i}
+       {
+    outerHexagonPoints.map((point, i) => (
+        <text 
+            x={point.x - 10} 
+            y={point.y + 10} 
+            fontSize="24" 
+            fill={changeTextColor ? colors[i] : "white"}
+            key={i}
             >
-              {`s${i + 1}`}
-            </text>
-          ))
-        }
+            {`s${i + 1}`}
+        </text>
+    ))
+}
       </svg>
-      {showImage && (
-        <img src = {result_fire} alt="Your image" className="fading-image" />
-      )}
-        </div>   
-        {moveLeft && (
+     
+      </div>
+      {(
           <div className="arrows">
             <div className="arrow left" onClick={rotateClockwise}></div>
             <div className="arrow right" onClick={rotateCounterClockwise}></div>
           </div>
         )} 
-      </div>
-      <div className="right-side">
-        <h1>Text</h1>
-        <p>A Text</p>
-        <div className="progress-bar">
-          <div 
-            className="progress-fill" 
-            style={{
-              width: `${(hexagonScores[currentIndex] / 15) * 100}%`,
-            }}          >
-          </div>
-        </div>
+        {showImage && (
+        <img src = {result_fire} alt="Your image" className="fading-image" />
+      )}
+    </div>
+{showRightSide && (
+  <div className="right-side">
+    <h1>Text</h1>
+    <p>A Text</p>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill" 
+        style={{
+          width: `${(hexagonScores[currentIndex] / 15) * 100}%`,
+        }}>
       </div>
     </div>
+  </div>
+    )}
+  </div>
+</div>
       );
 }
 
