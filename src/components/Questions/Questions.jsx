@@ -32,7 +32,7 @@ function Survey() {
           setCurrentQuestion(currentQuestion + 1);
         }
       };
-
+ 
       const handleSubmit = () => {
         const Value1 = selectedScores[0] + selectedScores[2] + 0.5 * selectedScores[8];
         const Value2 = 0.5 * selectedScores[8] + selectedScores[10] + 0.5 * selectedScores[11];

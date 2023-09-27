@@ -30,7 +30,7 @@ function Apps() {
       </div>
     </div>
   );
-} 
+}  
 
 function ImageSection({ image }) {
   return <img className="full-screen-image" src={image} alt="background" />;
