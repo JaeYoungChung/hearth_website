@@ -53,14 +53,17 @@
     margin-top: -90px; /* Overlap amount */
     z-index: 2;
     position: relative;
-  }
+    width: max-content; /* Make the width only as large as necessary */
+    margin: -90px auto 0 auto; /* Center the element horizontally */
+    column-gap: 70px;
+}
   
   .post {
     width: 250px; 
     height: 450px; 
     border-radius: 15px;
     overflow: hidden;
-    margin: 20px;
+    margin: 40px;
     cursor: pointer;
     position: relative;
   }

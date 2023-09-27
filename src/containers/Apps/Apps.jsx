@@ -14,7 +14,7 @@ const imageData = {
   1: { src:  envisage_flame, color: "rgb(110, 175, 237)", text: ["Envisage", "Cogitation", "is the art of cogitation which consists of reflective thinking on oneself and systemizing decisions, gaining clarity in one's mission and vision through internalization"] },
   2: { src:  attune_flame, color: "rgb(234, 130, 196)", text: ["Attune", "Adaptability", "is accurately perceiving the constantly changing relationship between yourself and the world around you in order to effectively optimize your mode of adaptation in a versatile manner"] },
   3: { src:  reverie_flame, color: "rgb(250, 184, 52)", text: ["Reverie", "Creativity", "is being inquisitive and open-minded when one chances upon objects and ideas to envision and create value of originality"] },
-  4: { src:  transcend_flame, color: "(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
+  4: { src:  transcend_flame, color: "rgb(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
   5: { src:  harmonize_flame, color: "rgb(163, 86, 214)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
 };
 

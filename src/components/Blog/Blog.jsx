@@ -52,7 +52,7 @@ function PageHeader({ backgroundImage }) {
         <img src = {icon_twitter} className="icon"/>
       </div>
     );
-  }
+  } 
   
   function BlogPosts({ posts, onPostClick }) {
     return (

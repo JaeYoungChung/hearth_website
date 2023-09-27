@@ -22,6 +22,7 @@ const Firecolor = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [moveToLeft, setMoveToLeft] = useState(false);
   const [showRightSide, setShowRightSide] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onRotate = (newScore) => {
     // Your existing rotation logic here
@@ -43,8 +44,8 @@ const imageData = {
 const hexagonData = [
   {
       color: "rgb(69, 252, 80)",
-      title: "Title 1",
-      subTitle: "SubTitle 1",
+      title: "Helm",
+      subTitle: "Independence",
       paragraph: "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny",
       progressBarPercentage: 60,  // this should correspond to the hexagon's score for s1
       belowText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
@@ -161,9 +162,8 @@ const rotateCounterClockwise = () => {
     ))
 }
       </svg>
-     
-      </div>
-      {(
+    </div>
+        {(
           <div className="arrows">
             <div className="arrow left" onClick={rotateClockwise}></div>
             <div className="arrow right" onClick={rotateCounterClockwise}></div>
@@ -174,7 +174,7 @@ const rotateCounterClockwise = () => {
       )}
     </div>
     {showRightSide && (
-  <div className="right-side" style={{ backgroundImage: `url(${hexagonData[currentIndex].backgroundImage})` }}>
+  <div className="hex-right-side" style={{ backgroundImage: `url(${hexagonData[currentIndex].backgroundImage})` }}>
     <div className="hex-text-section">
       <p className="hex-text-big" style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
       <p className="hex-text-medium">{hexagonData[currentIndex].subTitle}</p>
@@ -195,6 +195,34 @@ const rotateCounterClockwise = () => {
             <img src={hexagonData[currentIndex].imageUrl} alt="description_here" />
             <p>Play Store</p>
         </div>
+        <div>
+          <p className='finish-test' onClick={() => setIsModalOpen(true)}>
+              Finish Test
+          </p>
+        </div>
+        {isModalOpen && (
+      <div className="modal">
+        <div className="modal-content">
+          <p>Modal Text</p>
+          <div className="hex-c-inputBox">
+                    <input type="text" placeholder="email"/>
+                    <span className="hex-register">Register</span>
+                </div>
+          <div className="checkbox-container">
+            <input type="checkbox" id="checkbox" />
+            <label htmlFor="checkbox">Checkbox Text 1</label>
+          </div>
+          <div className="checkbox-container">
+            <input type="checkbox" id="checkbox" />
+            <label htmlFor="checkbox">Checkbox Text 2</label>
+          </div>
+          <div className="modal-buttons">
+            <p onClick={() => setIsModalOpen(false)}>Back</p>
+            <p>Next</p>
+          </div>
+        </div>
+      </div>
+    )}
   </div>
 )}
 

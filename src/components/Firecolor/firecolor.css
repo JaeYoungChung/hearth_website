@@ -109,7 +109,7 @@
     align-items: center;
   }
   
-  .right-side {
+  .hex-right-side {
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
@@ -117,12 +117,12 @@
     position: absolute;
     width: 40%;
     right: 5%;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     background-size: cover;
     background: none;
   }
 
-  .right-side::before {
+  .hex-right-side::before {
     content: "";
     position: absolute;
     top: 0;
@@ -144,19 +144,18 @@
   }
   
   .hex-text-big {
-      font-size: 121px;
+      font-size: 101px;
     }
     
   .hex-text-medium {
       opacity: 0.3;
-      font-size: 63px;
-      padding-bottom: 20px;
+      font-size: 53px;
     }
   
   .hex-text-small {
-      padding-top: 20px;
+      padding-top: 10px;
       font-size: 15px;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
     }
   
   .progress-bar {
@@ -222,7 +221,7 @@
 
   .legend-container {
     position: absolute;
-    top: 120px;
+    top: 200px;
     left: 20px;
     z-index: 10;
     background-color: transparent;
@@ -340,12 +339,13 @@ hr {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .image-text-container img {
   width: 40px;  
   height: 40px;
+  margin-left: 50px;
 }
 
 .main-progress-container {
@@ -365,4 +365,69 @@ hr {
   top: 0;
   left: 0;
   transition: width 0.3s ease-in-out;
+}
+
+.finish-test {
+    position: fixed;  /* Fixed positioning */
+    bottom: 30px;        /* Align to the bottom of the page */
+    right: 50px;         /* Align to the right of the page */
+    margin: 20px;     /* Add some space from the edges of the page */
+    font-size: 20px;  /* Adjust the text size as needed */
+    color: white;     /* Adjust the text color as needed */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgba(46, 46, 46, 0.7) !important;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px !important;
+  height: 300px !important;
+  text-align: left;
+}
+
+.hex-c-inputBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid white;
+  margin-top: 30px;
+  background: transparent;
+  padding-left: 10px;
+}
+
+input[type="text"], textarea {
+  width: 300px;
+  color: white;
+  background-color : transparent;
+  border: none;
+  outline: none;
+}
+
+.hex-register {
+  cursor: pointer;
+}
+
+.checkbox-container {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
 }
