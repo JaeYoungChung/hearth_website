@@ -87,6 +87,20 @@ export const mockPosts = [
         icon2Text: "1K",
         overlayImage: blogimg_1
       },
+      {
+        id: 7,
+        title: "Blog Post 2",
+        description: "Short description for post 2.",
+        imageUrl: blogimg_1,
+        content: "Full content for post 2.",
+        overlayTopLine: "Top Line Text",
+        overlayBottomLine: "Bottom Line Text",
+        icon1Url: thumbsup,
+        icon1Text: "1K",
+        icon2Url: share,
+        icon2Text: "1K",
+        overlayImage: blogimg_1
+      },
   ];
 
   export const questions = [

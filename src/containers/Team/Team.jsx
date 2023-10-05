@@ -49,14 +49,14 @@ const Team = () => {
             style={{ backgroundColor: 'white' }}
         >
             Profile {index + 1}
-        </div>
+        </div> 
                 ))}
             </div>
             {tabData[selected].paragraphs.map((para, index) => (
                  <p className='para-texts' key={index}>{para}</p>
             ))}
                 <div className="team-footer">
-                <div className="square" style={{ backgroundColor: tabData[selected].color }}></div>
+                <div className="team-square" style={{ backgroundColor: tabData[selected].color }}></div>
                 <p className='team-footer-text' style={{ color: tabData[selected].color }}>{tabData[selected].footerText}</p>
             </div>
             </div>

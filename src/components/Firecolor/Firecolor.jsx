@@ -4,6 +4,13 @@ import './firecolor.css';
 import result_fire from '../../assets/result_fire.png';
 import blur_fire from '../../assets/blur_fire.png';
 import icon_twitter from '../../assets/icon_twitter.png';
+import icon_instagram from '../../assets/icon_instagram.png'
+import icon_facebook from '../../assets/icon_facebook.png'
+import icon_appstore from '../../assets/icon_appstore.png';
+import icon_playstore from '../../assets/icon_playstore.png';
+import blog_image from '../../assets/blog_image.png'
+import sns_image from '../../assets/sns_image.png'
+import news_image from '../../assets/news_image.png'
 import { color } from 'd3';
 
 
@@ -23,9 +30,10 @@ const Firecolor = () => {
   const [moveToLeft, setMoveToLeft] = useState(false);
   const [showRightSide, setShowRightSide] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSecondaryContent, setShowSecondaryContent] = useState(false);
+
 
   const onRotate = (newScore) => {
-    // Your existing rotation logic here
     setCurrentActiveScore(newScore);
 };
 
@@ -133,14 +141,14 @@ const rotateCounterClockwise = () => {
           points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
           stroke="darkgrey"
           strokeWidth="2"
-          fill="darkgrey"
+          fill="#1a1a1a"
         />
         {/* Inner shape */}
         <polygon
           points={innerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
           stroke="darkgrey"
           strokeWidth="2"
-          fill="lightgrey"
+          fill="#484848"
         />
         {/* Draw lines connecting opposite */}
         <line x1={outerHexagonPoints[0].x} y1={outerHexagonPoints[0].y} x2={outerHexagonPoints[3].x} y2={outerHexagonPoints[3].y} stroke="black" />
@@ -162,52 +170,92 @@ const rotateCounterClockwise = () => {
     ))
 }
       </svg>
-    </div>
-        {(
-          <div className="arrows">
+      </div>
+      {moveToLeft && !showSecondaryContent && (
+        <div className="arrows">
             <div className="arrow left" onClick={rotateClockwise}></div>
             <div className="arrow right" onClick={rotateCounterClockwise}></div>
-          </div>
-        )} 
+        </div>
+      )}
         {showImage && (
         <img src = {result_fire} alt="Your image" className="fading-image" />
       )}
     </div>
     {showRightSide && (
-  <div className="hex-right-side" style={{ backgroundImage: `url(${hexagonData[currentIndex].backgroundImage})` }}>
-    <div className="hex-text-section">
-      <p className="hex-text-big" style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
-      <p className="hex-text-medium">{hexagonData[currentIndex].subTitle}</p>
-      <hr />
-      <p className='hex-text-small'>{hexagonData[currentIndex].paragraph}</p>
-    </div>
-    <div className="main-progress-container">
-        <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${hexagonScores[`s${currentIndex + 1}`]}%` }}>
+      <div className="hex-right-side" style={{ backgroundImage: !showSecondaryContent ? `url(${hexagonData[currentIndex].backgroundImage})` : 'none' }}>
+      {!showSecondaryContent ? (
+        <>
+      <div className="hex-text-section">
+        <p className="hex-text-big" style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
+        <p className="hex-text-medium">{hexagonData[currentIndex].subTitle}</p>
+        <hr />
+        <p className='hex-text-small'>{hexagonData[currentIndex].paragraph}</p>
+      </div>
+      <div className="main-progress-wrapper">
+        <div className="main-progress-container">
+          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${hexagonScores[`s${currentIndex + 1}`]}%` }}>
+          </div>
         </div>
-        <p>70%</p>
-    </div>
+        <p className="main-progress-percentage">70%</p>
+      </div>
         <p className='below-text'>
             {hexagonData[currentIndex].belowText}
         </p>
-        <div className="image-text-container">
-            <img src={hexagonData[currentIndex].imageUrl} alt="description_here" />
-            <p>App Store</p>
-            <img src={hexagonData[currentIndex].imageUrl} alt="description_here" />
+      <div className="image-text-container">
+        <div className="image-text-wrap">
+          <img src={icon_appstore} alt="description_here" />
+          <p>App Store</p>
+        </div>
+        <div className="image-text-wrap">
+            <img src={icon_playstore} alt="description_here" />
             <p>Play Store</p>
         </div>
-        <div>
+      </div>
+      <div>
           <p className='finish-test' onClick={() => setIsModalOpen(true)}>
               Finish Test
           </p>
-        </div>
-        {isModalOpen && (
+      </div>
+      </>
+      ) : (
+    <div className="secondary-content">
+    <p className="fr-text-medium">Want to know more?</p>
+    <p className="fr-text-large">Join our<br></br>Community</p>
+    <p className="fr-text-medium">for more<br></br>HEARTH's exclusive Contents</p>
+    <div className="image-row">
+      <div className="image-text-wrapper">
+        <img src= {blog_image} alt="description1" />
+        <p>Blog posts</p>
+      </div>
+      <div className="image-text-wrapper">
+      <img src= {sns_image} alt="description3" />
+        <p>SNS posts</p>
+      </div>
+      <div className="image-text-wrapper">
+      <img src= {news_image} alt="description2" />
+        <p>Newsletters<br></br>&<br></br>Channels</p>
+      </div>
+    </div>
+    <div className="register-inputBox">
+      <input type="text" placeholder="email"/>
+      <p className="register">Register</p>
+    </div>    
+    <p className="text-below-rectangle">and visit us on</p>
+    <div className="bottom-image-row">
+      <img src = {icon_instagram} className="icon"/>
+      <img src = {icon_facebook} className="icon"/>
+      <img src = {icon_twitter} className="icon"/>
+    </div>
+  </div>
+      )}
+        {isModalOpen && !showSecondaryContent &&(
       <div className="modal">
         <div className="modal-content">
           <p>Modal Text</p>
           <div className="hex-c-inputBox">
-                    <input type="text" placeholder="email"/>
-                    <span className="hex-register">Register</span>
-                </div>
+            <input type="text" placeholder="email"/>
+            <span className="hex-register">Register</span>
+          </div>
           <div className="checkbox-container">
             <input type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">Checkbox Text 1</label>
@@ -218,7 +266,7 @@ const rotateCounterClockwise = () => {
           </div>
           <div className="modal-buttons">
             <p onClick={() => setIsModalOpen(false)}>Back</p>
-            <p>Next</p>
+            <p onClick={() => setShowSecondaryContent(true)}>Next</p>
           </div>
         </div>
       </div>
@@ -227,14 +275,14 @@ const rotateCounterClockwise = () => {
 )}
 
 <div className={animationDone ? "animation-complete" : ""}>
-    <div className="legend-container">
+    <div className={`legend-container ${showSecondaryContent ? 'secondary-active' : ''}`}>
         <div className="legend-header">
             <div className="color-square"></div>
             <p>#DB5EA0</p>
         </div>
         <ul className="score-list">
             {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, index) => (
-                <li key={score} className={currentIndex === index ? "active" : ""}>
+                <li key={score} className={currentIndex === index ? "active " : ""}>
                     <p>{score}</p>
                     <div className="progress-container">
                         <div className={`progress-fill color-${index}`} style={{ width: `${hexagonScores[score]}%` }}></div>
@@ -242,11 +290,23 @@ const rotateCounterClockwise = () => {
                 </li>
             ))}
         </ul>
+        {showSecondaryContent && (
+        <button className="rounded-button">Share Fire</button>
+      )}
     </div>
+   
 </div>
+
+{showSecondaryContent && (
+   <div className="left-bottom">
+       <p className="final-arrow-left">&lt;</p>
+       <p className="final-arrow-text">Results</p>
+   </div>
+)}
   </div>
 </div>
+
       );
 }
-
+ 
 export default Firecolor

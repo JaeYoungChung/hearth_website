@@ -1,7 +1,7 @@
 .results-container {
   margin-top: 150px;
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
 
 .results-title {
@@ -50,7 +50,7 @@
     height: 400px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    transform-style: preserve-3d;  /* This ensures children obey the 3D rotation */
+    transform-style: preserve-3d;  /* Ensures children obey the 3D rotation */
   }
   
 
@@ -67,12 +67,12 @@
 }
 
 .rotation-container {
-  position: relative; /* So that it can control the position of absolute child elements */
-  width: 400px; /* Matches SVG width */
-  height: 400px; /* Matches SVG height */
+  position: relative;
+  width: 400px; 
+  height: 400px;
   transform-style: preserve-3d; /* Allow 3D transformations */
-  margin: 0;  /* Ensure there's no margin */
-  padding: 0;  /* Ensure there's no padding */
+  margin: 0; 
+  padding: 0;  
   transition: transform 1s ease-in-out;  /* Smoothly animate the rotation */
 }
 
@@ -110,14 +110,17 @@
   }
   
   .hex-right-side {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    padding: 10px;
+    align-items: center; 
     position: absolute;
+    height: 100vh;
     width: 40%;
-    right: 5%;
-    margin-bottom: 200px;
+    z-index: 2;
     background-size: cover;
     background: none;
   }
@@ -129,14 +132,16 @@
     right: 0;
     bottom: 0;
     left: 0;
+    height: 100vh;
     z-index: -1;  /* To ensure the pseudo-element is behind the content */
     background-image: inherit; /* Inherits the backgroundImage from the parent */
     background-size: cover;
-    filter: blur(5px);  /* Adjust the value as needed */
+    filter: blur(5px);
     background-position: center -20px;  /* Horizontally centered, shifted up by 20 pixels */
   }
 
   .hex-text-section {
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,16 +196,16 @@
   height: 30px;
   cursor: pointer;
   z-index: 3; /* Make sure arrows are above the image and hexagon */
-  position: absolute; /* Set the position to absolute */
+  position: absolute; 
 }
 
 
 .arrow.left {
-  left: -40px; /* This value will place the arrow just outside the hexagon container. Adjust if needed */
+  left: -40px;
 }
 
 .arrow.right {
-  right: -40px; /* Similarly for the right arrow */
+  right: -40px;
 }
 
   .arrow.left::before {
@@ -221,7 +226,7 @@
 
   .legend-container {
     position: absolute;
-    top: 200px;
+    top: 150px;
     left: 20px;
     z-index: 10;
     background-color: transparent;
@@ -235,6 +240,11 @@
   opacity: 1;
 }
 
+.legend-container.secondary-active .score-list li,
+.legend-container.secondary-active .progress-container {
+    opacity: 1.0;
+}
+
 .legend-header {
     display: flex;
     align-items: center;
@@ -243,7 +253,7 @@
 .color-square {
     width: 20px;
     height: 20px;
-    background-color: #3498db; /* Change this color according to your needs */
+    background-color: #3498db;
     margin-right: 10px;
 }
 
@@ -265,13 +275,13 @@
 }
 
 .progress-container {
-    width: 100px;
+    width: 150px;
     flex-grow: 1;
-    height: 15px;
-    background-color: #ccc;
+    height: 12px;
+    background-color: #1a1a1a;
     margin-left: 10px;
     position: relative;
-    border-radius: 5px; /* Add this line for rounded corners */
+    border-radius: 5px;
     overflow: hidden;
     opacity: 0.7;
 }
@@ -335,28 +345,37 @@ hr {
   padding-top: 20px;
 }
 
-.image-text-container {
-  display: flex;
+.image-text-wrap {
   align-items: center;
   gap: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+}
+
+.image-text-container {
+  display: flex;
+  justify-content: center;
   padding-top: 30px;
 }
 
 .image-text-container img {
-  width: 40px;  
-  height: 40px;
-  margin-left: 50px;
+  width: 30px;  
+  height: 30px;
+}
+
+.main-progress-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .main-progress-container {
   width: 300px;
-  flex-grow: 1;
   height: 15px;
   background-color: #ccc;
-  margin-left: 10px;
-  position: relative;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .main-progress-fill {
@@ -367,13 +386,17 @@ hr {
   transition: width 0.3s ease-in-out;
 }
 
+.main-progress-percentage {
+  margin-left: 10px; /* Adjusts space between the progress bar and the text */
+}
+
 .finish-test {
-    position: fixed;  /* Fixed positioning */
-    bottom: 30px;        /* Align to the bottom of the page */
-    right: 50px;         /* Align to the right of the page */
-    margin: 20px;     /* Add some space from the edges of the page */
-    font-size: 20px;  /* Adjust the text size as needed */
-    color: white;     /* Adjust the text color as needed */
+    position: fixed; 
+    bottom: 30px;       
+    right: 50px;        
+    margin: 20px;    
+    font-size: 20px; 
+    color: white;     
 }
 
 .modal {
@@ -430,4 +453,135 @@ input[type="text"], textarea {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.secondary-content {
+  animation: slideInFromRight 0.5s forwards;
+}
+
+.secondary-content {
+  background-color: #1a1a1a;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  padding-top: 150px;
+}
+
+.fr-text-large {
+  font-size: 45px;
+  padding-bottom: 20px;
+}
+
+.fr-text-medium {
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+
+.image-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.image-text-wrapper {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-text-wrapper img {
+  display: block;
+  width: 150px;
+  height: auto;
+  opacity: 0.4;
+}
+
+.image-text-wrapper p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+}
+
+.register-inputBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-top: 50px;
+  padding: 10px;
+  background: transparent;
+}
+
+input[type="text"], textarea {
+  width: 350px;
+  color: white;
+  background-color : transparent;
+  border: none;
+  outline: none;
+}
+
+.register {
+  cursor: pointer;
+}
+
+.text-below-rectangle {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.bottom-image-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 150px;
+  padding-left: 150px;
+}
+
+.rounded-button {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rounded-button:hover {
+  background-color: #2980b9;
+}
+
+.left-bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.final-arrow-left {
+  font-size: 2rem;
+  margin-right: 10px;
 }

@@ -30,7 +30,7 @@ const Community = () => {
             additionalText: "weekly notifications on\nOur Blog and SNS posts" 
         }
     ];
-  
+   
     return (
         <div className="community">
             <div className="left-side">
@@ -39,7 +39,7 @@ const Community = () => {
                 <p className='small-text'>and gain access to HEARTH's free contents</p>
                 <div className="c-inputBox">
                     <input type="text" placeholder="Type here..."/>
-                    <span className="register">Register</span>
+                    <p className="register">Register</p>
                 </div>
             </div>
             <div className="right-side">

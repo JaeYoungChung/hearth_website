@@ -6,6 +6,8 @@ import attune_flame from '../../assets/attune_flame.png'
 import reverie_flame from '../../assets/reverie_flame.png'
 import transcend_flame from '../../assets/transcend_flame.png'
 import harmonize_flame from '../../assets/harmonize_flame.png'
+import icon_appstore from '../../assets/icon_appstore.png';
+import icon_playstore from '../../assets/icon_playstore.png';
 import { useState } from "react";
 
 
@@ -27,6 +29,10 @@ function Apps() {
       <div className="right-section">
         <TextSection color={imageData[selected].color} text={imageData[selected].text} />
         <ButtonSection setSelected={setSelected} selected={selected} />
+        <div className="apps-icons">
+          <img src = {icon_appstore} className="apps-icon"/>
+          <img src = {icon_playstore} className="apps-icon"/>
+        </div>
       </div>
     </div>
   );

@@ -106,15 +106,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     padding: 20px 0;
   }
   
-  .pagination span {
+  .pagination p {
     padding: 5px 10px;
-    border: 1px solid #ccc;
     cursor: pointer;
+    border-radius: 10px;
   }
+
+  .pagination p.active {
+    color: black;
+    background-color: white;
+  }
+
+  .pagination-arrow {
+    font-size: 16px;
+    color: #555;
+  }
+  
   
   h2 {
     font-size: 1.5rem;
