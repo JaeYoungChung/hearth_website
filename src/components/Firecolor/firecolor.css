@@ -1,39 +1,8 @@
 .results-container {
-  margin-top: 150px;
+  margin-top: 250px;
   text-align: center;
   color: white;
 }
-
-.results-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.results-image {
-    max-width: 100%;
-    height: auto;
-    margin: 20px 0;
-}
-
-.values-container p {
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.next-container {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-    margin-top: 20px;
-}
-
-.next-text {
-    cursor: pointer;
-    font-size: 1.5rem;
-    text-decoration: underline;
-    transition: opacity 0.3s;
-}
-
 
 .div-container {
     display: flex;
@@ -46,7 +15,7 @@
   }
   
   svg {
-    width: 400px; 
+    width: 420px; 
     height: 400px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -57,13 +26,13 @@
   text {
     font-family: Arial, sans-serif;
     font-weight: bold;
-    transform: rotateY(0deg);  /* By default, text is not rotated */
   }
 
   .tilted {
-    transform: rotate3d(1, 0, 0, 60deg);
+    transform: rotate3d(1, 0, 0, 70deg);
     transform-origin: center;
     transition: transform 2s ease-in-out;
+    opacity: 0.5;
 }
 
 .rotation-container {
@@ -110,7 +79,6 @@
   }
   
   .hex-right-side {
-    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -172,7 +140,6 @@
   }
   
   .progress-filled {
-    height: 100%;
     height: 20px;
     background-color: green;
     position: absolute;
@@ -183,7 +150,7 @@
 
   .arrows {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 0;
     right: 0; 
     display: flex;
@@ -216,6 +183,24 @@
   .arrow.right::before {
     content: '>';
     font-size: 2rem;
+  }
+
+  .videoWrapper {
+    position: absolute;
+    top: -450px; /*position the video above the hexagon */
+    left: 50%; /* Center the video horizontally */
+    transform: translateX(-67%);
+    z-index: 0; /*video is above the hexagon */
+    height: auto;
+    width: 300px;
+    mix-blend-mode: overlay;
+  }
+
+  video {
+    width: 100%; /* full width of the container */
+    height: 100%; /* full height of the container */
+    object-fit: cover; /* Resize to cover the container */
+    background-color: white;
   }
 
   @keyframes moveToLeft {

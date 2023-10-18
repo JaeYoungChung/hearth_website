@@ -11,8 +11,7 @@ import icon_playstore from '../../assets/icon_playstore.png';
 import blog_image from '../../assets/blog_image.png'
 import sns_image from '../../assets/sns_image.png'
 import news_image from '../../assets/news_image.png'
-import { color } from 'd3';
-
+import white_fire from '../../assets/white_fire.mp4'
 
 const Firecolor = () => {
   const navigate = useNavigate();
@@ -31,6 +30,8 @@ const Firecolor = () => {
   const [showRightSide, setShowRightSide] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
+  const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
+
 
 
   const onRotate = (newScore) => {
@@ -39,6 +40,11 @@ const Firecolor = () => {
 
 const [currentActiveScore, setCurrentActiveScore] = useState('s1');
 const [animationDone, setAnimationDone] = useState(false);
+
+const handleBackClick = () => {
+  setShowSecondaryContent(false);
+  setIsModalOpen(false);
+};
 
 const imageData = {
   0: {color: "rgb(69, 252, 80)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
@@ -96,28 +102,31 @@ const hexagonData = [
   const rotateClockwise = () => {
     const newRotation = rotation - 60;
     setRotation(newRotation);
-    const newIndex = (currentIndex - 1 + 6) % 6;  // Update this line
+    const newIndex = (currentIndex - 1 + 6) % 6;
     setCurrentIndex(newIndex);
+    setTextRotationAdjustment(prevAdjustment => prevAdjustment - 60);  // adjust by -60 for clockwise
 };
 
 const rotateCounterClockwise = () => {
     const newRotation = rotation + 60;
     setRotation(newRotation);
-    const newIndex = (currentIndex + 1) % 6;  // Update this line
+    const newIndex = (currentIndex + 1) % 6;
     setCurrentIndex(newIndex);
+    setTextRotationAdjustment(prevAdjustment => prevAdjustment + 60);  // adjust by +60 for counter-clockwise
 };
 
-    const getHexagonPoints = (centerX, centerY, radius) => {
-      const points = [];
-      const offsetAngle = Math.PI / 3;
-      for (let i = 0; i < 6; i++) {
-        const angle = offsetAngle + (Math.PI / 3) * i;
-        const x = centerX + radius * Math.cos(angle);
-        const y = centerY + radius * Math.sin(angle);
-        points.push({ x, y });
-      }
-      return points;
-    };
+const getHexagonPoints = (centerX, centerY, radius) => {
+  const points = [];
+  const offsetAngle = Math.PI / 3;
+  for (let i = 0; i < 6; i++) {
+      // Subtracting the angle instead of adding it will generate points in a clockwise order.
+      const angle = offsetAngle - (Math.PI / 3) * i;
+      const x = centerX + radius * Math.cos(angle);
+      const y = centerY + radius * Math.sin(angle);
+      points.push({ x, y });
+  }
+  return points;
+};
   
     const outerHexagonPoints = getHexagonPoints(200, 200, 200);
     const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, i) => {
@@ -127,14 +136,45 @@ const rotateCounterClockwise = () => {
         y: 200 + (point.y - 200) * scale,
       };
     });
+
+    const VideoComponent = ({ rgbColor }) => {
+      const videoStyle = {
+        width: '400px',
+        height: '700px',
+        backgroundColor: `rgb(${rgbColor})`
+      };
+    
+      const overlayStyle = {
+        ...videoStyle,
+        mixBlendMode: 'multiply'
+      };
+    
+      return (
+        <div style={videoStyle}>
+          <video style={overlayStyle} autoPlay loop muted>
+            <source src={white_fire} type="video/webm" />
+          </video>
+        </div>
+      );
+    };
   
   
     return (
-<div className="results-container">
-  <div className='container'>
-    <div className={`moving-container ${moveToLeft ? 'animate-move' : ''}`}>
+      <div className="results-container">
+        <div className='container'>
+          <div className={`moving-container ${moveToLeft ? 'animate-move' : ''}`}>
+          {showImage && (
+        <div className="videoOverlayContainer">
+        <div className="videoWrapper">
+          <VideoComponent rgbColor="110,175,237" />
+        </div>
+         <div className="videoWrapper">
+         <VideoComponent rgbColor="110,175,237" />
+       </div>
+       </div>
+      )}
       <div className="rotation-container"
-   style={{transform: `rotate3d(0, -1.732, 1, ${rotation}deg)`}}>
+    style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
    <svg className={tilted ? 'tilted' : '' }>
         {/* Outer grey hexagon */}
         <polygon
@@ -156,19 +196,27 @@ const rotateCounterClockwise = () => {
         <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke="black" />
         
         {/* labels */}
-       {
-    outerHexagonPoints.map((point, i) => (
-        <text 
+              {
+          outerHexagonPoints.map((point, i) => (
+            <text 
             x={point.x - 10} 
             y={point.y + 10} 
             fontSize="24" 
             fill={changeTextColor ? colors[i] : "white"}
             key={i}
-            >
+            transform={animationDone && `
+            rotate(${rotation} 200 200) 
+            rotate(${(-rotation)}
+            ${point.x} ${point.y}))`}
+          // transform={animationDone && 
+          // `rotate(${rotation-30} 200 200) 
+          // rotate(${(-rotation) + textRotationAdjustment} 
+          // ${point.x} ${point.y})`} 
+        >
             {`s${i + 1}`}
         </text>
-    ))
-}
+          ))
+      }
       </svg>
       </div>
       {moveToLeft && !showSecondaryContent && (
@@ -177,9 +225,7 @@ const rotateCounterClockwise = () => {
             <div className="arrow right" onClick={rotateCounterClockwise}></div>
         </div>
       )}
-        {showImage && (
-        <img src = {result_fire} alt="Your image" className="fading-image" />
-      )}
+       
     </div>
     {showRightSide && (
       <div className="hex-right-side" style={{ backgroundImage: !showSecondaryContent ? `url(${hexagonData[currentIndex].backgroundImage})` : 'none' }}>
@@ -193,7 +239,7 @@ const rotateCounterClockwise = () => {
       </div>
       <div className="main-progress-wrapper">
         <div className="main-progress-container">
-          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${hexagonScores[`s${currentIndex + 1}`]}%` }}>
+          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${60+hexagonScores[`s${currentIndex + 1}`]}%` }}>
           </div>
         </div>
         <p className="main-progress-percentage">70%</p>
@@ -298,15 +344,14 @@ const rotateCounterClockwise = () => {
 </div>
 
 {showSecondaryContent && (
-   <div className="left-bottom">
+   <div className="left-bottom" onClick={handleBackClick}>
        <p className="final-arrow-left">&lt;</p>
        <p className="final-arrow-text">Results</p>
    </div>
 )}
   </div>
 </div>
-
-      );
+  );
 }
  
 export default Firecolor

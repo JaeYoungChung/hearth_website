@@ -19,7 +19,7 @@ const imageData = {
   4: { src:  transcend_flame, color: "rgb(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
   5: { src:  harmonize_flame, color: "rgb(163, 86, 214)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
 };
-
+ 
 function Apps() {
   const [selected, setSelected] = useState(0);
 

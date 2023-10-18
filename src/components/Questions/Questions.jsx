@@ -22,7 +22,7 @@ function Survey() {
     const [selectedScores, setSelectedScores] = useState(Array(totalQuestions).fill(null)); // Initialize array
   
     const handleAnswer = (score) => {
-        const adjustedScore = score - 3;
+        const adjustedScore = score - 3;    //(-2,-1,0,1,2)
         const newScores = [...selectedScores]; 
         newScores[currentQuestion - 1] = adjustedScore;
         setSelectedScores(newScores);
