@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './firecolor.css';
-import result_fire from '../../assets/result_fire.png';
 import blur_fire from '../../assets/blur_fire.png';
 import icon_twitter from '../../assets/icon_twitter.png';
 import icon_instagram from '../../assets/icon_instagram.png'
@@ -19,6 +18,10 @@ const Firecolor = () => {
   const values = storedResults ? JSON.parse(storedResults) : {};
 
   const hexagonScores = JSON.parse(sessionStorage.getItem('hexagonScores'));
+  const rgbValues = JSON.parse(sessionStorage.getItem('rgbValues'));
+  const red = rgbValues?.NewRedValue;
+  const green = rgbValues?.NewGreenValue;
+  const blue = rgbValues?.NewBlueValue;
   const colors = ["red", "green", "blue", "orange", "purple", "pink"];
 
   const [tilted, setTilted] = useState(false);
@@ -45,6 +48,8 @@ const handleBackClick = () => {
   setShowSecondaryContent(false);
   setIsModalOpen(false);
 };
+
+const labels = ['H','T','R','H','E','A'];
 
 const imageData = {
   0: {color: "rgb(69, 252, 80)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
@@ -166,10 +171,14 @@ const getHexagonPoints = (centerX, centerY, radius) => {
           {showImage && (
         <div className="videoOverlayContainer">
         <div className="videoWrapper">
-          <VideoComponent rgbColor="110,175,237" />
+        <VideoComponent 
+          rgbColor={`${red}, ${green}, ${blue}`} 
+        />
         </div>
          <div className="videoWrapper">
-         <VideoComponent rgbColor="110,175,237" />
+         <VideoComponent 
+          rgbColor={`${red}, ${green}, ${blue}`} 
+        />
        </div>
        </div>
       )}
@@ -213,7 +222,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
           // rotate(${(-rotation) + textRotationAdjustment} 
           // ${point.x} ${point.y})`} 
         >
-            {`s${i + 1}`}
+            {labels[i]}
         </text>
           ))
       }
@@ -239,10 +248,10 @@ const getHexagonPoints = (centerX, centerY, radius) => {
       </div>
       <div className="main-progress-wrapper">
         <div className="main-progress-container">
-          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${60+hexagonScores[`s${currentIndex + 1}`]}%` }}>
+          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${hexagonScores[`s${currentIndex + 1}`]/36*100}%` }}>
           </div>
         </div>
-        <p className="main-progress-percentage">70%</p>
+        <p className="main-progress-percentage">{Math.round(hexagonScores[`s${currentIndex + 1}`]/36*100)}%</p>
       </div>
         <p className='below-text'>
             {hexagonData[currentIndex].belowText}
@@ -323,15 +332,15 @@ const getHexagonPoints = (centerX, centerY, radius) => {
 <div className={animationDone ? "animation-complete" : ""}>
     <div className={`legend-container ${showSecondaryContent ? 'secondary-active' : ''}`}>
         <div className="legend-header">
-            <div className="color-square"></div>
-            <p>#DB5EA0</p>
+            <div className="color-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
+            <p>{`(${red}, ${green}, ${blue})`}  </p>
         </div>
         <ul className="score-list">
             {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, index) => (
                 <li key={score} className={currentIndex === index ? "active " : ""}>
-                    <p>{score}</p>
+                    <p>{labels[index]}</p>
                     <div className="progress-container">
-                        <div className={`progress-fill color-${index}`} style={{ width: `${hexagonScores[score]}%` }}></div>
+                        <div className={`progress-fill color-${index}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                     </div>
                 </li>
             ))}

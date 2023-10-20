@@ -238,7 +238,7 @@
 .color-square {
     width: 20px;
     height: 20px;
-    background-color: #3498db;
+    /* background-color: #3498db; */
     margin-right: 10px;
 }
 
