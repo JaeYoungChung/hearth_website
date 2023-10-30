@@ -29,20 +29,20 @@ const Community = () => {
             originalText: "Newsletters \n & Channels", 
             additionalText: "weekly notifications on\nOur Blog and SNS posts" 
         }
-    ];
+    ]; 
    
     return (
         <div className="community">
-            <div className="left-side">
-                <p className='big-text'>Join our</p>
-                <p className='bigger-text'>Community</p>
-                <p className='small-text'>and gain access to HEARTH's free contents</p>
+            <div className="c-left-side">
+                <p className='c-big-text'>Join our</p>
+                <p className='c-bigger-text'>Community</p>
+                <p className='c-small-text'>and gain access to HEARTH's free contents</p>
                 <div className="c-inputBox">
-                    <input type="text" placeholder="Type here..."/>
+                    <input type="text" placeholder="email"/>
                     <p className="register">Register</p>
                 </div>
             </div>
-            <div className="right-side">
+            <div className="c-right-side">
                 {cardDetails.map((card, index) => (
                     <Card
                         key={index}

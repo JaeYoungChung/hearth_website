@@ -1,27 +1,27 @@
 .About {
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
-  }
+  font-family: "classico-urw", sans-serif;
+  overflow-x: hidden;
+  } 
   
   .section {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
-    padding: 5%;
+    padding: 10%;
   }
   
   .squares-container {
     position: relative;
-    width: 40%;
-    height: 60vh;
+    width: 38.5%;
+    height: 59vh;
   }
   
   .square {
     position: absolute;
-    width: 20vw;
-    height: 20vw; 
-    border: 1px solid white;
+    width: 18vw;
+    height: 18vw; 
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
     background-color: transparent;
   }
   
@@ -57,21 +57,49 @@
   }
 
   .about-big-text .line1 {
-    font-size: 3rem;
+    font-family: "classico-urw", sans-serif;
+    font-size: 5rem;
   }
   
   .about-big-text .line2 {
-    font-size: 2rem;
+    font-family: "classico-urw", sans-serif;
+    font-size: 3rem;
   }
   
   .about-big-text .line3 {
-    font-size: 2.5rem;
+    font-family: "classico-urw", sans-serif;
+    font-size: 3rem;
+  }
+
+  .about-big-text .line4 {
+    font-family: "classico-urw", sans-serif;
+    font-size: 5rem;
+    padding-left: 180px;
+    padding-bottom: 30px;
+  }
+  
+  .about-big-text .line5 {
+    font-family: "classico-urw", sans-serif;
+    font-size: 3rem;
+  }
+  
+  .about-big-text .line6 {
+    font-family: "classico-urw", sans-serif;
+    font-size: 4rem;
+    padding-right: 200px;
+    padding-top: 10px;
   }
   
   .long-text {
+    font-size: 17px;
     color: white;
     width: 55%;
     line-height: 25px;
+    word-spacing: 1px;
+  }
+
+  .long-text p{
+    font-family: "classico-urw", sans-serif;
   }
   
   .inverted .squares-container {
@@ -89,19 +117,24 @@
     color: white;
     border: 1px solid white;
     padding: 2%;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
-    height: 70vh;
+    height: 80vh;
     padding: 100px;
   }
 
+  .centered-text p {
+    font-family: "classico-urw", sans-serif;
+  }
+
   .title{
+    font-family: "classico-urw", sans-serif;
     font-size: 80px;
     padding-bottom: 50px;
   }
 
   .subtitle{
+    font-family: "classico-urw", sans-serif;
     font-size: 40px;
     padding-bottom: 30px;
   }
-

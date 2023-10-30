@@ -25,15 +25,17 @@ function Apps() {
 
   return (
     <div id="apps" className="apps">
-      <ImageSection image={imageData[selected].src} />
+      <div className='apps-left-section'>
+        <ImageSection image={imageData[selected].src} />
+      </div>
       <div className="right-section">
         <TextSection color={imageData[selected].color} text={imageData[selected].text} />
         <ButtonSection setSelected={setSelected} selected={selected} />
-        <div className="apps-icons">
+      </div>
+      <div className="apps-icons">
           <img src = {icon_appstore} className="apps-icon"/>
           <img src = {icon_playstore} className="apps-icon"/>
         </div>
-      </div>
     </div>
   );
 }  

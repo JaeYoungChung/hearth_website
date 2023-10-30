@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react';
 import './header.css';
 import home_flame from '../../assets/home_flame.png'
 import icon_instagram from '../../assets/icon_instagram.png'
@@ -15,10 +16,17 @@ const Header = () => {
     navigate('/test');
   };
 
+  const [isActive, setIsActive] = useState(false);
+
+  // Toggle the state on image click
+  const handleImageClick = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <div className='header section__padding' id='home'>
       <div className='header-content'>
-        <h1 className='gradient__text'>H E A R T H</h1>
+        <h1 className='home_title_text'>H E A R T H</h1>
         <p>Here to Help</p> 
         <div className='header-content__input'>
         <button type="button" onClick={handleButtonClick}>Take Test</button>
@@ -30,11 +38,18 @@ const Header = () => {
         <img src = {icon_twitter} className="icon"/>
       </div>
       <div className='email'>
-       <img src = {email} className="email_img"/>
-      </div>
-</div>
-      </div> 
+      {/* Conditional rendering of text */}
+      {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
+      <img 
+        src={email} 
+        className="email_img" 
+        style={{ opacity: isActive ? 0.5 : 1 }} 
+        onClick={handleImageClick} 
+      />
     </div>
+      </div>
+    </div> 
+  </div>
   )
 }
 

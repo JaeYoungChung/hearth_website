@@ -22,7 +22,7 @@ const Firecolor = () => {
   const red = rgbValues?.NewRedValue;
   const green = rgbValues?.NewGreenValue;
   const blue = rgbValues?.NewBlueValue;
-  const colors = ["red", "green", "blue", "orange", "purple", "pink"];
+  const colors = ["rgb(0,255,0)", "rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 0, 255)", "rgb(0, 0, 255)", "rgb(0, 255, 255)"];
 
   const [tilted, setTilted] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -49,14 +49,15 @@ const handleBackClick = () => {
   setIsModalOpen(false);
 };
 
-const labels = ['H','T','R','H','E','A'];
+const legend_labels = ['H','E','A','R','T','H'];
+const hexagon_labels = ['H','T','R','H','E','A'];
 
 const imageData = {
   0: {color: "rgb(69, 252, 80)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
   1: {color: "rgb(110, 175, 237)", text: ["Envisage", "Cogitation", "is the art of cogitation which consists of reflective thinking on oneself and systemizing decisions, gaining clarity in one's mission and vision through internalization"] },
   2: {color: "rgb(234, 130, 196)", text: ["Attune", "Adaptability", "is accurately perceiving the constantly changing relationship between yourself and the world around you in order to effectively optimize your mode of adaptation in a versatile manner"] },
   3: {color: "rgb(250, 184, 52)", text: ["Reverie", "Creativity", "is being inquisitive and open-minded when one chances upon objects and ideas to envision and create value of originality"] },
-  4: {color: "(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
+  4: {color: "rgb(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
   5: {color: "rgb(163, 86, 214)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
 };
 
@@ -66,9 +67,7 @@ const hexagonData = [
       title: "Helm",
       subTitle: "Independence",
       paragraph: "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny",
-      progressBarPercentage: 60,  // this should correspond to the hexagon's score for s1
       belowText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-      imageUrl: icon_twitter,
       backgroundImage: blur_fire
   },
   {
@@ -76,11 +75,9 @@ const hexagonData = [
     color: "rgb(110, 175, 237)",
     subTitle: "SubTitle 1",
     paragraph: "This is the paragraph for state 1.",
-    progressBarPercentage: 50,  // this should correspond to the hexagon's score for s1
     belowText: "Some text after the progress bar for state 1.",
-    imageUrl: icon_twitter,
     backgroundImage: blur_fire
-},
+  },
 ];
 
   useEffect(() => {
@@ -135,7 +132,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
   
     const outerHexagonPoints = getHexagonPoints(200, 200, 200);
     const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, i) => {
-      const scale = hexagonScores[`s${i + 1}`] / 15;
+      const scale = hexagonScores[`s${i + 1}`] / 36;
       return {
         x: 200 + (point.x - 200) * scale,
         y: 200 + (point.y - 200) * scale,
@@ -222,7 +219,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
           // rotate(${(-rotation) + textRotationAdjustment} 
           // ${point.x} ${point.y})`} 
         >
-            {labels[i]}
+            {hexagon_labels[i]}
         </text>
           ))
       }
@@ -338,7 +335,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         <ul className="score-list">
             {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, index) => (
                 <li key={score} className={currentIndex === index ? "active " : ""}>
-                    <p>{labels[index]}</p>
+                    <p>{legend_labels[index]}</p>
                     <div className="progress-container">
                         <div className={`progress-fill color-${index}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                     </div>

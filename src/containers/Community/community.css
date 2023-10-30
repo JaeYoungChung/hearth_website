@@ -6,29 +6,33 @@
     overflow: hidden;
 }
 
-.left-side {
+.c-left-side {
     flex: 1;
     padding-left: 50px;
     padding-right: 100px;
     color: white;
+    font-weight: bold;
 }
 
-.right-side {
+.c-right-side {
     flex: 1;
     padding-left: 50px;
+    padding-right: 30px;
     display: flex;
     align-items: center;
+    min-height: 300px;
+    padding-bottom: 100px;
 }
 
-.big-text {
+.c-big-text {
     font-size: 40px;
 }
 
-.bigger-text {
+.c-bigger-text {
     font-size: 60px;
 }
 
-.small-text {
+.c-small-text {
     font-size: 20px;
     padding-top: 20px;
 }
@@ -54,6 +58,8 @@ input[type="text"], textarea {
 
 .register {
     cursor: pointer;
+    font-weight: 100;
+    padding-right: 20px;
 }
 
 .card {
@@ -114,7 +120,7 @@ input[type="text"], textarea {
 .additional-text{
     text-align: start;
     font-size: 12px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .iconRow {

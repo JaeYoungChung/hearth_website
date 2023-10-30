@@ -2,52 +2,55 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 6rem;
+    padding: 2rem 3rem;
     position: sticky;
     top: 0;
     z-index: 40;
 }
-
+ 
 .navbar-links {
     flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 20px;
 }
 
 /* Default tab styles (unselected) */
 .navbar-links a {
     color: inherit;
     opacity: 0.5;
-    text-decoration: none;
-    transition: opacity 0.3s, color 0.3s; /* Added color to the transition */
+    font-family: "classico-urw", sans-serif;
+    font-size: 20px;
+    transition: opacity 0.3s, color 0.3s;
+    margin-right: 25px;
 }
 
 /* Styles for the selected tab */
 .navbar-links a.selected {
     color: white; 
     opacity: 1;
-    border-bottom: 2px solid white;
 }
 
 /* Hover effect for the unselected tabs */
 .navbar-links a:hover {
     opacity: 0.75;
+    border-bottom: 2px solid white;
 }
 
 .navbar-links_logo{
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
 .navbar-links_logo img{
 top: 70px;
 left: 70px;
-width: 41px;
 height: 76px;
 opacity: 1;
 }
 
 .logo-text{
+    font-family: "classico-urw", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,18 +68,19 @@ opacity: 1;
     flex-direction: row;
 }
 
-.navbar-login{
+.navbar-lang{
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.navbar-login button{
+.navbar-lang button{
+    font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
     background-color: transparent;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 5px 5px 5px;
     border-color: white;
     color: white;
     border: 1px solid #FFFFFF;
@@ -90,34 +94,41 @@ select {
     width: 100px;
 }
 
-.flag {
-    display: inline-block;
-    width: 20px;
-    height: 15px;
-    margin-left: 10px;
-    vertical-align: middle;
-    border-radius: 50%; 
-    background-size: cover;
-}
-
-.navbar-login p{
+.navbar-lang p{
     padding-left: 30px;
 }
 
-.english {
+option {
+    padding-right: 30px;
+}
+
+option::after {
+    content: ""; 
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+option.english::after {
     background-image: url('../../assets/england.png');
 }
 
-.japanese {
+option.japanese::after {
     background-image: url('../../assets/england.png');
 }
 
-.korean {
+option.korean::after {
     background-image: url('../../assets/england.png');
 }
 
 .navbar-links_container p,
-.navbar-login p,
+.navbar-lang p,
 .navbar-menu_container p {
     color: #fff;
     font-family: var(--font-family);
@@ -159,7 +170,7 @@ select {
     margin: 1rem 0;
 }
 
-.navbar-menu_container-links-login{
+.navbar-menu_container-links-lang{
     display: none;
 }
 
@@ -184,7 +195,7 @@ select {
     .navbar{
         padding: 2rem;
     }   
-    .navbar-login {
+    .navbar-lang {
         display: none;
     }
 
@@ -192,7 +203,7 @@ select {
         top: 20px;
     }
 
-    .navbar-menu_container-links-login{
+    .navbar-menu_container-links-lang{
         display: block;
     }
 

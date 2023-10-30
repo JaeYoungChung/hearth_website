@@ -84,12 +84,12 @@ function Survey() {
         }));
 
         //Range 0 ~ 36
-        const s1 = Creativity + 18;
-        const s2 = Adaptability + 18;
-        const s3 = Independence + 18;
+        const s1 = Independence + 18;
+        const s2 = Volition + 18;
+        const s3 = Creativity + 18;
         const s4 = Interpersonal + 18;
         const s5 = Cogitation + 18;
-        const s6 = Volition + 18;
+        const s6 = Adaptability + 18;
         
         sessionStorage.setItem('hexagonScores', JSON.stringify({
           s1, s2, s3, s4, s5, s6,
