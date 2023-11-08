@@ -1,42 +1,48 @@
 .blog-page {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .page-header {
-    flex-direction: column;
-    background-image: url('../../assets/blogimg_1.png');
-    background-size: cover;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    position: relative;
-    overflow: hidden;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  .page-header::before {
-    content: "";
-    position: absolute;
-    top: 90%;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(transparent, black); /* Gradient from transparent to black */
-    pointer-events: none; /* Ensure it doesn't interfere with any interactions */
-  }
-  
-  .page-header p {
-    font-size: 70px;
-    color: white;
-  }
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 500px;
+  width: 100%; 
+  z-index: 1;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
-  .page-header .blog-header {
-    font-size: 90px;
-    color: white;
-  }
-  
+.page-header::before {
+  content: "";
+  position: absolute;
+  top: 90%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(transparent, black);
+  pointer-events: none;
+}
+
+.page-header p {
+  font-size: 70px;
+  color: white;
+  z-index: 2; /* Ensure text is above the pseudo-element */
+}
+
+.page-header .blog-header {
+  font-size: 90px;
+  color: white;
+  z-index: 2; /* Ensure text is above the pseudo-element */
+}
+
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -54,7 +60,7 @@
     z-index: 2;
     position: relative;
     width: max-content; /* Make the width only as large as necessary */
-    margin: -90px auto 0 auto; /* Center the element horizontally */
+    margin: 120px auto 0 auto; /* Center the element horizontally */
     column-gap: 70px;
 }
   

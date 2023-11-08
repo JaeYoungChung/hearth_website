@@ -4,6 +4,7 @@ import './blog.css';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_twitter from '../../assets/icon_twitter.png'
+import bg_image from '../../assets/blog_bg_image.png'
 // import {mockPosts} from '../../data.js'
 import { ref, child, get } from "firebase/database";
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
@@ -14,11 +15,20 @@ const Blog = () => {
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
-
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  //Category
+  const [filteredPosts, setFilteredPosts] = useState([]); // State to hold filtered posts
+  const [activeCategory, setActiveCategory] = useState('all'); // State to hold active category
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
   //firebase
   const [posts, setPosts] = useState([]);
+
+  const [selectedPost, setSelectedPost] = useState(null);
+  const firstPostImage = posts.length ? posts[0].imageUrl : '';
+
   useEffect(() => {
-    const postsRef = ref(db); // Replace 'path/to/your/posts' with your actual data path
+    const postsRef = ref(db);
 
     get(child(postsRef, '/blog')).then((snapshot) => {
       if (snapshot.exists()) {
@@ -31,18 +41,29 @@ const Blog = () => {
     });
   }, []); 
 
+    // Effect to filter posts when posts or activeCategory changes
+    useEffect(() => {
+      const filterPosts = () => {
+        if (activeCategory === 'all') {
+          setFilteredPosts(posts);
+        } else {
+          setFilteredPosts(posts.filter(post => post.category === activeCategory));
+        }
+      };
+  
+      filterPosts();
+    }, [posts, activeCategory]);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-    
-const [selectedPost, setSelectedPost] = useState(null);
-const firstPostImage = posts.length ? posts[0].imageUrl : '';
 
+  // Function to handle category change
+  const handleCategoryChange = (event) => {
+    setActiveCategory(event.target.value);
+    setCurrentPage(1); // Reset to first page when category changes
+  };
 
 function handlePostClick(post) {
     setSelectedPost(post);
@@ -52,6 +73,15 @@ function handlePostClick(post) {
     <div className="blog-page">
     <PageHeader backgroundImage={firstPostImage} />
     <Sidebar />
+     {/* Category Buttons */}
+     <div className="category-dropdown">
+        <select value={activeCategory} onChange={handleCategoryChange}>
+          <option value="all">All Categories</option>
+          <option value="books">Books</option>
+          <option value="travel">Travel</option>
+          {/* Add more option elements for each category you have */}
+        </select>
+      </div>
     {selectedPost ? (
       <BlogPostDetail post={selectedPost} onClose={() => setSelectedPost(null)} />
     ) : (
@@ -91,9 +121,9 @@ function handlePostClick(post) {
 }
 
 
-function PageHeader({ backgroundImage }) {
+function PageHeader({}) {
     return (
-        <div className="page-header" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <div className="page-header" style={{ backgroundImage: bg_image }}>
         <p>HEARTH</p>
         <p className="blog-header">B L O G</p>
       </div>
