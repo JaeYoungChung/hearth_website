@@ -1,28 +1,48 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './blog.css';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_twitter from '../../assets/icon_twitter.png'
-import {mockPosts} from '../../data.js'
+// import {mockPosts} from '../../data.js'
+import { ref, child, get } from "firebase/database";
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 
-
+ 
 const Blog = () => {
 
+  //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
+  //firebase
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const postsRef = ref(db); // Replace 'path/to/your/posts' with your actual data path
+
+    get(child(postsRef, '/blog')).then((snapshot) => {
+      if (snapshot.exists()) {
+        setPosts(Object.values(snapshot.val()));
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []); 
+
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = mockPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-
     
 const [selectedPost, setSelectedPost] = useState(null);
-const firstPostImage = mockPosts.length ? mockPosts[0].imageUrl : '';
+const firstPostImage = posts.length ? posts[0].imageUrl : '';
+
 
 function handlePostClick(post) {
     setSelectedPost(post);
@@ -30,16 +50,16 @@ function handlePostClick(post) {
 
   return (
     <div className="blog-page">
-      <PageHeader backgroundImage={firstPostImage} />
-      <Sidebar />
-      {selectedPost ? (
+    <PageHeader backgroundImage={firstPostImage} />
+    <Sidebar />
+    {selectedPost ? (
       <BlogPostDetail post={selectedPost} onClose={() => setSelectedPost(null)} />
     ) : (
       <>
         <div className="posts">
           {currentPosts.map(post => (
-        <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
-      ))}
+            <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
+          ))}
         </div>
         <div className="pagination">
           <p 
@@ -49,7 +69,7 @@ function handlePostClick(post) {
             &lt;
           </p>
           
-          {[...Array(Math.ceil(mockPosts.length / postsPerPage)).keys()].map(number => (
+          {[...Array(Math.ceil(posts.length / postsPerPage)).keys()].map(number => (
             <p 
               key={number + 1} 
               onClick={() => handlePageChange(number + 1)}
@@ -60,7 +80,7 @@ function handlePostClick(post) {
           ))}
 
           <p
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(mockPosts.length / postsPerPage)))}
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(posts.length / postsPerPage)))}
             className="pagination-arrow"
           >
             &gt;
@@ -90,16 +110,6 @@ function PageHeader({ backgroundImage }) {
     );
   } 
   
-  function BlogPosts({ posts, onPostClick }) {
-    return (
-      <div className="posts">
-        {posts.map(post => (
-          <BlogPost key={post.id} post={post} onClick={() => onPostClick(post)} />
-        ))}
-      </div>
-    );
-  }
-  
   function BlogPost({ post, onClick }) {
     return (
       <div className="post" onClick={onClick}>
@@ -116,20 +126,6 @@ function PageHeader({ backgroundImage }) {
       </div>
     );
   }
-  
-  
-  function Pagination() {
-    return (
-      <div className="pagination">
-        <span>prev</span>
-        <span>1</span>
-        <span>2</span>
-        <span>19</span>
-        <span>20</span>
-        <span>next</span>
-      </div>
-    );
-  }
 
 function BlogPostDetail({ post, onClose }) {
     return (
@@ -141,13 +137,9 @@ function BlogPostDetail({ post, onClose }) {
             <p>17</p>
           </div>
           <div className="overlay-top-right">
-            <div className='blog-icon-1'>
-              <img src={post.icon1Url} alt="Icon 1" />
-              <p>{post.icon1Text}</p>
-            </div>
             <div className='blog-icon-2'>
               <img src={post.icon2Url} alt="Icon 2" />
-              <p>{post.icon2Text}</p>
+              {/* <p>{post.icon2Text}</p> */}
             </div>
           </div>
           <img className="overlay-bottom-right2" src={post.overlayImage} alt="Overlay" />
@@ -161,42 +153,5 @@ function BlogPostDetail({ post, onClose }) {
     );
   }
 
-  //   function BlogPostModal({ post, onClose }) {
-//     return (
-//       <div className="modal-container" onClick={onClose}>
-//         <div className="modal-content" onClick={e => e.stopPropagation()}>
-//           <div className="modal-header">
-//             <img src={post.imageUrl} alt={post.title} className="modal-header-image"/>
-//             <div className="overlay-top-left">
-//             <p>Aug</p>
-//             <p>17</p>
-//           </div>
-//             <div className="overlay-top-right">
-//               <div>
-//                 <img src={post.icon1Url} alt="Icon 1"/>
-//                 <p>{post.icon1Text}</p>
-//               </div>
-//               <div>
-//                 <img src={post.icon2Url} alt="Icon 2"/>
-//                 <p>{post.icon2Text}</p>
-//               </div>
-//             </div>
-//             <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
-//           </div>
-//           <div className="modal-body">
-//             <h2>{post.title}</h2>
-//             <p>{post.content}</p>
-//             <button className="close-button" onClick={onClose}>
-//               <img src="path_to_close_icon.png" alt="Close" /> Close
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-
-
 export default Blog;
 
-
-//For the Blog post pagination, add 1,2,3 ... 19, 20

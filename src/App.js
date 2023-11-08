@@ -4,7 +4,8 @@ import {Header, About, Apps, Team, Community} from './containers';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useState } from 'react';
-
+import {db} from "./data";
+import {uid} from "uid";
 
 const App = () => {
   return (

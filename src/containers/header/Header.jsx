@@ -40,7 +40,7 @@ const Header = () => {
       <div className='email'>
       {/* Conditional rendering of text */}
       {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
-      <img 
+      <img
         src={email} 
         className="email_img" 
         style={{ opacity: isActive ? 0.5 : 1 }} 

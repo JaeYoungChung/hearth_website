@@ -71,7 +71,7 @@ function Survey() {
         const RedValue = 0.5 * Creativity + 0.5 * Interpersonal + Volition;                        
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
         const BlueValue = 0.5 * Interpersonal + 0.5 * Adaptability + Cogitation;
-      
+       
         //Range 111 ~ 255
         const NewRedValue = 111 + 2 * (RedValue - (-36));
         const NewGreenValue = 111 + 2 * (GreenValue - (-36));
@@ -109,8 +109,8 @@ function Survey() {
         <button 
           key={score} 
           onClick={() => handleAnswer(score)}
-          className={selectedScores[currentQuestion - 1] === score ? "selected" : ""}
-        >
+          className={selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}
+          >
           {score}
         </button>
       ))}

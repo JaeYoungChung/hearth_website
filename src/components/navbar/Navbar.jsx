@@ -81,7 +81,7 @@ const Navbar = () => {
             </div>
         </div>
         <div className='navbar-lang'>
-        // Search dropdown language for later adjustments
+        {/* Search dropdown language for later adjustments */}
         <select>
           <option value="english" className="english">English</option>
           <option value="japanese" className="japanese">Japanese</option>
