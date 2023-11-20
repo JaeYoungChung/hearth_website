@@ -5,10 +5,64 @@ import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_twitter from '../../assets/icon_twitter.png'
 import bg_image from '../../assets/blog_bg_image.png'
-// import {mockPosts} from '../../data.js'
+import icon_share from '../../assets/share.png'
 import { ref, child, get } from "firebase/database";
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import { FaLink } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
+
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
+
+const SharePopup = ({ url, onClose }) => {
+  const currentUrl = window.location.href;
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(url).then(() => {
+      alert('URL copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  };
+  return (
+    <div className="share-popup">
+      <div className="popup-header">
+        <h2>Share Blog</h2>
+        <IoClose className='close-button' onClick={onClose} />
+      </div>
+      <div className='sns-icons'>
+      <FacebookShareButton className='button-share' url={currentUrl}>
+        <FacebookIcon className='fb-share' round={true}></FacebookIcon>
+      </FacebookShareButton>
+      <FacebookMessengerShareButton className='button-share' url={currentUrl}>
+        <FacebookMessengerIcon className='fb-share' round={true}></FacebookMessengerIcon>
+      </FacebookMessengerShareButton>
+      <TwitterShareButton className='button-share' url={currentUrl}>
+        <TwitterIcon className='fb-share' round={true}></TwitterIcon>
+      </TwitterShareButton>
+      <WhatsappShareButton className='button-share' url={currentUrl}>
+        <WhatsappIcon className='fb-share' round={true}></WhatsappIcon>
+      </WhatsappShareButton>
+      <TelegramShareButton className='button-share' url={currentUrl}>
+        <TelegramIcon className='fb-share' round={true}></TelegramIcon>
+      </TelegramShareButton>
+      <button className='copy-link-button' onClick={copyToClipboard}>
+        <FaLink className='copy-link' />
+      </button>
+      </div>
+    </div>
+  );
+};
  
 const Blog = () => {
 
@@ -23,9 +77,10 @@ const Blog = () => {
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
   //firebase
   const [posts, setPosts] = useState([]);
-
   const [selectedPost, setSelectedPost] = useState(null);
   const firstPostImage = posts.length ? posts[0].imageUrl : '';
+
+
 
   useEffect(() => {
     const postsRef = ref(db);
@@ -158,6 +213,9 @@ function PageHeader({}) {
   }
 
 function BlogPostDetail({ post, onClose }) {
+    //share sns
+    const [showPopup, setShowPopup] = useState(false);
+    const currentUrl = window.location.href;
     return (
       <div className="blog-post-detail">
         <div className="modal-header">
@@ -167,10 +225,10 @@ function BlogPostDetail({ post, onClose }) {
             <p>17</p>
           </div>
           <div className="overlay-top-right">
-            <div className='blog-icon-2'>
-              <img src={post.icon2Url} alt="Icon 2" />
-              {/* <p>{post.icon2Text}</p> */}
-            </div>
+          <div className='blog-icon-2'>
+            <img src={icon_share} alt="Icon 2" onClick={() => setShowPopup(true)} />
+            {showPopup && <SharePopup url={currentUrl} onClose={() => setShowPopup(false)} />}
+          </div>
           </div>
           <img className="overlay-bottom-right2" src={post.overlayImage} alt="Overlay" />
         </div>
