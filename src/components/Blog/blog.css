@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.category-dropdown {
+  position: absolute;
+  z-index: 300;
+  padding-top: 150px;
+}
+
 .page-header {
   display: flex;
   justify-content: center;
@@ -34,13 +40,13 @@
 .page-header p {
   font-size: 70px;
   color: white;
-  z-index: 2; /* Ensure text is above the pseudo-element */
+  z-index: 2;
 }
 
 .page-header .blog-header {
   font-size: 90px;
   color: white;
-  z-index: 2; /* Ensure text is above the pseudo-element */
+  z-index: 2; 
 }
 
   .sidebar {
@@ -59,8 +65,8 @@
     margin-top: -90px; /* Overlap amount */
     z-index: 2;
     position: relative;
-    width: max-content; /* Make the width only as large as necessary */
-    margin: 120px auto 0 auto; /* Center the element horizontally */
+    width: max-content; 
+    margin: 120px auto 0 auto;
     column-gap: 70px;
 }
   
@@ -91,7 +97,7 @@
     height: 50px;
     top: 10px;
     left: 10px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
     border-radius: 5px;
     ;
@@ -138,7 +144,7 @@
   }
 
   .modal-container {
-    position: fixed; /* modal appears fixed on top of other content */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -156,7 +162,7 @@
     width: 70%;
     padding: 20px;
     border-radius: 10px;
-    height: 80vh; /* The modal will take up 80% of the viewport height */
+    height: 80vh; 
     overflow-y: auto; /* Enable vertical scrolling if the content overflows */
     }
 
@@ -277,8 +283,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 150px;
-  width: 650px;
+  height: 200px;
+  width: 450px;
   border: 1px solid #ddd;
   z-index: 1000;
   padding: 10px;
@@ -287,15 +293,31 @@
 
 .sns-icons {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
-  padding-top: 20px;
 }
 
-.button-share {
-  margin: 0px;
+.button-row1 {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }
-  
+.button-row2 {
+  padding-top: 10px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-share + .button-share {
+  margin-left: 10px;
+}
+
+.button-share{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .fb-share, .copy-link-button {
   border: none;
   background: none;
@@ -323,7 +345,6 @@
   width: 25px;
   height: 25px;
 }
-
 
 .share-popup button {
   border: none;

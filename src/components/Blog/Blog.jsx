@@ -13,17 +13,17 @@ import { IoClose } from "react-icons/io5";
 
 
 import {
-  FacebookShareButton,
-  FacebookIcon,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  TelegramShareButton,
-  TelegramIcon,
+  FacebookShareButton, FacebookIcon,
+  FacebookMessengerShareButton, FacebookMessengerIcon,
+  TwitterShareButton, TwitterIcon,
+  WhatsappShareButton, WhatsappIcon,
+  TelegramShareButton, TelegramIcon,
+  ViberShareButton, ViberIcon,
+  LineShareButton, LineIcon,
+  EmailIcon, EmailShareButton,
 } from "react-share";
+
+const { Kakao } = window;
 
 const SharePopup = ({ url, onClose }) => {
   const currentUrl = window.location.href;
@@ -34,6 +34,38 @@ const SharePopup = ({ url, onClose }) => {
       console.error('Failed to copy: ', err);
     });
   };
+
+   //Kakao Share
+   useEffect(()=>{
+      Kakao.cleanup();
+      Kakao.init('c0000000000');
+      console.log(Kakao.isInitialized());
+  },[]);
+
+  const shareKakao = () =>{
+    const currentUrl = window.location.href;
+  
+    Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+            title: '오늘의 디저트',
+            description: '아메리카노, 빵, 케익',
+            imageUrl:
+            'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+            link: {
+                mobileWebUrl: currentUrl,
+            },
+        },
+        buttons: [
+            {
+                title: '나도 테스트 하러가기',
+                link: {
+                mobileWebUrl: currentUrl,
+                },
+            },
+            ],
+        });
+  }
   return (
     <div className="share-popup">
       <div className="popup-header">
@@ -41,6 +73,7 @@ const SharePopup = ({ url, onClose }) => {
         <IoClose className='close-button' onClick={onClose} />
       </div>
       <div className='sns-icons'>
+    <div className='button-row1'>
       <FacebookShareButton className='button-share' url={currentUrl}>
         <FacebookIcon className='fb-share' round={true}></FacebookIcon>
       </FacebookShareButton>
@@ -56,9 +89,27 @@ const SharePopup = ({ url, onClose }) => {
       <TelegramShareButton className='button-share' url={currentUrl}>
         <TelegramIcon className='fb-share' round={true}></TelegramIcon>
       </TelegramShareButton>
-      <button className='copy-link-button' onClick={copyToClipboard}>
+    </div>
+    <div className='button-row2'>
+      <ViberShareButton className='button-share' url={currentUrl}>
+        <ViberIcon className='fb-share' round={true}></ViberIcon>
+      </ViberShareButton>
+      <LineShareButton className='button-share' url={currentUrl}>
+        <LineIcon className='fb-share' round={true}></LineIcon>
+      </LineShareButton>
+      <EmailShareButton className='button-share' url={currentUrl}>
+        <EmailIcon className='fb-share' round={true}></EmailIcon>
+      </EmailShareButton>
+      <button className='button-share' onClick={shareKakao}>
+        <img className='copy-link'
+          src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+          alt="카카오링크 보내기 버튼"
+        />
+      </button>
+      <button className='button-share' onClick={copyToClipboard}>
         <FaLink className='copy-link' />
       </button>
+    </div>  
       </div>
     </div>
   );
@@ -72,13 +123,15 @@ const Blog = () => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   //Category
-  const [filteredPosts, setFilteredPosts] = useState([]); // State to hold filtered posts
-  const [activeCategory, setActiveCategory] = useState('all'); // State to hold active category
+  const [filteredPosts, setFilteredPosts] = useState([]); 
+  const [activeCategory, setActiveCategory] = useState('all'); 
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
   //firebase
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const firstPostImage = posts.length ? posts[0].imageUrl : '';
+
+ 
 
 
 
@@ -96,7 +149,7 @@ const Blog = () => {
     });
   }, []); 
 
-    // Effect to filter posts when posts or activeCategory changes
+    // filter posts
     useEffect(() => {
       const filterPosts = () => {
         if (activeCategory === 'all') {
@@ -114,7 +167,7 @@ const Blog = () => {
     setCurrentPage(newPage);
   };
 
-  // Function to handle category change
+  //category change
   const handleCategoryChange = (event) => {
     setActiveCategory(event.target.value);
     setCurrentPage(1); // Reset to first page when category changes
@@ -134,7 +187,6 @@ function handlePostClick(post) {
           <option value="all">All Categories</option>
           <option value="books">Books</option>
           <option value="travel">Travel</option>
-          {/* Add more option elements for each category you have */}
         </select>
       </div>
     {selectedPost ? (
