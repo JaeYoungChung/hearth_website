@@ -12,7 +12,7 @@ import sns_image from '../../assets/sns_image.png'
 import news_image from '../../assets/news_image.png'
 import white_fire from '../../assets/white_fire.mp4'
 
-const Firecolor = () => {
+const Firecolor = () => { 
   const navigate = useNavigate();
   const storedResults = sessionStorage.getItem('surveyResults');
   const values = storedResults ? JSON.parse(storedResults) : {};
@@ -34,6 +34,8 @@ const Firecolor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
+  const [hexagonColor, setHexagonColor] = useState('initialColor'); // Replace 'initialColor' with your default color
+
 
 
 
@@ -85,6 +87,7 @@ const hexagonData = [
       setTilted(true);
       setTimeout(() => {
         setShowImage(true);
+        setHexagonColor(`rgb(${red}, ${green}, ${blue})`); // Set hexagon color to fire color
         setTimeout(() => {
           setChangeTextColor(true);
           setTimeout(() => {
@@ -106,7 +109,7 @@ const hexagonData = [
     setRotation(newRotation);
     const newIndex = (currentIndex - 1 + 6) % 6;
     setCurrentIndex(newIndex);
-    setTextRotationAdjustment(prevAdjustment => prevAdjustment - 60);  // adjust by -60 for clockwise
+    setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by +60 for clockwise
 };
 
 const rotateCounterClockwise = () => {
@@ -114,7 +117,7 @@ const rotateCounterClockwise = () => {
     setRotation(newRotation);
     const newIndex = (currentIndex + 1) % 6;
     setCurrentIndex(newIndex);
-    setTextRotationAdjustment(prevAdjustment => prevAdjustment + 60);  // adjust by +60 for counter-clockwise
+    setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by -60 for counter-clockwise
 };
 
 const getHexagonPoints = (centerX, centerY, radius) => {
@@ -185,7 +188,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         {/* Outer grey hexagon */}
         <polygon
           points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
-          stroke="darkgrey"
+          stroke={hexagonColor}
           strokeWidth="2"
           fill="#1a1a1a"
         />
@@ -194,34 +197,29 @@ const getHexagonPoints = (centerX, centerY, radius) => {
           points={innerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
           stroke="darkgrey"
           strokeWidth="2"
-          fill="#484848"
-        />
+          fill={hexagonColor}
+          />
         {/* Draw lines connecting opposite */}
-        <line x1={outerHexagonPoints[0].x} y1={outerHexagonPoints[0].y} x2={outerHexagonPoints[3].x} y2={outerHexagonPoints[3].y} stroke="black" />
-        <line x1={outerHexagonPoints[1].x} y1={outerHexagonPoints[1].y} x2={outerHexagonPoints[4].x} y2={outerHexagonPoints[4].y} stroke="black" />
-        <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke="black" />
+        <line x1={outerHexagonPoints[0].x} y1={outerHexagonPoints[0].y} x2={outerHexagonPoints[3].x} y2={outerHexagonPoints[3].y} stroke={hexagonColor} />
+        <line x1={outerHexagonPoints[1].x} y1={outerHexagonPoints[1].y} x2={outerHexagonPoints[4].x} y2={outerHexagonPoints[4].y} stroke={hexagonColor} />
+        <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke={hexagonColor} />
         
         {/* labels */}
               {
           outerHexagonPoints.map((point, i) => (
             <text 
-            x={point.x - 10} 
-            y={point.y + 10} 
-            fontSize="24" 
-            fill={changeTextColor ? colors[i] : "white"}
-            key={i}
-            transform={animationDone && `
-            rotate(${rotation} 200 200) 
-            rotate(${(-rotation)}
-            ${point.x} ${point.y}))`}
-          // transform={animationDone && 
-          // `rotate(${rotation-30} 200 200) 
-          // rotate(${(-rotation) + textRotationAdjustment} 
-          // ${point.x} ${point.y})`} 
-        >
-            {hexagon_labels[i]}
-        </text>
-          ))
+                x={point.x - 10} 
+                y={point.y + 10} 
+                fontSize="24" 
+                fill={changeTextColor ? colors[i] : "white"}
+                key={i}
+                transform={`translate(${point.x} ${point.y}) 
+                            rotate(${-rotation + textRotationAdjustment}) 
+                            translate(${-point.x} ${-point.y})`}
+            >
+                {hexagon_labels[i]}
+            </text>
+        ))
       }
       </svg>
       </div>
