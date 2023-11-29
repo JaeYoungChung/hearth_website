@@ -8,6 +8,9 @@ import news_image from '../../assets/news_image.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_twitter from '../../assets/icon_twitter.png'
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import { uid } from "uid";
+import { ref, set } from "firebase/database";
 
 
 const Community = () => {
@@ -18,7 +21,7 @@ const Community = () => {
             image: blog_image, 
             originalText: "BLOG posts", 
             additionalText: "weekly essays on\npsychology and philosophy" 
-        },
+        }, 
         { 
             image: sns_image, 
             originalText: "SNS posts", 
@@ -30,6 +33,43 @@ const Community = () => {
             additionalText: "weekly notifications on\nOur Blog and SNS posts" 
         }
     ]; 
+
+    const [email, setEmail] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false);
+    const [isValidEmail, setIsValidEmail] = useState(true); // New state for email validity
+
+    const validateEmail = (email) => {
+        // Regular expression for email validation
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
+    const handleEmailChange = (e) => {
+        const emailInput = e.target.value;
+        setEmail(emailInput);
+        setIsValidEmail(validateEmail(emailInput));    };
+
+    const handleRegister = () => {
+        if (!validateEmail(email)) {
+            setIsValidEmail(false);
+            return; // Stop the registration process if the email is not valid
+        }
+        const uuid = uid();
+        // Save email to Firebase
+        set(ref(db, "emails/" + uuid), {
+            email,
+            uuid,
+        })
+        .then(() => {
+            setIsRegistered(true);
+            setEmail(""); // Clear the email input field
+            // Handle success (e.g., show notification)
+        })
+        .catch(error => {
+            // Handle error
+            console.error("Error saving email: ", error);
+        });
+    };
    
     return (
         <div className="community">
@@ -38,9 +78,19 @@ const Community = () => {
                 <p className='c-bigger-text'>Community</p>
                 <p className='c-small-text'>and gain access to HEARTH's free contents</p>
                 <div className="c-inputBox">
-                    <input type="text" placeholder="email"/>
-                    <p className="register">Register</p>
-                </div>
+                <input
+                type="text"
+                placeholder="email"
+                value={email}
+                onChange={handleEmailChange}
+                className={!isValidEmail ? 'invalid' : ''} // Apply class for styling invalid input
+            />                
+                <p className="register" onClick={!isRegistered ? handleRegister : null}>
+                    {isRegistered ? 'Registered!' : 'Register'}
+                </p>
+        </div>
+        {!isValidEmail && <p className="error-message">Please enter a valid email address.</p>} {/* Show error message */}
+
             </div>
             <div className="c-right-side">
                 {cardDetails.map((card, index) => (

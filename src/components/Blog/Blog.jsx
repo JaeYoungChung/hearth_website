@@ -131,10 +131,7 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const firstPostImage = posts.length ? posts[0].imageUrl : '';
 
- 
-
-
-
+  
   useEffect(() => {
     const postsRef = ref(db);
 
