@@ -131,7 +131,7 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const firstPostImage = posts.length ? posts[0].imageUrl : '';
 
-  
+
   useEffect(() => {
     const postsRef = ref(db);
 
@@ -177,7 +177,7 @@ function handlePostClick(post) {
   return (
     <div className="blog-page">
     <PageHeader backgroundImage={firstPostImage} />
-    <Sidebar />
+    <Sidebar /> 
      {/* Category Buttons */}
      <div className="category-dropdown">
         <select value={activeCategory} onChange={handleCategoryChange}>

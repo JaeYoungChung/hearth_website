@@ -7,8 +7,10 @@ import icon_facebook from '../../assets/icon_facebook.png'
 import icon_twitter from '../../assets/icon_twitter.png'
 import email from '../../assets/email.png'
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const [t, i18n] = useTranslation("global");
 
   const navigate = useNavigate();
 
@@ -27,7 +29,10 @@ const Header = () => {
     <div className='header section__padding' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>
-        <p>Here to Help</p> 
+        {/* <p>Here to Help</p>  */}
+        <p>
+          {t("header.message")}
+        </p>
         <div className='header-content__input'>
         <button type="button" onClick={handleButtonClick}>Take Test</button>
         </div>

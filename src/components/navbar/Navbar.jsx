@@ -5,6 +5,7 @@ import logo from '../../assets/home_logo.png'
 import england from '../../assets/england.png'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Menu = () => (
   <>
@@ -37,6 +38,13 @@ const defaultLangFlag = <img src={languageOptions[0].flagimg} height="30" width=
 
 
 const Navbar = () => {
+
+  //translation
+  const [t, i18n] = useTranslation("global");
+  const handleChangeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
@@ -47,29 +55,6 @@ const Navbar = () => {
   };
   const [toggleMenu, setToggleMenu] = useState(false);
 
-  const [cssDisplay, setCssDisplay] = useState('none');
-    const [langFlag, setLangFlag] = useState(defaultLangFlag)
-
-  const showDropdown = () => {
-    if (cssDisplay === 'none'){
-      setCssDisplay('block');
-    } else {
-      setCssDisplay('none');
-    }
-  };
-  
-  const selectListItem = (event) => {
-    handleLanguageChange(event);
-    setCssDisplay('none');
-    setLangFlag(<img src={event.target.src} height="30" width="30" alt="nope" />)
-  };
-  
-    const handleLanguageChange = (event) => userLanguageChange(event);
-    const userLanguageChange = (event) => {
-        console.log("Here grab event.target.id and propagate lang change to app");
-    }
-
-  
   return (
     <div className = "navbar">
       <div className = "navbar-links_logo">
@@ -82,11 +67,11 @@ const Navbar = () => {
         </div>
         <div className='navbar-lang'>
         {/* Search dropdown language for later adjustments */}
-        <select>
-          <option value="english" className="english">English</option>
-          <option value="japanese" className="japanese">Japanese</option>
-          <option value="korean" className="korean">Korean</option>
-         </select>
+        <select onChange={handleChangeLanguage}>
+          <option value="en" className="english">English</option>
+          <option value="ja" className="japanese">Japanese</option>
+          <option value="ko" className="korean">Korean</option>
+        </select>
 
           <p onClick={handleBlogClick}>BLOG</p>
           <button type="button" onClick={handleButtonClick}>TAKE TEST</button>
