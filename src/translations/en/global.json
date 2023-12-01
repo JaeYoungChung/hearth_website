@@ -1,8 +1,52 @@
 {
     "header" : {
-        "message": "Welcome"
+        "message": "Welcome",
+        "take_test": "Take Test"
     },
-    "home": {
-        "body": "A Store"
+    "navbar" : {
+        "home": "Home",
+        "about": "About",
+        "apps": "Apps",
+        "team": "Team",
+        "community": "Community",
+        "blog": "Blog",
+        "take_test": "Take Test"
+    },
+    "about" : {
+        "line1": "W H Y",
+        "line2": "do we have",
+        "line3": "Emotions",
+        "line4": "Logics",
+        "line6": "Emotions"
+    },
+    "apps" : {
+        "independence": "Independence",
+        "cogitation": "Cogitation",
+        "adaptability": "Adaptability",
+        "creativity": "Creativity",
+        "volition": "Volition",
+        "interpersonal_skills": "Interpersonal Skills"
+    },
+    "community" : {
+        "c-big-text": "Join our",
+        "c-bigger-text": "Community",
+        "c-small-text": "and gain access to HEARTH's free contents",
+        "email": "email",
+        "register": "Register",
+        "registered": "Registered!",
+        "original_text1": "BLOG posts",
+        "additional_text1": "weekly essays on\npsychology and philosophy",
+        "original_text2": "SNS posts",
+        "additional_text2": "weekly posts on\nmotivational quotes",
+        "original_text3": "Newsletters \n & Channels",
+        "additional_text3": "weekly notifications on\nOur Blog and SNS posts",
+        "error_message": "Please enter a valid email address.",
+        "visit_blog": "Visit BLOG"
+    },
+    "test" : {
+        "start": "Start"
+    },
+    "questions": {
+        "q1": "I am curious about the unknown."
     }
 }

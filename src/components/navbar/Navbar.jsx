@@ -7,16 +7,6 @@ import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const Menu = () => (
-  <>
-    <p><NavLink to="/" exact activeClassName="selected">HOME</NavLink></p>
-    <p><NavLink to="/about" activeClassName="selected">ABOUT</NavLink></p>
-    <p><NavLink to="/apps" activeClassName="selected">APPS</NavLink></p>
-    <p><NavLink to="/team" activeClassName="selected">TEAM</NavLink></p>
-    <p><NavLink to="/community" activeClassName="selected">COMMUNITY</NavLink></p>
-  </>
-);
-
 const languageOptions = [ 
   {
     id: "en",
@@ -25,12 +15,12 @@ const languageOptions = [
   },
   {
     id: "jp",
-    name: "Japanese",
+    name: "日本語",
     flagimg: england,
   },
   {
     id: "kr",
-    name: "Korean",
+    name: "한국어",
     flagimg: england,
   },
 ];
@@ -44,6 +34,16 @@ const Navbar = () => {
   const handleChangeLanguage = (event) => {
     i18n.changeLanguage(event.target.value);
   };
+
+  const Menu = () => (
+    <>
+      <p><NavLink to="/" exact activeClassName="selected">{t("navbar.home")}</NavLink></p>
+      <p><NavLink to="/about" activeClassName="selected">{t("navbar.about")}</NavLink></p>
+      <p><NavLink to="/apps" activeClassName="selected">{t("navbar.apps")}</NavLink></p>
+      <p><NavLink to="/team" activeClassName="selected">{t("navbar.team")}</NavLink></p>
+      <p><NavLink to="/community" activeClassName="selected">{t("navbar.community")}</NavLink></p>
+    </>
+  );
 
   const navigate = useNavigate();
 
@@ -69,12 +69,11 @@ const Navbar = () => {
         {/* Search dropdown language for later adjustments */}
         <select onChange={handleChangeLanguage}>
           <option value="en" className="english">English</option>
-          <option value="ja" className="japanese">Japanese</option>
-          <option value="ko" className="korean">Korean</option>
+          <option value="ja" className="japanese">日本語</option>
+          <option value="ko" className="korean">한국어</option>
         </select>
-
-          <p onClick={handleBlogClick}>BLOG</p>
-          <button type="button" onClick={handleButtonClick}>TAKE TEST</button>
+          <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
+          <button type="button" onClick={handleButtonClick}>{t("navbar.take_test")}</button>
         </div>
         <div className = "navbar-menu">
           {toggleMenu

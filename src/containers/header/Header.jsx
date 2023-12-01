@@ -29,12 +29,10 @@ const Header = () => {
     <div className='header section__padding' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>
-        {/* <p>Here to Help</p>  */}
-        <p>
-          {t("header.message")}
-        </p>
+        <p>Here to Help</p>
         <div className='header-content__input'>
-        <button type="button" onClick={handleButtonClick}>Take Test</button>
+          <button type="button" onClick={handleButtonClick}>{t("header.take_test")}
+          </button>
         </div>
         <div className='header section__padding' id='home'>
       <div className="icons">
@@ -43,7 +41,6 @@ const Header = () => {
         <img src = {icon_twitter} className="icon"/>
       </div>
       <div className='email'>
-      {/* Conditional rendering of text */}
       {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
       <img
         src={email} 

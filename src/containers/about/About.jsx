@@ -1,8 +1,11 @@
 import React from 'react';
 import './about.css';
 import { Route } from 'react-router-dom';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const [t, i18n] = useTranslation("global");
     return (
     <div className="About">
       <div className="section">
@@ -10,9 +13,9 @@ const About = () => {
           <div className="square square1"></div>
           <div className="square square2"></div>
           <div className="about-big-text">
-            <p className="line1">W H Y</p>
-            <p className="line2">do we have</p>
-            <p className="line3">Emotions&nbsp;?</p>
+            <p className="line1">{t("about.line1")}</p>
+            <p className="line2">{t("about.line2")}</p>
+            <p className="line3">{t("about.line3")}&nbsp;?</p>
           </div>
         </div>
         <div className="long-text">
@@ -26,9 +29,9 @@ const About = () => {
           <div className="square square1"></div>
           <div className="square square2"></div>
           <div className="about-big-text">
-            <p className="line4">Logics</p>
+            <p className="line4">{t("about.line4")}</p>
             <p className="line5">&</p>
-            <p className="line6">Emotions</p>
+            <p className="line6">{t("about.line6")}</p>
           </div>
         </div>
         <div className="long-text">

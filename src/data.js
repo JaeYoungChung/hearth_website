@@ -1,6 +1,7 @@
 import blogimg_1 from '/Users/jeongjeyeong1/Documents/website/src/assets/blogimg_1.png'
 import thumbsup from '/Users/jeongjeyeong1/Documents/website/src/assets/thumbs_up.png'
 import share from '/Users/jeongjeyeong1/Documents/website/src/assets/share.png'
+import { useTranslation } from 'react-i18next';
 
 export const mockPosts = [
     {
@@ -103,10 +104,10 @@ export const mockPosts = [
       },
   ];
 
-  export const questions = [
+  export const questions = (t) => [
     //Creativity1 Inquisitiveness
     //0
-    "I am curious about the unknown.",
+    t("questions.q1"),
     "I often find myself questioning conventional beliefs",      
     "I am willing to understand the truth, even if it makes me uncomfortable.",
 

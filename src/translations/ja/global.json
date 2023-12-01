@@ -1,8 +1,23 @@
 {
     "header" : {
-        "message": "matsubara"
+        "message": "환영합니다",
+        "take_test": "검사하기"
     },
-    "home": {
-        "body": "ayaka"
+    "navbar" : {
+        "home": "홈",
+        "about": "소개",
+        "apps": "앱",
+        "team": "팀",
+        "community": "커뮤니티",
+        "blog": "블로그",
+        "take_test": "검사하기"
+    },
+    "apps" : {
+        "independence": "자주력",
+        "cogitation": "사고력",
+        "adaptability": "적응력",
+        "creativity": "창의력",
+        "volition": "의지력",
+        "interpersonal_skills": "대인관계능력"
     }
 }

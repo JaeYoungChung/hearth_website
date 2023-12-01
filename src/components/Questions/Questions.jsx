@@ -3,7 +3,7 @@ import './questions.css';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {questions} from '../../data.js'
-
+import { useTranslation } from 'react-i18next';
 
 const Questions = () => {
     return (
@@ -14,6 +14,8 @@ const Questions = () => {
   }
   
 function Survey() {
+    const [t, i18n] = useTranslation("global");
+
     const navigate = useNavigate();
 
     const totalQuestions = 54;
