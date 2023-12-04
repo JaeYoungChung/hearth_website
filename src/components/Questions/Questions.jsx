@@ -2,8 +2,8 @@ import React from 'react';
 import './questions.css';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import {questions} from '../../data.js'
 import { useTranslation } from 'react-i18next';
+import { getQuestions } from '../../data.js';
 
 const Questions = () => {
     return (
@@ -15,6 +15,7 @@ const Questions = () => {
   
 function Survey() {
     const [t, i18n] = useTranslation("global");
+    const questions = getQuestions(t);
 
     const navigate = useNavigate();
 
@@ -38,29 +39,30 @@ function Survey() {
       const handleSubmit = () => {
 
         //Range -18 ~ 18
-        const Creativity = selectedScores[0]+selectedScores[1]+selectedScores[2]
-                            +selectedScores[18]+selectedScores[19]+selectedScores[20]
-                            +selectedScores[36]+selectedScores[37]+selectedScores[38];
+        const Independence =  selectedScores[0]+selectedScores[1]+selectedScores[2]
+                              +selectedScores[18]+selectedScores[19]+selectedScores[20]
+                              +selectedScores[36]+selectedScores[37]+selectedScores[38];
 
-        const Adaptability =  selectedScores[3]+selectedScores[4]+selectedScores[5]
+        const Cogitation =  selectedScores[3]+selectedScores[4]+selectedScores[5]
                               +selectedScores[21]+selectedScores[22]+selectedScores[23]
                               +selectedScores[39]+selectedScores[40]+selectedScores[41];
 
-        const Independence =  selectedScores[6]+selectedScores[7]+selectedScores[8]
+        const Adaptability =  selectedScores[6]+selectedScores[7]+selectedScores[8]
                               +selectedScores[24]+selectedScores[25]+selectedScores[26]
                               +selectedScores[42]+selectedScores[43]+selectedScores[44];
 
-        const Interpersonal =  selectedScores[9]+selectedScores[10]+selectedScores[11]
-                              +selectedScores[27]+selectedScores[28]+selectedScores[29]
-                              +selectedScores[45]+selectedScores[46]+selectedScores[47];
+        const Creativity = selectedScores[9]+selectedScores[10]+selectedScores[11]
+                            +selectedScores[27]+selectedScores[28]+selectedScores[29]
+                            +selectedScores[45]+selectedScores[46]+selectedScores[47];
 
-        const Cogitation =  selectedScores[12]+selectedScores[13]+selectedScores[14]
-                              +selectedScores[30]+selectedScores[31]+selectedScores[32]
-                              +selectedScores[48]+selectedScores[49]+selectedScores[50];
+        const Volition =  selectedScores[12]+selectedScores[13]+selectedScores[14]
+                            +selectedScores[30]+selectedScores[31]+selectedScores[32]
+                            +selectedScores[48]+selectedScores[49]+selectedScores[50];   
 
-        const Volition =  selectedScores[15]+selectedScores[16]+selectedScores[17]
+        const Interpersonal =  selectedScores[15]+selectedScores[16]+selectedScores[17]
                               +selectedScores[33]+selectedScores[34]+selectedScores[35]
-                              +selectedScores[51]+selectedScores[52]+selectedScores[53];                          
+                              +selectedScores[51]+selectedScores[52]+selectedScores[53];
+                       
 
         // Transcend (Volition):	 		Red			Red
         // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green

@@ -34,7 +34,7 @@ const Firecolor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSecondaryContent, setShowSecondaryContent] = useState(false);
   const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
-  const [hexagonColor, setHexagonColor] = useState('initialColor'); // Replace 'initialColor' with your default color
+  const [hexagonColor, setHexagonColor] = useState('initialColor');
 
 
 
