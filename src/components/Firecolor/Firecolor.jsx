@@ -340,7 +340,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
             <li key={score} className={currentIndex === customIndex ? "active " : ""}>
                 <p>{legend_labels[originalIndex]}</p>
                 <div className="progress-container">
-                    <div className={`progress-fill color-${customIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
+                    <div className={`progress-fill color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                 </div>
             </li>
         );
