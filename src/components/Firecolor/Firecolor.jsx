@@ -331,15 +331,22 @@ const getHexagonPoints = (centerX, centerY, radius) => {
             <p>{`(${red}, ${green}, ${blue})`}  </p>
         </div>
         <ul className="score-list">
-            {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, index) => (
-                <li key={score} className={currentIndex === index ? "active " : ""}>
-                    <p>{legend_labels[index]}</p>
-                    <div className="progress-container">
-                        <div className={`progress-fill color-${index}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
-                    </div>
-                </li>
-            ))}
-        </ul>
+    {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
+        // Define the custom sequence
+        const customOrder = [0, 4, 3, 5, 1, 2]; // Adjusted for zero-based index
+        // Find the index in the custom order that matches the original index
+        const customIndex = customOrder.indexOf(originalIndex);
+        return (
+            <li key={score} className={currentIndex === customIndex ? "active " : ""}>
+                <p>{legend_labels[originalIndex]}</p>
+                <div className="progress-container">
+                    <div className={`progress-fill color-${customIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
+                </div>
+            </li>
+        );
+    })}
+</ul>
+
         {showSecondaryContent && (
         <button className="rounded-button">Share Fire</button>
       )}

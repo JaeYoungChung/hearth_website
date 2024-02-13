@@ -80,20 +80,25 @@ function Survey() {
         const NewRedValue = 111 + 2 * (RedValue - (-36));
         const NewGreenValue = 111 + 2 * (GreenValue - (-36));
         const NewBlueValue = 111 + 2 * (BlueValue - (-36));
+        const rgbAverage = (NewRedValue + NewGreenValue + NewBlueValue)/3;
+        const adjustmentFactor = 0.5;
+        const AdjustedRed = Math.floor((NewRedValue - rgbAverage) * adjustmentFactor + NewRedValue);
+        const AdjustedGreen = Math.floor((NewGreenValue - rgbAverage) * adjustmentFactor + NewGreenValue);
+        const AdjustedBlue = Math.floor((NewBlueValue - rgbAverage) * adjustmentFactor + NewBlueValue);
 
         sessionStorage.setItem('rgbValues', JSON.stringify({
-          NewRedValue: NewRedValue,
-          NewGreenValue: NewGreenValue,
-          NewBlueValue: NewBlueValue,
+          NewRedValue: Math.min(AdjustedRed, 255),
+          NewGreenValue: Math.min(AdjustedGreen, 255),
+          NewBlueValue: Math.min(AdjustedBlue, 255),
         }));
 
         //Range 0 ~ 36
         const s1 = Independence + 18;
-        const s2 = Volition + 18;
-        const s3 = Creativity + 18;
-        const s4 = Interpersonal + 18;
-        const s5 = Cogitation + 18;
-        const s6 = Adaptability + 18;
+        const s2 = Cogitation + 18;
+        const s3 = Adaptability + 18;
+        const s4 = Creativity + 18;
+        const s5 = Volition + 18;
+        const s6 = Interpersonal + 18;
         
         sessionStorage.setItem('hexagonScores', JSON.stringify({
           s1, s2, s3, s4, s5, s6,
