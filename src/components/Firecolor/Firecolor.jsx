@@ -23,6 +23,7 @@ const Firecolor = () => {
   const green = rgbValues?.NewGreenValue;
   const blue = rgbValues?.NewBlueValue;
   const colors = ["rgb(0,255,0)", "rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 0, 255)", "rgb(0, 0, 255)", "rgb(0, 255, 255)"];
+  const customOrder = [0, 4, 3, 5, 1, 2]; // Adjusted for zero-based index
 
   const [tilted, setTilted] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -36,7 +37,7 @@ const Firecolor = () => {
   const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
   const [hexagonColor, setHexagonColor] = useState('initialColor');
 
-
+  const rCustomIndex = customOrder[currentIndex];
 
 
   const onRotate = (newScore) => {
@@ -55,27 +56,59 @@ const legend_labels = ['H','E','A','R','T','H'];
 const hexagon_labels = ['H','T','R','H','E','A'];
 
 const imageData = {
-  0: {color: "rgb(69, 252, 80)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
-  1: {color: "rgb(110, 175, 237)", text: ["Envisage", "Cogitation", "is the art of cogitation which consists of reflective thinking on oneself and systemizing decisions, gaining clarity in one's mission and vision through internalization"] },
-  2: {color: "rgb(234, 130, 196)", text: ["Attune", "Adaptability", "is accurately perceiving the constantly changing relationship between yourself and the world around you in order to effectively optimize your mode of adaptation in a versatile manner"] },
-  3: {color: "rgb(250, 184, 52)", text: ["Reverie", "Creativity", "is being inquisitive and open-minded when one chances upon objects and ideas to envision and create value of originality"] },
-  4: {color: "rgb(228, 25, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
-  5: {color: "rgb(163, 86, 214)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
+  0: {color: "rgb(0, 255, 0)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
+  1: {color: "rgb(0, 0, 255)", text: ["Envisage", "Cogitation", "is the art of cogitation which consists of reflective thinking on oneself and systemizing decisions, gaining clarity in one's mission and vision through internalization"] },
+  2: {color: "rgb(0, 255, 255)", text: ["Attune", "Adaptability", "is accurately perceiving the constantly changing relationship between yourself and the world around you in order to effectively optimize your mode of adaptation in a versatile manner"] },
+  3: {color: "rgb(255, 255, 0)", text: ["Reverie", "Creativity", "is being inquisitive and open-minded when one chances upon objects and ideas to envision and create value of originality"] },
+  4: {color: "rgb(255, 0, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
+  5: {color: "rgb(255, 0, 255)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
 };
 
 const hexagonData = [
   {
-      color: "rgb(69, 252, 80)",
       title: "Helm",
+      color: "rgb(0, 255, 0)",
       subTitle: "Independence",
       paragraph: "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny",
       belowText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
       backgroundImage: blur_fire
   },
   {
-    title: "Title 2",
-    color: "rgb(110, 175, 237)",
-    subTitle: "SubTitle 1",
+    title: "Transcend",
+    color: "rgb(255, 0, 0)",
+    subTitle: "Volition",
+    paragraph: "This is the paragraph for state 1.",
+    belowText: "Some text after the progress bar for state 1.",
+    backgroundImage: blur_fire
+  },
+  {
+    title: "Reverie",
+    color: "rgb(255, 255, 0)",
+    subTitle: "Creativity",
+    paragraph: "This is the paragraph for state 1.",
+    belowText: "Some text after the progress bar for state 1.",
+    backgroundImage: blur_fire
+  },
+  {
+    title: "Harmonize",
+    color: "rgb(255, 0, 255)",
+    subTitle: "Interpersonal Skills",
+    paragraph: "This is the paragraph for state 1.",
+    belowText: "Some text after the progress bar for state 1.",
+    backgroundImage: blur_fire
+  },
+  {
+    title: "Envisage",
+    color: "rgb(0, 0, 255)",
+    subTitle: "Cogitation",
+    paragraph: "This is the paragraph for state 1.",
+    belowText: "Some text after the progress bar for state 1.",
+    backgroundImage: blur_fire
+  },
+  {
+    title: "Attune",
+    color: "rgb(0, 255, 255)",
+    subTitle: "Adpatability",
     paragraph: "This is the paragraph for state 1.",
     belowText: "Some text after the progress bar for state 1.",
     backgroundImage: blur_fire
@@ -134,8 +167,11 @@ const getHexagonPoints = (centerX, centerY, radius) => {
 };
   
     const outerHexagonPoints = getHexagonPoints(200, 200, 200);
-    const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, i) => {
-      const scale = hexagonScores[`s${i + 1}`] / 36;
+    const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
+      // Find the custom index for the original index based on the custom sequence
+      const customIndex = customOrder[originalIndex];
+      // Use the customIndex to access the correct score from hexagonScores
+      const scale = hexagonScores[`s${customIndex + 1}`] / 36; // +1 to adjust for the score naming (s1, s2, ...)
       return {
         x: 200 + (point.x - 200) * scale,
         y: 200 + (point.y - 200) * scale,
@@ -243,10 +279,10 @@ const getHexagonPoints = (centerX, centerY, radius) => {
       </div>
       <div className="main-progress-wrapper">
         <div className="main-progress-container">
-          <div className={`main-progress-fill color-${currentIndex}`} style={{ width: `${hexagonScores[`s${currentIndex + 1}`]/36*100}%` }}>
+          <div className={`main-progress-fill color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
           </div>
         </div>
-        <p className="main-progress-percentage">{Math.round(hexagonScores[`s${currentIndex + 1}`]/36*100)}%</p>
+        <p className="main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
       </div>
         <p className='below-text'>
             {hexagonData[currentIndex].belowText}
@@ -332,9 +368,6 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         </div>
         <ul className="score-list">
     {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
-        // Define the custom sequence
-        const customOrder = [0, 4, 3, 5, 1, 2]; // Adjusted for zero-based index
-        // Find the index in the custom order that matches the original index
         const customIndex = customOrder.indexOf(originalIndex);
         return (
             <li key={score} className={currentIndex === customIndex ? "active " : ""}>
