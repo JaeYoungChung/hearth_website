@@ -1,7 +1,9 @@
 .community {
+    position: relative;
     display: flex;
     justify-content: center;
     padding-top: 100px;
+    padding-bottom: 50px;
     height: 100%;
     overflow: hidden;
 }
@@ -162,7 +164,7 @@ input[type="text"], textarea {
 
 .c-footer {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     width: 80%;
 }
 

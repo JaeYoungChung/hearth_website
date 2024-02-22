@@ -6,6 +6,9 @@
   }
   
 .apps {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  position: relative;
   background: black;
   display: flex;
   height: 100%; 

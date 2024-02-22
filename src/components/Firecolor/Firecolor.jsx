@@ -10,7 +10,8 @@ import icon_playstore from '../../assets/icon_playstore.png';
 import blog_image from '../../assets/blog_image.png'
 import sns_image from '../../assets/sns_image.png'
 import news_image from '../../assets/news_image.png'
-import white_fire from '../../assets/white_fire.mp4'
+import princefire from '../../assets/princefire.mp4'
+
 
 const Firecolor = () => { 
   const navigate = useNavigate();
@@ -193,7 +194,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
       return (
         <div style={videoStyle}>
           <video style={overlayStyle} autoPlay loop muted>
-            <source src={white_fire} type="video/webm" />
+            <source src={princefire} type="video/webm" />
           </video>
         </div>
       );
@@ -201,7 +202,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
   
   
     return (
-      <div className="results-container">
+      <div className="results-container"> 
         <div className='container'>
           <div className={`moving-container ${moveToLeft ? 'animate-move' : ''}`}>
           {showImage && (
@@ -209,17 +210,22 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         <div className="videoWrapper">
         <VideoComponent 
           rgbColor={`${red}, ${green}, ${blue}`} 
+          // rgbColor={'169,201,190'} 
+
         />
         </div>
          <div className="videoWrapper">
          <VideoComponent 
           rgbColor={`${red}, ${green}, ${blue}`} 
+          // rgbColor={'169,201,190'} 
+
         />
        </div>
        </div>
       )}
       <div className="rotation-container"
     style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
+   
    <svg className={tilted ? 'tilted' : '' }>
         {/* Outer grey hexagon */}
         <polygon
@@ -258,6 +264,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         ))
       }
       </svg>
+      
       </div>
       {moveToLeft && !showSecondaryContent && (
         <div className="arrows">

@@ -1,5 +1,8 @@
 
   .team {
+position: relative;
+padding-top: 70px;
+padding-bottom: 70px;
   background: black;
   display: flex;
   height: 100%; 

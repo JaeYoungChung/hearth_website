@@ -143,7 +143,7 @@ const Community = () => {
                     <p>Cookie Policy</p>
                 </div>
             </div>
-        </div>
+        </div> 
     );
 }
 

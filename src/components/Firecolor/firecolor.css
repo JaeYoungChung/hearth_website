@@ -188,14 +188,14 @@
 
   .videoWrapper {
     position: absolute;
-    top: -450px; /*position the video above the hexagon */
+    top: -430px; /*position the video above the hexagon */
     left: 50%; /* Center the video horizontally */
-    transform: translateX(-67%);
+    transform: translateX(-69%);
     z-index: 0; /*video is above the hexagon */
     height: auto;
     width: 300px;
     mix-blend-mode: overlay;
-    filter: brightness(1.0);
+    filter: brightness(1.3);
   }
 
   video {

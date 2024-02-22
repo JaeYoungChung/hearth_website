@@ -71,6 +71,6 @@ function TextSection({ color, text }) {
         </div>
     </div>
   );
-}  
+}   
 
 export default Apps 
