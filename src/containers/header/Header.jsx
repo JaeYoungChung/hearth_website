@@ -47,7 +47,7 @@ const Header = () => {
         className="email_img" 
         style={{ opacity: isActive ? 0.5 : 1 }} 
         onClick={handleImageClick} 
-      />
+      /> 
     </div>
       </div>
     </div> 

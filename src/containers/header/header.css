@@ -2,6 +2,7 @@
 .header {
     display: flex;
     overflow: hidden;
+    top: 0;
 }
 
 .header-content{
@@ -31,7 +32,6 @@
 .home_title_text {
     font-size: 100px;
     font-weight: 1;
-
 }
 
 .header-content p {
@@ -90,7 +90,7 @@
     text-decoration: none;
   }
   .email_img {
-    size: 30px;
+    height: 30px;
   }
  
 @media screen and (max-width: 1050px) {

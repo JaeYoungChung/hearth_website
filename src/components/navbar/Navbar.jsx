@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
 
-
 const languageOptions = [ 
   {
     id: "en",
@@ -44,11 +43,26 @@ const Navbar = () => {
 
   const Menu = () => (
     <>
-      <p><Link to="header" spy={true} smooth={true} duration={300}>Home</Link></p>
-      <p><Link to="about" spy={true} smooth={true} duration={300}>About</Link></p>
-      <p><Link to="apps" spy={true} smooth={true} duration={300}>Apps</Link></p>
-      <p><Link to="team" spy={true} smooth={true} duration={300}>Team</Link></p>
-      <p><Link to="community" spy={true} smooth={true} duration={300}>Community</Link></p>
+      <li className = 'nav-item'>
+        <p>
+        <Link to="/" onClick={(e) => {
+          e.preventDefault(); // Prevent the Link from navigating
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}>Home</Link>
+        </p>
+      </li>
+      <li className = 'nav-item'>
+        <p><Link to="about" spy={true} smooth={true} duration={300}>About</Link></p>
+      </li>
+      <li className = 'nav-item'>
+        <p><Link to="apps" spy={true} smooth={true} duration={300}>Apps</Link></p>
+      </li>
+      <li className = 'nav-item'>
+        <p><Link to="team" spy={true} smooth={true} duration={300}>Team</Link></p>
+      </li>
+      <li className = 'nav-item'>
+        <p><Link to="community" spy={true} smooth={true} duration={300}>Community</Link></p>
+      </li>
     
       {/* <p><NavLink to="/" exact activeClassName="selected">{t("navbar.home")}</NavLink></p>
       <p><NavLink to="/about" activeClassName="selected">{t("navbar.about")}</NavLink></p>

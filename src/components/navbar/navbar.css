@@ -18,16 +18,29 @@
 
 /* Default tab styles (unselected) */
 .navbar-links a {
-    color: inherit;
+    /* color: inherit; */
     opacity: 0.5;
     font-family: "classico-urw", sans-serif;
     font-size: 20px;
     transition: opacity 0.3s, color 0.3s;
     margin-right: 25px;
+    
 }
 
 /* Styles for the selected tab */
-.navbar-links a.selected {
+/* .navbar-links a.selected {
+    color: white; 
+    opacity: 1;
+} */
+
+.nav-item {
+    padding-bottom: 25px;
+    list-style: none;
+
+}
+
+.nav-item .active {
+    border-bottom: 2px solid white;
     color: white; 
     opacity: 1;
 }

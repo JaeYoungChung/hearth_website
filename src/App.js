@@ -8,10 +8,13 @@ import { useState } from 'react';
 import {db} from "./data";
 import {uid} from "uid";
 
+
 const MainLayout = () => (
   <>
-    <Element name="header"><Header /></Element>
-    <Element name="about"><About /></Element>
+    <div className="longBackground">
+      <Element name="header"><Header /></Element>
+      <Element name="about"><About /></Element>
+    </div>
     <Element name="apps"><Apps /></Element>
     <Element name="team"><Team /></Element>
     <Element name="community"><Community /></Element>

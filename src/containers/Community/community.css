@@ -1,14 +1,111 @@
 .community {
     position: relative;
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
-    padding-bottom: 50px;
-    height: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120vh;
+    background-image: url('../../assets/community_bg.png');
+    background-size: cover;
+    color: white;
+    text-align: center;
+  }
+
+  .c-line1 {
+    font-size: 60px;
+  }
+  .c-line2{
+    font-size: 80px;
+  }
+  .c-line3{
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  
+  .c-text-field {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+    width: 200px; 
+  }
+  
+  .c-image-row {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 30%;
+  }
+  
+  .c-small-image {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    padding: 1px;
+  }
+  
+.c-footer {
+    padding-top: 100px;
+    position: absolute;
+    bottom: 30px;
+    width: 80%;
 }
 
-.c-left-side {
+.c-footerTexts {
+    padding-top: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+hr {
+    color: white;
+    border: none;
+    height: 1px;
+    background: white;
+}
+
+.c-inputBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 10px;
+    background: transparent;
+}
+
+input[type="text"], textarea {
+    width: 350px;
+    color: white;
+    background-color : transparent;
+    border: none;
+    outline: none;
+  }
+
+.register {
+    cursor: pointer;
+    font-weight: 100;
+    padding-right: 20px;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* .c-left-side {
     flex: 1;
     padding-left: 50px;
     padding-right: 100px;
@@ -39,40 +136,7 @@
     padding-top: 20px;
 }
 
-.c-inputBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid white;
-    border-radius: 20px;
-    margin-top: 50px;
-    padding: 10px;
-    background: transparent;
-}
 
-input[type="text"], textarea {
-    width: 350px;
-    color: white;
-    background-color : transparent;
-    border: none;
-    outline: none;
-  }
-
-.register {
-    cursor: pointer;
-    font-weight: 100;
-    padding-right: 20px;
-}
-
-.invalid {
-    border-color: red; /* Example of highlighting invalid input */
-}
-
-.error-message {
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 5px;
-}
 
 .card {
     position: relative;
@@ -162,26 +226,4 @@ input[type="text"], textarea {
     padding-bottom: 50px;
 }
 
-.c-footer {
-    position: absolute;
-    bottom: 30px;
-    width: 80%;
-}
-
-.c-footerTexts {
-    padding-top: 10px;
-    padding-left: 20%;
-    padding-right: 20%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-hr {
-    color: white;
-    border: none;
-    height: 1px;
-    background: white;
-}
-
+ */

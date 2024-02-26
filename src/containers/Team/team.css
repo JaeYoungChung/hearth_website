@@ -1,14 +1,61 @@
-
-  .team {
-position: relative;
-padding-top: 70px;
-padding-bottom: 70px;
-  background: black;
-  display: flex;
-  height: 100%; 
-  overflow: hidden;
+.team {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    height: 100%; 
 }
+  
+  .t-background-img {
+    flex: 1;
+    background-repeat: no-repeat;
+    filter: opacity(0.4);
+  }
+  
+  .t-text-content {
+    color: white;
+    flex: 1;
+    padding-top: 100px;
+    justify-content: center; /* Center vertically in the container */
+    align-items: flex-start; /* Align items to the start of the container (left for columns) */  
+    z-Index: 2,
+  }
 
+  .t-title {
+    font-size: 24px; /* Adjust the font size */
+  }
+  
+  .t-paragraph {
+    margin-bottom: 15px; /* Add space between paragraphs */
+    text-align: justify; /* Justify text for a cleaner look */
+  }
+
+  .t-page-indicators {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .t-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .t-indicator.active {
+    width: 10px;
+    height: 10px;
+    border-radius: 0; /* Square */
+    background-color: white;
+  }
+  
+  
+
+/* 
 .team-left {
     color: white;
     flex: 1;
@@ -84,4 +131,4 @@ padding-bottom: 70px;
 .team-square {
     width: 40px;
     height: 40px;
-}
+} */
