@@ -1,45 +1,119 @@
 .team {
     position: relative;
-    padding-top: 70px;
+    padding-top: 10px;
     padding-bottom: 70px;
-    height: 100%; 
+    height: 110vh; 
+    justify-content: center;
 }
-  
-  .t-background-img {
+
+.t-background-img {
+    height: 100vh;
     flex: 1;
     background-repeat: no-repeat;
-    filter: opacity(0.4);
   }
+
+.t-page1{
+    background-repeat: no-repeat;
+    background-position: 1000px 90px;
+}
+
+.t-page2{
+    background-repeat: no-repeat;
+    background-position: 1000px 90px;
+}
   
-  .t-text-content {
+  .t-text-content1 {
+    position: absolute;
+    justify-content: center;
     color: white;
     flex: 1;
-    padding-top: 100px;
-    justify-content: center; /* Center vertically in the container */
-    align-items: flex-start; /* Align items to the start of the container (left for columns) */  
+    width: 80%;
+    max-width: 1200px;
+    z-Index: 2;
+  }
+
+  .t-text-content2 {
+    position: absolute;
+    justify-content: center;
+    right: 0;
+    color: white;
+    flex: 1;
+    width: 60%;
+    max-width: 650px;
     z-Index: 2,
   }
 
-  .t-title {
-    font-size: 24px; /* Adjust the font size */
+  .t-title1 {
+    font-size: 40px;
+    opacity: 0.4;
+  }
+  .t-subtitle1 {
+    font-size: 50px;
+    padding-left: 50px;
+  }
+  .t-paragraph1 {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .t-title2 {
+    font-size: 50px;
+    color: #FFD800;
+  }
+  .t-subtitle2 {
+    font-size: 30px;
+    color: #FFD800;
+    opacity: 0.4;
   }
   
-  .t-paragraph {
-    margin-bottom: 15px; /* Add space between paragraphs */
-    text-align: justify; /* Justify text for a cleaner look */
+  .t-title3 {
+    font-size: 50px;
+    color:#FF084B;
+  }
+  .t-subtitle3 {
+    font-size: 30px;
+    color:#FF084B;
+    opacity: 0.4;
+  }
+  
+  .t-title4 {
+    font-size: 50px;
+    color:#40FFE9;
+  }
+  .t-subtitle4 {
+    font-size: 30px;
+    color:#40FFE9;
+    opacity: 0.4;
+  }
+
+  .t-title5 {
+    font-size: 50px;
+    color:#4073FF;
+  }
+  .t-subtitle5 {
+    font-size: 30px;
+    color:#4073FF;
+    opacity: 0.4;
+  }
+
+
+  .t-paragraph2 {
+    margin-bottom: 15px;
+    line-height: 1.5;
   }
 
   .t-page-indicators {
     color: white;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 90px;
+    right: 120px;
+    z-index: 5;
   }
   
   .t-indicator {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: #ccc;
     margin: 0 5px;
@@ -47,8 +121,8 @@
   }
   
   .t-indicator.active {
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     border-radius: 0; /* Square */
     background-color: white;
   }

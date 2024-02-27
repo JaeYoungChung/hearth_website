@@ -1,74 +1,81 @@
 .apps {
-  padding-top: 100px;
   padding-bottom: 70px;
   position: relative;
   background: black;
   display: flex;
-  height: 100%; 
+  height: 100vh; 
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.apps-left-section {
-  padding-left: 50px;
-}
-
-.full-screen-image {
-  height: 80vh;
+.a-full-screen-image {
+  height: 100vh;
   object-fit: cover;
 }
 
-.right-section {
+.a-right-section {
+  right: 100px;
+  position: absolute;
+  padding-top: 200px;
   width: 50%;
-  transform: translateX(-45%);
   color: white;
   display: flex;
   flex-direction: column;
+  text-align: right;
   justify-content: space-between;
 }
 
-.text-section {
-  width: 70%;
+.a-text-section {
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: right;
 }
 
-.text-big {
+.a-text-big {
     font-size: 121px;
     font-weight: bold;
   }
   
-.text-medium {
+.a-text-medium {
     opacity: 0.3;
     font-size: 63px;
     padding-bottom: 10px;
   }
 
-.text-small {
+.a-text-small {
     padding-top: 10px;
     font-size: 15px;
   }
 
-.text-section hr {
-  width: 100%;
+.a-text-section hr {
+  width: 70%;
+  margin-left: 30%;
   color: white;
+  height: 1px;
+  opacity: 0.4;
 }
 
-.button-section {
-  padding-right: 270px;
+.a-button-section {
   display: flex;
-  justify-content: space-around;
+  position: absolute;
+  padding-left: 110px;
+  left: 70px;
+  top: 70px;
 }
 
-.button-container {
-    margin-top: 0;
+.a-button-container {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
-.square-button {
+.a-button-container > button, .a-button-container > p {
+  margin: 0 10px;
+}
+
+.a-square-button {
   margin-bottom: 5px;
   background-color: grey;
   width: 50px;
@@ -103,16 +110,19 @@
   }
 
   .apps-icons {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    padding-top: 50px;
+    justify-content: right;
     display: flex; 
-    flex-direction: column;
-    align-items: center;
   }
   
   .apps-icon {
-    width: 30px;
-    margin: 15px 0;
+    width: 140px;
+    margin: 30px 20px;
+  }
+  .ios-icon {
+    width: 140px;
+  }
+  .android-icon {
+    width: 173px;
   }

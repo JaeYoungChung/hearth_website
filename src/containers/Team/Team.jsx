@@ -2,58 +2,206 @@ import React from 'react';
 import './team.css';
 import { Route } from 'react-router-dom';
 import { useState } from "react";
-import team_logo from '../../assets/team_logo.png'
+import white_logo from '../../assets/whitelogo.png'
+import blue_logo from '../../assets/bluelogo.png'
+import green_logo from '../../assets/greenlogo.png'
+import red_logo from '../../assets/redlogo.png'
+import yellow_logo from '../../assets/yellowlogo.png'
 
 
 const Team = () => {
-
-    function Page({ side, backgroundImg, title, paragraphs}) {
-        const firstBackgroundStyle = {
-          backgroundImage: `url(${backgroundImg})`,
-          backgroundPosition:'left 100px',
-          backgroundSize: 'cover',
-        };
-
-        const restBackgroundStyle = {
-            backgroundImage: `url(${backgroundImg})`,
-            backgroundPosition: '150px 100px' ,
-            backgroundSize: 'cover',
-          };
-      
-        return (
-          <div style={{ display: 'flex', height: '100vh' }}>
-            {side === 'left' && <div style={firstBackgroundStyle} className="t-background-img"></div>}
-            <div className="t-text-content">
-              <h1 className="t-title">{title}</h1>
-              {paragraphs.map((p, index) => (
-                <p key={index} className="t-paragraph">{p}</p>
-              ))}
-            </div>
-            {side === 'right' && <div style={restBackgroundStyle} className="t-background-img"></div>}
-          </div>
-        );
-      }
-
-      const [currentPage, setCurrentPage] = useState(0);
-      const pages = [
-        { side: 'right', title: 'Page 1', paragraphs: ['Paragraph 1', 'Paragraph 2'], backgroundImg: team_logo},
-        { side: 'left', title: 'Page 2', paragraphs: ['Paragraph 1', 'Paragraph 2'], backgroundImg: team_logo},
-        { side: 'left', title: 'Page 3', paragraphs: ['Paragraph 1', 'Paragraph 2'], backgroundImg: team_logo},
-        { side: 'left', title: 'Page 4', paragraphs: ['Paragraph 1', 'Paragraph 2'], backgroundImg: team_logo},
-      ];
-    
-      return (
-        <div className="team">
-          <Page {...pages[currentPage]} />
-          <div className="t-page-indicators">
-            {pages.map((_, index) => (
-              <span key={index} className={`t-indicator ${index === currentPage ? 'active' : ''}`} onClick={() => setCurrentPage(index)}></span>
-            ))}
-          </div>
+    const [currentPage, setCurrentPage] = useState(0);
+  
+    const pages = [<Page1 />, <Page2 />, <Page3 />, <Page4 />, <Page5 />];
+  
+    return (
+      <div className="team">
+        {pages[currentPage]}
+        <div className="t-page-indicators">
+          {pages.map((_, index) => (
+            <span key={index} className={`t-indicator ${index === currentPage ? 'active' : ''}`} onClick={() => setCurrentPage(index)}></span>
+          ))}
         </div>
-      );
+      </div>
+    );
+    
+  };
+  
+  const Page1 = () => (
+    <div className='t-page1' 
+        style={{ display: 'flex',
+                paddingLeft: 100,
+                height: '110vh', 
+                backgroundImage: `url(${white_logo})`,
+                backgroundPosition:'1000px 90px',
+                backgroundSize: 'contain',      
+                }}>
+      <div className="t-text-content1" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left'}}>
+        <p className="t-title1">Team</p>
+        <p className="t-subtitle1">HEARTH</p><br/>
+        <div className="t-paragraph1">
+            <p>Team HEARTH was created to accomplish the mission of elevating mental wellness of humanity via offering a personalized help,</p>
+            <p>As we recognize that health encompasses not only the body, but also the mind and soul,</p>
+            <p>We are here to ensure the holistic development of the triad by uplifting the latter.,</p>
+            <p>Our vision is to help everyone in need through fostering depth, strength, and beauty by the means of creative and sustainable methods, </p><br/>
+            <p>“There will always be rocks in the road ahead of us. They will be stumbling blocks or stepping stones; it all depends on how you use them.”,</p><br/>
+            <p>As you navigate through life, Team HEARTH wishes to accompany your journey and assist you along the way</p>
+            <p>by providing philosophical and psychological insights. As we are here to help you, you can also help others by taking part in our mission.</p>
+            <p>Join us in our community, participate in diverse programs, and help build a healthy community that will enlighten yourself and the world.</p><br/>
+            <p>For any inquiry, feel free to contact us on hearthisnear@gmail.com.</p>
+        </div>
+      </div>
+    </div>
+  );
+  
+  const Page2 = () => (
+    <div className='t-page2' 
+        style={{ display: 'flex',
+                paddingLeft: 100,
+                height: '110vh', 
+                backgroundImage: `url(${yellow_logo})`,
+                backgroundPosition:'100px 90px',
+                backgroundSize: 'contain',      
+                }}>
+      <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
+        <p className="t-title2">K</p>
+        <p className="t-subtitle2">Director</p><br/>
+        <div className="t-paragraph2">
+            <p>Director, building and refining the overarching structure</p>
+            <p>of HEARTH, establishing a clear vision.</p><br/>
+            <p>As a M.D. who is deeply engrossed in philosophy and psychology,</p>
+            <p>Endeavors to foster a holistic healing process </p>
+            <p>and take part in the ennoblement of humanity.</p>
+        </div>
+      </div>
+    </div>
+  );
+    
+  const Page3 = () => (
+    <div className='t-page2' 
+        style={{ display: 'flex',
+                paddingLeft: 100,
+                height: '110vh', 
+                backgroundImage: `url(${red_logo})`,
+                backgroundPosition:'100px 90px',
+                backgroundSize: 'contain',      
+                }}>
+      <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
+        <p className="t-title3">C</p>
+        <p className="t-subtitle3">Visualizer</p><br/>
+        <div className="t-paragraph2">
+            <p>Visualizer, directing the artistic and creative elements of projects.</p><br/>
+            <p>Designer of User Interface and Experience,</p>
+            <p>As a M.D. who is deeply engrossed in philosophy and psychology,</p>
+            <p>Driven to develop concepts and ideas into visual narratives,</p>
+            <p>Crafting digital interactions into user-centric journeys.</p>
+        </div>
+      </div>
+    </div>
+  );
+  const Page4 = () => (
+    <div className='t-page2' 
+        style={{ display: 'flex',
+                paddingLeft: 100,
+                height: '110vh', 
+                backgroundImage: `url(${green_logo})`,
+                backgroundPosition:'100px 90px',
+                backgroundSize: 'contain',      
+                }}>
+      <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
+        <p className="t-title4">H</p>
+        <p className="t-subtitle4">Producer</p><br/>
+        <div className="t-paragraph2">
+            <p>Program creator and assessor, producing new materials</p>
+            <p>and improving content quality through philosophical contemplations. </p><br/>
+            <p>Having background in both Psychology and Mechanical Engineering,</p>
+            <p>Seeks to understand the underlying mechanics of human psychology,</p>
+            <p>and uncover the path to a more fulfilled life.</p>
+        </div>
+      </div>
+    </div>
+  );
+  const Page5 = () => (
+    <div className='t-page2' 
+        style={{ display: 'flex',
+                paddingLeft: 100,
+                height: '110vh', 
+                backgroundImage: `url(${blue_logo})`,
+                backgroundPosition:'100px 90px',
+                backgroundSize: 'contain',      
+                }}>
+      <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
+        <p className="t-title5">J</p>
+        <p className="t-subtitle5">Operator</p><br/>
+        <div className="t-paragraph2">
+            <p>Operator, maintaining a panoramic view of projects</p>
+            <p>and orchestrating the workflow to keep all facets</p>
+            <p>of the operation on track.</p><br/>
+            <p>With a background in Computer Science,</p>
+            <p>Transforms the team’s concepts into tangible realities</p>
+            <p>While balancing our mission to be both innovative and resonant.</p>
+        </div>
+      </div>
+    </div>
+  );  
 
 
+
+
+
+
+// const Team = () => {
+
+//     function Page({ side, backgroundImg, title,subtitle, paragraphs}) {
+
+        
+//           const restPagesTextStyle = {
+//             paddingTop: '100px',
+//             paddingLeft: '20px',
+//           };
+
+//         const firstBackgroundStyle = {
+//           backgroundImage: `url(${backgroundImg})`,
+
+//         };
+
+//         const restBackgroundStyle = {
+//             backgroundImage: `url(${backgroundImg})`,
+//             backgroundPosition: '1000px 90px' ,
+//             backgroundSize: 'contain',
+//           };
+        
+//         const isFirstPage = currentPage === 0;
+//         const textStyle = isFirstPage ? firstPageTextStyle : restPagesTextStyle;
+
+      
+//         return (
+//           <div style={{ display: 'flex', height: '100vh',}}>
+//             {side === 'left' && <div style={firstBackgroundStyle} className="t-background-img"></div>}
+//             <div className="t-text-content" style={textStyle}>
+//               <h1 className="t-title">{title}</h1>
+//               <h1 className="t-subtitle">{subtitle}</h1>
+//               {paragraphs.map((p, index) => (
+//                 <p key={index} className="t-paragraph">{p}</p>
+//               ))}
+//             </div>
+//             {side === 'right' && <div style={restBackgroundStyle} className="t-background-img"></div>}
+//           </div>
+//         );
+//       }
+//       return (
+//         <div className="team">
+//           <Page {...pages[currentPage]} />
+//           <div className="t-page-indicators">
+//             {pages.map((_, index) => (
+//               <span key={index} className={`t-indicator ${index === currentPage ? 'active' : ''}`} onClick={() => setCurrentPage(index)}></span>
+//             ))}
+//           </div>
+//         </div>
+//       );
+
+
+//        { side: 'right', title: 'Team', subtitle: 'Hearth', paragraphs: ['Team HEARTH was created to accomplish the mission of elevating mental wellness of humanity via offering a personalized help structure.\nAs we recognize that health encompasses not only the body, but also the mind and soul,\nWe are here to ensure the holistic development of the triad by uplifting the latter.\nOur vision is to help everyone in need through fostering depth, strength, and beauty by the means of creative and sustainable methods.', 'Paragraph 2'], backgroundImg: white_logo},
 
     // const [selected, setSelected] = useState(0);
     // const tabData = [
@@ -112,7 +260,6 @@ const Team = () => {
     //         </div>
     //     </div>
     // );
-}
 
 
 export default Team;

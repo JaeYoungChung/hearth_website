@@ -190,7 +190,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         ...videoStyle,
         mixBlendMode: 'multiply'
       };
-    
+     
       return (
         <div style={videoStyle}>
           <video style={overlayStyle} autoPlay loop muted>
@@ -199,7 +199,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         </div>
       );
     };
-  
+   
   
     return (
       <div className="results-container"> 

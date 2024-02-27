@@ -183,7 +183,7 @@
   
   .arrow.right::before {
     content: '>';
-    font-size: 2rem;
+    font-size: 2rem; 
   }
 
   .videoWrapper {
@@ -204,7 +204,6 @@
     object-fit: cover; /* Resize to cover the container */
     background-color: white;
     /* border-bottom: 1px solid transparent; */
-
   }
 
   @keyframes moveToLeft {

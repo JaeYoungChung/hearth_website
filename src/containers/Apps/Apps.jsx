@@ -6,10 +6,10 @@ import attune_flame from '../../assets/attune_flame.png'
 import reverie_flame from '../../assets/reverie_flame.png'
 import transcend_flame from '../../assets/transcend_flame.png'
 import harmonize_flame from '../../assets/harmonize_flame.png'
-import icon_appstore from '../../assets/icon_appstore.png';
-import icon_playstore from '../../assets/icon_playstore.png';
+import download_appstore from '../../assets/download_appstore.svg';
+import download_playstore from '../../assets/download_playstore.png';
 import { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'; 
 
  
 function Apps() {
@@ -28,9 +28,9 @@ function Apps() {
 
 function ButtonSection({ setSelected, selected }) {
   const buttons = Object.keys(imageData).map(key => (
-    <div className="button-container" key={key}>
+    <div className="a-button-container" key={key}>
       <button
-        className={`square-button ${selected === parseInt(key) ? imageData[key].color : "grey"}`}
+        className={`a-square-button ${selected === parseInt(key) ? imageData[key].color : "grey"}`}
         onClick={() => setSelected(parseInt(key))}
         style={{ opacity: selected === parseInt(key) ? 1 : 0.5 }}
       />
@@ -38,20 +38,20 @@ function ButtonSection({ setSelected, selected }) {
     </div>
   ));
 
-  return <div className="button-section">{buttons}</div>;
+  return <div className="a-button-section">{buttons}</div>;
 }
 
 function ImageSection({ image }) {
-  return <img className="full-screen-image" src={image} alt="background" />;
+  return <img className="a-full-screen-image" src={image} alt="background" />;
 }
 
 function TextSection({ color, text }) {
   return (
-    <div className="text-section">
-    <p className="text-big" style={{ color }}>{text[0]}</p>
-    <p className="text-medium">{text[1]}</p>
+  <div className="a-text-section">
+    <p className="a-text-big" style={{ color }}>{text[0]}</p>
+    <p className="a-text-medium">{text[1]}</p>
     <hr />
-    <p className='text-small'>{text[2]}</p>
+    <p className='a-text-small'>{text[2]}</p>
   </div>
   ); 
 }
@@ -60,15 +60,16 @@ function TextSection({ color, text }) {
     <div id="apps" className="apps">
       <div className='apps-left-section'>
         <ImageSection image={imageData[selected].src} />
-      </div>
-      <div className="right-section">
-        <TextSection color={imageData[selected].color} text={imageData[selected].text} />
         <ButtonSection setSelected={setSelected} selected={selected} />
       </div>
-      <div className="apps-icons">
-          <img src = {icon_appstore} className="apps-icon"/>
-          <img src = {icon_playstore} className="apps-icon"/>
-        </div>
+      <div className="a-right-section">
+        <TextSection color={imageData[selected].color} text={imageData[selected].text} />
+          <div className="apps-icons">
+            <img src = {download_appstore} className="ios-icon"/>
+            <img src = {download_playstore} className="android-icon"/>
+          </div>
+      </div>
+      
     </div>
   );
 }   
