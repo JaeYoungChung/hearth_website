@@ -19,7 +19,7 @@
   background-position: center; 
   height: 500px;
   width: 100%; 
-  z-index: 1;
+  z-index: -1;
   position: absolute;
   flex-direction: column;
   top: 0;
@@ -121,6 +121,7 @@
     align-items: center;
     gap: 5px;
     padding: 20px 0;
+    padding-bottom: 70px;
   }
   
   .pagination p {
@@ -351,4 +352,104 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  background-image: url('../../assets/bannerimg.png');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 300px;
+}
+
+.banner-left{
+  padding-top: 70px;
+  padding-left: 150px;
+  color: white;
+}
+
+.b-line1 {
+  font-size: 40px;
+}
+
+.b-line2 {
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.banner-icons {
+  padding-right: 180px;
+  padding-top: 125px;
+}
+
+.banner-icons img{
+  width: 35px;
+  margin-left: 70px;
+}
+
+/* .banner-icons img:last-child {
+  width: 45px;
+} */
+
+.b-text-field {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid white;
+  width: 200px; 
+}
+
+.b-inputBox {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 400px;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 12px;
+  background: transparent;
+}
+
+input[type="text"], textarea {
+  width: 350px;
+  color: white;
+  background-color : transparent;
+  border: none;
+  outline: none;
+}
+
+.register {
+  cursor: pointer;
+  font-weight: 100;
+  padding-right: 20px;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.b-footer {
+  padding-top: 90px;
+  position: relative;
+  bottom: 50px;
+  width: 100%;
+}
+
+.b-footerTexts {
+  padding-top: 10px;
+  padding-left: 30%;
+  padding-right: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }

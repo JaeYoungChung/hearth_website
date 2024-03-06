@@ -33,19 +33,25 @@
 }
 
 .a-text-big {
-    font-size: 121px;
+    font-size: 111px;
     font-weight: bold;
   }
   
 .a-text-medium {
     opacity: 0.3;
-    font-size: 63px;
+    font-size: 53px;
     padding-bottom: 10px;
   }
 
 .a-text-small {
     padding-top: 10px;
-    font-size: 15px;
+    padding-left: 100px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  span {
+    text-decoration: none;
   }
 
 .a-text-section hr {
@@ -69,6 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 .a-button-container > button, .a-button-container > p {

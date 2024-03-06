@@ -3,15 +3,19 @@ import { useState, useEffect } from 'react';
 import './blog.css';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
-import icon_twitter from '../../assets/icon_twitter.png'
-import bg_image from '../../assets/blog_bg_image.png'
+import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import icon_share from '../../assets/share.png'
+import banner_img from '../../assets/bannerimg.png'
 import { ref, child, get } from "firebase/database";
+import { set } from "firebase/database";
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 import { FaLink } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import { uid } from "uid";
+import { useTranslation } from 'react-i18next';
 
-
+ 
 import {
   FacebookShareButton, FacebookIcon,
   FacebookMessengerShareButton, FacebookMessengerIcon,
@@ -114,6 +118,8 @@ const SharePopup = ({ url, onClose }) => {
     </div>
   );
 };
+
+
  
 const Blog = () => {
 
@@ -129,7 +135,9 @@ const Blog = () => {
   //firebase
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
-  const firstPostImage = posts.length ? posts[0].imageUrl : '';
+  const firstPostImage = posts.length > 0 ? posts[0].imageUrl : '';
+
+  const [t, i18n] = useTranslation("global");
 
 
   useEffect(() => {
@@ -158,7 +166,6 @@ const Blog = () => {
   
       filterPosts();
     }, [posts, activeCategory]);
-
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -219,15 +226,27 @@ function handlePostClick(post) {
           >
             &gt;
           </p>
-        </div>     </>
-    )}</div>
+        </div>  
+        <Banner></Banner>   
+        
+        </>
+    )}
+            <div className="b-footer">
+                <div className="b-footerTexts">
+                    <p>Privacy Policy</p>
+                    <p>Copyrights</p>
+                    <p>Cookie Policy</p>
+                </div>
+            </div>  
+    </div>
+    
   );
 }
 
 
-function PageHeader({}) {
-    return (
-        <div className="page-header" style={{ backgroundImage: bg_image }}>
+function PageHeader({ backgroundImage }) {
+  return (
+        <div className="page-header" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <p>HEARTH</p>
         <p className="blog-header">B L O G</p>
       </div>
@@ -239,7 +258,7 @@ function PageHeader({}) {
         <div className="icons">
         <img src = {icon_instagram} className="icon"/>
         <img src = {icon_facebook} className="icon"/>
-        <img src = {icon_twitter} className="icon"/>
+        <img src = {icon_x} className="icon"/>
       </div>
     );
   } 
@@ -289,6 +308,77 @@ function BlogPostDetail({ post, onClose }) {
       </div>
     );
   }
+
+function Banner() {
+  const [t, i18n] = useTranslation("global");
+
+  const [email, setEmail] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true); // New state for email validity
+
+  const validateEmail = (email) => {
+      // Regular expression for email validation
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+  };
+
+  const handleEmailChange = (e) => {
+      const emailInput = e.target.value;
+      setEmail(emailInput);
+      setIsValidEmail(validateEmail(emailInput));    };
+
+  const handleRegister = () => {
+      if (!validateEmail(email)) {
+          setIsValidEmail(false);
+          return; // Stop the registration process if the email is not valid
+      }
+      const uuid = uid();
+      // Save email to Firebase
+      set(ref(db, "emails/" + uuid), {
+          email,
+          uuid,
+      })
+      .then(() => {
+          setIsRegistered(true);
+          setEmail(""); // Clear the email input field
+          // Handle success (e.g., show notification)
+      })
+      .catch(error => {
+          // Handle error
+          console.error("Error saving email: ", error);
+      });
+  };
+
+  return (
+    <div className="banner">
+        <div className='banner-left'>
+          <p className='b-line1'>Join the Hearthside</p>
+          <p className='b-line2'>and be a part of our journey to wellness & enlightenment</p>
+            <div className="b-inputBox">
+                  <input
+                      type="text"
+                      placeholder={t("blog.email")}
+                      value={email}
+                      onChange={handleEmailChange}
+                      className={!isValidEmail ? 'invalid' : ''}
+                  />                
+                  <p className="register" onClick={!isRegistered ? handleRegister : null}>
+                      {isRegistered ? t("blog.registered") : t("blog.register")}
+                  </p>
+                  </div>
+                      {!isValidEmail && <p className="error-message">{t("blog.error_message")}</p>}          
+                  <div className="b-image-row">
+          </div>    
+        </div>
+            <div className='banner-icons'>
+              <img src={icon_instagram} alt="" />
+              <img src={icon_facebook} alt="" />
+              <img src={icon_x} alt="" />
+              <img src={icon_threads} alt="" />
+            </div>
+    </div>
+  );
+}
 
 export default Blog;
 

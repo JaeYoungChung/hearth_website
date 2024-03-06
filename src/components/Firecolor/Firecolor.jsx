@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './firecolor.css';
 import blur_fire from '../../assets/blur_fire.png';
-import icon_twitter from '../../assets/icon_twitter.png';
+import icon_x from '../../assets/icon_x.png';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_appstore from '../../assets/icon_appstore.png';
@@ -337,7 +337,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
     <div className="bottom-image-row">
       <img src = {icon_instagram} className="icon"/>
       <img src = {icon_facebook} className="icon"/>
-      <img src = {icon_twitter} className="icon"/>
+      <img src = {icon_x} className="icon"/>
     </div>
   </div>
       )}

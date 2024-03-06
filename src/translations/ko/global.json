@@ -31,7 +31,7 @@
         "c-big-text": "커뮤니티에",
         "c-bigger-text": "가입하세요!",
         "c-small-text": "HEARTH의 무료 컨텐츠를 받으실 수 있습니다.",
-        "email": "이메일",
+        "email": "abcdefg@email.com",
         "register": "등록하기",
         "registered": "등록 완료!",
         "original_text1": "블로그 글",
@@ -42,6 +42,12 @@
         "additional_text3": "블로그와 SNS\n주간 포스트",
         "error_message": "유효한 이메일 주소를 입력하십시오.",
         "visit_blog": "블로그 방문하기"
+    },
+    "blog" : {
+        "email": "abcdefg@email.com",
+        "register": "등록하기",
+        "registered": "등록 완료!",
+        "error_message": "유효한 이메일 주소를 입력하십시오."
     },
     "test" : {
         "start": "시작"

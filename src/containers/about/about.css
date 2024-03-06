@@ -120,7 +120,7 @@
     width: 60%;
     margin: 0 auto;
     height: 80vh;
-    padding: 100px;
+    padding: 70px;
   }
 
   .centered-text p {
@@ -129,12 +129,12 @@
 
   .title{
     font-family: "classico-urw", sans-serif;
-    font-size: 80px;
-    padding-bottom: 50px;
+    font-size: 60px;
+    padding-bottom: 30px;
   }
 
   .subtitle{
     font-family: "classico-urw", sans-serif;
     font-size: 40px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
   }

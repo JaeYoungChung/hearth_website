@@ -7,7 +7,7 @@ import sns_image from '../../assets/sns_image.png'
 import news_image from '../../assets/news_image.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
-import icon_twitter from '../../assets/icon_twitter.png'
+import icon_x from '../../assets/icon_x.png'
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 const images = [
     icon_instagram,
     icon_facebook,
-    icon_twitter,
+    icon_x,
     icon_instagram
   ];
 
@@ -36,7 +36,7 @@ const Community = () => {
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
         setEmail(emailInput);
-        setIsValidEmail(validateEmail(emailInput));    };
+        setIsValidEmail(validateEmail(emailInput));    }; 
 
     const handleRegister = () => {
         if (!validateEmail(email)) {

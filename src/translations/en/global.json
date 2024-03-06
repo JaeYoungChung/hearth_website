@@ -31,7 +31,7 @@
         "c-big-text": "Join our",
         "c-bigger-text": "Community",
         "c-small-text": "and gain access to HEARTH's free contents",
-        "email": "email",
+        "email": "abcdefg@email.com",
         "register": "Register",
         "registered": "Registered!",
         "original_text1": "BLOG posts",
@@ -42,6 +42,12 @@
         "additional_text3": "weekly notifications on\nOur Blog and SNS posts",
         "error_message": "Please enter a valid email address.",
         "visit_blog": "Visit BLOG"
+    },
+    "blog" : {
+        "email": "abcdefg@email.com",
+        "register": "Register",
+        "registered": "Registered!",
+        "error_message": "Please enter a valid email address."
     },
     "test" : {
         "start": "Start"
