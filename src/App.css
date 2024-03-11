@@ -5,6 +5,23 @@
     scroll-behavior: smooth;
 }
 
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+/* Exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
 .longBackground {
     background-image: url('/public/main_bg.png');
     background-size: cover;
@@ -12,6 +29,40 @@
     min-height: 300vh;
     background-position: center -130px;
 }
+
+.snap-scroll-container1 {
+  /* position: relative; */
+  height: 100vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  width: 100%;
+  scrollbar-width: none;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.snap-scroll-container2 {
+  /* position: relative; */
+  height: 100vh;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  width: 100%;
+  scrollbar-width: none;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* .snap-scroll-container > div {
+  scroll-snap-align: start;
+  height: 100vh;
+} */
+.element {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  /* height: 100vh; */
+}
+
 
 body {
     background: var(--color-bg)

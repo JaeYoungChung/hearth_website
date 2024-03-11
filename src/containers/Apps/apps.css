@@ -1,4 +1,5 @@
 .apps {
+  font-family: "classico-urw", sans-serif;
   padding-bottom: 70px;
   position: relative;
   background: black;
@@ -118,7 +119,7 @@
 
   .apps-icons {
     position: relative;
-    padding-top: 50px;
+    padding-top: 30px;
     justify-content: right;
     display: flex; 
   }

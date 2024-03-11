@@ -4,20 +4,20 @@ import {Header, About, Apps, Team, Community} from './containers';
 import './App.css';
 import { Element } from 'react-scroll';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import { useState } from 'react';
-import {db} from "./data";
-import {uid} from "uid";
 
 
 const MainLayout = () => (
   <>
-    <div className="longBackground">
-      <Element name="header"><Header /></Element>
-      <Element name="about"><About /></Element>
+    <Navbar/>
+    <div className="snap-scroll-container1">
+      <div className="longBackground">
+        <Element name="header" className="element"><Header /></Element>
+        <Element name="about" className="element"><About /></Element>
+      </div>
+      <Element name="apps" className="element"><Apps /></Element>
+      <Element name="team" className="element"><Team /></Element>
+      <Element name="community" className="element"><Community /></Element>
     </div>
-    <Element name="apps"><Apps /></Element>
-    <Element name="team"><Team /></Element>
-    <Element name="community"><Community /></Element>
   </>
 );
 
@@ -25,7 +25,6 @@ const App = () => {
   return (
     <div className = "App">
         <div className='gradient_bg'>
-                <Navbar/>
                   <Routes>
                   {/* <Route path="/" element = {<Header/>} />
                   <Route path="/about" element = {<About/>} />

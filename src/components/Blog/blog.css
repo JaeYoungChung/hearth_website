@@ -1,6 +1,7 @@
 .blog-page {
   display: flex;
   flex-direction: column;
+  font-family: "classico-urw", sans-serif;
 }
 
 .category-dropdown {

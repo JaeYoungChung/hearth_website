@@ -25,13 +25,13 @@ const Header = () => {
     setIsActive(!isActive);
   };
 
-  return (
+  return ( 
     <div className='header section__padding' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>
-        <p>Here to Help</p>
+        <p className='home_subtitle_text'>Here to Help</p>
         <div className='header-content__input'>
-          <button type="button" onClick={handleButtonClick}>{t("header.take_test")}
+          <button type="button" className='take-test-btn' onClick={handleButtonClick}>{t("header.take_test")}
           </button>
         </div>
         <div className='header section__padding' id='home'>

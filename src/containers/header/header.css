@@ -1,8 +1,8 @@
 
 .header {
+    font-family: "classico-urw", sans-serif;
     display: flex;
     overflow: hidden;
-    top: 0;
 }
 
 .header-content{
@@ -44,17 +44,17 @@
     color: #FFFFFF;
     opacity: 1;
 }
-
+ 
 .header-content__input {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: relative;
     z-index: 30;
-    top: 500px;
 }
 
-.header-content__input button {
+.take-test-btn {
+    cursor: pointer;
     width: 164px;
     min-height: 42px;
     font-size: 20px;

@@ -1,4 +1,5 @@
 .navbar {
+    font-family: "classico-urw", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,7 +8,7 @@
     top: 0;
     z-index: 40;
 }
- 
+  
 .navbar-links {
     flex: 1;
     display: flex;
@@ -24,7 +25,6 @@
     font-size: 20px;
     transition: opacity 0.3s, color 0.3s;
     margin-right: 25px;
-    
 }
 
 /* Styles for the selected tab */
@@ -36,7 +36,6 @@
 .nav-item {
     padding-bottom: 25px;
     list-style: none;
-
 }
 
 .nav-item .active {
@@ -87,7 +86,8 @@ opacity: 1;
     align-items: center;
 }
 
-.navbar-lang button{
+.nav-button{
+    cursor: pointer; 
     font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;

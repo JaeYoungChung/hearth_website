@@ -1,146 +1,107 @@
-// const Blog = () => {
+// const Test = () => {
+//     const [t, i18n] = useTranslation("global");
+//     const [showContent, setShowContent] = useState(false);
+//     const [selectedLetter, setSelectedLetter] = useState('');
+//     const [showAnimation, setShowAnimation] = useState(false);
+//     const [animationStage, setAnimationStage] = useState(0);
+   
+//     const navigate = useNavigate();
 
-//   //Pagination
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const postsPerPage = 6;
-//   const indexOfLastPost = currentPage * postsPerPage;
-//   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-
-//   //firebase
-//   const [posts, setPosts] = useState([]);
-//   const [selectedPost, setSelectedPost] = useState(null);
-//   const firstPostImage = posts.length ? posts[1].imageUrl : '';
-
-
-//   useEffect(() => {
-//     const postsRef = ref(db);
-
-//     get(child(postsRef, '/blog')).then((snapshot) => {
-//       if (snapshot.exists()) {
-//         setPosts(Object.values(snapshot.val()));
-//       } else {
-//         console.log("No data available");
-//       }
-//     }).catch((error) => {
-//       console.error(error);
-//     });
-//   }, []); 
-
-//   const handlePageChange = (newPage) => {
-//     setCurrentPage(newPage);
-//   };
-
-// function handlePostClick(post) {
-//     setSelectedPost(post);
-//   }
-
-//   return (
-//     <div className="blog-page">
-//     <PageHeader backgroundImage={firstPostImage} />
-//     <Sidebar /> 
-//     {selectedPost ? (
-//       <BlogPostDetail post={selectedPost} onClose={() => setSelectedPost(null)} />
-//     ) : (
-//       <>
-//         <div className="posts">
-//           {currentPosts.map(post => (
-//             <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
-//           ))}
-//         </div>
-//         <div className="pagination">
-//           <p 
-//             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-//             className="pagination-arrow"
-//           >
-//             &lt;
-//           </p>
-          
-//           {[...Array(Math.ceil(posts.length / postsPerPage)).keys()].map(number => (
-//             <p 
-//               key={number + 1} 
-//               onClick={() => handlePageChange(number + 1)}
-//               className={`pagination-number ${currentPage === number + 1 ? 'active' : ''}`}
-//             >
-//               {number + 1}
-//             </p>
-//           ))}
-
-//           <p
-//             onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(posts.length / postsPerPage)))}
-//             className="pagination-arrow"
-//           >
-//             &gt;
-//           </p>
-//         </div>     </>
-//     )}</div>
-//   );
-// }
-
-
-// function PageHeader({}) {
-//     return (
-//         <div className="page-header" style={{ backgroundImage: bg_image }}>
-//         <p>MY</p>
-//         <p className="blog-header">B L O G</p>
-//       </div>
-//     );
-//   }
+//     const handleButtonClick2 = () => {
+//       setShowContent(true);
+//     };
   
-//   function Sidebar() {
+//     const handleLetterClick = (letter) => {
+//       setSelectedLetter(letter);
+//     };
+  
+//     const handleNextClick = () => {
+//       setShowAnimation(true);
+//       setAnimationStage(1);
+//       setTimeout(() => {
+//         setAnimationStage(2);
+//       }, 1000);
+//       setTimeout(() => {
+//         setAnimationStage(3);
+//       }, 2000);
+//       setTimeout(() => {
+//         setAnimationStage(4);
+//       }, 3000);
+//     };
+  
 //     return (
-//         <div className="icons">
-//         <img src = {icon_instagram} className="icon"/>
-//         <img src = {icon_facebook} className="icon"/>
-//         <img src = {icon_x} className="icon"/>
+//    <div className='test-page'>
+//       <div className = "t-navbar">
+//         <div className = "t-navbar-links_logo">
+//           <NavLink to='/'>
+//            <img src={logo} height={80} alt = "logo"></img>
+//           </NavLink>
+//         </div>
+//           </div>
+  
+//           <div className={`centered-container ${fadeOut ? 'fade-out' : ''}`}>
+//         {!showContent ? (
+//           <>
+//             <img src={logo} alt='logo' />
+//             <p>MY</p>
+//             <div className='second-text'>T E S T</div>
+//             <button type="button" onClick={handleButtonClick2}>{t("test.start")}</button>
+//           </>
+//         ) : (
+//           <div className='fade-in'>
+//             {!showAnimation ? (
+//               <>
+//                 <div className='centered-content' >
+//                   <img src={logo} alt='logo' className={fadeOut ? 'fade-image' : ''}/>
+//                   <div className='text-overlay'>Who are you?</div>
+//                   <input type="text" value={selectedLetter} readOnly />
+//                 </div>
+//                 <div className='alphabet-row'>
+//                   {['A', 'B', 'C', 'D', 'E'].map((letter) => (
+//                     <button
+//                       key={letter}
+//                       onClick={() => handleLetterClick(letter)}
+//                       className={selectedLetter === letter ? 'active' : ''}
+//                     >
+//                       {letter}
+//                     </button>
+//                   ))}
+//                 </div>
+//                 {selectedLetter && (
+//                   <div className='next-button' onClick={handleNextClick}>
+//                     Next <span className='arrow-icon'>&gt;</span>
+//                   </div>
+//                 )}
+//               </>
+//             ) :  (            
+//                 <div className='t-animation-container'>
+//                   <img src={white_logo} alt='whitelogo' className={`fade-image-in ${fadeOut ? 'show' : ''}`}/>
+//                     <div className={`t-animation-content ${fadeOut ? 'fade-out' : ''}`}>
+//                       {animationStage >= 1 && (
+//                       <div className={`t-animation-text ${animationStage >= 2 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
+//                         Hello, {selectedLetter}
+//                       </div>
+//                       )}
+//                       {animationStage >= 2 && (
+//                       <div className={`t-animation-text ${animationStage >= 3 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
+//                         This is the second text
+//                       </div>
+//                       )}
+//                       {animationStage >= 3 && (
+//                         <div className={`t-animation-text ${fadeOut ? 'fade-out' : ''}`}>This is the third text</div>
+//                       )}
+//                       {animationStage === 4 && (
+//                         <button className={`t-text-button ${fadeOut ? 'fade-out' : ''}`}
+//                         onClick={handleTextButtonClick}>
+//                           Text Button
+//                         </button>
+//                       )}
+//                     </div>
+//                 </div>
+//             )}
+//           </div>
+//         )}
 //       </div>
-//     );
+//   </div>
+//     )
 //   } 
-  
-//   function BlogPost({ post, onClick }) {
-//     return (
-//       <div className="post" onClick={onClick}>
-//         <div className="post-image">
-//           <img src={post.imageUrl} alt={post.title} />
-//           <div className="overlay-top-left">
-//             <p>Aug</p>
-//             <p>17</p>
-//           </div>
-//           <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
-//         </div>
-//         <h2>{post.title}</h2>
-//         <p>{post.description}</p>
-//       </div>
-//     );
-//   }
-
-// function BlogPostDetail({ post, onClose }) {
-//     //share sns
-//     const [showPopup, setShowPopup] = useState(false);
-//     const currentUrl = window.location.href;
-//     return (
-//       <div className="blog-post-detail">
-//         <div className="modal-header">
-//           <img src={post.imageUrl} alt={post.title} className="modal-header-image" />
-//           <div className="overlay-top-left2">
-//             <p>Aug</p>
-//             <p>17</p>
-//           </div>
-//           <div className="overlay-top-right">
-//           <div className='blog-icon-2'>
-//             <img src={icon_share} alt="Icon 2" onClick={() => setShowPopup(true)} />
-//             {showPopup && <SharePopup url={currentUrl} onClose={() => setShowPopup(false)} />}
-//           </div>
-//           </div>
-//           <img className="overlay-bottom-right2" src={post.overlayImage} alt="Overlay" />
-//         </div>
-//         <div className="modal-body">
-//           <h2>{post.title}</h2>
-//           <p>{post.content}</p>
-//           <button onClick={onClose}>Back to Posts</button>
-//         </div>
-//       </div>
-//     );
-//   }
-
-// export default Blog;
-

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import './navbar.css';
 import logo from '../../assets/home_logo.png'
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
+
 
 const languageOptions = [ 
   {
@@ -40,28 +41,31 @@ const Navbar = () => {
   const location = useLocation(); // Use useLocation hook to get the current location object
   const shouldShowMenu = location.pathname !== '/blog' && location.pathname !== '/test';
 
+  // const scrollRef = useRef(null);
+  // useScrollSnap({ ref: scrollRef, duration: 1, delay: 0 });
 
   const Menu = () => (
+    
     <>
       <li className = 'nav-item'>
         <p>
         <Link to="/" onClick={(e) => {
           e.preventDefault(); // Prevent the Link from navigating
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}>Home</Link>
+        }} activeClass='active'>Home</Link>
         </p>
       </li>
       <li className = 'nav-item'>
-        <p><Link to="about" spy={true} smooth={true} duration={300}>About</Link></p>
+        <p><Link to="about" spy={true} smooth={true} duration={300} >About</Link></p>
       </li>
       <li className = 'nav-item'>
-        <p><Link to="apps" spy={true} smooth={true} duration={300}>Apps</Link></p>
+        <p><Link to="apps" spy={true} smooth={true} duration={300} >Apps</Link></p>
       </li>
       <li className = 'nav-item'>
-        <p><Link to="team" spy={true} smooth={true} duration={300}>Team</Link></p>
+        <p><Link to="team" spy={true} smooth={true} duration={300} >Team</Link></p>
       </li>
       <li className = 'nav-item'>
-        <p><Link to="community" spy={true} smooth={true} duration={300}>Community</Link></p>
+        <p><Link to="community" spy={true} smooth={true} duration={300} >Community</Link></p>
       </li>
     
       {/* <p><NavLink to="/" exact activeClassName="selected">{t("navbar.home")}</NavLink></p>
@@ -104,7 +108,7 @@ const Navbar = () => {
           <option value="ko" className="korean">한국어</option>
         </select>
           <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
-          <button type="button" onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+          <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
         </div>
         <div className = "navbar-menu">
           {toggleMenu

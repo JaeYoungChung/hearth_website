@@ -5,11 +5,29 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition: opacity 1s ease-in-out;
   }
   
   .centered-container img {
-    width: 60px;
-    height: 120px;
+    position: relative;
+    height: 180px;
+    justify-content: center;
+    z-index: -30;
+    opacity: 0.5;
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 0.5s ease-in forwards;
+  }
+
+  .fade-transition {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
 
   .second-text {
@@ -26,19 +44,17 @@
     color: white;
     }
 
-    .centered-container p:last-child {
+  .centered-container p:last-child {
         font-size: 1.2em;
         color: white;
         padding-bottom: 50px;
-    }
+  }
   
   .centered-container button {
     padding: 5px 20px;
     font-size: 1.2em;
-    background-color: rgb(48, 47, 47);
     color: white;
     border: 1px solid white;
-    border-radius: 50px;
     cursor: pointer;
     margin-top: 50px;
   }
@@ -46,3 +62,248 @@
   .centered-container button:hover {
     background-color: #0056b3;
   }
+
+
+  .t-navbar {
+    font-family: "classico-urw", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.t-navbar-links_logo{
+    margin-right: 1.5rem;
+}
+
+.t-navbar-links_logo img{
+top: 70px;
+left: 70px;
+height: 76px;
+opacity: 1;
+}
+
+.t-logo-text{
+    font-family: "classico-urw", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 159px;
+    left: 67px;
+    width: 48px;
+    height: 14px;
+    color: white;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.t-navbar-links_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.t-navbar-lang{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-button{
+    font-family: "classico-urw", sans-serif;
+    width: 120px;
+    min-height: 38px;
+    font-size: 17px;
+    background-color: transparent;
+    border-radius: 5px 5px 5px 5px;
+    border-color: white;
+    color: white;
+    border: 1px solid #FFFFFF;
+}
+
+select {
+    color: white;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    width: 100px;
+}
+
+.t-navbar-lang p{
+    padding-left: 30px;
+}
+
+option {
+    padding-right: 30px;
+}
+
+option::after {
+    content: ""; 
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+option.english::after {
+    background-image: url('../../assets/england.png');
+}
+
+option.japanese::after {
+    background-image: url('../../assets/england.png');
+}
+
+option.korean::after {
+    background-image: url('../../assets/england.png');
+}
+
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered-content img {
+  height: 150px;
+  z-index: -10;
+  opacity: 0.7;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 24px;
+}
+
+.test-input {
+  position: absolute;
+  margin-top: 90px;
+  text-align: center;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 50px;
+}
+
+.alphabet-row {
+  display: flex;
+  justify-content: center;
+}
+
+.alphabet-row button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  margin-right: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.alphabet-row button:hover,
+.alphabet-row button.active {
+  opacity: 1;
+  background-color: transparent;
+}
+
+.next-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  margin-left: 5px;
+}
+
+.t-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-animation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.t-animation-text {
+  color: white;
+  font-size: 24px;
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in forwards;
+  transform: translateY(-80px);
+  transition: opacity 1s ease-in-out;
+}
+
+.move-up {
+  transform: translateY(-120px);
+  transition: transform 1s ease-in-out;
+}
+
+.test-button {
+  color: white;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in forwards;
+  transform: translateY(-20px);
+  transition: opacity 1s ease-in-out;
+}
+
+.start-test-btn {
+  color: white;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in forwards;
+  transform: translateY(-20px);
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-image-in {
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+}
+
+.fade-image-in.show {
+  opacity: 1;
+}
+
+.fade-image-out {
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}

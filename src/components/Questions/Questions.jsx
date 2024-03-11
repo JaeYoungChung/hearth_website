@@ -1,15 +1,51 @@
 import React from 'react';
 import './questions.css';
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getQuestions } from '../../data.js';
+import logo from '../../assets/test_logo.png'
+
 
 const Questions = () => {
+  const [t, i18n] = useTranslation("global");
+  const navigate = useNavigate();
+
+  const handleChangeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    navigate('/questions');
+  };
+
+  const handleBlogClick = () => {
+    navigate('/blog');
+  };
+
     return (
-      <div className="App">
+      <div className= "questions-page">
+      <div className = "q-navbar">
+      <div className = "q-navbar-links_logo">
+        <NavLink to='/'>
+        <img src={logo} height={80} alt = "logo"></img>
+        </NavLink>
+      </div>
+      <div className='q-navbar-lang'>
+        {/* Search dropdown language for later adjustments */}
+        <select onChange={handleChangeLanguage}>
+          <option value="en" className="english">English</option>
+          <option value="ja" className="japanese">日本語</option>
+          <option value="ko" className="korean">한국어</option>
+        </select>
+        <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
+        <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+      </div> 
+    </div>
+      <div className="survey-container">
         <Survey />
       </div>
+    </div>
     );
   }
   
@@ -32,7 +68,15 @@ function Survey() {
     
         // Move to the next question
         if (currentQuestion < totalQuestions) {
-          setCurrentQuestion(currentQuestion + 1);
+          document.querySelector('.survey-container').classList.add('fade-out');
+          setTimeout(() => {
+            setCurrentQuestion(currentQuestion + 1);
+            document.querySelector('.survey-container').classList.remove('fade-out');
+            document.querySelector('.survey-container').classList.add('fade-in');
+            setTimeout(() => {
+              document.querySelector('.survey-container').classList.remove('fade-in');
+            }, 500);
+          }, 500);
         }
       };
  
@@ -75,7 +119,7 @@ function Survey() {
         const RedValue = 0.5 * Creativity + 0.5 * Interpersonal + Volition;                        
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
         const BlueValue = 0.5 * Interpersonal + 0.5 * Adaptability + Cogitation;
-       
+        
         //Range 111 ~ 255
         const NewRedValue = 111 + 2 * (RedValue - (-36));
         const NewGreenValue = 111 + 2 * (GreenValue - (-36));
@@ -108,28 +152,34 @@ function Survey() {
       };
  
     return (
-        <div className="wrapper">
-          <div className="background-image-container"></div>
-          <div className="survey-container">
-            <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
-            <h2>{questions[currentQuestion - 1]}</h2>
-            <div>
-      {[1, 2, 3, 4, 5].map(score => (
-        <button 
-          key={score} 
-          onClick={() => handleAnswer(score)}
-          className={selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}
-          >
-          {score}
-        </button>
-      ))}
-    </div>
-            {currentQuestion > 1 && (
-              <span className="back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
-            )}
-            {currentQuestion === totalQuestions && <span className="submit-button" onClick={handleSubmit}>Submit</span>}
+      <div className="q-wrapper">
+      <div className="background-image-container"></div>
+      <div className="survey-container">
+        <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
+        <h2>{questions[currentQuestion - 1]}</h2>
+        <div className="response-container">
+          <span className="disagree-text">Disagree</span>
+          <div className="q-circle-container">
+            {[1, 2, 3, 4, 5].map(score => (
+              <div
+                key={score}
+                onClick={() => handleAnswer(score)}
+                className={`q-circle ${selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}`}
+              >
+                <span className="q-circle-label">{score}</span>
+              </div>
+            ))}
           </div>
+          <span className="agree-text">Agree</span>
         </div>
+        {currentQuestion > 1 && (
+          <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
+        )}
+        {currentQuestion === totalQuestions && (
+          <span className="q-submit-button" onClick={handleSubmit}>Submit</span>
+        )}
+      </div>
+    </div>
       );
   }
   

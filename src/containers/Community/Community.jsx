@@ -72,6 +72,7 @@ const Community = () => {
                 placeholder={t("community.email")}
                 value={email}
                 onChange={handleEmailChange}
+                id="c-inputID"
                 className={!isValidEmail ? 'invalid' : ''}
             />                
                 <p className="register" onClick={!isRegistered ? handleRegister : null}>

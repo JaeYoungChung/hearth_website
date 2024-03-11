@@ -12,7 +12,7 @@ import sns_image from '../../assets/sns_image.png'
 import news_image from '../../assets/news_image.png'
 import princefire from '../../assets/princefire.mp4'
 
-
+ 
 const Firecolor = () => { 
   const navigate = useNavigate();
   const storedResults = sessionStorage.getItem('surveyResults');
