@@ -38,7 +38,7 @@ const Questions = () => {
           <option value="ja" className="japanese">日本語</option>
           <option value="ko" className="korean">한국어</option>
         </select>
-        <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
+        <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
         <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
       </div> 
     </div>
@@ -55,30 +55,78 @@ function Survey() {
 
     const navigate = useNavigate();
 
-    const totalQuestions = 54;
+    const totalQuestions = 4;
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [answers, setAnswers] = useState(Array(totalQuestions).fill(null));
     const [selectedScores, setSelectedScores] = useState(Array(totalQuestions).fill(null)); // Initialize array
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [loadingDots, setLoadingDots] = useState('');
+
+    useEffect(() => {
+      if (isSubmitted) {
+        const timer = setInterval(() => {
+          setLoadingDots(prevDots => (prevDots.length < 3 ? prevDots + '.' : ''));
+        }, 1000);
   
+        setTimeout(() => {
+          clearInterval(timer);
+          navigate('/firecopy');
+        }, 5000);
+  
+        return () => {
+          clearInterval(timer);
+        };
+      }
+    }, [isSubmitted]);
+ 
     const handleAnswer = (score) => {
-        const adjustedScore = score - 3;    //(-2,-1,0,1,2)
-        const newScores = [...selectedScores]; 
-        newScores[currentQuestion - 1] = adjustedScore;
-        setSelectedScores(newScores);
-    
-        // Move to the next question
-        if (currentQuestion < totalQuestions) {
-          document.querySelector('.survey-container').classList.add('fade-out');
+      const adjustedScore = score - 3; //(-2,-1,0,1,2)
+      const newScores = [...selectedScores];
+      newScores[currentQuestion - 1] = adjustedScore;
+      setSelectedScores(newScores);
+  
+      // Move to the next question with fading transition if the question is not answered
+      if (currentQuestion < totalQuestions && selectedScores[currentQuestion - 1] === null) {
+        setIsTransitioning(true);
+        document.querySelector('.survey-container').classList.add('fade-out');
+        setTimeout(() => {
+          setCurrentQuestion(currentQuestion + 1);
+          document.querySelector('.survey-container').classList.remove('fade-out');
+          document.querySelector('.survey-container').classList.add('fade-in');
           setTimeout(() => {
-            setCurrentQuestion(currentQuestion + 1);
-            document.querySelector('.survey-container').classList.remove('fade-out');
-            document.querySelector('.survey-container').classList.add('fade-in');
-            setTimeout(() => {
-              document.querySelector('.survey-container').classList.remove('fade-in');
-            }, 500);
+            document.querySelector('.survey-container').classList.remove('fade-in');
+            setIsTransitioning(false);
           }, 500);
-        }
-      };
+        }, 500);
+      }
+    };
+
+    const handleNext = () => {
+      if (currentQuestion < totalQuestions) {
+        setIsTransitioning(true);
+        document.querySelector('.survey-container').classList.add('fade-out');
+        setTimeout(() => {
+          setCurrentQuestion(currentQuestion + 1);
+          document.querySelector('.survey-container').classList.remove('fade-out');
+          document.querySelector('.survey-container').classList.add('fade-in');
+          setTimeout(() => {
+            document.querySelector('.survey-container').classList.remove('fade-in');
+            setIsTransitioning(false);
+          }, 500);
+        }, 500);
+      }
+    };
+
+    function mid3(a, b, c) {
+      let x = a - b;
+      let y = b - c;
+      let z = a - c;
+    
+      if (x * y > 0) return b;
+      else if (x * z > 0) return c;
+      else return a;
+    }
  
       const handleSubmit = () => {
 
@@ -120,20 +168,51 @@ function Survey() {
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
         const BlueValue = 0.5 * Interpersonal + 0.5 * Adaptability + Cogitation;
         
-        //Range 111 ~ 255
-        const NewRedValue = 111 + 2 * (RedValue - (-36));
-        const NewGreenValue = 111 + 2 * (GreenValue - (-36));
-        const NewBlueValue = 111 + 2 * (BlueValue - (-36));
-        const rgbAverage = (NewRedValue + NewGreenValue + NewBlueValue)/3;
-        const adjustmentFactor = 0.5;
-        const AdjustedRed = Math.floor((NewRedValue - rgbAverage) * adjustmentFactor + NewRedValue);
-        const AdjustedGreen = Math.floor((NewGreenValue - rgbAverage) * adjustmentFactor + NewGreenValue);
-        const AdjustedBlue = Math.floor((NewBlueValue - rgbAverage) * adjustmentFactor + NewBlueValue);
+        //Range 0 ~ 144
+        const NewRedValue = 2 * RedValue + 72;
+        const NewGreenValue = 2 * GreenValue + 72;
+        const NewBlueValue = 2 * BlueValue + 72;
+ 
+        const FirstPlace = Math.max(NewRedValue,NewGreenValue,NewBlueValue);
+        const SecondPlace = mid3(NewRedValue,NewGreenValue,NewBlueValue);
+        const ThirdPlace = Math.min(NewRedValue,NewGreenValue,NewBlueValue);
+
+        let AdjustedRed, AdjustedGreen, AdjustedBlue;
+
+        // Check which color corresponds to each place and add the respective values
+        if (FirstPlace === NewRedValue) {
+          AdjustedRed = NewRedValue + 80;
+          if (SecondPlace === NewGreenValue) {
+            AdjustedGreen = NewGreenValue + 40;
+            AdjustedBlue = NewBlueValue;
+          } else {
+            AdjustedGreen = NewGreenValue;
+            AdjustedBlue = NewBlueValue + 40;
+          }
+        } else if (FirstPlace === NewGreenValue) {
+          AdjustedGreen = NewGreenValue + 80;
+          if (SecondPlace === NewRedValue) {
+            AdjustedRed = NewRedValue + 40;
+            AdjustedBlue = NewBlueValue;
+          } else {
+            AdjustedRed = NewRedValue;
+            AdjustedBlue = NewBlueValue + 40;
+          }
+        } else {
+          AdjustedBlue = NewBlueValue + 80;
+          if (SecondPlace === NewRedValue) {
+            AdjustedRed = NewRedValue + 40;
+            AdjustedGreen = NewGreenValue;
+          } else {
+            AdjustedRed = NewRedValue;
+            AdjustedGreen = NewGreenValue + 40;
+          }
+        }
 
         sessionStorage.setItem('rgbValues', JSON.stringify({
-          NewRedValue: Math.min(AdjustedRed, 255),
-          NewGreenValue: Math.min(AdjustedGreen, 255),
-          NewBlueValue: Math.min(AdjustedBlue, 255),
+          NewRedValue: AdjustedRed,
+          NewGreenValue: AdjustedGreen,
+          NewBlueValue: AdjustedBlue,
         }));
 
         //Range 0 ~ 36
@@ -148,41 +227,60 @@ function Survey() {
           s1, s2, s3, s4, s5, s6,
         }));
 
-        navigate('/firecolor');
+        setIsSubmitted(true);
+        document.querySelector('.question-container').classList.add('fade-out');
+        setTimeout(() => {
+          document.querySelector('.background-image-container').classList.add('show');
+        }, 500);
       };
  
     return (
       <div className="q-wrapper">
-      <div className="background-image-container"></div>
-      <div className="survey-container">
-        <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
-        <h2>{questions[currentQuestion - 1]}</h2>
-        <div className="response-container">
-          <span className="disagree-text">Disagree</span>
-          <div className="q-circle-container">
-            {[1, 2, 3, 4, 5].map(score => (
-              <div
-                key={score}
-                onClick={() => handleAnswer(score)}
-                className={`q-circle ${selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}`}
-              >
-                <span className="q-circle-label">{score}</span>
+        <div
+          className="background-image-container"
+          style={{
+            backgroundImage: `url(${logo})`,
+            backgroundSize: `contain`,
+            opacity: isSubmitted ? 1 : 0.5,
+            transition: 'opacity 3s ease-in-out',
+          }}
+        ></div>      
+      {!isSubmitted ? (
+        <div className='question-container'>
+          <div className="survey-container">
+            <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
+            <h2>{questions[currentQuestion - 1]}</h2>
+            <div className="response-container">
+              <span className="disagree-text">Disagree</span>
+              <div className="q-circle-container">
+                {[1, 2, 3, 4, 5].map(score => (
+                  <div
+                    key={score}
+                    onClick={() => handleAnswer(score)}
+                    className={`q-circle ${selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}`}
+                  />
+                ))}
               </div>
-            ))}
+              <span className="agree-text">Agree</span>
+            </div>
+            {currentQuestion > 1 && (
+              <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
+            )}
+            {selectedScores[currentQuestion - 1] !== null && currentQuestion < totalQuestions && !isTransitioning && (
+              <span className="q-next-button" onClick={handleNext}>Next</span>
+            )}
+            {currentQuestion === totalQuestions && (
+              <span className="q-submit-button" onClick={handleSubmit}>Submit</span>
+            )}
           </div>
-          <span className="agree-text">Agree</span>
         </div>
-        {currentQuestion > 1 && (
-          <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
-        )}
-        {currentQuestion === totalQuestions && (
-          <span className="q-submit-button" onClick={handleSubmit}>Submit</span>
-        )}
-      </div>
+      ) : (
+        <div className="submitted-container">
+          <p className='loading-result'>Loading Result{loadingDots}</p>
+        </div>
+      )}
     </div>
-      );
-  }
-  
-  
+  );
+};
 
 export default Questions;

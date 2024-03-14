@@ -72,7 +72,7 @@ const Test = () => {
               <option value="ja" className="japanese">日本語</option>
               <option value="ko" className="korean">한국어</option>
             </select>
-            <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
           </div>
         </div>

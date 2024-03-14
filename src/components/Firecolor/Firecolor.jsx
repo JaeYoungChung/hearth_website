@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './firecolor.css';
-import blur_fire from '../../assets/blur_fire.png';
+import blur_fire from '../../assets/blur_fire.png'; 
 import icon_x from '../../assets/icon_x.png';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
@@ -205,24 +205,24 @@ const getHexagonPoints = (centerX, centerY, radius) => {
       <div className="results-container"> 
         <div className='container'>
           <div className={`moving-container ${moveToLeft ? 'animate-move' : ''}`}>
-          {showImage && (
-        <div className="videoOverlayContainer">
-        <div className="videoWrapper">
-        <VideoComponent 
-          rgbColor={`${red}, ${green}, ${blue}`} 
-          // rgbColor={'169,201,190'} 
+            {showImage && (
+              <div className="videoOverlayContainer">
+                <div className="videoWrapper">
+                <VideoComponent 
+                  rgbColor={`${red}, ${green}, ${blue}`} 
+                  // rgbColor={'169,201,190'} 
 
-        />
-        </div>
-         <div className="videoWrapper">
-         <VideoComponent 
-          rgbColor={`${red}, ${green}, ${blue}`} 
-          // rgbColor={'169,201,190'} 
+                />
+                </div>
+                <div className="videoWrapper">
+                <VideoComponent 
+                  rgbColor={`${red}, ${green}, ${blue}`} 
+                  // rgbColor={'169,201,190'} 
 
-        />
-       </div>
-       </div>
-      )}
+                />
+                </div>
+              </div>
+            )}
       <div className="rotation-container"
     style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
    

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Questions, Test, Firecolor, Blog} from './components';
+import {Navbar, Questions, Test, Firecolor, Firecopy, Blog, Result} from './components';
 import {Header, About, Apps, Team, Community} from './containers';
 import './App.css';
 import { Element } from 'react-scroll';
@@ -35,7 +35,9 @@ const App = () => {
                   <Route path="/blog" element={<Blog />} /> 
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
+                  <Route path="/result" element={<Result />} />
                   <Route path="/firecolor" element={<Firecolor />} />
+                  <Route path="/firecopy" element={<Firecopy />} />
                   </Routes>
           </div>
     </div>
