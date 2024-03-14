@@ -56,15 +56,6 @@ const handleBackClick = () => {
 const legend_labels = ['H','E','A','R','T','H'];
 const hexagon_labels = ['H','T','R','H','E','A'];
 
-const imageData = {
-  0: {color: "rgb(0, 255, 0)", text: ["Helm", "Independence", "is integrating the inner self through meticulous introspection to attain an autonomous life where one can live to the fullest and take greater hold of their destiny"] },
-  1: {color: "rgb(0, 0, 255)", text: ["Envisage", "Cogitation", "is the art of cogitation which consists of reflective thinking on oneself and systemizing decisions, gaining clarity in one's mission and vision through internalization"] },
-  2: {color: "rgb(0, 255, 255)", text: ["Attune", "Adaptability", "is accurately perceiving the constantly changing relationship between yourself and the world around you in order to effectively optimize your mode of adaptation in a versatile manner"] },
-  3: {color: "rgb(255, 255, 0)", text: ["Reverie", "Creativity", "is being inquisitive and open-minded when one chances upon objects and ideas to envision and create value of originality"] },
-  4: {color: "rgb(255, 0, 0)", text: ["Transcend", "Volition", "is awakening the inner drive, developing resilience from failure, and gaining self-control from short-term temptations so as to render oneself into achieving a desirable goal that needs iterative effort"] },
-  5: {color: "rgb(255, 0, 255)", text: ["Harmonize", "Interpersonal Skills", "is understanding others through empathy and tolerance whilst keeping one’s ground to synergize successfully with other people and become socially optimistic"] },
-};
-
 const hexagonData = [
   {
       title: "Helm",
@@ -184,7 +175,7 @@ const getHexagonPoints = (centerX, centerY, radius) => {
         width: '400px',
         height: '700px',
         backgroundColor: `rgb(${rgbColor})`
-      };
+      }; 
     
       const overlayStyle = {
         ...videoStyle,
@@ -374,19 +365,18 @@ const getHexagonPoints = (centerX, centerY, radius) => {
             <p>{`(${red}, ${green}, ${blue})`}  </p>
         </div>
         <ul className="score-list">
-    {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
-        const customIndex = customOrder.indexOf(originalIndex);
-        return (
-            <li key={score} className={currentIndex === customIndex ? "active " : ""}>
-                <p>{legend_labels[originalIndex]}</p>
-                <div className="progress-container">
-                    <div className={`progress-fill color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
-                </div>
-            </li>
-        );
-    })}
-</ul>
-
+          {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
+              const customIndex = customOrder.indexOf(originalIndex);
+              return (
+                  <li key={score} className={currentIndex === customIndex ? "active " : ""}>
+                      <p>{legend_labels[originalIndex]}</p>
+                      <div className="progress-container">
+                          <div className={`progress-fill color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
+                      </div>
+                  </li>
+                    );
+          })}
+        </ul>
         {showSecondaryContent && (
         <button className="rounded-button">Share Fire</button>
       )}

@@ -14,35 +14,93 @@ import resultfire from '../../assets/result_fire.mp4'
 
  
 const Firecopy = () => {
-    const videoRef = useRef(null);
-    const textContainerRef = useRef(null);
-    const bottomTextRef = useRef(null);
-    const svgRef = useRef(null); // Reference for the SVG element
-    const hexagon_labels = ['H','T','R','H','E','A'];
 
-    const [showContent, setShowContent] = useState(true);
+    const hexagonData = [
+        {
+            title: "Helm",
+            color: "rgb(0, 255, 0)",
+            subTitle: "Independence",
+            paragraph: "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this",
+            belowText: "Emerald Flame.",
+        },
+        {
+          title: "Transcend",
+          color: "rgb(255, 0, 0)",
+          subTitle: "Volition",
+          paragraph: "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency  are the three key components of this",
+          belowText: "Crimson Flame.",
+        },
+        {
+          title: "Reverie",
+          color: "rgb(255, 255, 0)",
+          subTitle: "Creativity",
+          paragraph: "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this",
+          belowText: "Canary Flame.",
+        },
+        {
+          title: "Harmonize",
+          color: "rgb(255, 0, 255)",
+          subTitle: "Interpersonal Skills",
+          paragraph: "HARMONIZE is the Cognitive Force which enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this",
+          belowText: "Magenta Flame.",
+        },
+        {
+          title: "Envisage",
+          color: "rgb(0, 0, 255)",
+          subTitle: "Cogitation",
+          paragraph: "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this",
+          belowText: "Cobalt Flame.",
+        },
+        {
+          title: "Attune",
+          color: "rgb(0, 255, 255)",
+          subTitle: "Adpatability",
+          paragraph: "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this",
+          belowText: "Cyan Flame.",
+        },
+      ];
 
+    //data from file
     const storedResults = sessionStorage.getItem('surveyResults');
     const values = storedResults ? JSON.parse(storedResults) : {};
-  
     const hexagonScores = JSON.parse(sessionStorage.getItem('hexagonScores'));
     const rgbValues = JSON.parse(sessionStorage.getItem('rgbValues'));
     const red = rgbValues?.NewRedValue;
     const green = rgbValues?.NewGreenValue;
-    const blue = rgbValues?.NewBlueValue;
-    const colors = ["rgb(0,255,0)", "rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 0, 255)", "rgb(0, 0, 255)", "rgb(0, 255, 255)"];
+    const blue = rgbValues?.NewBlueValue;      
+
+    //references
+    const videoRef = useRef(null);
+    const textContainerRef = useRef(null);
+    const bottomTextRef = useRef(null);
+    const svgRef = useRef(null); // Reference for the SVG element
+    const leftArrowRef = useRef(null);
+    const rightArrowRef = useRef(null);
+    const graphRef = useRef(null); // Reference for the graph
+    const textLeftRef = useRef(null); // Reference for the text on the left
+
+    //colors, labels
+    const hexagon_labels = ['H','T','R','H','E','A'];
+    const legend_labels = ['H','E','A','R','T','H'];
     const customOrder = [0, 4, 3, 5, 1, 2]; // Adjusted for zero-based index
+    const colors = ["rgb(0,255,0)", "rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(255, 0, 255)", "rgb(0, 0, 255)", "rgb(0, 255, 255)"];
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const rCustomIndex = customOrder[currentIndex];
+
+    //useStates
+    const [showContent, setShowContent] = useState(true);
     const [hexagonColor, setHexagonColor] = useState('initialColor');
     const [changeTextColor, setChangeTextColor] = useState(false);
     const [rotation, setRotation] = useState(0);
     const [tilted, setTilted] = useState(false);
-    const textLeftRef = useRef(null); // Reference for the text on the left
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const rCustomIndex = customOrder[currentIndex];
-    const leftArrowRef = useRef(null);
-    const rightArrowRef = useRef(null);
-    const graphRef = useRef(null); // Reference for the graph
-    const legend_labels = ['H','E','A','R','T','H'];
+    const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
+    const [currentActiveScore, setCurrentActiveScore] = useState('s1');
+
+
+    const onRotate = (newScore) => {
+        setCurrentActiveScore(newScore);
+    };
+    
   
     useEffect(() => {
         const video = videoRef.current;
@@ -118,8 +176,23 @@ const Firecopy = () => {
         };
       });
 
-      
-      
+      const rotateClockwise = () => {
+        const newRotation = rotation - 60;
+        setRotation(newRotation);
+        const newIndex = (currentIndex - 1 + 6) % 6;
+        setCurrentIndex(newIndex);
+        setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by +60 for clockwise
+    };
+    
+    const rotateCounterClockwise = () => {
+        const newRotation = rotation + 60;
+        setRotation(newRotation);
+        const newIndex = (currentIndex + 1) % 6;
+        setCurrentIndex(newIndex);
+        setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by -60 for counter-clockwise
+    };
+
+
     return (
       <div className='firecopy'>
         <div className="f-video-container" ref={videoRef}>
@@ -133,12 +206,12 @@ const Firecopy = () => {
         <div className={`bottom-text ${!showContent ? 'fading' : ''}`} ref={bottomTextRef} onClick={handleBottomTextClick}>
             Short text →
         </div>
-        <div className="arrow left-arrow" ref={leftArrowRef}>←</div>
-        <div className="arrow right-arrow" ref={rightArrowRef}>→</div>
+        <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
+        <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
         <div className={`svg-container ${showContent ? 'hidden' : ''}`} 
             ref={svgRef}
             style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
-            <svg className={tilted ? 'tilted' : '' }>
+            <svg className={tilted ? 'f-tilted' : '' }>
                 {/* Outer grey hexagon */}
                 <polygon
                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -167,6 +240,9 @@ const Firecopy = () => {
                         fontSize="24" 
                         fill={changeTextColor ? colors[i] : "white"}
                         key={i}
+                        transform={`translate(${point.x} ${point.y}) 
+                            rotate(${-rotation + textRotationAdjustment}) 
+                            translate(${-point.x} ${-point.y})`}
                     >
                         {hexagon_labels[i]}
                     </text>
@@ -175,28 +251,28 @@ const Firecopy = () => {
             </svg>
         </div>
         <div className="text-left" ref={textLeftRef}>
-            <p className='left-line1'>Line of Text 1</p>
-            <p className='left-line2'>Line of Text 2</p>
-            <p className='left-line3'>A paragraph of text here.</p>
-            <div className="main-progress-wrapper">
-                <div className="main-progress-container">
-                <div className={`main-progress-fill color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
+            <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
+            <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
+            <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
+            <div className="f-main-progress-wrapper">
+                <div className="f-main-progress-container">
+                <div className={`f-main-progress-fill f-color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
                 </div>
                 </div>
-                <p className="main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
+                <p className="f-main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
             </div>
-            <p className='left-lastline'>Another paragraph of text here.</p>
+            <p className='left-lastline1'>※ Force Quotient (FQ)</p>
+            <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
         </div>
-
-        <div className="legend-container" ref={graphRef}>
-            <ul className="score-list">
+        <div className="f-legend-container" ref={graphRef}>
+            <ul className="f-score-list">
             {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
                 const customIndex = customOrder.indexOf(originalIndex);
                 return (
                     <li key={score} className={currentIndex === customIndex ? "active " : ""}>
                         <p>{legend_labels[originalIndex]}</p>
-                        <div className="progress-container">
-                            <div className={`progress-fill color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
+                        <div className="f-progress-container">
+                            <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                         </div>
                     </li>
                         );
