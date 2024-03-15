@@ -12,6 +12,7 @@ const Test = () => {
   const [showAnimation, setShowAnimation] = useState(false);
   const [animationStage, setAnimationStage] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const [brightness, setBrightness] = useState(1.0);
 
  
   const navigate = useNavigate();
@@ -44,17 +45,17 @@ const Test = () => {
     }, 1000);
     setTimeout(() => {
       setAnimationStage(3);
-    }, 2000);
+    }, 3000);
     setTimeout(() => {
       setAnimationStage(4);
-    }, 3000);
+    }, 4000);
   };
 
   const handleTextButtonClick = () => {
     setFadeOut(true);
     setTimeout(() => {
       navigate('/questions');
-    }, 1000);
+    }, 3000);
   };
 
   return (
@@ -95,7 +96,8 @@ const Test = () => {
                 <input type="text" className='test-input' value={selectedLetter} readOnly />
               </div>
               <div className='alphabet-row'>
-                {['A', 'B', 'C', 'D', 'E'].map((letter) => (
+                {['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+                'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].map((letter) => (
                   <button
                     key={letter}
                     onClick={() => handleLetterClick(letter)}
@@ -122,14 +124,16 @@ const Test = () => {
                     )}
                     {animationStage >= 2 && (
                     <div className={`t-animation-text ${animationStage >= 3 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
-                      This is the second text
+                      Welcome to the HEARTH Test.
                     </div>
                     )}
                     {animationStage >= 3 && (
-                      <div className={`t-animation-text ${fadeOut ? 'fade-out' : ''}`}>This is the third text</div>
+                      <div className={`t-animation-paragraph ${fadeOut ? 'fade-out' : ''}`}>This test is designed to measure your<span className='italic'>Cognitive Force,</span>the flame that burns within you.<br></br>
+                      Before taking the test, bring yourself to a calm state of mind to effectively assess and rediscover your true colors. 
+                      Choose from five scales according to the degree of your personal affiliation to each sentence. </div>
                     )}
                     {animationStage === 4 && (
-                    <button className='start-test-btn' onClick={handleTextButtonClick}>Text Button</button>
+                    <button className='start-test-btn' onClick={handleTextButtonClick}>Proceed to Test</button>
                     )}
                   </div>
               </div>

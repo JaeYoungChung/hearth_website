@@ -25,26 +25,26 @@ const Questions = () => {
 
     return (
       <div className= "questions-page">
-      <div className = "q-navbar">
-      <div className = "q-navbar-links_logo">
-        <NavLink to='/'>
-        <img src={logo} height={80} alt = "logo"></img>
-        </NavLink>
-      </div>
-      <div className='q-navbar-lang'>
-        {/* Search dropdown language for later adjustments */}
-        <select onChange={handleChangeLanguage}>
-          <option value="en" className="english">English</option>
-          <option value="ja" className="japanese">日本語</option>
-          <option value="ko" className="korean">한국어</option>
-        </select>
-        <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-        <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-      </div> 
-    </div>
-      <div className="survey-container">
-        <Survey />
-      </div>
+        <div className = "q-navbar">
+          <div className = "q-navbar-links_logo">
+            <NavLink to='/'>
+            <img src={logo} height={80} alt = "logo"></img>
+            </NavLink>
+          </div>
+          <div className='q-navbar-lang'>
+            {/* Search dropdown language for later adjustments */}
+            <select onChange={handleChangeLanguage}>
+              <option value="en" className="english">English</option>
+              <option value="ja" className="japanese">日本語</option>
+              <option value="ko" className="korean">한국어</option>
+            </select>
+            <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+          </div> 
+         </div>
+          <div className="survey-container">
+            <Survey />
+          </div>
     </div>
     );
   }

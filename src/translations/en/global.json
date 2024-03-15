@@ -46,7 +46,7 @@
     "blog" : {
         "email": "abcdefg@email.com",
         "register": "Register",
-        "registered": "Registered!",
+        "registered": "Registered ✔",
         "error_message": "Please enter a valid email address."
     },
     "test" : {

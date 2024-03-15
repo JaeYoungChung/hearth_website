@@ -1,16 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import './firecopy.css';
-import blur_fire from '../../assets/blur_fire.png'; 
-import icon_x from '../../assets/icon_x.png';
-import icon_instagram from '../../assets/icon_instagram.png'
-import icon_facebook from '../../assets/icon_facebook.png'
-import icon_appstore from '../../assets/icon_appstore.png';
-import icon_playstore from '../../assets/icon_playstore.png';
-import blog_image from '../../assets/blog_image.png'
-import sns_image from '../../assets/sns_image.png'
-import news_image from '../../assets/news_image.png'
+import { useTranslation } from 'react-i18next';
+import logo from '../../assets/test_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import { uid } from "uid";
+import { ref, set } from "firebase/database";
 
  
 const Firecopy = () => {
@@ -60,6 +56,23 @@ const Firecopy = () => {
         },
       ];
 
+      //navbar
+      const [t, i18n] = useTranslation("global");
+      const navigate = useNavigate();
+    
+      const handleChangeLanguage = (event) => {
+        i18n.changeLanguage(event.target.value);
+      };
+    
+      const handleButtonClick = () => {
+        navigate('/questions');
+      };
+    
+      const handleBlogClick = () => {
+        navigate('/blog');
+      };
+    
+
     //data from file
     const storedResults = sessionStorage.getItem('surveyResults');
     const values = storedResults ? JSON.parse(storedResults) : {};
@@ -78,6 +91,8 @@ const Firecopy = () => {
     const rightArrowRef = useRef(null);
     const graphRef = useRef(null); // Reference for the graph
     const textLeftRef = useRef(null); // Reference for the text on the left
+    const smallTextRef = useRef(null);
+
 
     //colors, labels
     const hexagon_labels = ['H','T','R','H','E','A'];
@@ -95,6 +110,10 @@ const Firecopy = () => {
     const [tilted, setTilted] = useState(false);
     const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
     const [currentActiveScore, setCurrentActiveScore] = useState('s1');
+    const [showBackButton, setShowBackButton] = useState(false); // New state for back button visibility
+    const [smallTextContent, setSmallTextContent] = useState('Your small text here.');
+    const [showNewContent, setShowNewContent] = useState(false); // State to control the new content visibility
+    const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
 
 
     const onRotate = (newScore) => {
@@ -149,7 +168,30 @@ const Firecopy = () => {
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
+            smallTextRef.current.style.opacity = 1;
         }, 3000);
+      };
+
+      const handleSmallTextClick = () => {
+            textLeftRef.current.style.opacity = 0;
+            leftArrowRef.current.style.opacity = 0;
+            rightArrowRef.current.style.opacity = 0;
+            graphRef.current.style.opacity = 0;
+            smallTextRef.current.style.opacity = 0;
+        setSmallTextContent('New small text here.'); // Change small-text content
+        setShowBackButton(true); // Show back button
+        setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
+      };
+    
+      const handleBackButtonClick = () => {
+            textLeftRef.current.style.opacity = 1;
+            leftArrowRef.current.style.opacity = 1;
+            rightArrowRef.current.style.opacity = 1;
+            graphRef.current.style.opacity = 1;
+            smallTextRef.current.style.opacity = 1;
+        setSmallTextContent('Your small text here.'); // Revert small-text content
+        setShowBackButton(false); // Hide back button
+        setShowNewContent(false); // Hide new content
       };
 
       const getHexagonPoints = (centerX, centerY, radius) => {
@@ -192,8 +234,67 @@ const Firecopy = () => {
         setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by -60 for counter-clockwise
     };
 
+    const [email, setEmail] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false);
+    const [isValidEmail, setIsValidEmail] = useState(true); // New state for email validity
+
+    const validateEmail = (email) => {
+        // Regular expression for email validation
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
+    //email register
+    const handleEmailChange = (e) => {
+        const emailInput = e.target.value;
+        setEmail(emailInput);
+        setIsValidEmail(validateEmail(emailInput));    }; 
+
+    const handleRegister = () => {
+        if (!validateEmail(email)) {
+            setIsValidEmail(false);
+            return; // Stop the registration process if the email is not valid
+        }
+        const uuid = uid();
+        // Save email to Firebase
+        set(ref(db, "emails/" + uuid), {
+            email,
+            uuid,
+        })
+        .then(() => {
+            setIsRegistered(true);
+            setEmail(""); // Clear the email input field
+            // Handle success (e.g., show notification)
+        })
+        .catch(error => {
+            // Handle error
+            console.error("Error saving email: ", error);
+        });
+    };
+    const handleFirstCheckboxChange = (event) => {
+        setIsFirstCheckboxChecked(event.target.checked);
+      };
+
 
     return (
+    <div className='firecopy-container'>
+        <div className = "f-navbar">
+            <div className = "f-navbar-links_logo">
+                <NavLink to='/'>
+                <img src={logo} height={80} alt = "logo"></img>
+                </NavLink>
+            </div>
+        <div className='f-navbar-lang'>
+        {/* Search dropdown language for later adjustments */}
+            <select onChange={handleChangeLanguage}>
+            <option value="en" className="english">English</option>
+            <option value="ja" className="japanese">日本語</option>
+            <option value="ko" className="korean">한국어</option>
+            </select>
+            <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+            </div> 
+        </div>
       <div className='firecopy'>
         <div className="f-video-container" ref={videoRef}>
           <video className="f-video" autoPlay loop muted>
@@ -204,7 +305,7 @@ const Firecopy = () => {
             <p>Your long text...</p>
         </div>
         <div className={`bottom-text ${!showContent ? 'fading' : ''}`} ref={bottomTextRef} onClick={handleBottomTextClick}>
-            Short text →
+            see details →
         </div>
         <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
         <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
@@ -264,6 +365,52 @@ const Firecopy = () => {
             <p className='left-lastline1'>※ Force Quotient (FQ)</p>
             <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
         </div>
+        {showNewContent && (
+        <div className="f-new-content">
+          <div className="f-left-content">
+            <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
+            <p>{`(${red}, ${green}, ${blue})`}</p>
+            <div className="color-square" ></div>
+            <button className="text-button">Share Fire</button>
+          </div>
+          <div className="f-right-content">
+            <p>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>
+        
+        <div className="f-inputBox">
+             <input
+                type="text"
+                placeholder={t("community.email")}
+                value={email}
+                onChange={handleEmailChange}
+                id="f-inputID"
+                className={!isValidEmail ? 'invalid' : ''}
+            />                
+                <p
+                className={`register ${isFirstCheckboxChecked ? 'clickable' : 'disabled'}`}
+                onClick={!isRegistered && isFirstCheckboxChecked ? handleRegister : null}
+            >
+                {isRegistered ? t("community.registered") : t("community.register")}
+            </p>
+                </div>
+                    {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
+
+        <div className='check-text'>
+                <input
+                type="checkbox"
+                id="check1"
+                className="custom-checkbox"
+                checked={isFirstCheckboxChecked}
+                onChange={handleFirstCheckboxChange}
+            />              
+            <label for="check1" className="checkbox-label"> I have reviewed and agree to HEARTH’s Privacy Policy (required)</label>
+            </div>
+            <div className='check-text'>
+              <input type="checkbox" id="check2"  className="custom-checkbox" />
+              <label for="check2" className="checkbox-label"> I agree to receive general emails and product offers from HEARTH (optional)</label>
+            </div>
+          </div>
+        </div>
+      )}
         <div className="f-legend-container" ref={graphRef}>
             <ul className="f-score-list">
             {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
@@ -279,7 +426,17 @@ const Firecopy = () => {
             })}
             </ul>
         </div>
+        <div className="f-small-text" ref={smallTextRef} onClick={handleSmallTextClick} style={{opacity: 0}}>
+            {smallTextContent}
+        </div>
+        {showBackButton && (
+        <button className="f-back-button" onClick={handleBackButtonClick}>
+          Back
+        </button>
+      )}
+      
     </div>
+</div>
     );
   };
   
