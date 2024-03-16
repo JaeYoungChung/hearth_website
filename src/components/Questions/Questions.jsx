@@ -55,7 +55,7 @@ function Survey() {
 
     const navigate = useNavigate();
 
-    const totalQuestions = 4;
+    const totalQuestions = 54;
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [answers, setAnswers] = useState(Array(totalQuestions).fill(null));
     const [selectedScores, setSelectedScores] = useState(Array(totalQuestions).fill(null)); // Initialize array
@@ -241,7 +241,7 @@ function Survey() {
           style={{
             backgroundImage: `url(${logo})`,
             backgroundSize: `contain`,
-            opacity: isSubmitted ? 1 : 0.5,
+            opacity: isSubmitted ? 0.8 : 0.3,
             transition: 'opacity 3s ease-in-out',
           }}
         ></div>      
@@ -249,9 +249,9 @@ function Survey() {
         <div className='question-container'>
           <div className="survey-container">
             <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
-            <h2>{questions[currentQuestion - 1]}</h2>
+            <p className='question-text'>{questions[currentQuestion - 1]}</p>
             <div className="response-container">
-              <span className="disagree-text">Disagree</span>
+              <span className="disagree-text">Strongly<br></br>Disagree</span>
               <div className="q-circle-container">
                 {[1, 2, 3, 4, 5].map(score => (
                   <div
@@ -261,7 +261,7 @@ function Survey() {
                   />
                 ))}
               </div>
-              <span className="agree-text">Agree</span>
+              <span className="agree-text">Strongly<br></br>Agree</span>
             </div>
             {currentQuestion > 1 && (
               <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>

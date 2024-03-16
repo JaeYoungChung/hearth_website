@@ -316,17 +316,25 @@ option.korean::after {
   transition: opacity 1s ease-in-out;
 }
 
-.fade-image-in {
+.fade-image-in.brighter {
   opacity: 1;
-  transition: opacity 3s ease-in-out;
+  filter: brightness(1.2);
+  transition: opacity 1s ease-in-out;
   z-index: 99;
 }
 
+.fade-image-in.brighter.fadedOut {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
 .fade-image-in.show {
-  opacity: 1.0;
+  opacity: 0.6;
 }
 
 .fade-image-out {
   opacity: 0;
   transition: opacity 3s ease-in-out;
 }
+
+

@@ -184,14 +184,14 @@
   opacity: 1;
 }
 
-svg {
+/* svg {
   width: 420px; 
   height: 400px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  transform-style: preserve-3d;  /* Ensures children obey the 3D rotation */
+  transform-style: preserve-3d;  
   overflow: visible;
-}
+} */
 
 .videoWrapper {
   position: absolute;

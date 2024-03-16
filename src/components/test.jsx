@@ -1,34 +1,44 @@
-    // <svg>
-    //     {/* Outer grey hexagon */}
-    //     <polygon
-    //       points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
-    //       stroke={hexagonColor}
-    //       strokeWidth="2"
-    //       fill="#1a1a1a"
-    //     />
-    //     {/* Inner shape */}
-    //     <polygon
-    //       points={innerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
-    //       stroke="darkgrey"
-    //       strokeWidth="2"
-    //       />
-    //     {/* Draw lines connecting opposite */}
-    //     <line x1={outerHexagonPoints[0].x} y1={outerHexagonPoints[0].y} x2={outerHexagonPoints[3].x} y2={outerHexagonPoints[3].y} stroke={hexagonColor} />
-    //     <line x1={outerHexagonPoints[1].x} y1={outerHexagonPoints[1].y} x2={outerHexagonPoints[4].x} y2={outerHexagonPoints[4].y} stroke={hexagonColor} />
-    //     <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke={hexagonColor} />
-        
-    //     {/* labels */}
-    //           {
-    //       outerHexagonPoints.map((point, i) => (
-    //         <text 
-    //             x={point.x - 10} 
-    //             y={point.y + 10} 
-    //             fontSize="24" 
-    //             fill={"white"}
-    //             key={i}
-    //         >
-    //             {hexagon_labels[i]}
-    //         </text>
-    //     ))
-    //   }
-    //   </svg>
+// .f-tilted {
+//     transform: rotate3d(1, 0, 0, 70deg);
+//     transform-origin: center;
+//     transition: transform 2s ease-in-out;
+//     opacity: 0.5;
+// }
+  
+//   .f-svg-container {
+//     top: 40%;
+//     right: 15%;
+//     transform: translateY(-50%);
+//     justify-self: center;
+//     opacity: 0; /* Start hidden */
+//     transition: opacity 1s ease-in-out; /* Fade in transition */
+//     position: absolute;
+//     transform-style: preserve-3d; /* Allow 3D transformations */ 
+//     z-index: 1;
+//     overflow: visible;
+//   }
+
+
+//   const [rotation, setRotation] = useState(0);
+
+//   const rotateClockwise = () => {
+//     const newRotation = rotation - 60;
+//     setRotation(newRotation);
+//     const newIndex = (currentIndex - 1 + 6) % 6;
+//     setCurrentIndex(newIndex);
+//     setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by +60 for clockwise
+// };
+
+// <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
+
+// <div className={`f-svg-container ${showContent ? 'hidden' : ''}`} 
+//             ref={svgRef}
+//             style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
+//             <svg className={tilted ? 'f-tilted' : '' }>
+//                 {/* Outer grey hexagon */}
+//                 <polygon
+//                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
+//                 stroke={hexagonColor}
+//                 strokeWidth="2"
+//                 fill="#1a1a1a"
+//                 />

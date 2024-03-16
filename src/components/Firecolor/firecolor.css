@@ -14,15 +14,15 @@
     position: absolute;
   }
   
-  svg {
+  /* svg {
     width: 420px; 
     height: 400px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    transform-style: preserve-3d;  /* Ensures children obey the 3D rotation */
+    transform-style: preserve-3d;
     overflow: visible;
   }
-  
+   */
 
   text {
     font-family: Arial, sans-serif;
@@ -159,22 +159,21 @@
     transform: translateY(-50%); /* Center the arrows vertically */
 }
 
-.arrow {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 3; /* Make sure arrows are above the image and hexagon */
-  position: absolute; 
-}
+  .arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 3; /* Make sure arrows are above the image and hexagon */
+    position: absolute; 
+  }
 
+  .arrow.left {
+    left: -40px;
+  }
 
-.arrow.left {
-  left: -40px;
-}
-
-.arrow.right {
-  right: -40px;
-}
+  .arrow.right {
+    right: -40px;
+  }
 
   .arrow.left::before {
     content: '<';
@@ -235,7 +234,7 @@
 
 .legend-header {
     display: flex;
-    align-items: center;
+    align-items: center; 
 }
 
 .color-square {

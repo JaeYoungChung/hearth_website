@@ -214,9 +214,8 @@ const getHexagonPoints = (centerX, centerY, radius) => {
                 </div>
               </div>
             )}
-      <div className="rotation-container"
-    style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
-   
+  <div className="rotation-container"
+    style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>       
    <svg className={tilted ? 'tilted' : '' }>
         {/* Outer grey hexagon */}
         <polygon

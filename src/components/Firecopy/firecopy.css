@@ -87,9 +87,31 @@ opacity: 1;
     left: 0;
     width: 100%;
     height: 95%;
-    background-color: rgba(255, 0, 0, 0.3);
     mix-blend-mode: multiply;
     pointer-events: none;
+  }
+
+  .f-video-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    pointer-events: none;
+  }
+
+  .color-overlay:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    mix-blend-mode: color;
   }
   
   .f-text-container {
@@ -153,13 +175,14 @@ opacity: 1;
     opacity: 0.5;
 }
   
-  .svg-container {
+  .f-svg-container {
+    top: 40%;
+    right: 15%;
+    transform: translateY(-50%);
     justify-self: center;
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
     position: absolute;
-    right: 50px;
-    bottom: 100px;
     transform-style: preserve-3d; /* Allow 3D transformations */ 
     z-index: 1;
     overflow: visible;

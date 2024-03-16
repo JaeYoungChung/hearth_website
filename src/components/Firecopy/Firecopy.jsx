@@ -297,9 +297,15 @@ const Firecopy = () => {
         </div>
       <div className='firecopy'>
         <div className="f-video-container" ref={videoRef}>
-          <video className="f-video" autoPlay loop muted>
-            <source src={resultfire} type="video/mp4" />
-          </video>
+            <video className="f-video" autoPlay loop muted>
+                <source src={resultfire} type="video/webm" />
+            </video>
+            <div
+                className="color-overlay"
+                style={{
+                '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
+                }}
+            />
         </div>
         <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
             <p>Your long text...</p>
@@ -309,7 +315,8 @@ const Firecopy = () => {
         </div>
         <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
         <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
-        <div className={`svg-container ${showContent ? 'hidden' : ''}`} 
+
+        <div className={`f-svg-container ${showContent ? 'hidden' : ''}`} 
             ref={svgRef}
             style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
             <svg className={tilted ? 'f-tilted' : '' }>
@@ -350,7 +357,8 @@ const Firecopy = () => {
                 ))
                 }
             </svg>
-        </div>
+      </div>
+      
         <div className="text-left" ref={textLeftRef}>
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>

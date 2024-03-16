@@ -12,6 +12,8 @@ const Test = () => {
   const [showAnimation, setShowAnimation] = useState(false);
   const [animationStage, setAnimationStage] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const [fadedOut, setFadedOut] = useState(false);
+  const [brighter, setBrighter] = useState(false);
   const [brightness, setBrightness] = useState(1.0);
 
  
@@ -52,7 +54,11 @@ const Test = () => {
   };
 
   const handleTextButtonClick = () => {
+    setBrighter(true);
     setFadeOut(true);
+    setTimeout(()=> {
+      setFadedOut(true);
+    }, 1500);
     setTimeout(() => {
       navigate('/questions');
     }, 3000);
@@ -78,7 +84,7 @@ const Test = () => {
           </div>
         </div>
 
-        <div className={`centered-container ${fadeOut ? 'fade-out' : ''}`}>
+    <div className={"centered-container"}>
       {!showContent ? (
         <>
           <img src={logo} alt='logo' />
@@ -115,7 +121,7 @@ const Test = () => {
             </>
           ) :  (            
               <div className='t-animation-container'>
-                <img src={white_logo} alt='whitelogo' className={`fade-image-in ${fadeOut ? '' : 'show'}`}/>
+                <img src={white_logo} alt='whitelogo' className={`fade-image-in ${brighter ? 'brighter' : 'show'} ${fadedOut ? 'fadedOut' : ''}`}/>
                   <div className={`t-animation-content ${fadeOut ? 'fade-out' : ''}`}>
                     {animationStage >= 1 && (
                     <div className={`t-animation-text ${animationStage >= 2 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
