@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import './navbar.css';
 import logo from '../../assets/home_logo.png'
@@ -40,42 +40,102 @@ const Navbar = () => {
 
   const location = useLocation(); // Use useLocation hook to get the current location object
   const shouldShowMenu = location.pathname !== '/blog' && location.pathname !== '/test';
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1,
+    });
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
+  const handleClick = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // const scrollRef = useRef(null);
   // useScrollSnap({ ref: scrollRef, duration: 1, delay: 0 });
 
   const Menu = () => (
-    
     <>
-      <li className = 'nav-item'>
+      <li className='nav-item'>
         <p>
-        <Link to="/" onClick={(e) => {
-          e.preventDefault(); // Prevent the Link from navigating
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }} activeClass='active'>Home</Link>
+          <a
+            href="#home"
+            className={activeSection === 'home' ? 'active' : ''}
+            onClick={() => handleClick('home')}
+          >
+            Home
+          </a>
         </p>
       </li>
-      <li className = 'nav-item'>
-        <p><Link to="about" spy={true} smooth={true} duration={300} >About</Link></p>
+      <li className='nav-item'>
+        <p>
+          <a
+            href="#about"
+            className={activeSection === 'about' ? 'active' : ''}
+            onClick={() => handleClick('about')}
+          >
+            About
+          </a>
+        </p>
       </li>
-      <li className = 'nav-item'>
-        <p><Link to="apps" spy={true} smooth={true} duration={300} >Apps</Link></p>
+      <li className='nav-item'>
+        <p>
+          <a
+            href="#apps"
+            className={activeSection === 'apps' ? 'active' : ''}
+            onClick={() => handleClick('apps')}
+          >
+            Apps
+          </a>
+        </p>
       </li>
-      <li className = 'nav-item'>
-        <p><Link to="team" spy={true} smooth={true} duration={300} >Team</Link></p>
+      <li className='nav-item'>
+        <p>
+          <a
+            href="#team"
+            className={activeSection === 'team' ? 'active' : ''}
+            onClick={() => handleClick('team')}
+          >
+            Team
+          </a>
+        </p>
       </li>
-      <li className = 'nav-item'>
-        <p><Link to="community" spy={true} smooth={true} duration={300} >Community</Link></p>
+      <li className='nav-item'>
+        <p>
+          <a
+            href="#community"
+            className={activeSection === 'community' ? 'active' : ''}
+            onClick={() => handleClick('community')}
+          >
+            Community
+          </a>
+        </p>
       </li>
-    
-      {/* <p><NavLink to="/" exact activeClassName="selected">{t("navbar.home")}</NavLink></p>
-      <p><NavLink to="/about" activeClassName="selected">{t("navbar.about")}</NavLink></p>
-      <p><NavLink to="/apps" activeClassName="selected">{t("navbar.apps")}</NavLink></p>
-      <p><NavLink to="/team" activeClassName="selected">{t("navbar.team")}</NavLink></p>
-      <p><NavLink to="/community" activeClassName="selected">{t("navbar.community")}</NavLink></p> */}
     </>
   );
-
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
@@ -84,6 +144,7 @@ const Navbar = () => {
   const handleBlogClick = () => {
     navigate('/blog');
   };
+
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (

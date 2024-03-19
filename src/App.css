@@ -5,6 +5,13 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
 .fade-enter {
   opacity: 0;
 }
@@ -13,7 +20,6 @@
   transition: opacity 300ms ease-in;
 }
 
-/* Exit */
 .fade-exit {
   opacity: 1;
 }
@@ -30,39 +36,22 @@
     background-position: center -130px;
 }
 
-.snap-scroll-container1 {
-  /* position: relative; */
-  height: 100vh;
-  scroll-behavior: smooth;
+/* .snap-scroll-container {
   scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  width: 100%;
-  scrollbar-width: none;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-.snap-scroll-container2 {
-  /* position: relative; */
-  height: 100vh;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  width: 100%;
-  scrollbar-width: none;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* .snap-scroll-container > div {
-  scroll-snap-align: start;
   height: 100vh;
 } */
+
 .element {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  /* height: 100vh; */
+  height: 100vh;
 }
-
+.long-element {
+  scroll-snap-align: start;
+  height: 300vh;
+}
 
 body {
     background: var(--color-bg)

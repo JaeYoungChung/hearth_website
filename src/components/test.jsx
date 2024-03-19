@@ -1,44 +1,150 @@
-// .f-tilted {
-//     transform: rotate3d(1, 0, 0, 70deg);
-//     transform-origin: center;
-//     transition: transform 2s ease-in-out;
-//     opacity: 0.5;
+// const MainLayout = () => (
+//   <>
+//   <Navbar />
+//   <div>
+//       <section id="header" className="element"><Header /></section>
+//       <section id="about" className="long-element"><About /></section>
+//       <section id="apps" className="element"><Apps /></section>
+//       <section id="team" className="element"><Team /></section>
+//       <section name="community" className="element"><Community /></section>
+//     </div>
+// </>
+// );
+
+// const App = () => {
+// return (
+//   <div className = "App">
+//       <div className='gradient_bg'>
+//                 <Routes>
+//                 <Route path="/" element={<MainLayout />} />
+//                 <Route path="/blog" element={<Blog />} /> 
+//                 <Route path="/test" element={<Test/>} />
+//                 <Route path="/questions" element={<Questions />} />
+//                 </Routes>
+//         </div>
+//   </div>
+// )
 // }
-  
-//   .f-svg-container {
-//     top: 40%;
-//     right: 15%;
-//     transform: translateY(-50%);
-//     justify-self: center;
-//     opacity: 0; /* Start hidden */
-//     transition: opacity 1s ease-in-out; /* Fade in transition */
-//     position: absolute;
-//     transform-style: preserve-3d; /* Allow 3D transformations */ 
-//     z-index: 1;
-//     overflow: visible;
+
+// CSS:
+// html, body {
+//     scroll-snap-type: y mandatory;
+//     scroll-behavior: smooth;
+//     overflow-y: scroll;
+//     height: 100vh;
+//   }
+//   .longBackground {
+//     background-image: url('/public/main_bg.png');
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     min-height: 300vh;
+//     background-position: center -130px;
+// }
+
+// .element {
+//     scroll-snap-align: start;
+//     scroll-snap-stop: always;
+//     height: 100vh;
+//   }
+//   .long-element {
+//     scroll-snap-align: start;
+//     height: 300vh;
 //   }
 
 
-//   const [rotation, setRotation] = useState(0);
+//   Navbar:
+//   const Navbar = () => {
 
-//   const rotateClockwise = () => {
-//     const newRotation = rotation - 60;
-//     setRotation(newRotation);
-//     const newIndex = (currentIndex - 1 + 6) % 6;
-//     setCurrentIndex(newIndex);
-//     setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by +60 for clockwise
-// };
+//     const location = useLocation(); // Use useLocation hook to get the current location object
+//     const shouldShowMenu = location.pathname !== '/blog' && location.pathname !== '/test';
+ 
+//     const Menu = () => (
+//       <>
+//       <li className='nav-item'>
+//         <p>
+//           <Link to="/" onClick={(e) => {
+//             e.preventDefault();
+//             window.scrollTo({ top: 0, behavior: 'smooth' });
+//           }} activeClass='active'>Home</Link>
+//         </p>
+//       </li>
+//       <li className='nav-item'>
+//         <p><Link to="about" spy={true} smooth={true} duration={300} activeClass='active'>About</Link></p>
+//       </li>
+//       <li className='nav-item'>
+//         <p><Link to="apps" spy={true} smooth={true} duration={300} activeClass='active'>Apps</Link></p>
+//       </li>
+//       <li className='nav-item'>
+//         <p><Link to="team" spy={true} smooth={true} duration={300} activeClass='active'>Team</Link></p>
+//       </li>
+//       <li className='nav-item'>
+//         <p><Link to="community" spy={true} smooth={true} duration={300} activeClass='active'>Community</Link></p>
+//       </li>
+//   </>
+//     );
+  
+//     const navigate = useNavigate();
+  
+//     const handleButtonClick = () => {
+//       navigate('/test');
+//     };
+//     const handleBlogClick = () => {
+//       navigate('/blog');
+//     };
+//     const [toggleMenu, setToggleMenu] = useState(false);
+  
+//     return (
+//       <div className = "navbar">
+//           {shouldShowMenu && (
+//             <div className = "navbar-links">      
+//                 <div className="navbar-links_container">
+//                   <Menu/>
+//                 </div>
+//             </div>
+//           )}
+//           <div className = "navbar-menu">
+//             {toggleMenu
+//             ? <RiCloseLine color = "#fff" size = {27} onClick = {() => setToggleMenu(false)}/>
+//             : <RiMenu3Line color = "#fff" size = {27} onClick = {() => setToggleMenu(true)}/>
+//           }
+//           {toggleMenu &&(
+//             <div className='navbar-menu_container scale-up-center'>
+//               <div className='navbar-menu_container-links'>
+//                 <Menu/>
+//               </div>
+//             </div>
+//           )}
+//           </div>
+//           </div>
+//     )
+//   }
 
-// <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
+//   CSS:
+//   .navbar-links {
+//     flex: 1;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     padding-left: 20px;
+// }
 
-// <div className={`f-svg-container ${showContent ? 'hidden' : ''}`} 
-//             ref={svgRef}
-//             style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
-//             <svg className={tilted ? 'f-tilted' : '' }>
-//                 {/* Outer grey hexagon */}
-//                 <polygon
-//                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
-//                 stroke={hexagonColor}
-//                 strokeWidth="2"
-//                 fill="#1a1a1a"
-//                 />
+// .navbar-links a {
+//     opacity: 0.5;
+//     font-family: "classico-urw", sans-serif;
+//     font-size: 20px;
+//     transition: opacity 0.3s, color 0.3s;
+//     margin-right: 25px;
+// }
+
+// .nav-item {
+//     padding-bottom: 25px;
+//     list-style: none;
+// }
+
+// .nav-item .active {
+//     border-bottom: 2px solid white;
+//     color: white; 
+//     opacity: 1;
+// }
+
+  

@@ -35,23 +35,23 @@ const Header = () => {
           </button>
         </div>
         <div className='header section__padding' id='home'>
-      <div className="icons">
-        <img src = {icon_instagram} className="icon"/>
-        <img src = {icon_facebook} className="icon"/>
-        <img src = {icon_x} className="icon"/>
-      </div>
-      <div className='email'>
-      {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
-      <img
-        src={email} 
-        className="email_img" 
-        style={{ opacity: isActive ? 0.5 : 1 }} 
-        onClick={handleImageClick} 
-      /> 
+          <div className="icons">
+            <img src = {icon_instagram} className="icon"/>
+            <img src = {icon_facebook} className="icon"/>
+            <img src = {icon_x} className="icon"/>
+          </div>
+          <div className='h-email'>
+            {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
+            <img
+              src={email} 
+              className="h-email_img" 
+              style={{ opacity: isActive ? 0.5 : 1 }} 
+              onClick={handleImageClick} 
+            /> 
+          </div>
+        </div>
+      </div>  
     </div>
-      </div>
-    </div>  
-  </div>
   )
 }
 

@@ -17,6 +17,18 @@
     padding-left: 20px;
 }
 
+.nav-item a {
+    opacity: 0.5;
+    font-family: "classico-urw", sans-serif;
+    font-size: 20px;
+    transition: opacity 0.3s, color 0.3s;
+    margin-right: 25px;
+  }
+  
+  .nav-item a.active {
+    opacity: 1;
+  }
+
 /* Default tab styles (unselected) */
 .navbar-links a {
     /* color: inherit; */

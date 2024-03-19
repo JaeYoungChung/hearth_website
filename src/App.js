@@ -8,16 +8,18 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const MainLayout = () => (
   <>
-    <Navbar/>
-    <div className="snap-scroll-container1">
-      <div className="longBackground">
-        <Element name="header" className="element"><Header /></Element>
-        <Element name="about" className="element"><About /></Element>
+    <Navbar />
+    <div>
+    {/* <div className="snap-scroll-container"> */}
+      {/* <div className='longBackground'> */}
+        <section id="home" className="element"><Header /></section>
+        <section id="about" className="long-element"><About /></section>
+      {/* </div> */}
+        <section id="apps" className="element"><Apps /></section>
+        <section id="team" className="element"><Team /></section>
+        <section id="community" className="element"><Community /></section>
       </div>
-      <Element name="apps" className="element"><Apps /></Element>
-      <Element name="team" className="element"><Team /></Element>
-      <Element name="community" className="element"><Community /></Element>
-    </div>
+    {/* </div> */}
   </>
 );
 

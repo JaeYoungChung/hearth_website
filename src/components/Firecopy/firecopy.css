@@ -64,7 +64,7 @@ opacity: 1;
 }
 
 .firecopy {
-    height: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,9 +176,9 @@ opacity: 1;
 }
   
   .f-svg-container {
-    top: 40%;
+    top: 12%;
     right: 15%;
-    transform: translateY(-50%);
+    transform: translateY(-40%);
     justify-self: center;
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
@@ -195,10 +195,6 @@ opacity: 1;
     border-radius: 10px;
     transform-style: preserve-3d;  /* Ensures children obey the 3D rotation */
     overflow: visible;
-  }
-  
-  .hidden {
-    display: none;
   }
   
   /* Animation for sliding video to the right */
@@ -224,7 +220,7 @@ opacity: 1;
       transform: translateY(0%);
     }
     to {
-      transform: translateY(30%); /* Slide to the bottom */
+      transform: translateY(70%); /* Slide to the bottom */
     }
   }
 
