@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import logo from '../../assets/test_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
 import arrowright from '../../assets/arrow_right.png'
+import arrowleft from '../../assets/arrow_left.png'
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
@@ -179,11 +180,14 @@ const Firecopy = () => {
             if (videoRef.current) {
                 videoRef.current.classList.add('slide-right');
               }
+            textContainerRef.current.style.opacity = 0;
             textLeftRef.current.style.opacity = 1;
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
             smallTextRef.current.style.opacity = 1;
+            smallTextRef.current.style.pointerEvents = 'auto';
+            bottomTextRef.current.style.pointerEvents = 'none';
         }, 3000);
       };
 
@@ -193,9 +197,11 @@ const Firecopy = () => {
             rightArrowRef.current.style.opacity = 0;
             graphRef.current.style.opacity = 0;
             smallTextRef.current.style.opacity = 0;
-        setSmallTextContent('New small text here.'); // Change small-text content
-        setShowBackButton(true); // Show back button
-        setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
+            smallTextRef.current.style.pointerEvents = 'none';
+            bottomTextRef.current.style.pointerEvents = 'auto';
+            setSmallTextContent('New small text here.'); // Change small-text content
+            setShowBackButton(true); // Show back button
+            setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
       };
     
       const handleBackButtonClick = () => {
@@ -204,9 +210,11 @@ const Firecopy = () => {
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
             smallTextRef.current.style.opacity = 1;
-        setSmallTextContent('Your small text here.'); // Revert small-text content
-        setShowBackButton(false); // Hide back button
-        setShowNewContent(false); // Hide new content
+            smallTextRef.current.style.pointerEvents = 'auto';
+            bottomTextRef.current.style.pointerEvents = 'none';
+            setSmallTextContent('Your small text here.'); // Revert small-text content
+            setShowBackButton(false); // Hide back button
+            setShowNewContent(false); // Hide new content
       };
 
       const getHexagonPoints = (centerX, centerY, radius) => {
@@ -332,12 +340,13 @@ const Firecopy = () => {
               ref={bottomTextRef}
               onClick={handleBottomTextClick}
               style={{
+                fontSize: 16,
                 display: 'flex',
                 alignItems: 'center',
               }}
               >
               <span>see details</span>
-              <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px' }} />
+              <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
             </div>
             <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
             <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
@@ -406,7 +415,8 @@ const Firecopy = () => {
         <div className="f-new-content">
           <div className="f-left-content">
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
-            <p>{`(${red}, ${green}, ${blue})`}</p>
+            {/* <p>{`(${red}, ${green}, ${blue})`}</p> */}
+            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
             <div className="color-square" ></div>
             <button className="text-button">Share Fire</button>
           </div>
@@ -450,28 +460,45 @@ const Firecopy = () => {
       )}
         <div className="f-legend-container" ref={graphRef}>
             <ul className="f-score-list">
-            {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
+              {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
                 const customIndex = customOrder.indexOf(originalIndex);
                 return (
                     <li key={score} className={currentIndex === customIndex ? "active " : ""}>
-                        <p>{legend_labels[originalIndex]}</p>
+                      <p className={`f-label-color-${originalIndex}`}>{legend_labels[originalIndex]}</p>
                         <div className="f-progress-container">
                             <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                         </div>
                     </li>
-                        );
-            })}
+                );
+              })}
             </ul>
         </div>
-        <div className="f-small-text" ref={smallTextRef} onClick={handleSmallTextClick} style={{opacity: 0}}>
-            {smallTextContent}
+        <div className="f-small-text" ref={smallTextRef}
+        onClick={smallTextRef.current && smallTextRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
+        style={{
+            opacity: 0,
+            fontSize: 17,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          >
+          <span>{smallTextContent}</span>
+          <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
         </div>
+        
         {showBackButton && (
-        <button className="f-back-button" onClick={handleBackButtonClick}>
-          Back
-        </button>
+        <div className="f-back-button" onClick={handleBackButtonClick}
+          style={{
+            color: 'white',
+              fontSize: 17,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+          <img src={arrowleft} alt="Arrow Left" style={{marginRight: '5px', width: '20px'}} />
+          <span>Back</span>
+        </div>    
       )}
-      
     </div>
 </div>
     );

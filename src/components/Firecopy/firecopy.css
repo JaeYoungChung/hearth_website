@@ -129,6 +129,7 @@ opacity: 1;
   .bottom-text {
     top: 620px;
     right: 50px;
+    z-index: 101;
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
   }
@@ -399,6 +400,30 @@ li.active .f-progress-container {
     transition: width 0.3s ease-in-out;
 }
 
+.f-label-color-0 {
+  color: rgb(0, 255, 0);
+}
+
+.f-label-color-1 {
+  color: rgb(0, 0, 255);
+}
+
+.f-label-color-2 {
+  color: rgb(0, 255, 255);
+}
+
+.f-label-color-3 {
+  color: rgb(255, 255, 0);
+}
+
+.f-label-color-4 {
+  color: rgb(255, 0, 0);
+}
+
+.f-label-color-5 {
+  color: rgb(255, 0, 255);
+}
+
 .f-color-0 {
     background-color: rgb(0, 255, 0);
 }
@@ -424,13 +449,13 @@ li.active .f-progress-container {
 }
 
 .f-small-text {
-    position: fixed; /* Or absolute, depending on your layout needs */
-    bottom: 20px; /* Distance from the bottom of the viewport */
-    right: 20px; /* Distance from the right of the viewport */
-    color: #fff; /* Text color, adjust as needed */
-    opacity: 0; /* Start invisible */
-    transition: opacity 1.5s ease-in-out; /* Fade effect */
-    z-index: 100; /* Ensure it's above other content if necessary */
+    position: fixed; 
+    top: 600px;
+    right: 50px; 
+    color: #fff; 
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; 
+    z-index: 100; 
   }
 
   .fade-out {
@@ -439,10 +464,10 @@ li.active .f-progress-container {
   }
   
   .f-back-button {
-    position: fixed; /* Position it as needed */
-    bottom: 20px; /* Distance from the bottom */
-    left: 20px; /* Distance from the left */
-    /* Style your button as needed */
+    color: white;
+    position: fixed;
+    bottom: 10px;
+    left: 50px;
   }
 
   .f-new-content {
@@ -452,12 +477,18 @@ li.active .f-progress-container {
     width: 20%;
     color: white;
     opacity: 0;
-    animation: fadeIn 1s forwards; /* Apply fade-in effect */
+    animation: fadeIn 1s forwards;
     z-index: 99;
   }
   
   .f-left-content, .f-right-content {
     padding: 20px;
+  }
+
+  .hex-code {
+    font-size: 21px;
+    text-align: center;
+    line-height: 0.5;
   }
   
   .f-colored-square {
@@ -534,15 +565,17 @@ li.active .f-progress-container {
 #f-inputID::placeholder {
     width: 350px;
     color: white;
+    opacity: 0.5;
     background-color : transparent;
     border: none;
     outline: none;
   }
 
 .register {
-    cursor: pointer;
-    font-weight: 100;
-    padding-right: 20px;
+  color: green;
+  cursor: pointer;
+  font-weight: 100;
+  padding-right: 20px;
 }
 
 .invalid {
@@ -552,5 +585,6 @@ li.active .f-progress-container {
 .error-message {
     color: red;
     font-size: 0.8rem;
-    margin-top: 5px;
+    line-height: 0;
+    margin-bottom: 15px;
 }
