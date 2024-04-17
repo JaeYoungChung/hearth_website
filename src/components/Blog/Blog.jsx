@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './blog.css';
 import icon_instagram from '../../assets/icon_instagram.png'
@@ -14,7 +14,7 @@ import { FaLink } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { uid } from "uid";
 import { useTranslation } from 'react-i18next';
-
+import logo from '../../assets/test_logo.png'
  
 import {
   FacebookShareButton, FacebookIcon,
@@ -138,6 +138,23 @@ const Blog = () => {
   const firstPostImage = posts.length > 0 ? posts[0].imageUrl : '';
 
   const [t, i18n] = useTranslation("global");
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const navigate = useNavigate();
+
+  const handleChangeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    navigate('/questions');
+  };
+
+  const handleBlogClick = () => {
+    navigate('/blog');
+  };
 
 
   useEffect(() => {
@@ -167,11 +184,7 @@ const Blog = () => {
       filterPosts();
     }, [posts, activeCategory]);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
-
-  //category change
+  //category change 
   const handleCategoryChange = (event) => {
     setActiveCategory(event.target.value);
     setCurrentPage(1); // Reset to first page when category changes
@@ -183,12 +196,28 @@ function handlePostClick(post) {
 
   return (
     <div className="blog-page">
+      <div className = "b-navbar">
+          <div className = "b-navbar-links_logo">
+            <NavLink to='/'>
+            <img src={logo} height={80} alt = "logo"></img>
+            </NavLink>
+          </div>
+          <div className='b-navbar-lang'>
+            {/* Search dropdown language for later adjustments */}
+            <select onChange={handleChangeLanguage}>
+              <option value="en" className="english">English</option>
+              <option value="ja" className="japanese">日本語</option>
+              <option value="ko" className="korean">한국어</option>
+            </select>
+            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+          </div> 
+      </div>
     <PageHeader backgroundImage={firstPostImage} />
     <Sidebar /> 
      {/* Category Buttons */}
      <div className="category-dropdown">
-        <select value={activeCategory} onChange={handleCategoryChange}>
-          <option value="all">All Categories</option>
+        <select value={activeCategory} onChange={handleCategoryChange} className="category-select">
+          <option value="all">All</option>
           <option value="books">Books</option>
           <option value="travel">Travel</option>
         </select>
@@ -255,10 +284,10 @@ function PageHeader({ backgroundImage }) {
   
   function Sidebar() {
     return (
-        <div className="icons">
-        <img src = {icon_instagram} className="icon"/>
-        <img src = {icon_facebook} className="icon"/>
-        <img src = {icon_x} className="icon"/>
+        <div className="blog-icons">
+        <img src = {icon_instagram} className="blog-icon"/>
+        <img src = {icon_facebook} className="blog-icon"/>
+        <img src = {icon_x} className="blog-icon"/>
       </div>
     );
   } 
@@ -270,7 +299,7 @@ function PageHeader({ backgroundImage }) {
           <img src={post.imageUrl} alt={post.title} />
           <div className="overlay-top-left">
             <p>Aug</p>
-            <p>17</p>
+            <p className='blog-date'>17</p>
           </div>
           <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
         </div>
@@ -290,7 +319,7 @@ function BlogPostDetail({ post, onClose }) {
           <img src={post.imageUrl} alt={post.title} className="modal-header-image" />
           <div className="overlay-top-left2">
             <p>Aug</p>
-            <p>17</p>
+            <p className='blog-date2'>17</p>
           </div>
           <div className="overlay-top-right">
           <div className='blog-icon-2'>

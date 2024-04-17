@@ -6,7 +6,7 @@ import white_logo from '../../assets/whitelogo.png'
 import blue_logo from '../../assets/bluelogo.png'
 import green_logo from '../../assets/greenlogo.png'
 import red_logo from '../../assets/redlogo.png'
-import yellow_logo from '../../assets/yellowlogo.png'
+import yellow_logo from '../../assets/yellowlogo.png' 
 
 
 const Team = () => {
@@ -44,11 +44,11 @@ const Team = () => {
             <p>As we recognize that health encompasses not only the body, but also the mind and soul,</p>
             <p>We are here to ensure the holistic development of the triad by uplifting the latter.,</p>
             <p>Our vision is to help everyone in need through fostering depth, strength, and beauty by the means of creative and sustainable methods, </p><br/>
-            <p>“There will always be rocks in the road ahead of us. They will be stumbling blocks or stepping stones; it all depends on how you use them.”,</p><br/>
+            <em>“There will always be rocks in the road ahead of us. They will be stumbling blocks or stepping stones; it all depends on how you use them.”,</em><br/><br></br>
             <p>As you navigate through life, Team HEARTH wishes to accompany your journey and assist you along the way</p>
             <p>by providing philosophical and psychological insights. As we are here to help you, you can also help others by taking part in our mission.</p>
             <p>Join us in our community, participate in diverse programs, and help build a healthy community that will enlighten yourself and the world.</p><br/>
-            <p>For any inquiry, feel free to contact us on hearthisnear@gmail.com.</p>
+            <p>For any inquiry, feel free to contact us on <em>hearthisnear@gmail.com.</em></p>
         </div>
       </div>
     </div>
@@ -92,7 +92,6 @@ const Team = () => {
         <div className="t-paragraph2">
             <p>Visualizer, directing the artistic and creative elements of projects.</p><br/>
             <p>Designer of User Interface and Experience,</p>
-            <p>As a M.D. who is deeply engrossed in philosophy and psychology,</p>
             <p>Driven to develop concepts and ideas into visual narratives,</p>
             <p>Crafting digital interactions into user-centric journeys.</p>
         </div>

@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return ( 
-    <div className='header section__padding' id='home'>
+    <div className='header' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>
         <p className='home_subtitle_text'>Here to Help</p>
@@ -34,11 +34,12 @@ const Header = () => {
           <button type="button" className='take-test-btn' onClick={handleButtonClick}>{t("header.take_test")}
           </button>
         </div>
-        <div className='header section__padding' id='home'>
-          <div className="icons">
-            <img src = {icon_instagram} className="icon"/>
-            <img src = {icon_facebook} className="icon"/>
-            <img src = {icon_x} className="icon"/>
+      </div>  
+      <div className='header-side' id='home'>
+          <div className="h-icons">
+            <img src = {icon_instagram} className="h-icon"/>
+            <img src = {icon_facebook} className="h-icon"/>
+            <img src = {icon_x} className="h-icon"/>
           </div>
           <div className='h-email'>
             {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
@@ -50,7 +51,6 @@ const Header = () => {
             /> 
           </div>
         </div>
-      </div>  
     </div>
   )
 }

@@ -6,8 +6,10 @@
 }
 
 .header-content{
+    height: 100%;
+    position: relative;
     flex: 1;
-    padding-top: 150px;
+    padding-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,9 +21,6 @@
     font-family: "classico-urw", sans-serif;
     position: 'absolute';
     z-index: 0;    
-    /* Layout Properties */
-    width: 688px;
-    height: 128px;
     /* UI Properties */
     text-align: center;
     font: 100px;
@@ -54,6 +53,7 @@
 }
 
 .take-test-btn {
+    margin-top: 30px;
     cursor: pointer;
     width: 164px;
     min-height: 42px;
@@ -65,24 +65,28 @@
     border: 2px solid #FFFFFF;
 }
 
-.icons {
+.header-side{
+    height: 100vh;
+    position: relative;
+}
+
+.h-icons {
     position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 30px;
+    top: 37%;
     display: flex; 
     flex-direction: column;
     align-items: center;
   }
   
-  .icon {
+  .h-icon {
     width: 30px;
     margin: 10px 0;
   }
 
   .h-email {
     position: absolute;
-    right: 50px;
+    right: 30px;
     top: 90%;
     display: flex; 
   }
@@ -154,7 +158,7 @@
         top: 400px;
     }
 
-    .icons {
+    .h-icons {
         position: absolute;
         right: 20px;
         top: 50%;
@@ -164,7 +168,7 @@
         align-items: center;
       }
       
-      .icon {
+      .h-icon {
         width: 0%;
         margin: 10px 0;
       }

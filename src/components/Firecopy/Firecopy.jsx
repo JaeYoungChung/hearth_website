@@ -4,9 +4,11 @@ import './firecopy.css';
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/test_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
+import arrowright from '../../assets/arrow_right.png'
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
+import { getResults } from '../../data.js';
 
  
 const Firecopy = () => {
@@ -16,42 +18,42 @@ const Firecopy = () => {
             title: "Helm",
             color: "rgb(0, 255, 0)",
             subTitle: "Independence",
-            paragraph: "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this",
+            paragraph: "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this ",
             belowText: "Emerald Flame.",
         },
         {
           title: "Transcend",
           color: "rgb(255, 0, 0)",
           subTitle: "Volition",
-          paragraph: "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency  are the three key components of this",
+          paragraph: "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency  are the three key components of this ",
           belowText: "Crimson Flame.",
         },
         {
           title: "Reverie",
           color: "rgb(255, 255, 0)",
           subTitle: "Creativity",
-          paragraph: "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this",
+          paragraph: "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this ",
           belowText: "Canary Flame.",
         },
         {
           title: "Harmonize",
           color: "rgb(255, 0, 255)",
           subTitle: "Interpersonal Skills",
-          paragraph: "HARMONIZE is the Cognitive Force which enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this",
+          paragraph: "HARMONIZE is the Cognitive Force which enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this ",
           belowText: "Magenta Flame.",
         },
         {
           title: "Envisage",
           color: "rgb(0, 0, 255)",
           subTitle: "Cogitation",
-          paragraph: "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this",
+          paragraph: "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this ",
           belowText: "Cobalt Flame.",
         },
         {
           title: "Attune",
           color: "rgb(0, 255, 255)",
           subTitle: "Adpatability",
-          paragraph: "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this",
+          paragraph: "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this ",
           belowText: "Cyan Flame.",
         },
       ];
@@ -80,13 +82,22 @@ const Firecopy = () => {
     const rgbValues = JSON.parse(sessionStorage.getItem('rgbValues'));
     const red = rgbValues?.NewRedValue;
     const green = rgbValues?.NewGreenValue;
-    const blue = rgbValues?.NewBlueValue;      
+    const blue = rgbValues?.NewBlueValue;     
+    const maxminResult = sessionStorage.getItem('maxminResult') ;
+    let textToShow = 'No data found';
+    if (maxminResult) {
+      const { max, min } = JSON.parse(maxminResult);
+      const combinationTexts = getResults(); // Use getResults here
+      const key = `${max}-${min}`;
+      textToShow = combinationTexts[key] || 'No matching text found'; // Fallback text if key not found
+    }
 
     //references
     const videoRef = useRef(null);
     const textContainerRef = useRef(null);
     const bottomTextRef = useRef(null);
     const svgRef = useRef(null); // Reference for the SVG element
+    const svgRef2 = useRef(null); // Reference for the SVG element
     const leftArrowRef = useRef(null);
     const rightArrowRef = useRef(null);
     const graphRef = useRef(null); // Reference for the graph
@@ -108,11 +119,13 @@ const Firecopy = () => {
     const [changeTextColor, setChangeTextColor] = useState(false);
     const [rotation, setRotation] = useState(0);
     const [tilted, setTilted] = useState(false);
+    const [tiltedsvg, setTiltedSVG] = useState(false);
     const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
+    const [slideBottom, setSlideBottom] = useState(false);
     const [currentActiveScore, setCurrentActiveScore] = useState('s1');
-    const [showBackButton, setShowBackButton] = useState(false); // New state for back button visibility
-    const [smallTextContent, setSmallTextContent] = useState('Your small text here.');
-    const [showNewContent, setShowNewContent] = useState(false); // State to control the new content visibility
+    const [showBackButton, setShowBackButton] = useState(false);
+    const [smallTextContent, setSmallTextContent] = useState('finish test');
+    const [showNewContent, setShowNewContent] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
 
 
@@ -146,7 +159,6 @@ const Firecopy = () => {
 
       const handleBottomTextClick = () => {
         setShowContent(false); // Hide text container and bottom text
-        
         // Wait for fade out animation to complete before showing the SVG
         setTimeout(() => {
           if (svgRef.current) {
@@ -158,9 +170,12 @@ const Firecopy = () => {
             setChangeTextColor(true);
           }, 2000);
         setTimeout(() => {
+            setTiltedSVG(true);
             setTilted(true);
             setRotation(30);  // Set the rotation state to -60
-            svgRef.current.classList.add('slide-bottom');
+            if (svgRef2.current) {
+              svgRef2.current.classList.add('slide-bottom');
+            }
             if (videoRef.current) {
                 videoRef.current.classList.add('slide-right');
               }
@@ -296,30 +311,43 @@ const Firecopy = () => {
             </div> 
         </div>
       <div className='firecopy'>
-        <div className="f-video-container" ref={videoRef}>
+          <div className="f-video-container" ref={videoRef}>
             <video className="f-video" autoPlay loop muted>
                 <source src={resultfire} type="video/webm" />
             </video>
             <div
                 className="color-overlay"
-                style={{
+                style={{ 
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
             />
-        </div>
-        <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
-            <p>Your long text...</p>
-        </div>
-        <div className={`bottom-text ${!showContent ? 'fading' : ''}`} ref={bottomTextRef} onClick={handleBottomTextClick}>
-            see details →
-        </div>
-        <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
-        <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
-
-        <div className={`f-svg-container ${showContent ? 'hidden' : ''}`} 
-            ref={svgRef}
-            style={{transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)`}}>
-            <svg className={tilted ? 'f-tilted' : '' }>
+          </div>
+            <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
+                <p>To. O</p><br></br>
+                <p>{textToShow}</p><br></br>
+                <p className='third-line'>Sincerely, HEARTH</p>
+            </div>
+            <div
+              className={`bottom-text ${!showContent ? 'fading' : ''}`}
+              ref={bottomTextRef}
+              onClick={handleBottomTextClick}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              >
+              <span>see details</span>
+              <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px' }} />
+            </div>
+            <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
+            <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
+            <div className={tiltedsvg ? 'tilted-svg' : ''}>
+            <div
+              className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
+              ref={svgRef}
+              style={{ transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` }}
+            >
+              <svg className={tilted ? 'f-tilted' : ''}>
                 {/* Outer grey hexagon */}
                 <polygon
                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -343,13 +371,13 @@ const Firecopy = () => {
                     {
                 outerHexagonPoints.map((point, i) => (
                     <text 
-                        x={point.x - 10} 
-                        y={point.y + 10} 
-                        fontSize="24" 
+                        x={point.x - 8} 
+                        y={point.y + 11} 
+                        fontSize="24"
                         fill={changeTextColor ? colors[i] : "white"}
                         key={i}
                         transform={`translate(${point.x} ${point.y}) 
-                            rotate(${-rotation + textRotationAdjustment}) 
+                            rotate(${-rotation + textRotationAdjustment -2}) 
                             translate(${-point.x} ${-point.y})`}
                     >
                         {hexagon_labels[i]}
@@ -357,7 +385,8 @@ const Firecopy = () => {
                 ))
                 }
             </svg>
-      </div>
+            </div>
+          </div>
       
         <div className="text-left" ref={textLeftRef}>
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>

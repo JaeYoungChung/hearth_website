@@ -65,11 +65,12 @@ opacity: 1;
 
 .firecopy {
     position: relative;
+    height: 120%;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d; /* Allow 3D transformations */
-    overflow: hidden; /* To ensure anything moving outside the bounds is not visible */
+    overflow: visible; /* To ensure anything moving outside the bounds is not visible */
     font-family: "classico-urw", sans-serif;
   }
 
@@ -117,12 +118,19 @@ opacity: 1;
   .f-text-container {
     position: absolute;
     border: 1px solid white;
-    padding: 20px;
+    padding: 50px;
     color: white;
     right: 100px;
     width: 640px;
-    height: 550px;
+    height: 570px;
     opacity: 0;
+  }
+
+  .bottom-text {
+    top: 620px;
+    right: 50px;
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in-out; /* Fade in transition */
   }
     
   @keyframes slideToLeft {
@@ -150,13 +158,6 @@ opacity: 1;
   .f-text-container.appearing {
     animation: fadeIn 2s forwards; 
   }
-  
-  .bottom-text {
-    bottom: 0px;
-    right: 30px;
-    opacity: 0; /* Start hidden */
-    transition: opacity 1s ease-in-out; /* Fade in transition */
-  }
 
   .fading {
     animation: fadeOut 1s forwards; /* Apply fade-out animation */
@@ -168,25 +169,37 @@ opacity: 1;
     }
   }
 
-  .f-tilted {
-    transform: rotate3d(1, 0, 0, 70deg);
-    transform-origin: center;
-    transition: transform 2s ease-in-out;
-    opacity: 0.5;
+  .tilted-svg {
+    animation: slideBottom 1s forwards;
+}
+
+.f-tilted {
+  transform: rotate3d(1, 0, 0, 70deg);
+  transform-origin: center;
+  transition: transform 2s ease-in-out;
+  opacity: 0.5;
 }
   
-  .f-svg-container {
-    top: 12%;
-    right: 15%;
-    transform: translateY(-40%);
-    justify-self: center;
-    opacity: 0; /* Start hidden */
-    transition: opacity 1s ease-in-out; /* Fade in transition */
-    position: absolute;
-    transform-style: preserve-3d; /* Allow 3D transformations */ 
-    z-index: 1;
-    overflow: visible;
-  }
+.f-svg-container {
+  top: 12%;
+  right: 12%;
+  transform: translateY(40%);
+  justify-self: center;
+  opacity: 0; /* Start hidden */
+  position: absolute;
+  transform-style: preserve-3d; /* Allow 3D transformations */ 
+  z-index: 1;
+  overflow: visible;
+}
+
+.f-svg-container.hidden {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.f-svg-container.rotate {
+  transition: transform 1s ease-in-out;
+}
 
   svg {
     width: 420px; 
@@ -217,12 +230,26 @@ opacity: 1;
   
   @keyframes slideBottom {
     from {
-      transform: translateY(0%);
+      transform: translate(0px, 0px);
     }
     to {
-      transform: translateY(70%); /* Slide to the bottom */
+      transform: translate(150px, 28px);
     }
   }
+  
+  .rotate-0 {
+    transform: perspective(1000px) rotate3d(0, -2.747, 1, 0deg);
+  }
+  
+  .rotate-30 {
+    transform: perspective(1000px) rotate3d(0, -2.747, 1, 30deg);
+  }
+  
+  .rotate-60 {
+    transform: perspective(1000px) rotate3d(0, -2.747, 1, 60deg);
+  }
+  
+  /* Add more classes for other rotation values */
 
   .text-left {
     width: 35%;
@@ -237,7 +264,11 @@ opacity: 1;
     align-items: center; 
     position: absolute;
     z-index: 2;
-    justify-content: center;
+    justify-content: center; 
+  }
+
+  .third-line {
+    text-align: end;
   }
 
   .left-line1 {

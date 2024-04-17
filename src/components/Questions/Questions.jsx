@@ -5,14 +5,23 @@ import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getQuestions } from '../../data.js';
 import logo from '../../assets/test_logo.png'
+import england_flag from '../../assets/england.png';
 
 
 const Questions = () => {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleChangeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
+  const handleChangeLanguage = (language) => {
+    setSelectedLanguage(language);
+    i18n.changeLanguage(language);
+    setIsOpen(false);
+  };
+  
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleButtonClick = () => {
@@ -23,7 +32,20 @@ const Questions = () => {
     navigate('/blog');
   };
 
-    return (
+  const getSelectedFlagImage = () => {
+    switch (selectedLanguage) {
+      case 'en':
+        return england_flag;
+      case 'ja':
+        return england_flag;
+      case 'ko':
+        return england_flag;
+      default:
+        return england_flag;
+    }
+  }
+
+  return (
       <div className= "questions-page">
         <div className = "q-navbar">
           <div className = "q-navbar-links_logo">
@@ -32,19 +54,35 @@ const Questions = () => {
             </NavLink>
           </div>
           <div className='q-navbar-lang'>
-            {/* Search dropdown language for later adjustments */}
-            <select onChange={handleChangeLanguage}>
-              <option value="en" className="english">English</option>
-              <option value="ja" className="japanese">日本語</option>
-              <option value="ko" className="korean">한국어</option>
-            </select>
-            <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-          </div> 
-         </div>
+  <div className="dropdown">
+    <div className="dropdown-toggle" onClick={toggleDropdown}>
+      <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+      <i className="dropdown-arrow"></i>
+    </div>
+    {isOpen && (
+      <ul className="dropdown-menu">
+        <li onClick={() => handleChangeLanguage('en')}>
+          <span>English</span>
+          <img src={england_flag} alt="English" className="flag-image" />
+        </li>
+        <li onClick={() => handleChangeLanguage('ja')}>
+          <span>日本語</span>
+          <img src={england_flag} alt="Japanese" className="flag-image" />
+        </li>
+        <li onClick={() => handleChangeLanguage('ko')}>
+          <span>한국어</span>
+          <img src={england_flag} alt="Korean" className="flag-image" />
+        </li>
+      </ul>
+    )}
+  </div>
+  <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+  <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+</div> 
+        </div>
           <div className="survey-container">
             <Survey />
-          </div>
+        </div>
     </div>
     );
   }
@@ -154,7 +192,40 @@ function Survey() {
         const Interpersonal =  selectedScores[15]+selectedScores[16]+selectedScores[17]
                               +selectedScores[33]+selectedScores[34]+selectedScores[35]
                               +selectedScores[51]+selectedScores[52]+selectedScores[53];
-                       
+
+        //Test Result
+        const sums = [
+          { label: 'a', value: Independence},
+          { label: 'b', value: Cogitation},
+          { label: 'c', value: Adaptability},
+          { label: 'd', value: Creativity},
+          { label: 'e', value: Volition},
+          { label: 'f', value: Interpersonal}
+        ];
+        const maxPriority = ['e', 'a', 'b', 'c', 'f', 'd'];
+        const minPriority = ['d', 'f', 'c', 'b', 'a', 'e'];
+
+        // Custom sort function for finding maximum
+        const findMax = (a, b) => {
+          if (a.value > b.value) return -1;
+          if (a.value < b.value) return 1;
+          return maxPriority.indexOf(a.label) - maxPriority.indexOf(b.label);
+        };
+
+        // Custom sort function for finding minimum
+        const findMin = (a, b) => {
+          if (a.value < b.value) return -1;
+          if (a.value > b.value) return 1;
+          return minPriority.indexOf(a.label) - minPriority.indexOf(b.label);
+        };
+
+        // Determine the maximum and minimum
+        const max = sums.sort(findMax)[0].label;
+        const min = sums.sort(findMin)[0].label;
+
+        sessionStorage.setItem('maxminResult', JSON.stringify({
+          max, min
+        }));
 
         // Transcend (Volition):	 		Red			Red
         // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green

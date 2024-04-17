@@ -30,14 +30,14 @@ function Apps() {
     4: { src:  app_transcend, text: "T" },
     5: { src:  app_harmonize, text: "H" },
   };
-
+ 
   const imageData = {
-    0: { src:  helm_flame, color: "#0FF517", text: ["Helm", t("apps.independence"), "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this", " Emerald Flame."] },
-    1: { src:  envisage_flame, color: "#005CDE", text: ["Envisage", t('apps.cogitation'), "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this", " Cobalt Flame."]},
-    2: { src:  attune_flame, color: "#00FFFF", text: ["Attune", t('apps.adaptability'), "ATTUNE is the Cognitive Force that modifies and maneuverswith great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen andwits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this", " Cyan Flame."] },
-    3: { src:  reverie_flame, color: "#FFEF00", text: ["Reverie", t('apps.creativity'), "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this", " Canary Flame."] },
-    4: { src:  transcend_flame, color: "#DC143C", text: ["Transcend", t('apps.volition'), "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency  are the three key components of this", " Crimson Flame."] },
-    5: { src:  harmonize_flame, color: "#FF00FF", text: ["Harmonize", t('apps.interpersonal_skills'), "HARMONIZE is the Cognitive Force that enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this", " Magenta Flame."] },
+    0: { src:  helm_flame, color: "#0FF517", text: ["Helm", t("apps.independence"), "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. ", "Introspection, Integration, and Individuation", " are the three key components of this ", " Emerald Flame."] },
+    1: { src:  envisage_flame, color: "#005CDE", text: ["Envisage", t('apps.cogitation'), "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. ", "Reflection, Systemization, and Sagacity", " are the three key components of this ", " Cobalt Flame."]},
+    2: { src:  attune_flame, color: "#00FFFF", text: ["Attune", t('apps.adaptability'), "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen andwits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. ", "Perceptivity, Plasticity, and Optimization", " are the three key components of this ", " Cyan Flame."] },
+    3: { src:  reverie_flame, color: "#FFEF00", text: ["Reverie", t('apps.creativity'), "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. ", "Curiosity, Originality, and Artistry", " are the three key components of this ", " Canary Flame."] },
+    4: { src:  transcend_flame, color: "#DC143C", text: ["Transcend", t('apps.volition'), "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. ", "Passion, Resilience, and Ascendency", " are the three key components of this ", " Crimson Flame."] },
+    5: { src:  harmonize_flame, color: "#FF00FF", text: ["Harmonize", t('apps.interpersonal_skills'), "HARMONIZE is the Cognitive Force that enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. ", "Sensibility, Eloquence, and Resonance", " are the three key components of this ", " Magenta Flame."] },
   };
 
 
@@ -71,11 +71,11 @@ function TextSection({ color, text }) {
     <p className="a-text-big" style={{ color }}>{text[0]}</p>
     <p className="a-text-medium">{text[1]}</p>
     <hr />
-      <p className='a-text-small'>{text[2]}<span style={{ color }}>{text[3]}</span></p>
+    <p className='a-text-small'>{text[2]}<em>{text[3]}</em>{text[4]}<span style={{ color }}>{text[5]}</span></p>
   </div>
-  ); 
+  );  
 }
-
+ 
   return (
     <div id="apps" className="apps">
       <div className='apps-left-section'>

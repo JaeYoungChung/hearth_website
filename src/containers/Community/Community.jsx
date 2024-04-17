@@ -17,7 +17,6 @@ const images = [
     icon_instagram,
     icon_facebook,
     icon_x,
-    icon_instagram
   ];
 
 const Community = () => {
@@ -73,7 +72,7 @@ const Community = () => {
                 value={email}
                 onChange={handleEmailChange}
                 id="c-inputID"
-                className={!isValidEmail ? 'invalid' : ''}
+                className={!isValidEmail ? 'invalid' : ''} 
             />                
                 <p className="register" onClick={!isRegistered ? handleRegister : null}>
                     {isRegistered ? t("community.registered") : t("community.register")}

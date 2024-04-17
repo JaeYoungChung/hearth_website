@@ -11,14 +11,14 @@ const MainLayout = () => (
     <Navbar />
     <div>
     {/* <div className="snap-scroll-container"> */}
-      {/* <div className='longBackground'> */}
-        <section id="home" className="element"><Header /></section>
+      <div id="longBackground" className='longBackground'>
+        <section id="home" className="home-element"><Header /></section>
         <section id="about" className="long-element"><About /></section>
-      {/* </div> */}
+      </div>
         <section id="apps" className="element"><Apps /></section>
         <section id="team" className="element"><Team /></section>
         <section id="community" className="element"><Community /></section>
-      </div>
+    </div>
     {/* </div> */}
   </>
 );

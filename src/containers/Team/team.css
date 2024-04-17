@@ -1,7 +1,6 @@
 .team {
     font-family: "classico-urw", sans-serif;
     position: relative;
-    padding-top: 10px;
     padding-bottom: 70px;
     height: 110vh; 
     justify-content: center;
@@ -46,11 +45,15 @@
 
   .t-title1 {
     font-size: 40px;
+    font-weight: bold;
     opacity: 0.4;
+    line-height: 1.0;
   }
   .t-subtitle1 {
     font-size: 50px;
+    font-weight: bold;
     padding-left: 50px;
+    line-height: 1.0;
   }
   .t-paragraph1 {
     font-size: 18px;
@@ -117,6 +120,7 @@
     height: 25px;
     border-radius: 50%;
     background-color: #ccc;
+    opacity: 0.2;
     margin: 0 5px;
     cursor: pointer;
   }
@@ -125,6 +129,7 @@
     width: 30px;
     height: 30px;
     border-radius: 0; /* Square */
+    opacity: 1.0;
     background-color: white;
   }
   
