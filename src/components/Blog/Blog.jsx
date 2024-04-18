@@ -15,6 +15,9 @@ import { IoClose } from "react-icons/io5";
 import { uid } from "uid";
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/test_logo.png'
+import england_flag from '../../assets/england.png';
+import korea_flag from '../../assets/korea.png';
+import japan_flag from '../../assets/japan.png';
  
 import {
   FacebookShareButton, FacebookIcon,
@@ -128,6 +131,9 @@ const Blog = () => {
   const postsPerPage = 6;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
   //Category
   const [filteredPosts, setFilteredPosts] = useState([]); 
   const [activeCategory, setActiveCategory] = useState('all'); 
@@ -137,19 +143,38 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const firstPostImage = posts.length > 0 ? posts[0].imageUrl : '';
 
+  //language
   const [t, i18n] = useTranslation("global");
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+  const handleChangeLanguage = (language) => {
+    setSelectedLanguage(language);
+    i18n.changeLanguage(language);
+    setIsOpen(false);
+  };
+
+  const getSelectedFlagImage = () => {
+    switch (selectedLanguage) {
+      case 'en':
+        return england_flag;
+      case 'ja':
+        return japan_flag;
+      case 'ko':
+        return korea_flag;
+      default:
+        return england_flag;
+    }
+  }
+  
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   const navigate = useNavigate();
 
-  const handleChangeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
-  };
-
   const handleButtonClick = () => {
-    navigate('/questions');
+    navigate('/test');
   };
 
   const handleBlogClick = () => {
@@ -188,7 +213,7 @@ const Blog = () => {
   const handleCategoryChange = (event) => {
     setActiveCategory(event.target.value);
     setCurrentPage(1); // Reset to first page when category changes
-  };
+  }; 
 
 function handlePostClick(post) {
     setSelectedPost(post);
@@ -203,13 +228,29 @@ function handlePostClick(post) {
             </NavLink>
           </div>
           <div className='b-navbar-lang'>
-            {/* Search dropdown language for later adjustments */}
-            <select onChange={handleChangeLanguage}>
-              <option value="en" className="english">English</option>
-              <option value="ja" className="japanese">日本語</option>
-              <option value="ko" className="korean">한국어</option>
-            </select>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+              <div className="b-dropdown">
+                <div className="b-dropdown-toggle" onClick={toggleDropdown}>
+                  <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                  <i className="b-dropdown-arrow"></i>
+                </div>
+                {isOpen && (
+                  <ul className="b-dropdown-menu">
+                    <li onClick={() => handleChangeLanguage('en')}>
+                      <span>English</span>
+                      <img src={england_flag} alt="English" className="flag-image" />
+                    </li>
+                    <li onClick={() => handleChangeLanguage('ja')}>
+                      <span>日本語</span>
+                      <img src={japan_flag} alt="Japanese" className="flag-image" />
+                    </li> 
+                    <li onClick={() => handleChangeLanguage('ko')}>
+                      <span>한국어</span>
+                      <img src={korea_flag} alt="Korean" className="flag-image" />
+                    </li>
+                  </ul>
+                )}
+              </div>
+              <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
           </div> 
       </div>
     <PageHeader backgroundImage={firstPostImage} />

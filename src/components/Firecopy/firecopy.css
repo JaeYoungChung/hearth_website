@@ -382,6 +382,7 @@ opacity: 1;
     height: 12px;
     background-color: #1a1a1a;
     margin-right: 10px;
+    margin-left: 15px;
     position: relative;
     border-radius: 5px;
     overflow: hidden;
@@ -396,8 +397,12 @@ li.active .f-progress-container {
     height: 100%;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     transition: width 0.3s ease-in-out;
+}
+
+.f-percentage {
+  color: white;
 }
 
 .f-label-color-0 {

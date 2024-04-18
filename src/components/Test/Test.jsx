@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import logo from '../../assets/test_logo.png'
 import white_logo from '../../assets/whitelogo.png'
+import england_flag from '../../assets/england.png';
+import korea_flag from '../../assets/korea.png';
+import japan_flag from '../../assets/japan.png';
 import './test.css';
 import { useTranslation } from 'react-i18next';
 
 const Test = () => {
-  const [t, i18n] = useTranslation("global");
   const [showContent, setShowContent] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
   const [showAnimation, setShowAnimation] = useState(false);
@@ -16,15 +18,39 @@ const Test = () => {
   const [brighter, setBrighter] = useState(false);
   const [brightness, setBrightness] = useState(1.0);
 
+  //Translation
+    //language
+    const [t, i18n] = useTranslation("global");
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState('en');
+  
+    const handleChangeLanguage = (language) => {
+      setSelectedLanguage(language);
+      i18n.changeLanguage(language);
+      setIsOpen(false);
+    };
+  
+    const getSelectedFlagImage = () => {
+      switch (selectedLanguage) {
+        case 'en':
+          return england_flag;
+        case 'ja':
+          return japan_flag;
+        case 'ko':
+          return korea_flag;
+        default:
+          return england_flag;
+      }
+    }
+    
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
  
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
     navigate('/questions');
-  };
-
-  const handleChangeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
   };
 
   const handleBlogClick = () => {
@@ -73,12 +99,28 @@ const Test = () => {
             </NavLink>
           </div>
           <div className='t-navbar-lang'>
-            {/* Search dropdown language for later adjustments */}
-            <select onChange={handleChangeLanguage}>
-              <option value="en" className="english">English</option>
-              <option value="ja" className="japanese">日本語</option>
-              <option value="ko" className="korean">한국어</option>
-            </select>
+          <div className="q-dropdown">
+                  <div className="q-dropdown-toggle" onClick={toggleDropdown}>
+                    <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                    <i className="q-dropdown-arrow"></i>
+                  </div>
+                  {isOpen && (
+                    <ul className="q-dropdown-menu">
+                      <li onClick={() => handleChangeLanguage('en')}>
+                        <span>English</span>
+                        <img src={england_flag} alt="English" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ja')}>
+                        <span>日本語</span>
+                        <img src={japan_flag} alt="Japanese" className="flag-image" />
+                      </li> 
+                      <li onClick={() => handleChangeLanguage('ko')}>
+                        <span>한국어</span>
+                        <img src={korea_flag} alt="Korean" className="flag-image" />
+                      </li>
+                    </ul>
+                  )}
+                </div>
             <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
           </div>

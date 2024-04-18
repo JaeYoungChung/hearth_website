@@ -2,40 +2,43 @@ import React, {useState, useRef, useEffect} from 'react';
 import {RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import './navbar.css';
 import logo from '../../assets/home_logo.png'
-import england from '../../assets/england.png'
-import { NavLink } from 'react-router-dom';
+import england_flag from '../../assets/england.png';
+import korea_flag from '../../assets/korea.png';
+import japan_flag from '../../assets/japan.png';import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
 
 
-const languageOptions = [ 
-  {
-    id: "en",
-    name: "English",
-    flagimg: england,
-  },
-  {
-    id: "jp",
-    name: "日本語",
-    flagimg: england,
-  },
-  {
-    id: "kr",
-    name: "한국어",
-    flagimg: england,
-  },
-];
-const defaultLangFlag = <img src={languageOptions[0].flagimg} height="30" width="30" alt="nope" />;
-
-
 const Navbar = () => {
 
-  //translation
+  //language
   const [t, i18n] = useTranslation("global");
-  const handleChangeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleChangeLanguage = (language) => {
+    setSelectedLanguage(language);
+    i18n.changeLanguage(language);
+    setIsOpen(false);
+  };
+
+  const getSelectedFlagImage = () => {
+    switch (selectedLanguage) {
+      case 'en':
+        return england_flag;
+      case 'ja':
+        return japan_flag;
+      case 'ko':
+        return korea_flag;
+      default:
+        return england_flag;
+    }
+  }
+  
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   const location = useLocation(); // Use useLocation hook to get the current location object
@@ -73,9 +76,6 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  // const scrollRef = useRef(null);
-  // useScrollSnap({ ref: scrollRef, duration: 1, delay: 0 });
 
   const Menu = () => (
     <>
@@ -163,11 +163,28 @@ const Navbar = () => {
         )}
         <div className='navbar-lang'>
         {/* Search dropdown language for later adjustments */}
-        <select onChange={handleChangeLanguage}>
-          <option value="en" className="english">English</option>
-          <option value="ja" className="japanese">日本語</option>
-          <option value="ko" className="korean">한국어</option>
-        </select>
+        <div className="dropdown">
+                  <div className="dropdown-toggle" onClick={toggleDropdown}>
+                    <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                    <i className="dropdown-arrow"></i>
+                  </div>
+                  {isOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => handleChangeLanguage('en')}>
+                        <span>English</span>
+                        <img src={england_flag} alt="English" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ja')}>
+                        <span>日本語</span>
+                        <img src={japan_flag} alt="Japanese" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ko')}>
+                        <span>한국어</span>
+                        <img src={korea_flag} alt="Korean" className="flag-image" />
+                      </li>
+                    </ul>
+                  )}
+                  </div>
           <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
           <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
         </div>
