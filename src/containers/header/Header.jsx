@@ -17,7 +17,7 @@ const Header = () => {
   const handleButtonClick = () => {
     navigate('/test');
   };
-
+ 
   const [isActive, setIsActive] = useState(false);
 
   // Toggle the state on image click
@@ -49,7 +49,7 @@ const Header = () => {
               style={{ opacity: isActive ? 0.5 : 1 }} 
               onClick={handleImageClick} 
             /> 
-          </div>
+          </div> 
         </div>
     </div>
   )

@@ -57,8 +57,7 @@ const Community = () => {
             // Handle error
             console.error("Error saving email: ", error);
         });
-    };
-
+    }; 
 
     return (
         <div className="community">
@@ -79,7 +78,7 @@ const Community = () => {
                 </p>
                 </div>
                     {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
-                <div className="c-image-row">
+          <div className="c-image-row">
             {images.map((src, index) => (
               <img key={index} src={src} className="c-small-image" alt={`Small ${index + 1}`}/>
             ))}

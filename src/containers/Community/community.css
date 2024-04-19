@@ -72,6 +72,7 @@ hr {
 }
 
 .c-inputBox {
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,6 +86,7 @@ hr {
 #c-inputID::placeholder {
     width: 350px;
     color: white;
+    opacity: 0.5;
     background-color : transparent;
     border: none;
     outline: none;
@@ -94,6 +96,7 @@ hr {
     cursor: pointer;
     font-weight: 100;
     padding-right: 20px;
+    color: white;
 }
 
 .invalid {
@@ -104,4 +107,35 @@ hr {
     color: red;
     font-size: 0.8rem;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .community {
+    background-image: url('../../assets/community_bg.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+  }
+  .c-line1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 0;
+  }
+  .c-line2{
+    font-size: 60px;
+    font-weight: bold;
+  }
+  .c-line3{
+    width: 50%;
+    font-size: 16px;
+    opacity: 0.5;
+  }
+  .c-image-row {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 50%;
+  }
 }

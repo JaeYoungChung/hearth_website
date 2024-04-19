@@ -14,12 +14,12 @@
 
 .t-page1{
     background-repeat: no-repeat;
-    background-position: 1000px 90px;
+    background-position: 110% 0px
 }
 
 .t-page2{
     background-repeat: no-repeat;
-    background-position: 1000px 90px;
+    background-position: 100px 0px;
 }
   
   .t-text-content1 {
@@ -37,6 +37,7 @@
     justify-content: center;
     right: 0;
     color: white;
+    padding-bottom: 150px;
     flex: 1;
     width: 60%;
     max-width: 650px;
@@ -133,82 +134,102 @@
     background-color: white;
   }
   
+  @media screen and (max-width: 768px) {
+    .team {
+      height: auto;
+      padding-bottom: 40px;
+    }
+
+    .t-page2{
+      background-repeat: no-repeat;
+      background-position: 50px 50px;
+    }
+
+    .t-page1,
+    .t-page2 {
+      padding-left: 0;
+      background-position: -100px 0px;
+      background-size: contain;
+      height: auto;
+    }
+
+    .t-page1 {
+      background-position: 100px 0px
+    }
   
+    .t-text-content1,
+    .t-text-content2 {
+      position: relative;
+      width: 100%;
+      max-width: none;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .t-subtitle1 {
+      padding-left: 0;
+    }
+  
+    .t-title2,
+    .t-title3,
+    .t-title4,
+    .t-title5 {
+      font-size: 50px;
+    }
+  
+    .t-subtitle2,
+    .t-subtitle3,
+    .t-subtitle4,
+    .t-subtitle5 {
+      font-size: 40px;
+    }
+  
+    .t-paragraph1,
+    .t-paragraph2 {
+      font-size: 16px;
+    }
 
-/* 
-.team-left {
-    color: white;
-    flex: 1;
-    margin-top: 100px;
-    margin-left: 50px;
-    margin-right: 50px;
-}
+    .t-paragraph1 {
+      max-height: 260px;
+      overflow-y: auto; 
+    }
 
-.first-para {
-    padding-top: 30px;
-    padding-bottom: 20px;
-}
-.second-para {
-    padding-bottom: 20px;
-}
+    .t-page-indicators {
+      color: white;
+      position: absolute;
+      top: 120px;
+      right: 50px;
+      z-index: 5;
+    }
 
-.team-right {
-    height: 80vh;
-    border-radius: 10px;
-    flex: 1;
-    padding: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-    margin-top: 50px;
-}
+    .t-indicator {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ccc;
+      opacity: 0.2;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    
+    .t-indicator.active {
+      width: 25px;
+      height: 25px;
+      border-radius: 0; /* Square */
+      opacity: 1.0;
+      background-color: white;
+    }
 
-.para-texts{
-    color: white;
-    padding-top: 30px;
-    text-align: center;
-}
-
-.team-tabs {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0.5;
-    transform: scale(0.9);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    text-align: center;
-}
-
-.circle.selected {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.team-footer {
-    display: flex;
-    gap: 10px;
+  .t-text-content2 {
     position: absolute;
-    bottom: 20px;
-    right: 70px;
-}
-
-.team-footer-text{
-    padding-top: 5px;
-    font-size: 30px;
-}
-
-.team-square {
-    width: 40px;
-    height: 40px;
-} */
+    justify-content: center;
+    margin-right: auto;
+    left: 0;
+    color: white;
+    flex: 1;
+    width: 60%;
+    max-width: 650px;
+    z-Index: 2,
+  }
+  }

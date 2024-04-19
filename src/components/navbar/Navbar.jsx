@@ -8,7 +8,7 @@ import japan_flag from '../../assets/japan.png';import { NavLink } from 'react-r
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import { useLocation } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -154,13 +154,23 @@ const Navbar = () => {
          <img src={logo} width={46} height={72} alt = "logo"></img>
         </NavLink>
       </div>
-        {shouldShowMenu && (
+
+      <div className="navbar-menu">
+        {isOpen ? (
+          <RiCloseLine onClick={() => setIsOpen(false)} size={30} />
+        ) : (
+          <RiMenu3Line onClick={() => setIsOpen(true)} size={30}/>
+        )}
+      </div>
+
+      {shouldShowMenu && (
           <div className = "navbar-links">      
               <div className="navbar-links_container">
                 <Menu/>
               </div>
           </div>
         )}
+
         <div className='navbar-lang'>
         {/* Search dropdown language for later adjustments */}
         <div className="dropdown">
@@ -187,19 +197,6 @@ const Navbar = () => {
                   </div>
           <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
           <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-        </div>
-        <div className = "navbar-menu">
-          {toggleMenu
-          ? <RiCloseLine color = "#fff" size = {27} onClick = {() => setToggleMenu(false)}/>
-          : <RiMenu3Line color = "#fff" size = {27} onClick = {() => setToggleMenu(true)}/>
-        }
-        {toggleMenu &&(
-          <div className='navbar-menu_container scale-up-center'>
-            <div className='navbar-menu_container-links'>
-              <Menu/>
-            </div>
-          </div>
-        )}
         </div>
         </div>
   )

@@ -15,9 +15,10 @@ import app_harmonize from '../../assets/app_harmonize.png'
 import download_appstore from '../../assets/download_appstore.svg';
 import download_playstore from '../../assets/download_playstore.png';
 import { useState } from "react";
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
- 
+
 function Apps() {
   const [t, i18n] = useTranslation("global");
   const [selected, setSelected] = useState(0);
@@ -45,7 +46,7 @@ function ButtonSection({ setSelected, selected }) {
   const buttons = Object.keys(appData).map(key => (
     <div className="a-button-container" key={key}>
       <button
-        className={`a-square-button ${selected === parseInt(key) ? "grey" : "grey"}`}
+        className={`a-square-button ${selected === parseInt(key) ? 'clicked' : ''}`}
         onClick={() => setSelected(parseInt(key))}
         style={{
           opacity: selected === parseInt(key) ? 1 : 0.5,
@@ -54,7 +55,9 @@ function ButtonSection({ setSelected, selected }) {
           backgroundPosition: 'center',
         }}
       />
-      <p style={{ opacity: selected === parseInt(key) ? 1 : 0.5 }}>{appData[key].text[0]}</p>
+      <p style={{ opacity: selected === parseInt(key) ? 1 : 0.5, fontSize: selected === parseInt(key) ? 17 : 15}}>
+        {appData[key].text[0]}
+      </p>
     </div>
   ));
 
@@ -75,10 +78,16 @@ function TextSection({ color, text }) {
   </div>
   );  
 }
- 
+
   return (
+  // <TransitionGroup>
+  //   <CSSTransition
+  //     key={selected}
+  //     timeout={500}
+  //     classNames="fade"
+  //   >
     <div id="apps" className="apps">
-      <div className='apps-left-section'>
+      <div className='a-left-section'>
         <ImageSection image={imageData[selected].src} />
         <ButtonSection setSelected={setSelected} selected={selected} />
       </div>
@@ -89,8 +98,9 @@ function TextSection({ color, text }) {
             <img src = {download_playstore} className="android-icon"/>
           </div>
       </div>
-      
     </div>
+  //   </CSSTransition>
+  // </TransitionGroup>
   );
 }   
 

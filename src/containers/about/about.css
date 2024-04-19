@@ -56,35 +56,38 @@
     text-align: center;
   }
 
-  .about-big-text .line1 {
+  .about-big-text .line1,
+  .about-big-text .line2,
+  .about-big-text .line3,
+  .about-big-text .line4,
+  .about-big-text .line5,
+  .about-big-text .line6 {
     font-family: "classico-urw", sans-serif;
+  }
+
+  .about-big-text .line1 {
     font-size: 5rem;
   }
   
   .about-big-text .line2 {
-    font-family: "classico-urw", sans-serif;
     font-size: 3rem;
   }
   
   .about-big-text .line3 {
-    font-family: "classico-urw", sans-serif;
     font-size: 3rem;
   }
 
   .about-big-text .line4 {
-    font-family: "classico-urw", sans-serif;
     font-size: 5rem;
     padding-left: 180px;
     padding-bottom: 20px;
   }
   
   .about-big-text .line5 {
-    font-family: "classico-urw", sans-serif;
     font-size: 3rem;
-  }
+  } 
   
   .about-big-text .line6 {
-    font-family: "classico-urw", sans-serif;
     font-size: 4rem;
     padding-right: 200px;
     padding-top: 20px;
@@ -137,4 +140,108 @@
     font-family: "classico-urw", sans-serif;
     font-size: 40px;
     padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .About {
+      height: auto;
+    }
+    .section {
+      flex-direction: column;
+      padding: 5%;
+    }
+  
+    .squares-container {
+      width: 100%;
+      height: 40vh;
+      margin-bottom: 20px;
+    }
+  
+    .square {
+      width: 30vw;
+      height: 30vw;
+    }
+
+    .square1 {
+      top: 10%;
+      left: 23%;
+    }
+    
+    .square2 {
+      bottom: 10%;
+      right: 23%;
+    }
+
+    .inverted {
+      padding-top: 200px;
+    }
+  
+    .inverted .square1 {
+      top: 10%;
+      right: 23%;
+      left: unset;
+    }
+    
+    .inverted .square2 {
+      bottom: 10%;
+      left: 23%;
+      right: unset;
+    }
+
+    .inverted .squares-container {
+      order: -1;
+    }
+    
+    .inverted .long-text {
+      order: 1;
+    }
+  
+    .about-big-text .line1,
+    .about-big-text .line4 {
+      font-size: 3rem;
+      padding: 0;
+    }
+  
+    .about-big-text .line2,
+    .about-big-text .line3,
+    .about-big-text .line5 {
+      font-size: 2rem;
+    }
+  
+    .about-big-text .line6 {
+      font-size: 2.5rem;
+      padding: 0;
+    }
+  
+    .long-text {
+      width: 100%;
+      text-align: center;
+      opacity: 0.8;
+      padding-left: 45px;
+      padding-right: 45px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .text-center {
+      padding-top: 200px;
+    }
+
+    .centered-text {
+      width: 90%;
+      height: auto;
+      padding: 30px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  
+    .title {
+      font-size: 40px;
+      padding-bottom: 20px;
+    }
+  
+    .subtitle {
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
   }

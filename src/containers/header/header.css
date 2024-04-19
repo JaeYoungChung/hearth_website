@@ -96,81 +96,37 @@
   .h-email_img {
     height: 30px;
   }
- 
-@media screen and (max-width: 1050px) {
+
+
+  /* Media Query for Mobile Devices */
+@media (max-width: 768px) {
     .header {
-        flex-direction: column;
-    }
-
-    .header-content{
-        margin: 0 0 3rem;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .header h1{
-        font-size: 48px;
-        line-height: 60px;
-    }
-
-    .header p{
-        font-size: 16px;
-        line-height: 24px;
-    }
-
-    .header-content__input,
-    .header-content__input button {
-        font-size: 16px;
-        line-height: 24px;
+      flex-direction: column;
     }
     
-}
-
-@media screen and (max-width: 490px) {
-    .header h1{
-        font-size: 36px;
-        line-height: 48px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 150px;
-        width: 282px;
-        height: 59px;
+    .header-content {
+      padding-top: 300px;
     }
-
-    .header p{
-        font-size: 18px;
-        line-height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 30px;
-        width: 282px;
-        height: 59px;
+    
+    .home_title_text {
+      font-size: 60px;
     }
-
-    .header-content__input,
-    .header-content__input button {
-        width: 164px;
-        min-height: 35px;
-        font-size: 16px;
-        line-height: 16px;
-        top: 400px;
+    
+    .header-content p {
+      font-size: 30px;
     }
-
+    
+    .take-test-btn {
+      width: 120px;
+      min-height: 36px;
+      font-size: 16px;
+    }
+    
     .h-icons {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex; 
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .h-icon {
-        width: 0%;
-        margin: 10px 0;
-      }
+      display: none;
+    }
     
-}
+    .h-email {
+      display: none;
+    }
+  }

@@ -1,6 +1,7 @@
 .navbar {
     font-family: "classico-urw", sans-serif;
     display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
@@ -247,42 +248,16 @@ option.korean::after {
     display: none;
 }
 
-
-@media screen  and (max-width: 1050px) {
-.navbar-links_container {
-    display: none;
+.navbar-menu svg {
+  font-size: 2rem;
+  cursor: pointer;
 }
 
-.navbar-menu{
-    display: flex;
-    }  
+.dropdown-menu {
+  display: none; /* Initially hide dropdown */
 }
 
-@media screen  and (max-width: 700px) {
-    .navbar{
-        padding: 2rem 4rem;
-    }   
-}
-
-@media screen  and (max-width: 550px) {
-    .navbar{
-        padding: 2rem;
-    }   
-    .navbar-lang {
-        display: none;
-    }
-
-    .navbar-menu_container {
-        top: 20px;
-    }
-
-    .navbar-menu_container-links-lang{
-        display: block;
-    }
-
-    .navbar-links_logo img{      
-        /* width: 10%; */
-        opacity: 1;
-    }
+.dropdown-toggle.active .dropdown-menu {
+  display: block; /* Show dropdown when toggle is active */
 }
 

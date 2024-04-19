@@ -21,6 +21,7 @@
     "react-select": "^5.7.7",
     "react-share": "^5.0.2",
     "react-snap-scroll": "^0.0.5",
+    "react-swipeable": "^7.0.1",
     "react-transition-group": "^4.4.5",
     "react-use-scroll-snap": "^1.0.0",
     "scroll-snap": "^4.0.5",
