@@ -18,6 +18,7 @@ import logo from '../../assets/test_logo.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
+import arrowleft from '../../assets/arrow_left.png'
  
 import {
   FacebookShareButton, FacebookIcon,
@@ -29,6 +30,7 @@ import {
   LineShareButton, LineIcon,
   EmailIcon, EmailShareButton,
 } from "react-share";
+import { color } from 'd3';
 
 const { Kakao } = window;
 
@@ -77,7 +79,7 @@ const SharePopup = ({ url, onClose }) => {
     <div className="share-popup">
       <div className="popup-header">
         <h2>Share Blog</h2>
-        <IoClose className='close-button' onClick={onClose} />
+        <IoClose className='share-close-button' onClick={onClose} />
       </div>
       <div className='sns-icons'>
     <div className='button-row1'>
@@ -111,6 +113,9 @@ const SharePopup = ({ url, onClose }) => {
         <img className='copy-link'
           src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
           alt="카카오링크 보내기 버튼"
+          style={{
+            width: '40px',
+          }}
         />
       </button>
       <button className='button-share' onClick={copyToClipboard}>
@@ -325,7 +330,7 @@ function PageHeader({ backgroundImage }) {
   
   function Sidebar() {
     return (
-        <div className="blog-icons">
+      <div className="blog-icons">
         <img src = {icon_instagram} className="blog-icon"/>
         <img src = {icon_facebook} className="blog-icon"/>
         <img src = {icon_x} className="blog-icon"/>
@@ -354,6 +359,18 @@ function BlogPostDetail({ post, onClose }) {
     //share sns
     const [showPopup, setShowPopup] = useState(false);
     const currentUrl = window.location.href;
+    useEffect(() => {
+      const handlePopState = () => {
+        onClose();
+      };
+  
+      window.history.pushState(null, '', window.location.pathname);
+      window.addEventListener('popstate', handlePopState);
+  
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, [onClose]);
     return (
       <div className="blog-post-detail">
         <div className="modal-header">
@@ -373,8 +390,19 @@ function BlogPostDetail({ post, onClose }) {
         <div className="modal-body">
           <h2>{post.title}</h2>
           <p>{post.content}</p>
-          <button onClick={onClose}>Back to Posts</button>
+          <div className='back-home'
+            onClick={onClose}              
+            style={{
+              fontSize: 16,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+            <img src={arrowleft} alt="Arrow Left" style={{ marginRight: '5px', width: '22px'}} />
+            <span>Back to Home</span>
+          </div>
         </div>
+        <Banner></Banner>   
       </div>
     );
   }
@@ -424,28 +452,27 @@ function Banner() {
         <div className='banner-left'>
           <p className='b-line1'>Join the Hearthside</p>
           <p className='b-line2'>and be a part of our journey to wellness & enlightenment</p>
-            <div className="b-inputBox">
-                  <input
-                      type="text"
-                      placeholder={t("blog.email")}
-                      value={email}
-                      onChange={handleEmailChange}
-                      className={!isValidEmail ? 'invalid' : ''}
-                  />                
-                  <p className="register" onClick={!isRegistered ? handleRegister : null}>
-                      {isRegistered ? t("blog.registered") : t("blog.register")}
-                  </p>
-                  </div>
-                      {!isValidEmail && <p className="error-message">{t("blog.error_message")}</p>}          
-                  <div className="b-image-row">
-          </div>    
-        </div>
-            <div className='banner-icons'>
-              <img src={icon_instagram} alt="" />
-              <img src={icon_facebook} alt="" />
-              <img src={icon_x} alt="" />
-              <img src={icon_threads} alt="" />
+          <div className="b-inputBox">
+              <input
+                  type="text"
+                  placeholder={t("blog.email")}
+                  value={email}
+                  onChange={handleEmailChange}
+                  className={!isValidEmail ? 'invalid' : ''}
+              />                
+              <p className="register" onClick={!isRegistered ? handleRegister : null}>
+                  {isRegistered ? t("blog.registered") : t("blog.register")}
+              </p>
             </div>
+                  {!isValidEmail && <p className="error-message">{t("blog.error_message")}</p>}          
+            <div className="b-image-row"></div>    
+        </div>
+        <div className='banner-icons'>
+          <img src={icon_instagram} alt="" />
+          <img src={icon_facebook} alt="" />
+          <img src={icon_x} alt="" />
+          <img src={icon_threads} alt="" />
+        </div>
     </div>
   );
 }

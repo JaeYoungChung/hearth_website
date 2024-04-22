@@ -2,9 +2,16 @@ import React, {useState, useRef, useEffect} from 'react';
 import {RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import './navbar.css';
 import logo from '../../assets/home_logo.png'
+import navbar_menu from '../../assets/navbar_menu.png'
+import close_btn from '../../assets/close_btn.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
-import japan_flag from '../../assets/japan.png';import { NavLink } from 'react-router-dom';
+import japan_flag from '../../assets/japan.png';
+import icon_instagram from '../../assets/icon_instagram.png'
+import icon_facebook from '../../assets/icon_facebook.png'
+import icon_x from '../../assets/icon_x.png'
+import email from '../../assets/email.png'
+import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
@@ -17,13 +24,15 @@ const Navbar = () => {
   const [t, i18n] = useTranslation("global");
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
   const handleChangeLanguage = (language) => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
     setIsOpen(false);
   };
-
+ 
   const getSelectedFlagImage = () => {
     switch (selectedLanguage) {
       case 'en':
@@ -75,6 +84,7 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    closeMobileMenu();
   };
 
   const Menu = () => (
@@ -144,6 +154,12 @@ const Navbar = () => {
   const handleBlogClick = () => {
     navigate('/blog');
   };
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -154,26 +170,27 @@ const Navbar = () => {
          <img src={logo} width={46} height={72} alt = "logo"></img>
         </NavLink>
       </div>
-
-      <div className="navbar-menu">
-        {isOpen ? (
-          <RiCloseLine onClick={() => setIsOpen(false)} size={30} />
-        ) : (
-          <RiMenu3Line onClick={() => setIsOpen(true)} size={30}/>
-        )}
+      <div className="navbar-menu" onClick={toggleMobileMenu}>
+        <img src={navbar_menu} width={30} alt = "logo"></img>
       </div>
-
-      {shouldShowMenu && (
-          <div className = "navbar-links">      
-              <div className="navbar-links_container">
-                <Menu/>
-              </div>
+      {isMobileMenuOpen && (
+        <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'fade-in' : 'fade-out'}`}>
+          <div className="navbar-mobile-menu_header">
+            <div className="navbar-mobile-menu_close" onClick={toggleMobileMenu}>
+              <img src={close_btn} alt = "close"></img>
+            </div>
           </div>
-        )}
-
-        <div className='navbar-lang'>
-        {/* Search dropdown language for later adjustments */}
-        <div className="dropdown">
+          <div className="navbar-mobile-menu_content">
+            <Menu />
+            <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+            <div className="navbar-icons">
+              <img src = {icon_instagram} className="navbar-icon"/>
+              <img src = {icon_facebook} className="navbar-icon"/>
+              <img src = {icon_x} className="navbar-icon"/>
+              <img src = {email} style={{width: '40px'}} className="navbar-icon"/>
+            </div>
+            <div className="dropdown">
                   <div className="dropdown-toggle" onClick={toggleDropdown}>
                     <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
                     <i className="dropdown-arrow"></i>
@@ -194,11 +211,47 @@ const Navbar = () => {
                       </li>
                     </ul>
                   )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {shouldShowMenu && (
+          <div className = "navbar-links">      
+              <div className="navbar-links_container">
+                <Menu/>
+              </div>
+          </div>
+        )}
+
+        <div className='navbar-lang'>
+        {/* Search dropdown language for later adjustments */}
+            <div className="dropdown">
+                  <div className="dropdown-toggle" onClick={toggleDropdown}>
+                    <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                    <i className="dropdown-arrow"></i>
                   </div>
+                  {isOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => handleChangeLanguage('en')}>
+                        <span>English</span>
+                        <img src={england_flag} alt="English" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ja')}>
+                        <span>日本語</span>
+                        <img src={japan_flag} alt="Japanese" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ko')}>
+                        <span>한국어</span>
+                        <img src={korea_flag} alt="Korean" className="flag-image" />
+                      </li>
+                    </ul>
+                  )}
+            </div>
           <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
           <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
         </div>
-        </div>
+      </div>
   )
 }
 

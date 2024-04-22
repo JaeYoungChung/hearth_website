@@ -12,6 +12,14 @@ html, body {
   height: 100vh;
 }
 
+body {
+  overflow-x: hidden !important;
+}
+.container {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
 #about {
   height: 370vh;
 }

@@ -138,4 +138,33 @@ hr {
     margin-top: 20px;
     width: 50%;
   }
+  
+  .c-footer {
+    opacity: 0.5;
+    position: absolute;
+    bottom: 30px;
+    width: 80%;
+}
+
+.c-footerTexts {
+    flex-direction: column;
+    padding-top: 0px;
+    padding-left: 20%;
+    padding-right: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.c-footerTexts p{
+  margin-top: 6px;
+}
+
+hr {
+    color: white;
+    border: none;
+    height: 1px;
+    background: white;
+}
 }

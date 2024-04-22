@@ -1,252 +1,285 @@
-// const Team = () => {
-//     const [currentPage, setCurrentPage] = useState(0);
+// const Navbar = () => {    
   
-//     const pages = [<Page1 />, <Page2 />, <Page3 />, <Page4 />, <Page5 />];
+//     const location = useLocation(); // Use useLocation hook to get the current location object
+//     const [activeSection, setActiveSection] = useState('');
   
-//     return (
-//       <div className="team">
-//         {pages[currentPage]}
-//         <div className="t-page-indicators">
-//           {pages.map((_, index) => (
-//             <span key={index} className={`t-indicator ${index === currentPage ? 'active' : ''}`} onClick={() => setCurrentPage(index)}></span>
-//           ))}
-//         </div>
-//       </div>
+//     useEffect(() => {
+//       const handleIntersection = (entries) => {
+//         entries.forEach((entry) => {
+//           if (entry.isIntersecting) {
+//             setActiveSection(entry.target.id);
+//           }
+//         });
+//       };
+  
+//       const observer = new IntersectionObserver(handleIntersection, {
+//         threshold: 0.1,
+//       });
+  
+//       const sections = document.querySelectorAll('section');
+//       sections.forEach((section) => {
+//         observer.observe(section);
+//       });
+  
+//       return () => {
+//         sections.forEach((section) => {
+//           observer.unobserve(section);
+//         });
+//       };
+//     }, []);
+  
+//     const handleClick = (elementId) => {
+//       const element = document.getElementById(elementId);
+//       if (element) {
+//         element.scrollIntoView({ behavior: 'smooth' });
+//       }
+//     };
+  
+//     const Menu = () => (
+//       <>
+//         <li className='nav-item'>
+//           <p>
+//             <a
+//               href="#home"
+//               className={activeSection === 'home' ? 'active' : ''}
+//               onClick={() => handleClick('home')}
+//             >
+//               Home
+//             </a>
+//           </p>
+//         </li>
+//         <li className='nav-item'>
+//           <p>
+//             <a
+//               href="#about"
+//               className={activeSection === 'about' ? 'active' : ''}
+//               onClick={() => handleClick('about')}
+//             >
+//               About
+//             </a>
+//           </p>
+//         </li>
+//         <li className='nav-item'>
+//           <p>
+//             <a
+//               href="#apps"
+//               className={activeSection === 'apps' ? 'active' : ''}
+//               onClick={() => handleClick('apps')}
+//             >
+//               Apps
+//             </a>
+//           </p>
+//         </li>
+//         <li className='nav-item'>
+//           <p>
+//             <a
+//               href="#team"
+//               className={activeSection === 'team' ? 'active' : ''}
+//               onClick={() => handleClick('team')}
+//             >
+//               Team
+//             </a>
+//           </p>
+//         </li>
+//         <li className='nav-item'>
+//           <p>
+//             <a
+//               href="#community"
+//               className={activeSection === 'community' ? 'active' : ''}
+//               onClick={() => handleClick('community')}
+//             >
+//               Community
+//             </a>
+//           </p>
+//         </li>
+//       </>
 //     );
-//   };
+//     const navigate = useNavigate();
   
-//   const Page1 = () => (
-//     <div className='t-page1' 
-//         style={{ display: 'flex',
-//                 paddingLeft: 100,
-//                 height: '110vh', 
-//                 backgroundImage: `url(${white_logo})`,
-//                 backgroundPosition:'1000px 90px',
-//                 backgroundSize: 'contain',      
-//                 }}>
-//       <div className="t-text-content1" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left'}}>
-//         <p className="t-title1">Team</p>
-//         <p className="t-subtitle1">Alpha</p><br/>
-//         <div className="t-paragraph1">
-//             <p>Team Alpha</p>
-//             <p>On Duty</p>
-//             <p>On Duty</p>
-//             <em>“Our Code”,</em><br/><br></br>
-//             <p>On Duty</p>
-//             <p>On Duty</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-  
-//   const Page2 = () => (
-//     <div className='t-page2' 
-//         style={{ display: 'flex',
-//                 paddingLeft: 100,
-//                 height: '110vh', 
-//                 backgroundImage: `url(${yellow_logo})`,
-//                 backgroundPosition:'100px 90px',
-//                 backgroundSize: 'contain',      
-//                 }}>
-//       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
-//         <p className="t-title2">A Man</p>
-//         <p className="t-subtitle2">The Man</p><br/>
-//         <div className="t-paragraph2">
-//             <p>A Man</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
+//     const handleButtonClick = () => {
+//       navigate('/test');
+//     };
+//     const handleBlogClick = () => {
+//       navigate('/blog');
+//     };
     
-//   const Page3 = () => (
-//     <div className='t-page2' 
-//         style={{ display: 'flex',
-//                 paddingLeft: 100,
-//                 height: '110vh', 
-//                 backgroundImage: `url(${red_logo})`,
-//                 backgroundPosition:'100px 90px',
-//                 backgroundSize: 'contain',      
-//                 }}>
-//       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
-//         <p className="t-title3">B Man</p>
-//         <p className="t-subtitle3">B Man</p><br/>
-//         <div className="t-paragraph2">
-//             <p>B Man</p><br/>
-//             <p>B Man</p>
+//     return (
+//       <div className = "navbar">
+//         <div className = "navbar-links_logo">
+//           <NavLink to='/'>
+//            <img src={logo} width={46} height={72} alt = "logo"></img>
+//           </NavLink>
 //         </div>
-//       </div>
-//     </div>
-//   );
-//   const Page4 = () => (
-//     <div className='t-page2' 
-//         style={{ display: 'flex',
-//                 paddingLeft: 100,
-//                 height: '110vh', 
-//                 backgroundImage: `url(${green_logo})`,
-//                 backgroundPosition:'100px 90px',
-//                 backgroundSize: 'contain',      
-//                 }}>
-//       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
-//         <p className="t-title4">C</p>
-//         <p className="t-subtitle4">C Woman</p><br/>
-//         <div className="t-paragraph2">
-//             <p>C Woman</p>
-//             <p>C Woman</p><br/>
-//         </div>
-//       </div>
-//     </div>
-//   );
-//   const Page5 = () => (
-//     <div className='t-page2' 
-//         style={{ display: 'flex',
-//                 paddingLeft: 100,
-//                 height: '110vh', 
-//                 backgroundImage: `url(${blue_logo})`,
-//                 backgroundPosition:'100px 90px',
-//                 backgroundSize: 'contain',      
-//                 }}>
-//       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
-//         <p className="t-title5">D</p>
-//         <p className="t-subtitle5">D Man</p><br/>
-//         <div className="t-paragraph2">
-//             <p>D Man</p>
-//             <p>D Man</p>
-//         </div>
-//       </div>
-//     </div>
-//   );  
+  
+//         {shouldShowMenu && (
+//             <div className = "navbar-links">      
+//                 <div className="navbar-links_container">
+//                   <Menu/>
+//                 </div>
+//             </div>
+//           )}
+//     )
+//   }
 
-// CSS:
-// .team {
+
+//   .navbar {
 //     font-family: "classico-urw", sans-serif;
-//     position: relative;
-//     padding-bottom: 70px;
-//     height: 110vh; 
-//     justify-content: center;
+//     display: flex;
+//     /* display: none; */
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 1rem 3rem;
+//     padding-bottom: 0;
+//     position: sticky;
+//     top: 0;
+//     z-index: 40;
+// }
+   
+// .navbar-links {
+//     flex: 1;
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     padding-left: 20px;
 // }
 
-// .t-background-img {
-//     height: 100vh;
-//     flex: 1;
-//     background-repeat: no-repeat;
+// .nav-item a {
+//     opacity: 0.5;
+//     font-family: "classico-urw", sans-serif;
+//     font-size: 20px;
+//     transition: opacity 0.3s, color 0.3s;
+//     margin-right: 25px;
+//   }
+  
+//   .nav-item a.active {
+//     opacity: 1;
 //   }
 
-// .t-page1{
-//     background-repeat: no-repeat;
-//     background-position: 1000px 90px;
+// .navbar-links a {
+//     opacity: 0.5;
+//     font-family: "classico-urw", sans-serif;
+//     font-size: 20px;
+//     transition: opacity 0.3s, color 0.3s;
+//     margin-right: 25px;
 // }
 
-// .t-page2{
-//     background-repeat: no-repeat;
-//     background-position: 1000px 90px;
+// .nav-item {
+//     padding-bottom: 0px;
+//     list-style: none;
 // }
-  
-//   .t-text-content1 {
-//     position: absolute;
+
+// .nav-item .active {
+//     border-bottom: 2px solid white;
+//     color: white; 
+//     opacity: 1;
+// }
+
+// .navbar-links a:hover {
+//     opacity: 0.75;
+//     border-bottom: 2px solid white;
+// }
+
+// .navbar-links_logo{
+//     margin-right: 1.5rem;
+// }
+
+// .navbar-links_logo img{
+// top: 70px;
+// left: 70px;
+// height: 76px;
+// opacity: 1;
+// }
+
+// .logo-text{
+//     font-family: "classico-urw", sans-serif;
+//     display: flex;
+//     align-items: center;
 //     justify-content: center;
+//     top: 159px;
+//     left: 67px;
+//     width: 48px;
+//     height: 14px;
 //     color: white;
-//     flex: 1;
-//     width: 80%;
-//     max-width: 1200px;
-//     z-Index: 2;
-//   }
+//     text-align: center;
+//     opacity: 0.5;
+// }
 
-//   .t-text-content2 {
-//     position: absolute;
-//     justify-content: center;
-//     right: 0;
+// .navbar-links_container{
+//     display: flex;
+//     flex-direction: row;
+// }
+
+// .nav-button{
+//     cursor: pointer; 
+//     font-family: "classico-urw", sans-serif;
+//     width: 120px;
+//     min-height: 38px;
+//     font-size: 17px;
+//     background-color: transparent;
+//     border-radius: 5px 5px 5px 5px;
+//     border-color: white;
 //     color: white;
-//     flex: 1;
-//     width: 60%;
-//     max-width: 650px;
-//     z-Index: 2,
-//   }
+//     border: 1px solid #FFFFFF;
+// }
 
-//   .t-title1 {
-//     font-size: 40px;
-//     font-weight: bold;
-//     opacity: 0.4;
-//     line-height: 1.0;
-//   }
-//   .t-subtitle1 {
-//     font-size: 50px;
-//     font-weight: bold;
-//     padding-left: 50px;
-//     line-height: 1.0;
-//   }
-//   .t-paragraph1 {
-//     font-size: 18px;
-//     line-height: 1.5;
-//   }
-
-//   .t-title2 {
-//     font-size: 50px;
-//     color: #FFD800;
-//   }
-//   .t-subtitle2 {
-//     font-size: 30px;
-//     color: #FFD800;
-//     opacity: 0.4;
-//   }
-  
-//   .t-title3 {
-//     font-size: 50px;
-//     color:#FF084B;
-//   }
-//   .t-subtitle3 {
-//     font-size: 30px;
-//     color:#FF084B;
-//     opacity: 0.4;
-//   }
-  
-//   .t-title4 {
-//     font-size: 50px;
-//     color:#40FFE9;
-//   }
-//   .t-subtitle4 {
-//     font-size: 30px;
-//     color:#40FFE9;
-//     opacity: 0.4;
-//   }
-
-//   .t-title5 {
-//     font-size: 50px;
-//     color:#4073FF;
-//   }
-//   .t-subtitle5 {
-//     font-size: 30px;
-//     color:#4073FF;
-//     opacity: 0.4;
-//   }
-
-//   .t-paragraph2 {
-//     margin-bottom: 15px;
-//     line-height: 1.5;
-//   }
-
-//   .t-page-indicators {
+// select {
 //     color: white;
-//     position: absolute;
-//     bottom: 90px;
-//     right: 120px;
-//     z-index: 5;
-//   }
-  
-//   .t-indicator {
-//     display: inline-block;
-//     width: 25px;
-//     height: 25px;
-//     border-radius: 50%;
-//     background-color: #ccc;
-//     opacity: 0.2;
-//     margin: 0 5px;
+//     background-color: transparent;
+//     padding: 10px;
+//     font-size: 16px;
+//     width: 100px;
+// }
+
+// .navbar-links_container p,
+// .navbar-lang p,
+// .navbar-menu_container p {
+//     color: #fff;
+//     font-family: var(--font-family);
+//     font-size: 17px;
+//     line-height: 25px;
+//     text-transform: capitalize;
+//     margin: 0 1rem;
 //     cursor: pointer;
-//   }
-  
-//   .t-indicator.active {
-//     width: 30px;
-//     height: 30px;
-//     border-radius: 0; /* Square */
-//     opacity: 1.0;
-//     background-color: white;
-//   }
+// }
+
+// .navbar-menu {
+//     margin-left: 1rem;
+//     display: none;
+//     position: relative;
+// }
+
+// .navbar-menu svg{
+//     cursor: pointer;
+// }
+
+// .navbar-menu_container {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: flex-end;
+//     flex-direction: column;
+//     text-align: end;
+//     background-color: var(--color-footer);
+//     padding: 2rem;
+//     position: absolute;
+//     top: 40px;
+//     right: 0;
+//     margin-top: 1rem;
+//     min-width: 210px;
+//     border-radius: 5px;
+//     box-shadow: 0 0 5 rgba(0,0,0,2);
+// }
+
+// .navbar-menu_container p {
+//     margin: 1rem 0;
+// }
+
+// .navbar-menu_container-links-lang{
+//     display: none;
+// }
+
+// .navbar-menu svg {
+//   font-size: 2rem;
+//   cursor: pointer;
+// }
+
+// This is my react js code for my navigation bar at the top of the page. I would like to display a different format for the mobile responsive version. Can you edit the code so that for the mobile version, all the things inside the navigation bar, except the logo are hidden inside a small menu bar at the top right of the page? When the user clicks the small menu bar, all of the contents inside are displayed as a full sized screen page with a close button on the top right.

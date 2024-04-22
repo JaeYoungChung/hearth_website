@@ -1,7 +1,7 @@
 .navbar {
     font-family: "classico-urw", sans-serif;
     display: flex;
-    display: none;
+    /* display: none; */
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
@@ -261,3 +261,72 @@ option.korean::after {
   display: block; /* Show dropdown when toggle is active */
 }
 
+
+.navbar-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  color: white;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-mobile-menu.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-mobile-menu.fade-out {
+  opacity: 0;
+}
+
+.navbar-mobile-menu_header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.navbar-mobile-menu_close {
+  cursor: pointer;
+}
+
+.navbar-mobile-menu_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-icons {
+  display: flex; 
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar-icon {
+  width: 30px;
+  margin: 10px 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-menu {
+    display: block;
+  }
+
+  .navbar-lang{
+    display: none;
+  }
+}
