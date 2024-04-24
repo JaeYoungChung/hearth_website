@@ -13,8 +13,16 @@ import { getResults } from '../../data.js';
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
+import navbar_menu from '../../assets/navbar_menu.png'
+import close_btn from '../../assets/close_btn.png'
+import icon_instagram from '../../assets/icon_instagram.png'
+import icon_facebook from '../../assets/icon_facebook.png'
+import icon_x from '../../assets/icon_x.png'
+import email from '../../assets/email.png'
+import read_more from '../../assets/read_more.png'
+import close_result from '../../assets/close_result.png'
 
- 
+
 const Firecopy = () => {
 
     const hexagonData = [
@@ -96,11 +104,30 @@ const Firecopy = () => {
           return england_flag;
       }
     }
+
+    const getSelectedFlagText = () => {
+      switch (selectedLanguage) {
+        case 'en':
+          return 'ENG';
+        case 'ja':
+          return '日本語';
+        case 'ko':
+          return '한국어';
+        default:
+          return 'ENG';
+      }
+    }
     
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
-    
+
+    const toggleMobileMenu = () => {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+    const closeMobileMenu = () => {
+      setIsMobileMenuOpen(false);
+    };
 
     //data from file
     const storedResults = sessionStorage.getItem('surveyResults');
@@ -129,6 +156,8 @@ const Firecopy = () => {
     const rightArrowRef = useRef(null);
     const graphRef = useRef(null); // Reference for the graph
     const textLeftRef = useRef(null); // Reference for the text on the left
+    const textLeftLinesRef = useRef(null);
+    const forceQuotient = useRef(null);
     const smallTextRef = useRef(null);
 
 
@@ -141,6 +170,7 @@ const Firecopy = () => {
     const rCustomIndex = customOrder[currentIndex];
 
     //useStates
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [showContent, setShowContent] = useState(true);
     const [hexagonColor, setHexagonColor] = useState('initialColor');
     const [changeTextColor, setChangeTextColor] = useState(false);
@@ -154,6 +184,7 @@ const Firecopy = () => {
     const [smallTextContent, setSmallTextContent] = useState('finish test');
     const [showNewContent, setShowNewContent] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
+    const [rotationButton, setRotationButton] = useState(70);
 
 
     const onRotate = (newScore) => {
@@ -188,9 +219,14 @@ const Firecopy = () => {
         setShowContent(false); // Hide text container and bottom text
         // Wait for fade out animation to complete before showing the SVG
         setTimeout(() => {
-          if (svgRef.current) {
-            svgRef.current.style.opacity = 1; // Fade in the SVG
-          }
+          // if (svgRef.current) {
+          //   if (window.matchMedia('(max-width: 768px)').matches) {
+          //     svgRef.current.style.opacity = 0.5; // Set opacity to 0.5 for mobile screens
+          //   } else {
+          //     svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
+          //   }
+          // }
+          svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
         }, 1000);
         setTimeout(() => {
             setHexagonColor(`rgb(${red}, ${green}, ${blue})`); // Set hexagon color to fire color
@@ -208,6 +244,8 @@ const Firecopy = () => {
               }
             textContainerRef.current.style.opacity = 0;
             textLeftRef.current.style.opacity = 1;
+            textLeftLinesRef.current.style.opacity = 0;
+            forceQuotient.current.style.opacity = 1;
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
@@ -242,6 +280,23 @@ const Firecopy = () => {
             setShowBackButton(false); // Hide back button
             setShowNewContent(false); // Hide new content
       };
+
+      const handleReadMoreClick = () => {
+        //fire opacity darkens
+        videoRef.current.style.opacity = 0.5;
+        
+        //hexagon reverse tilt
+        setRotationButton(0);
+
+        //legend goes away, force quotient goes away, finish test goes away
+        graphRef.current.style.opacity = 0;
+        forceQuotient.current.style.opacity = 0;
+        smallTextRef.current.style.opacity = 0;
+
+        //show each cf
+        textLeftLinesRef.current.style.opacity = 1;
+        
+      }
 
       const getHexagonPoints = (centerX, centerY, radius) => {
         const points = [];
@@ -324,15 +379,58 @@ const Firecopy = () => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
 
-
     return (
     <div className='firecopy-container'>
         <div className = "f-navbar">
             <div className = "f-navbar-links_logo">
                 <NavLink to='/'>
-                <img src={logo} height={80} alt = "logo"></img>
+                  <img className='f-logo' src={logo} height={80} alt = "logo"></img>
                 </NavLink>
             </div>
+            <div className="navbar-menu" onClick={toggleMobileMenu}>
+        <img src={navbar_menu} width={30} alt = "logo"></img>
+      </div>
+      {isMobileMenuOpen && (
+        <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'fade-in' : 'fade-out'}`}>
+          <div className="navbar-mobile-menu_header">
+            <div className="navbar-mobile-menu_close" onClick={toggleMobileMenu}>
+              <img src={close_btn} alt = "close"></img>
+            </div>
+          </div>
+          <div className="navbar-mobile-menu_content">
+            <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+            <div className="m-navbar-icons">
+              <img src = {icon_instagram} className="m-navbar-icon"/>
+              <img src = {icon_facebook} className="m-navbar-icon"/>
+              <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
+            </div>
+            <div className="m-dropdown">
+                  <div className="q-dropdown-toggle" onClick={toggleDropdown}>
+                    <p >Language: {getSelectedFlagText()}</p>
+                    <i className="dropdown-arrow"></i>
+                  </div>
+                  {isOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => handleChangeLanguage('en')}>
+                        <span>English</span>
+                        <img src={england_flag} alt="English" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ja')}>
+                        <span>日本語</span>
+                        <img src={japan_flag} alt="Japanese" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ko')}>
+                        <span>한국어</span>
+                        <img src={korea_flag} alt="Korean" className="flag-image" />
+                      </li>
+                    </ul>
+                  )}
+            </div>
+          </div>
+        </div>
+      )}
         <div className='f-navbar-lang'>
                <div className="q-dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
@@ -354,7 +452,7 @@ const Firecopy = () => {
                         <img src={korea_flag} alt="Korean" className="flag-image" />
                       </li>
                     </ul>
-                  )}
+                  )} 
                 </div>
             <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
@@ -371,34 +469,36 @@ const Firecopy = () => {
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
             />
-          </div>
-            <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
-                <p>To. O</p><br></br>
-                <p>{textToShow}</p><br></br>
-                <p className='third-line'>Sincerely, HEARTH</p>
             </div>
-            <div
-              className={`bottom-text ${!showContent ? 'fading' : ''}`}
-              ref={bottomTextRef}
-              onClick={handleBottomTextClick}
-              style={{
-                fontSize: 16,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              >
-              <span>see details</span>
-              <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
+            <div className='f-column'>
+              <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
+                  <p>To. O</p><br></br>
+                  <p>{textToShow}</p><br></br>
+                  <p className='third-line'>Sincerely, HEARTH</p>
+              </div>
+              <div
+                className={`bottom-text ${!showContent ? 'fading' : ''}`}
+                ref={bottomTextRef}
+                onClick={handleBottomTextClick}
+                style={{
+                  fontSize: 16,
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+                >
+                <span>see details</span>
+                <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
+              </div>
             </div>
             <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
             <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
-            <div className={tiltedsvg ? 'tilted-svg' : ''}>
-            <div
-              className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
-              ref={svgRef}
-              style={{ transform: `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` }}
-            >
-              <svg className={tilted ? 'f-tilted' : ''}>
+          <div className={tiltedsvg ? 'tilted-svg' : ''}>
+          <div
+            className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
+            ref={svgRef}
+            style={{ transform: `perspective(1000px) rotate3d(${rotationButton === 0 ? '0, 0, 0' : '0, -2.747, 1'}, ${rotation}deg)` }}
+          >
+              <svg className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}>
                 {/* Outer grey hexagon */}
                 <polygon
                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -440,6 +540,7 @@ const Firecopy = () => {
           </div>
       
         <div className="text-left" ref={textLeftRef}>
+          <div className='text-left-lines' ref={textLeftLinesRef}>
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
             <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
@@ -450,8 +551,12 @@ const Firecopy = () => {
                 </div>
                 <p className="f-main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
             </div>
+            <img className='close-result' src={close_result}></img>
+          </div>
+          <div className='force-quotient' ref={forceQuotient}>
             <p className='left-lastline1'>※ Force Quotient (FQ)</p>
             <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
+          </div>
         </div>
         {showNewContent && (
         <div className="f-new-content">
@@ -498,7 +603,7 @@ const Firecopy = () => {
               <label for="check2" className="checkbox-label"> I agree to receive general emails and product offers from HEARTH (optional)</label>
             </div>
           </div>
-        </div> 
+        </div>
       )}
         <div className="f-legend-container" ref={graphRef}>
             <ul className="f-score-list">
@@ -511,20 +616,21 @@ const Firecopy = () => {
                             <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                         </div>
                       <p className='f-percentage'>{Math.round(hexagonScores[`s${originalIndex+1}`]/36*100)}%</p>
+                      <img src={read_more} className="read_more" onClick={handleReadMoreClick} alt="Description"/>
                     </li>
                 );
               })}
             </ul>
         </div>
         <div className="f-small-text" ref={smallTextRef}
-        onClick={smallTextRef.current && smallTextRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
-        style={{
-            opacity: 0,
-            fontSize: 17,
-            display: 'flex',
-            alignItems: 'center',
-          }}
-          >
+          onClick={smallTextRef.current && smallTextRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
+          style={{
+              opacity: 0,
+              fontSize: 17,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
           <span>{smallTextContent}</span>
           <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
         </div>

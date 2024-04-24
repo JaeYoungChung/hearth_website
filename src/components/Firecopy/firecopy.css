@@ -11,28 +11,28 @@
 }
 
 .q-navbar-links_logo{
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .q-navbar-links_logo img{
-top: 70px;
-left: 70px;
-height: 76px;
-opacity: 1;
+  top: 70px;
+  left: 70px;
+  height: 76px;
+  opacity: 1;
 }
 
 .f-logo-text{
-    font-family: "classico-urw", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 159px;
-    left: 67px;
-    width: 48px;
-    height: 14px;
-    color: white;
-    text-align: center;
-    opacity: 0.5;
+  font-family: "classico-urw", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 159px;
+  left: 67px;
+  width: 48px;
+  height: 14px;
+  color: white;
+  text-align: center;
+  opacity: 0.5;
 }
 
 .f-navbar-links_container{
@@ -79,6 +79,7 @@ opacity: 1;
     height: 43%;
     position: relative;
     z-index: 0; /*video is above the hexagon */
+    display: inline-block;
   }
   
   .f-video-container::before {
@@ -90,11 +91,6 @@ opacity: 1;
     height: 95%;
     mix-blend-mode: multiply;
     pointer-events: none;
-  }
-
-  .f-video-container {
-    position: relative;
-    display: inline-block;
   }
 
   .color-overlay {
@@ -114,21 +110,36 @@ opacity: 1;
     background-color: var(--overlay-color);
     mix-blend-mode: color;
   }
+
+  .f-column {
+    position: absolute;
+    right: 0;
+    left: 57%;
+    width: 100%;
+    top: 0;
+    flex-direction: column;
+  }
   
   .f-text-container {
-    position: absolute;
+    position: relative;
     border: 1px solid white;
-    padding: 50px;
+    padding: 40px;
     color: white;
     right: 100px;
-    width: 640px;
-    height: 570px;
+    width: 45%;
     opacity: 0;
+    min-height: 80vh; /* Set a fixed height for mobile */
+    overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 50;
   }
 
   .bottom-text {
-    top: 620px;
-    right: 50px;
+    color: white;
+    position: relative;
+    right: 0;
+    left: 30%;
+    bottom: 0;
+    padding-top: 20px;
     z-index: 101;
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
@@ -176,7 +187,7 @@ opacity: 1;
 
 .f-tilted {
   transform: rotate3d(1, 0, 0, 70deg);
-  transform-origin: center;
+  /* transform-origin: center; */
   transition: transform 2s ease-in-out;
   opacity: 0.5;
 }
@@ -250,8 +261,6 @@ opacity: 1;
     transform: perspective(1000px) rotate3d(0, -2.747, 1, 60deg);
   }
   
-  /* Add more classes for other rotation values */
-
   .text-left {
     width: 35%;
     color: white;
@@ -332,11 +341,13 @@ opacity: 1;
   }
   
   .left-arrow {
+    opacity: 0;
     background-color: transparent;
     right: 220px; /* Distance from the left side of the SVG */
   }
   
   .right-arrow {
+    opacity: 0;
     background-color: transparent;
     left: 150px; /* Distance from the right side of the SVG */
   }
@@ -592,4 +603,338 @@ li.active .f-progress-container {
     font-size: 0.8rem;
     line-height: 0;
     margin-bottom: 15px;
+}
+
+.read_more{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .f-logo {
+      height: 50px;
+    }
+
+    .navbar-menu {
+      display: block;
+    }
+  
+    .f-navbar-lang{
+      display: none;
+    }
+  
+    .m-nav-button{
+      cursor: pointer; 
+      margin-top: 30px;
+      width: 120px;
+      min-height: 38px;
+      font-size: 17px;
+      background-color: transparent;
+      border-radius: 5px 5px 5px 5px;
+      border-color: white;
+      color: white;
+      border: 1px solid #FFFFFF;
+    }
+  
+    .nav-item a {
+      margin-right: 0px;
+      font-size: 25px;
+      opacity: 0.2;
+    }
+  
+    .mobile-blog-click {
+      font-size: 23px;
+      padding-top: 20px;
+    }
+  
+    .m-navbar-icons {
+      display: flex; 
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      padding-top: 30px;
+    }
+  
+    .m-navbar-icon {
+      width: 30px;
+      margin: 10px 30px;
+    }
+  
+    .dropdown {
+      position: relative;
+      padding-top: 20px;
+      display: inline-block;
+    }
+  
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: black;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dropdown-menu li {
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    
+    .dropdown-menu li:hover {
+      background-color: black;
+      opacity: 0.6;
+    }
+    
+    .dropdown-menu li span {
+      margin-right: 10px;
+    }
+
+    .body, html {
+      height: 100%; /* Ensure body and html are full height */
+      margin: 0; /* Reset default margin */
+      overflow-y: auto; /* Ensures the page is scrollable */
+    }
+
+    .firecopy {
+      position: relative;
+      padding-top: 50px;
+      height: auto;
+    }
+
+    .f-video-container {
+      width: 70%;
+      left: 0px;
+      position: relative;
+      justify-content: center;
+    }
+    
+    .f-video-container::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 95%;
+    }
+  
+    @keyframes slideToLeft {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(0%);
+      }
+    }
+
+    .f-column {
+      position: absolute;
+      display: flex;
+      right: 0;
+      left: 0;
+      width: 100%;
+      top: 0;
+      flex-direction: column;
+    }
+
+    .f-text-container {
+      position: absolute;
+      border: 1px solid white;
+      margin-top: 0px;
+      padding: 50px;
+      color: white;
+      width: 90%;
+      right: 30px;
+      left: 30px;
+      /* min-height: 200px; */
+      opacity: 0;
+      max-height: 80vh;
+      overflow-y: auto; /* Enable vertical scrolling */
+    }
+    
+    .bottom-text {
+      color: white;
+      position: relative;
+      right: 0;
+      /* left: 30%; */
+      bottom: 0;
+    }
+
+    /* Animation for sliding video to the right */
+    .f-video-container.slide-right {
+      animation: slideToRight 3s forwards;
+    }
+
+    @keyframes slideToRight {
+      from {
+        transform: translateY(0%);
+        scale: 100%;
+      }
+      to {
+        transform: translateY(-35%); 
+        scale: 80%;
+      }
+    }
+
+    .f-tilted {
+      transform: rotate3d(1, 0, 0, 70deg);
+      /* transform-origin: center; */
+      transition: transform 2s ease-in-out;
+      opacity: 0.5;
+    }
+
+    .f-tilted-reset {
+      transform: rotate3d(0, 0, 1, 30deg) translate(-150px, -200px) scale(70%);
+      transition: transform 1s ease-in-out;
+      opacity: 0.5;
+    }
+
+    @keyframes slideBottom {
+      from {
+        transform: translate(0px, 0px);
+      }
+      to {
+        transform: translate(40px, -180px);
+      }
+    }
+
+    .text-left {
+      width: 70%;
+      top: 0%;
+      left: 80px;
+      right: 50px;
+      bottom: 0px;
+    }
+
+    .text-left-lines {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 125%;
+      text-align: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .force-quotient {
+      position: absolute;
+      top: 105%;
+    }
+
+    .left-lastline1,
+    .left-lastline2 {
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .f-legend-container {
+      scale: 75%;
+      width: 270px;
+      top: 65%;
+      right: 23%;
+  }
+
+    .f-legend-container .score-list li,
+    .f-legend-container .progress-container {
+      opacity: 1.0;
+    }
+
+    .f-svg-container {
+      scale: 60%;
+    }
+
+    .f-score-list {
+      list-style: none;
+    }
+
+    .f-score-list li {
+      display: flex;
+      align-items: center;
+      opacity: 1.0;
+      margin-bottom: 10px;
+    }
+
+    .arrow {
+      display: none;
+      color: white;
+      position: relative;
+      font-size: 24px; /* Adjust size as needed */
+      transition: opacity 1s ease-in-out;
+      top: 100px;
+    }
+
+    .f-small-text {
+      justify-content: center;
+      position: fixed; 
+      top: 620px;
+      right: 0px;
+      left: 0px; 
+      color: #fff; 
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out; 
+      z-index: 100; 
+    }
+
+    .read_more {
+      display: inline;
+      margin-left: 5px;
+      width: 20px;
+    }
+
+    .left-line1 {
+      order: 1;
+      font-size: 50px;
+      font-weight: bold;
+    }
+    .left-line2 {
+      order: 2;
+      font-size: 31px;
+      font-weight: bold;
+    }
+    .left-line3 {
+      order: 4;
+      padding-top: 30px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .f-main-progress-wrapper {
+      order: 3;
+      display: flex;
+      align-items: center;
+      padding-top: 20px;
+    }
+    
+    .f-main-progress-container {
+      width: 300px;
+      height: 15px;
+      background-color: #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .f-main-progress-fill {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 0.3s ease-in-out;
+    }
+    
+    .f-main-progress-percentage {
+      margin-left: 10px;
+    }
+
+    .close-result {
+      order: 5;
+      width: 30px;
+      margin-top: 30px;
+    }
 }

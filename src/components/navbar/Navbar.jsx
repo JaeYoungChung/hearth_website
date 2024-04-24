@@ -22,10 +22,9 @@ const Navbar = () => {
 
   //language
   const [t, i18n] = useTranslation("global");
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
 
   const handleChangeLanguage = (language) => {
     setSelectedLanguage(language);
@@ -43,6 +42,19 @@ const Navbar = () => {
         return korea_flag;
       default:
         return england_flag;
+    }
+  }
+
+  const getSelectedFlagText = () => {
+    switch (selectedLanguage) {
+      case 'en':
+        return 'ENG';
+      case 'ja':
+        return '日本語';
+      case 'ko':
+        return '한국어';
+      default:
+        return 'ENG';
     }
   }
   
@@ -181,18 +193,18 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
-            <Menu />
-            <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-            <div className="navbar-icons">
-              <img src = {icon_instagram} className="navbar-icon"/>
-              <img src = {icon_facebook} className="navbar-icon"/>
-              <img src = {icon_x} className="navbar-icon"/>
-              <img src = {email} style={{width: '40px'}} className="navbar-icon"/>
+            <Menu/>
+            <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+            <div className="m-navbar-icons">
+              <img src = {icon_instagram} className="m-navbar-icon"/>
+              <img src = {icon_facebook} className="m-navbar-icon"/>
+              <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
             </div>
-            <div className="dropdown">
-                  <div className="dropdown-toggle" onClick={toggleDropdown}>
-                    <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+            <div className="m-dropdown">
+                  <div className="q-dropdown-toggle" onClick={toggleDropdown}>
+                    <p >Language: {getSelectedFlagText()}</p>
                     <i className="dropdown-arrow"></i>
                   </div>
                   {isOpen && (
@@ -225,7 +237,6 @@ const Navbar = () => {
         )}
 
         <div className='navbar-lang'>
-        {/* Search dropdown language for later adjustments */}
             <div className="dropdown">
                   <div className="dropdown-toggle" onClick={toggleDropdown}>
                     <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
