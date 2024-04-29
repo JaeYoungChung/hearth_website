@@ -181,6 +181,7 @@ const Firecopy = () => {
     const [tiltedsvg, setTiltedSVG] = useState(false);
     const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
     const [slideBottom, setSlideBottom] = useState(false);
+    const [slideBottomBig, setSlideBottomBig] = useState(false);
     const [currentActiveScore, setCurrentActiveScore] = useState('s1');
     const [showBackButton, setShowBackButton] = useState(false);
     const [smallTextContent, setSmallTextContent] = useState('finish test');
@@ -267,6 +268,9 @@ const Firecopy = () => {
             smallTextRef.current.style.pointerEvents = 'none';
             bottomTextRef.current.style.pointerEvents = 'auto';
             viewRef.current.style.opacity = 0;
+            svgRef.current.style.opacity = 0;
+            videoRef.current.style.opacity = 0.5;
+            videoRef.current.classList.add('slide-bottom-big');
             setSmallTextContent('New small text here.'); // Change small-text content
             setShowBackButton(true); // Show back button
             setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
@@ -278,8 +282,11 @@ const Firecopy = () => {
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
             smallTextRef.current.style.opacity = 1;
+            svgRef.current.style.opacity = 1;
+            videoRef.current.style.opacity = 1;
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
+            videoRef.current.classList.remove('slide-bottom-big');
             setSmallTextContent('Your small text here.'); // Revert small-text content
             setShowBackButton(false); // Hide back button
             setShowNewContent(false); // Hide new content
@@ -304,6 +311,18 @@ const Firecopy = () => {
         //show each cf
         textLeftLinesRef.current.style.opacity = 1;
         
+      }
+
+      const closeResult = () => {
+        videoRef.current.style.opacity = 1;
+        setRotationButton(30);
+        setMobileRotation(0);
+        graphRef.current.style.opacity = 1;
+        forceQuotient.current.style.opacity = 1;
+        smallTextRef.current.style.opacity = 1;
+        viewRef.current.style.opacity = 0;
+        textLeftLinesRef.current.style.opacity = 0;
+                
       }
 
       const getHexagonPoints = (centerX, centerY, radius) => {
@@ -588,7 +607,7 @@ const Firecopy = () => {
                 </div>
                 <p className="f-main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
             </div>
-            <img className='close-result' src={close_result}></img>
+            <img className='close-result' src={close_result} onClick={closeResult}></img>
           </div>
           <div className='force-quotient' ref={forceQuotient}>
             <p className='left-lastline1'>※ Force Quotient (FQ)</p>
@@ -602,12 +621,12 @@ const Firecopy = () => {
             {/* <p>{`(${red}, ${green}, ${blue})`}</p> */}
             <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
             <div className="color-square" ></div>
-            <button className="text-button">Share Fire</button>
+            <button className="text-button">Save Fire</button>
           </div>
           <div className="f-right-content">
-            <p>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>
+            <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>
         
-        <div className="f-inputBox">
+          <div className="f-inputBox">
              <input
                 type="text"
                 placeholder={t("community.email")}
@@ -625,15 +644,15 @@ const Firecopy = () => {
                 </div>
                     {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
 
-        <div className='check-text'>
-                <input
-                type="checkbox"
-                id="check1"
-                className="custom-checkbox"
-                checked={isFirstCheckboxChecked}
-                onChange={handleFirstCheckboxChange}
-            />              
-            <label for="check1" className="checkbox-label"> I have reviewed and agree to HEARTH’s Privacy Policy (required)</label>
+            <div className='check-text'>
+                  <input
+                  type="checkbox"
+                  id="check1"
+                  className="custom-checkbox"
+                  checked={isFirstCheckboxChecked}
+                  onChange={handleFirstCheckboxChange}
+              />              
+              <label for="check1" className="checkbox-label"> I have reviewed and agree to HEARTH’s Privacy Policy (required)</label>
             </div>
             <div className='check-text'>
               <input type="checkbox" id="check2"  className="custom-checkbox" />
@@ -682,7 +701,7 @@ const Firecopy = () => {
             }}
             >
           <img src={arrowleft} alt="Arrow Left" style={{marginRight: '5px', width: '20px'}} />
-          <span>Back</span>
+          <span>results</span>
         </div>    
       )}
     </div>

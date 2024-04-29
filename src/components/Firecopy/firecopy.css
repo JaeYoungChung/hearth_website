@@ -585,7 +585,7 @@ li.active .f-progress-container {
 }
  
 #f-inputID::placeholder {
-    width: 350px;
+    width: 70%;
     color: white;
     opacity: 0.5;
     background-color : transparent;
@@ -960,4 +960,156 @@ li.active .f-progress-container {
       width: 30px;
       margin-top: 30px;
     }
+
+    .f-new-content {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 70px;
+      left: 0;
+      right: 0;
+      width: 50%;
+      height: 100vh;
+      padding-left: 50px;
+      padding-right: 50px;
+      color: white;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      z-index: 99;
+    }
+    
+    .f-left-content, .f-right-content {
+      padding: 0px;
+      padding-top: 30px;
+    }
+  
+    .hex-code {
+      font-size: 21px;
+      text-align: center;
+      line-height: 0.5;
+    }
+    
+    .f-colored-square {
+      width: 100px;
+      height: 100px;
+      background-color: #007BFF; /* Example color */
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  
+    .text-button{
+      width: 100px;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 7px 5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    
+    .green-bordered-input {
+      border: 2px solid green;
+      margin-bottom: 10px;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  
+    .check-text {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 15px;
+      height: 15px;
+      border: 2px solid green;
+      border-radius: 4px;
+      background-color: transparent;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.2s;
+    }
+  
+    .custom-checkbox:checked {
+      background-color: green;
+    }
+  
+    .custom-checkbox:focus {
+      box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.3);
+    }
+  
+    .checkbox-label {
+      cursor: pointer;
+      padding-left: 5px;
+    }
+    
+    .f-inputBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid green;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: transparent;
+  }
+   
+  #f-inputID::placeholder {
+      width: 70%;
+      color: white;
+      opacity: 0.5;
+      background-color : transparent;
+      border: none;
+      outline: none;
+    }
+  
+  .register {
+    color: green;
+    cursor: pointer;
+    font-weight: 100;
+    padding-right: 20px;
+  }
+  
+  .invalid {
+      border-color: red;
+  }
+  
+  .error-message {
+      color: red;
+      font-size: 0.8rem;
+      line-height: 0;
+      margin-bottom: 15px;
+  }
+
+  .f-back-button {
+    color: white;
+    position: absolute;
+    top: 80vh;
+    left: 50px;
+  }
+
+  .f-video-container.slide-bottom-big {
+    animation: slideBottomBig 1s forwards;
+  }
+
+  @keyframes slideBottomBig {
+    from {
+      transform: translateY(0%);
+      scale: 100%;
+    }
+    to {
+      transform: translateY(10%); 
+      scale: 200%;
+    }
+  }
 }
