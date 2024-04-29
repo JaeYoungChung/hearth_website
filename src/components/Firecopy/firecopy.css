@@ -221,6 +221,12 @@
     transform-style: preserve-3d;  /* Ensures children obey the 3D rotation */
     overflow: visible;
   }
+
+  svg {
+    transform-origin: center center;
+    transition: transform 1s ease-in-out;
+  }
+  
   
   /* Animation for sliding video to the right */
 .f-video-container.slide-right {
@@ -605,7 +611,11 @@ li.active .f-progress-container {
     margin-bottom: 15px;
 }
 
-.read_more{
+.read_more {
+  display: none;
+}
+
+.views {
   display: none;
 }
 
@@ -745,6 +755,7 @@ li.active .f-progress-container {
     }
 
     .f-text-container {
+      display: none;
       position: absolute;
       border: 1px solid white;
       margin-top: 0px;
@@ -785,13 +796,12 @@ li.active .f-progress-container {
 
     .f-tilted {
       transform: rotate3d(1, 0, 0, 70deg);
-      /* transform-origin: center; */
       transition: transform 2s ease-in-out;
       opacity: 0.5;
     }
-
+    
     .f-tilted-reset {
-      transform: rotate3d(0, 0, 1, 30deg) translate(-150px, -200px) scale(70%);
+      transform: translate(-50px, -250px) scale(70%);
       transition: transform 1s ease-in-out;
       opacity: 0.5;
     }
@@ -803,23 +813,6 @@ li.active .f-progress-container {
       to {
         transform: translate(40px, -180px);
       }
-    }
-
-    .text-left {
-      width: 70%;
-      top: 0%;
-      left: 80px;
-      right: 50px;
-      bottom: 0px;
-    }
-
-    .text-left-lines {
-      display: flex;
-      flex-wrap: wrap;
-      padding-top: 125%;
-      text-align: center;
-      align-items: center;
-      flex-direction: column;
     }
 
     .force-quotient {
@@ -860,15 +853,6 @@ li.active .f-progress-container {
       margin-bottom: 10px;
     }
 
-    .arrow {
-      display: none;
-      color: white;
-      position: relative;
-      font-size: 24px; /* Adjust size as needed */
-      transition: opacity 1s ease-in-out;
-      top: 100px;
-    }
-
     .f-small-text {
       justify-content: center;
       position: fixed; 
@@ -885,6 +869,45 @@ li.active .f-progress-container {
       display: inline;
       margin-left: 5px;
       width: 20px;
+    }
+
+    .text-left {
+      width: 70%;
+      top: 0%;
+      left: 80px;
+      right: 50px;
+      bottom: 0px;
+    }
+
+    .text-left-lines {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 125%;
+      text-align: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .views {
+      position: absolute;
+      display: flex;
+      color: white;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .left-view {
+      font-size: 50px;
+      margin-right: 150px;
+    }
+    
+    .right-view {
+      font-size: 50px;
+      margin-left: 150px;
     }
 
     .left-line1 {

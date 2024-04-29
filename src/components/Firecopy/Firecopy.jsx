@@ -154,6 +154,7 @@ const Firecopy = () => {
     const svgRef2 = useRef(null); // Reference for the SVG element
     const leftArrowRef = useRef(null);
     const rightArrowRef = useRef(null);
+    const viewRef = useRef(null);
     const graphRef = useRef(null); // Reference for the graph
     const textLeftRef = useRef(null); // Reference for the text on the left
     const textLeftLinesRef = useRef(null);
@@ -175,6 +176,7 @@ const Firecopy = () => {
     const [hexagonColor, setHexagonColor] = useState('initialColor');
     const [changeTextColor, setChangeTextColor] = useState(false);
     const [rotation, setRotation] = useState(0);
+    const [mobileRotation, setMobileRotation] = useState(0);
     const [tilted, setTilted] = useState(false);
     const [tiltedsvg, setTiltedSVG] = useState(false);
     const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
@@ -196,7 +198,7 @@ const Firecopy = () => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current; // Reference to the bottom text
-      
+
         video.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
         setTimeout(() => {
@@ -236,6 +238,7 @@ const Firecopy = () => {
             setTiltedSVG(true);
             setTilted(true);
             setRotation(30);  // Set the rotation state to -60
+            setMobileRotation(30);
             if (svgRef2.current) {
               svgRef2.current.classList.add('slide-bottom');
             }
@@ -263,6 +266,7 @@ const Firecopy = () => {
             smallTextRef.current.style.opacity = 0;
             smallTextRef.current.style.pointerEvents = 'none';
             bottomTextRef.current.style.pointerEvents = 'auto';
+            viewRef.current.style.opacity = 0;
             setSmallTextContent('New small text here.'); // Change small-text content
             setShowBackButton(true); // Show back button
             setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
@@ -287,11 +291,15 @@ const Firecopy = () => {
         
         //hexagon reverse tilt
         setRotationButton(0);
+        setMobileRotation(30);
 
         //legend goes away, force quotient goes away, finish test goes away
         graphRef.current.style.opacity = 0;
         forceQuotient.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 0;
+
+        //arrow show
+        viewRef.current.style.opacity = 1;
 
         //show each cf
         textLeftLinesRef.current.style.opacity = 1;
@@ -336,6 +344,28 @@ const Firecopy = () => {
         const newIndex = (currentIndex + 1) % 6;
         setCurrentIndex(newIndex);
         setTextRotationAdjustment(prevAdjustment => prevAdjustment);  // adjust by -60 for counter-clockwise
+    };
+
+    const rotateMobileClockwise = () => {
+      const newMobileRotation = mobileRotation - 60;
+      setMobileRotation(newMobileRotation);
+      const newIndex = (currentIndex - 1 + 6) % 6;
+      setCurrentIndex(newIndex);
+      setTextRotationAdjustment(prevAdjustment => prevAdjustment);
+            
+      // Set the --mobile-rotation CSS variable on the SVG element
+      // svgRef.current.style.setProperty('--mobile-rotation', `${mobileRotation}deg`);
+    };
+    
+    const rotateMobileCounterClockwise = () => {
+      const newMobileRotation = mobileRotation + 60;
+      setMobileRotation(newMobileRotation);
+      const newIndex = (currentIndex + 1) % 6;
+      setCurrentIndex(newIndex);
+      setTextRotationAdjustment(prevAdjustment => prevAdjustment);
+      
+      // Set the --mobile-rotation CSS variable on the SVG element
+      // svgRef.current.style.setProperty('--mobile-rotation', `${mobileRotation}deg`);
     };
 
     const [email, setEmail] = useState('');
@@ -496,9 +526,12 @@ const Firecopy = () => {
           <div
             className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
             ref={svgRef}
-            style={{ transform: `perspective(1000px) rotate3d(${rotationButton === 0 ? '0, 0, 0' : '0, -2.747, 1'}, ${rotation}deg)` }}
+            style={{ transform: rotationButton !== 0 ? `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` : null }}
           >
-              <svg className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}>
+              <svg
+                className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
+                style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(70%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null}}
+              >
                 {/* Outer grey hexagon */}
                 <polygon
                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -538,10 +571,14 @@ const Firecopy = () => {
             </svg>
             </div>
           </div>
-      
         <div className="text-left" ref={textLeftRef}>
-          <div className='text-left-lines' ref={textLeftLinesRef}>
+          <div className='text-left-lines' ref={textLeftLinesRef}>  
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
+            
+            <div className='views'>
+            <p className="left-view" ref={viewRef} onClick={rotateMobileClockwise}>{'<'}</p>
+            <p className="right-view" ref={viewRef} onClick={rotateMobileCounterClockwise}>{'>'}</p>
+            </div>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
             <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
             <div className="f-main-progress-wrapper">
