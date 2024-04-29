@@ -278,6 +278,7 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
+    text-align: center;
     position: absolute;
     z-index: 2;
     justify-content: center; 
@@ -721,7 +722,8 @@ li.active .f-progress-container {
     }
 
     .f-video-container {
-      width: 70%;
+      width: 100%;
+      height: 100%;
       left: 0px;
       position: relative;
       justify-content: center;
@@ -755,7 +757,7 @@ li.active .f-progress-container {
     }
 
     .f-text-container {
-      display: none;
+      /* display: none; */
       position: absolute;
       border: 1px solid white;
       margin-top: 0px;
@@ -772,10 +774,10 @@ li.active .f-progress-container {
     
     .bottom-text {
       color: white;
-      position: relative;
+      position: absolute;
       right: 0;
-      /* left: 30%; */
-      bottom: 0;
+      left: 25vh;
+      top: 82vh;
     }
 
     /* Animation for sliding video to the right */
@@ -789,8 +791,8 @@ li.active .f-progress-container {
         scale: 100%;
       }
       to {
-        transform: translateY(-35%); 
-        scale: 80%;
+        transform: translateY(-55%); 
+        scale: 60%;
       }
     }
 
@@ -798,12 +800,14 @@ li.active .f-progress-container {
       transform: rotate3d(1, 0, 0, 70deg);
       transition: transform 2s ease-in-out;
       opacity: 0.5;
+      transform-style: preserve-3d; /* Allow 3D transformations */
     }
     
     .f-tilted-reset {
       transform: translate(-50px, -250px) scale(70%);
       transition: transform 1s ease-in-out;
       opacity: 0.5;
+      transform-style: preserve-3d; /* Allow 3D transformations */
     }
 
     @keyframes slideBottom {
@@ -811,13 +815,14 @@ li.active .f-progress-container {
         transform: translate(0px, 0px);
       }
       to {
-        transform: translate(40px, -180px);
+        transform: translate(-100px, -250px);
+        scale: 80%;
       }
     }
 
     .force-quotient {
       position: absolute;
-      top: 105%;
+      top: 60vh;
     }
 
     .left-lastline1,
@@ -827,10 +832,11 @@ li.active .f-progress-container {
     }
 
     .f-legend-container {
+      right: 20%;
+      left: 20%;
       scale: 75%;
-      width: 270px;
-      top: 65%;
-      right: 23%;
+      width: 60%;
+      top: 50%;
   }
 
     .f-legend-container .score-list li,
@@ -839,6 +845,8 @@ li.active .f-progress-container {
     }
 
     .f-svg-container {
+      top: 15%;
+      right: 5%;
       scale: 60%;
     }
 
@@ -856,7 +864,7 @@ li.active .f-progress-container {
     .f-small-text {
       justify-content: center;
       position: fixed; 
-      top: 620px;
+      top: 80vh;
       right: 0px;
       left: 0px; 
       color: #fff; 
@@ -898,15 +906,16 @@ li.active .f-progress-container {
       color: white;
       font-size: 24px;
       margin-top: 20px;
+      z-index: 150;
     }
 
     .left-view {
-      font-size: 50px;
+      z-index: 1000;
       margin-right: 150px;
     }
     
     .right-view {
-      font-size: 50px;
+      z-index: 1000;
       margin-left: 150px;
     }
 
@@ -1096,6 +1105,13 @@ li.active .f-progress-container {
     position: absolute;
     top: 80vh;
     left: 50px;
+    z-index: 100;
+  }
+  .f-home-button {
+    color: white;
+    position: absolute;
+    top: 78.5vh;
+    right: 50px;
   }
 
   .f-video-container.slide-bottom-big {

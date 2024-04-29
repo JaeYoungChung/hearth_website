@@ -6,6 +6,8 @@ import logo from '../../assets/test_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
 import arrowright from '../../assets/arrow_right.png'
 import arrowleft from '../../assets/arrow_left.png'
+import rotateRight from '../../assets/right_arrow.png'
+import rotateLeft from '../../assets/left_arrow.png'
 import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
@@ -229,7 +231,7 @@ const Firecopy = () => {
           //     svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
           //   }
           // }
-          svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
+          svgRef.current.style.opacity = 0.5;
         }, 1000);
         setTimeout(() => {
             setHexagonColor(`rgb(${red}, ${green}, ${blue})`); // Set hexagon color to fire color
@@ -248,7 +250,10 @@ const Firecopy = () => {
               }
             textContainerRef.current.style.opacity = 0;
             textLeftRef.current.style.opacity = 1;
-            textLeftLinesRef.current.style.opacity = 0;
+            if (window.matchMedia('(max-width: 768px)').matches) {
+              textLeftLinesRef.current.style.opacity = 0;
+            }
+            svgRef.current.style.opacity = 1;
             forceQuotient.current.style.opacity = 1;
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
@@ -271,7 +276,7 @@ const Firecopy = () => {
             svgRef.current.style.opacity = 0;
             videoRef.current.style.opacity = 0.5;
             videoRef.current.classList.add('slide-bottom-big');
-            setSmallTextContent('New small text here.'); // Change small-text content
+            setSmallTextContent('finish test'); // Change small-text content
             setShowBackButton(true); // Show back button
             setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
       };
@@ -287,7 +292,7 @@ const Firecopy = () => {
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
             videoRef.current.classList.remove('slide-bottom-big');
-            setSmallTextContent('Your small text here.'); // Revert small-text content
+            setSmallTextContent('finish test'); // Revert small-text content
             setShowBackButton(false); // Hide back button
             setShowNewContent(false); // Hide new content
       };
@@ -321,8 +326,7 @@ const Firecopy = () => {
         forceQuotient.current.style.opacity = 1;
         smallTextRef.current.style.opacity = 1;
         viewRef.current.style.opacity = 0;
-        textLeftLinesRef.current.style.opacity = 0;
-                
+        textLeftLinesRef.current.style.opacity = 0;             
       }
 
       const getHexagonPoints = (centerX, centerY, radius) => {
@@ -539,8 +543,8 @@ const Firecopy = () => {
                 <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
               </div>
             </div>
-            <div className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}>←</div>
-            <div className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}>→</div>
+            <img src={rotateLeft} className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}></img>
+            <img src={rotateRight} className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}></img>
           <div className={tiltedsvg ? 'tilted-svg' : ''}>
           <div
             className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
@@ -556,7 +560,7 @@ const Firecopy = () => {
                 points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
                 stroke={hexagonColor}
                 strokeWidth="2"
-                fill="#1a1a1a"
+                fill= "#1a1a1a"
                 />
                 {/* Inner shape */}
                 <polygon
@@ -593,26 +597,25 @@ const Firecopy = () => {
         <div className="text-left" ref={textLeftRef}>
           <div className='text-left-lines' ref={textLeftLinesRef}>  
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
-            
             <div className='views'>
-            <p className="left-view" ref={viewRef} onClick={rotateMobileClockwise}>{'<'}</p>
-            <p className="right-view" ref={viewRef} onClick={rotateMobileCounterClockwise}>{'>'}</p>
+            <img src={rotateLeft} className="left-view" ref={viewRef} onClick={rotateMobileClockwise}></img>
+            <img src={rotateRight} className="right-view" ref={viewRef} onClick={rotateMobileCounterClockwise}></img>
             </div>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
             <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
             <div className="f-main-progress-wrapper">
                 <div className="f-main-progress-container">
-                <div className={`f-main-progress-fill f-color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
-                </div>
+                  <div className={`f-main-progress-fill f-color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
+                  </div>
                 </div>
                 <p className="f-main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
             </div>
             <img className='close-result' src={close_result} onClick={closeResult}></img>
           </div>
-          <div className='force-quotient' ref={forceQuotient}>
-            <p className='left-lastline1'>※ Force Quotient (FQ)</p>
-            <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
-          </div>
+            <div className='force-quotient' ref={forceQuotient}>
+              <p className='left-lastline1'>※ Force Quotient (FQ)</p>
+              <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
+            </div>
         </div>
         {showNewContent && (
         <div className="f-new-content">
@@ -703,6 +706,21 @@ const Firecopy = () => {
           <img src={arrowleft} alt="Arrow Left" style={{marginRight: '5px', width: '20px'}} />
           <span>results</span>
         </div>    
+      )}
+      {showBackButton && (
+      <NavLink to='/'>
+        <div className="f-home-button" onClick={handleBackButtonClick}
+          style={{
+            color: 'white',
+              fontSize: 17,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+          <span>back to home</span>
+          <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
+        </div> 
+      </NavLink>
       )}
     </div>
 </div>
