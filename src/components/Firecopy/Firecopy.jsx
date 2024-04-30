@@ -248,7 +248,7 @@ const Firecopy = () => {
             if (videoRef.current) {
                 videoRef.current.classList.add('slide-right');
               }
-            textContainerRef.current.style.opacity = 0;
+            textContainerRef.current.classList.add('hidden');
             textLeftRef.current.style.opacity = 1;
             if (window.matchMedia('(max-width: 768px)').matches) {
               textLeftLinesRef.current.style.opacity = 0;
@@ -274,7 +274,8 @@ const Firecopy = () => {
             bottomTextRef.current.style.pointerEvents = 'auto';
             viewRef.current.style.opacity = 0;
             svgRef.current.style.opacity = 0;
-            videoRef.current.style.opacity = 0.5;
+            if (window.matchMedia('(max-width: 768px)').matches) {
+              videoRef.current.style.opacity = 0.5;}
             videoRef.current.classList.add('slide-bottom-big');
             setSmallTextContent('finish test'); // Change small-text content
             setShowBackButton(true); // Show back button
@@ -493,16 +494,16 @@ const Firecopy = () => {
                   {isOpen && (
                     <ul className="q-dropdown-menu">
                       <li onClick={() => handleChangeLanguage('en')}>
-                        <span>English</span>
                         <img src={england_flag} alt="English" className="flag-image" />
+                        <span>English</span>
                       </li>
                       <li onClick={() => handleChangeLanguage('ja')}>
-                        <span>日本語</span>
                         <img src={japan_flag} alt="Japanese" className="flag-image" />
+                        <span>日本語</span>
                       </li> 
                       <li onClick={() => handleChangeLanguage('ko')}>
-                        <span>한국어</span>
                         <img src={korea_flag} alt="Korean" className="flag-image" />
+                        <span>한국어</span>
                       </li>
                     </ul>
                   )} 

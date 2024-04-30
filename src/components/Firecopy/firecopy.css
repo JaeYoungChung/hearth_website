@@ -140,13 +140,17 @@
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
   }
+
+  .hidden {
+    display: none;
+  }
     
   @keyframes slideToLeft {
     from {
-      transform: translateX(0%);
+      transform: translate(0%, 0%);
     }
     to {
-      transform: translateX(-50%);
+      transform: translate(-50%, -5%);
     }
   }
   
@@ -183,7 +187,6 @@
 
 .f-tilted {
   transform: rotate3d(1, 0, 0, 70deg);
-  /* transform-origin: center; */
   transition: transform 2s ease-in-out;
   opacity: 0.5;
 }
@@ -223,18 +226,16 @@
     transition: transform 1s ease-in-out;
   }
   
-  
-  /* Animation for sliding video to the right */
-.f-video-container.slide-right {
+  .f-video-container.slide-right {
     animation: slideToRight 3s forwards;
   }
   
   @keyframes slideToRight {
     from {
-      transform: translateX(0%);
+      transform: translate(0%, 0%);
     }
     to {
-      transform: translateX(50%); 
+      transform: translate(48%, -4%); 
     }
   }
 
@@ -266,7 +267,7 @@
   .text-left {
     width: 35%;
     color: white;
-    opacity: 0; /* Start fully transparent */
+    opacity: 0;
     transition: opacity 1s ease-in-out; /* Delayed fade effect */
     top: 0;
     left: 150px;
@@ -311,11 +312,12 @@
   .f-main-progress-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-top: 40px;
   }
   
   .f-main-progress-container {
-    width: 300px;
+    width: 400px;
     height: 15px;
     background-color: #ccc;
     border-radius: 5px;
@@ -338,7 +340,7 @@
   .arrow {
     color: white;
     position: relative;
-    font-size: 24px; /* Adjust size as needed */
+    font-size: 24px;
     transition: opacity 1s ease-in-out;
     top: 100px;
   }
@@ -346,13 +348,13 @@
   .left-arrow {
     opacity: 0;
     background-color: transparent;
-    right: 220px; /* Distance from the left side of the SVG */
+    right: 220px;
   }
   
   .right-arrow {
     opacity: 0;
     background-color: transparent;
-    left: 150px; /* Distance from the right side of the SVG */
+    left: 150px;
   }
 
   .f-legend-container {
@@ -489,6 +491,14 @@ li.active .f-progress-container {
     left: 50px;
   }
 
+  .f-home-button {
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+  }
+  
+
   .f-new-content {
     display: flex;
     position: absolute;
@@ -513,7 +523,7 @@ li.active .f-progress-container {
   .f-colored-square {
     width: 100px;
     height: 100px;
-    background-color: #007BFF; /* Example color */
+    background-color: #007BFF;
     margin-top: 20px;
     margin-bottom: 10px;
   }
@@ -606,6 +616,10 @@ li.active .f-progress-container {
     font-size: 0.8rem;
     line-height: 0;
     margin-bottom: 15px;
+}
+
+.close-result {
+  display: none;
 }
 
 .read_more {
@@ -706,8 +720,8 @@ li.active .f-progress-container {
     }
 
     .body, html {
-      height: 100%; /* Ensure body and html are full height */
-      margin: 0; /* Reset default margin */
+      height: 100%;
+      margin: 0;
       overflow-y: auto; /* Ensures the page is scrollable */
     }
 
@@ -753,7 +767,6 @@ li.active .f-progress-container {
     }
 
     .f-text-container {
-      /* display: none; */
       position: absolute;
       border: 1px solid white;
       margin-top: 0px;
@@ -762,10 +775,9 @@ li.active .f-progress-container {
       width: 90%;
       right: 30px;
       left: 30px;
-      /* min-height: 200px; */
       opacity: 0;
       max-height: 80vh;
-      overflow-y: auto; /* Enable vertical scrolling */
+      overflow-y: auto;
     }
     
     .bottom-text {
@@ -776,7 +788,6 @@ li.active .f-progress-container {
       top: 82vh;
     }
 
-    /* Animation for sliding video to the right */
     .f-video-container.slide-right {
       animation: slideToRight 3s forwards;
     }
@@ -803,7 +814,7 @@ li.active .f-progress-container {
       transform: translate(-50px, -250px) scale(70%);
       transition: transform 1s ease-in-out;
       opacity: 0.5;
-      transform-style: preserve-3d; /* Allow 3D transformations */
+      transform-style: preserve-3d;
     }
 
     @keyframes slideBottom {
@@ -908,11 +919,13 @@ li.active .f-progress-container {
     .left-view {
       z-index: 150;
       margin-right: 150px;
+      cursor: pointer;
     }
     
     .right-view {
       z-index: 150;
       margin-left: 150px;
+      cursor: pointer;
     }
 
     .left-line1 {
@@ -964,6 +977,7 @@ li.active .f-progress-container {
       order: 5;
       width: 30px;
       margin-top: 30px;
+      cursor: pointer;
     }
 
     .f-new-content {
@@ -1000,7 +1014,7 @@ li.active .f-progress-container {
     .f-colored-square {
       width: 100px;
       height: 100px;
-      background-color: #007BFF; /* Example color */
+      background-color: #007BFF;
       margin-top: 20px;
       margin-bottom: 10px;
     }
