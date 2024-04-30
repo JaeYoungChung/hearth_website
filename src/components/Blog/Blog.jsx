@@ -1,9 +1,12 @@
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './blog.css';
+import navbar_menu from '../../assets/navbar_menu.png'
+import close_btn from '../../assets/close_btn.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import email from '../../assets/email.png'
 import icon_threads from '../../assets/icon_threads.png'
 import icon_share from '../../assets/share.png'
 import banner_img from '../../assets/bannerimg.png'
@@ -73,7 +76,7 @@ const SharePopup = ({ url, onClose }) => {
                 },
             },
             ],
-        });
+        }); 
   }
   return (
     <div className="share-popup">
@@ -152,6 +155,7 @@ const Blog = () => {
   const [t, i18n] = useTranslation("global");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleChangeLanguage = (language) => {
     setSelectedLanguage(language);
@@ -171,6 +175,19 @@ const Blog = () => {
         return england_flag;
     }
   }
+
+  const getSelectedFlagText = () => {
+    switch (selectedLanguage) {
+      case 'en':
+        return 'ENG';
+      case 'ja':
+        return '日本語';
+      case 'ko':
+        return '한국어';
+      default:
+        return 'ENG';
+    }
+  }
   
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -186,6 +203,12 @@ const Blog = () => {
     navigate('/blog');
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const postsRef = ref(db);
@@ -232,6 +255,50 @@ function handlePostClick(post) {
             <img src={logo} height={80} alt = "logo"></img>
             </NavLink>
           </div>
+        <div className="navbar-menu" onClick={toggleMobileMenu}>
+          <img src={navbar_menu} width={30} alt = "logo"></img>
+        </div>
+        {isMobileMenuOpen && (
+        <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'fade-in' : 'fade-out'}`}>
+          <div className="navbar-mobile-menu_header">
+            <div className="navbar-mobile-menu_close" onClick={toggleMobileMenu}>
+              <img src={close_btn} alt = "close"></img>
+            </div>
+          </div>
+          <div className="navbar-mobile-menu_content">
+            <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
+            <div className="m-navbar-icons">
+              <img src = {icon_instagram} className="m-navbar-icon"/>
+              <img src = {icon_facebook} className="m-navbar-icon"/>
+              <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
+            </div>
+            <div className="m-dropdown">
+                  <div className="q-dropdown-toggle" onClick={toggleDropdown}>
+                    <p >Language: {getSelectedFlagText()}</p>
+                    <i className="dropdown-arrow"></i>
+                  </div>
+                  {isOpen && (
+                    <ul className="dropdown-menu">
+                      <li onClick={() => handleChangeLanguage('en')}>
+                        <span>English</span>
+                        <img src={england_flag} alt="English" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ja')}>
+                        <span>日本語</span>
+                        <img src={japan_flag} alt="Japanese" className="flag-image" />
+                      </li>
+                      <li onClick={() => handleChangeLanguage('ko')}>
+                        <span>한국어</span>
+                        <img src={korea_flag} alt="Korean" className="flag-image" />
+                      </li>
+                    </ul>
+                  )}
+            </div>
+          </div>
+        </div>
+      )}
           <div className='b-navbar-lang'>
               <div className="b-dropdown">
                 <div className="b-dropdown-toggle" onClick={toggleDropdown}>
@@ -255,8 +322,9 @@ function handlePostClick(post) {
                   </ul>
                 )}
               </div>
+              <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
               <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-          </div> 
+            </div> 
       </div>
     <PageHeader backgroundImage={firstPostImage} />
     <Sidebar /> 
@@ -349,8 +417,10 @@ function PageHeader({ backgroundImage }) {
           </div>
           <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
         </div>
-        <h2>{post.title}</h2>
-        <p>{post.description}</p>
+        <div className='post-contents'>
+          <h2>{post.title}</h2>
+          <p className='post-description'>{post.description}</p>
+        </div>
       </div>
     );
   }
@@ -446,7 +516,7 @@ function Banner() {
           console.error("Error saving email: ", error);
       });
   };
-
+ 
   return (
     <div className="banner">
         <div className='banner-left'>
@@ -455,7 +525,7 @@ function Banner() {
           <div className="b-inputBox">
               <input
                   type="text"
-                  placeholder={t("blog.email")}
+                  placeholder={t("blog.email")} 
                   value={email}
                   onChange={handleEmailChange}
                   className={!isValidEmail ? 'invalid' : ''}

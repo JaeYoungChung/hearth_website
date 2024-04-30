@@ -1,5 +1,4 @@
 .community {
-    font-family: "classico-urw", sans-serif;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -116,6 +115,7 @@ hr {
     background-position: center;
     color: white;
     text-align: center;
+    padding-bottom: 100px;
   }
   .c-line1 {
     font-size: 40px;
@@ -131,11 +131,16 @@ hr {
     font-size: 16px;
     opacity: 0.5;
   }
+
+  .c-inputBox {
+    margin-top: 30px;
+}
+
   .c-image-row {
-    padding-top: 30px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 25px;
     width: 50%;
   }
   

@@ -95,6 +95,7 @@ const Questions = () => {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
+            <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
@@ -103,7 +104,7 @@ const Questions = () => {
               <img src = {icon_x} className="m-navbar-icon"/>
               <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
             </div>
-            <div className="m-dropdown">
+            <div className="dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
                     <p >Language: {getSelectedFlagText()}</p>
                     <i className="dropdown-arrow"></i>
@@ -112,15 +113,12 @@ const Questions = () => {
                     <ul className="dropdown-menu">
                       <li onClick={() => handleChangeLanguage('en')}>
                         <span>English</span>
-                        <img src={england_flag} alt="English" className="flag-image" />
                       </li>
                       <li onClick={() => handleChangeLanguage('ja')}>
                         <span>日本語</span>
-                        <img src={japan_flag} alt="Japanese" className="flag-image" />
                       </li>
                       <li onClick={() => handleChangeLanguage('ko')}>
                         <span>한국어</span>
-                        <img src={korea_flag} alt="Korean" className="flag-image" />
                       </li>
                     </ul>
                   )}

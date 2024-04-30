@@ -1,5 +1,4 @@
 .navbar {
-    font-family: "classico-urw", sans-serif;
     display: flex;
     /* display: none; */
     justify-content: space-between;
@@ -21,7 +20,6 @@
 
 .nav-item a {
     opacity: 0.5;
-    font-family: "classico-urw", sans-serif;
     font-size: 20px;
     transition: opacity 0.3s, color 0.3s;
     margin-right: 25px;
@@ -33,7 +31,6 @@
 
 .navbar-links a {
     opacity: 0.5;
-    font-family: "classico-urw", sans-serif;
     font-size: 20px;
     transition: opacity 0.3s, color 0.3s;
     margin-right: 25px;
@@ -42,6 +39,7 @@
 .nav-item {
     padding-bottom: 0px;
     list-style: none;
+    
 }
 
 .nav-item .active {
@@ -67,7 +65,6 @@
 }
 
 .logo-text{
-    font-family: "classico-urw", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,7 +90,6 @@
 
 .nav-button{
     cursor: pointer; 
-    font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
@@ -257,6 +253,10 @@ option.korean::after {
   display: block; /* Show dropdown when toggle is active */
 }
 
+.q-dropdown-toggle.active .dropdown-menu {
+  display: block; /* Show dropdown when toggle is active */
+}
+
 
 .navbar-mobile-menu {
   position: fixed;
@@ -327,7 +327,7 @@ option.korean::after {
     display: none;
   }
 
-  .m-nav-button{
+  .m-nav-button{ 
     cursor: pointer; 
     margin-top: 30px;
     width: 120px;
@@ -364,7 +364,7 @@ option.korean::after {
     margin: 10px 30px;
   }
 
-  .dropdown {
+  .q-dropdown {
     position: relative;
     padding-top: 20px;
     display: inline-block;
@@ -373,13 +373,15 @@ option.korean::after {
   .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     background-color: black;
     list-style-type: none;
     padding: 0;
     margin: 0;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    font-size: 15px;
   }
   
   .dropdown-menu li {
@@ -396,6 +398,8 @@ option.korean::after {
   }
   
   .dropdown-menu li span {
-    margin-right: 10px;
+    margin-right: 0px;
+    margin-left: 50px;
+    line-height: 1.0;
   }
 }

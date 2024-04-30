@@ -3,7 +3,8 @@
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
-}
+    font-family: "classico-urw", sans-serif;
+  }
 
 html, body {
   scroll-snap-type: y mandatory;

@@ -1,5 +1,4 @@
 .About {
-  font-family: "classico-urw", sans-serif;
   overflow-x: hidden;
   } 
   
@@ -56,15 +55,6 @@
     text-align: center;
   }
 
-  .about-big-text .line1,
-  .about-big-text .line2,
-  .about-big-text .line3,
-  .about-big-text .line4,
-  .about-big-text .line5,
-  .about-big-text .line6 {
-    font-family: "classico-urw", sans-serif;
-  }
-
   .about-big-text .line1 {
     font-size: 5rem;
   }
@@ -100,10 +90,6 @@
     line-height: 25px;
     word-spacing: 1px;
   }
-
-  .long-text p{
-    font-family: "classico-urw", sans-serif;
-  }
   
   .inverted .squares-container {
     order: 2;
@@ -126,18 +112,12 @@
     padding: 70px;
   }
 
-  .centered-text p {
-    font-family: "classico-urw", sans-serif;
-  }
-
   .title{
-    font-family: "classico-urw", sans-serif;
     font-size: 60px;
     padding-bottom: 30px;
   }
 
   .subtitle{
-    font-family: "classico-urw", sans-serif;
     font-size: 40px;
     padding-bottom: 20px;
   }

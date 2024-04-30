@@ -2,13 +2,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: "classico-urw", sans-serif;
 }
 
 .b-navbar {
-  font-family: "classico-urw", sans-serif;
   display: flex;
-  display: none; 
+  /* display: none;  */
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
@@ -29,7 +27,6 @@ opacity: 1;
 }
 
 .b-logo-text{
-  font-family: "classico-urw", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +100,6 @@ opacity: 1;
 }
 
 .nav-button{
-  font-family: "classico-urw", sans-serif;
   width: 120px;
   min-height: 38px;
   font-size: 17px;
@@ -295,6 +291,14 @@ option.korean::after {
     object-fit: cover;
   }
 
+  .post-contents {
+    padding: 15px;
+  }
+
+  .post-description {
+    margin-top: 5px;
+  }
+
   .pagination {
     color: white;
     display: flex;
@@ -420,7 +424,7 @@ option.korean::after {
   }
 
   .blog-date2 {
-    font-size: 25px;
+    font-size: 30px;
   }
   
   .overlay-top-right {
@@ -685,6 +689,89 @@ input[type="text"], textarea {
 
 
 @media screen and (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-menu {
+    display: block;
+  }
+
+  .b-navbar-lang{
+    display: none;
+  }
+
+  .m-nav-button{
+    cursor: pointer; 
+    margin-top: 30px;
+    width: 120px;
+    min-height: 38px;
+    font-size: 17px;
+    background-color: transparent;
+    border-radius: 5px 5px 5px 5px;
+    border-color: white;
+    color: white;
+    border: 1px solid #FFFFFF;
+  }
+
+  .nav-item a {
+    margin-right: 0px;
+    font-size: 25px;
+    opacity: 0.2;
+  }
+
+  .mobile-blog-click {
+    font-size: 23px;
+    padding-top: 20px;
+  }
+
+  .m-navbar-icons {
+    display: flex; 
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 30px;
+  }
+
+  .m-navbar-icon {
+    width: 30px;
+    margin: 10px 30px;
+  }
+
+  .dropdown {
+    position: relative;
+    padding-top: 20px;
+    display: inline-block;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: black;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: black;
+    opacity: 0.6;
+  }
+  
+  .dropdown-menu li span {
+    margin-right: 10px;
+  }
   .page-header {
     height: 450px;
   }
@@ -714,17 +801,46 @@ input[type="text"], textarea {
     grid-template-columns: 1fr;
     padding: 3rem;
     width: auto; 
-    padding-top: 250px;
+    padding-top: 130px;
     margin: 200px auto 0 auto;
     column-gap: 30px;
     justify-content: center;
 }
   
   .post {
-    width: 80%; 
+    width: 96%; 
+    margin-left: 2%;
+    margin-right: 2%;
     height: 500px;
     background-color: rgb(26,26,26);
-    margin: 20px;
+  }
+
+  .post-image .overlay-top-left {
+    position: absolute;
+    width: 56px;
+    height: 75px;
+    font-size: 20px;
+    top: 0px;
+    left: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 7px;
+    border-radius: 0px;
+  }
+
+  .overlay-top-left2 {
+    position: absolute;
+    width: 56px;
+    height: 75px;
+    font-size: 25px;
+    top: 0px;
+    left: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 7px;
+    border-radius: 0px;
+  }
+
+  .blog-date {
+    font-size: 30px;
   }
   
   .post-image {
@@ -733,7 +849,10 @@ input[type="text"], textarea {
   }
 
   .blog-post-detail {
-    padding: 0px;
+    position: absolute;
+    z-index: 99;
+    margin: 0;
+    padding: 0;
   }
 
   .modal-header {
@@ -825,7 +944,7 @@ input[type="text"], textarea {
 .error-message {
   color: red;
   font-size: 0.8rem;
-  margin-top: 5px;
+  padding-top: 10px;
 }
 
   .b-footer {

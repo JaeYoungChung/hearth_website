@@ -108,7 +108,7 @@ const Navbar = () => {
             className={activeSection === 'home' ? 'active' : ''}
             onClick={() => handleClick('home')}
           >
-            Home
+            HOME
           </a>
         </p>
       </li>
@@ -119,7 +119,7 @@ const Navbar = () => {
             className={activeSection === 'about' ? 'active' : ''}
             onClick={() => handleClick('about')}
           >
-            About
+            ABOUT
           </a>
         </p>
       </li>
@@ -130,7 +130,7 @@ const Navbar = () => {
             className={activeSection === 'apps' ? 'active' : ''}
             onClick={() => handleClick('apps')}
           >
-            Apps
+            APPS
           </a>
         </p>
       </li>
@@ -141,7 +141,7 @@ const Navbar = () => {
             className={activeSection === 'team' ? 'active' : ''}
             onClick={() => handleClick('team')}
           >
-            Team
+            TEAM
           </a>
         </p>
       </li>
@@ -152,7 +152,7 @@ const Navbar = () => {
             className={activeSection === 'community' ? 'active' : ''}
             onClick={() => handleClick('community')}
           >
-            Community
+            COMMUNITY
           </a>
         </p>
       </li>
@@ -202,24 +202,21 @@ const Navbar = () => {
               <img src = {icon_x} className="m-navbar-icon"/>
               <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
             </div>
-            <div className="m-dropdown">
-                  <div className="q-dropdown-toggle" onClick={toggleDropdown}>
+            <div className="dropdown">
+                  <div className="dropdown-toggle" onClick={toggleDropdown}>
                     <p >Language: {getSelectedFlagText()}</p>
                     <i className="dropdown-arrow"></i>
                   </div>
                   {isOpen && (
-                    <ul className="dropdown-menu">
+                   <ul className="dropdown-menu">
                       <li onClick={() => handleChangeLanguage('en')}>
-                        <span>English</span>
-                        <img src={england_flag} alt="English" className="flag-image" />
+                        <span>ENG</span>
                       </li>
                       <li onClick={() => handleChangeLanguage('ja')}>
                         <span>日本語</span>
-                        <img src={japan_flag} alt="Japanese" className="flag-image" />
                       </li>
                       <li onClick={() => handleChangeLanguage('ko')}>
                         <span>한국어</span>
-                        <img src={korea_flag} alt="Korean" className="flag-image" />
                       </li>
                     </ul>
                   )}

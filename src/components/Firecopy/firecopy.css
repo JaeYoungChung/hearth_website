@@ -1,6 +1,5 @@
 .f-navbar {
     position: absolute;
-    font-family: "classico-urw", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +21,6 @@
 }
 
 .f-logo-text{
-  font-family: "classico-urw", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +50,6 @@
 
 .nav-button{
     margin-left: 20px;
-    font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
@@ -71,7 +68,6 @@
     align-items: center;
     transform-style: preserve-3d; /* Allow 3D transformations */
     overflow: visible; /* To ensure anything moving outside the bounds is not visible */
-    font-family: "classico-urw", sans-serif;
   }
 
   .f-video-container {
@@ -140,7 +136,7 @@
     left: 30%;
     bottom: 0;
     padding-top: 20px;
-    z-index: 101;
+    z-index: 151;
     opacity: 0; /* Start hidden */
     transition: opacity 1s ease-in-out; /* Fade in transition */
   }
@@ -910,12 +906,12 @@ li.active .f-progress-container {
     }
 
     .left-view {
-      z-index: 1000;
+      z-index: 150;
       margin-right: 150px;
     }
     
     .right-view {
-      z-index: 1000;
+      z-index: 150;
       margin-left: 150px;
     }
 

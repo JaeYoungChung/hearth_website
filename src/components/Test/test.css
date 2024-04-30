@@ -1,7 +1,3 @@
-.test-page {
-  font-family: "classico-urw", sans-serif;
-}
-
 .italic {
   font-style: italic;
 }
@@ -72,7 +68,6 @@
   }
 
   .t-navbar {
-    font-family: "classico-urw", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,7 +100,6 @@ opacity: 1;
 }
 
 .nav-button{
-    font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
@@ -408,7 +402,7 @@ option.korean::after {
   }
   
   .dropdown-menu li span {
-    margin-right: 10px;
+    margin-left: 60px;
   }
 
   .t-animation-container {

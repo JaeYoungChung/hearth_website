@@ -75,7 +75,7 @@ const Community = () => {
             />                
                 <p className="register" onClick={!isRegistered ? handleRegister : null}>
                     {isRegistered ? t("community.registered") : t("community.register")}
-                </p>
+                </p> 
                 </div>
                     {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
           <div className="c-image-row">

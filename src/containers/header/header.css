@@ -1,6 +1,5 @@
 
 .header {
-    font-family: "classico-urw", sans-serif;
     display: flex;
     overflow: hidden;
 }
@@ -18,7 +17,6 @@
 }
 
 .header-content h1 {
-    font-family: "classico-urw", sans-serif;
     position: 'absolute';
     z-index: 0;    
     /* UI Properties */
@@ -34,7 +32,6 @@
 }
 
 .header-content p {
-    font-family: "classico-urw", sans-serif;
     z-index: 0;
     padding-top: 30px;
     text-align: center;

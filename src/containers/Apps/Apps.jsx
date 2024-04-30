@@ -78,7 +78,7 @@ function TextSection({ color, text }) {
   </div>
   );  
 }
-
+ 
   return (
   // <TransitionGroup>
   //   <CSSTransition

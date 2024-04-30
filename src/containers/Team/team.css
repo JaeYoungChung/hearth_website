@@ -1,5 +1,4 @@
 .team {
-    font-family: "classico-urw", sans-serif;
     position: relative;
     padding-bottom: 70px;
     height: 110vh; 
@@ -30,6 +29,7 @@
     width: 80%;
     max-width: 1200px;
     z-Index: 2;
+    user-select: none;
   }
 
   .t-text-content2 {
@@ -41,7 +41,8 @@
     flex: 1;
     width: 60%;
     max-width: 650px;
-    z-Index: 2,
+    z-Index: 2;
+    user-select: none;
   }
 
   .t-title1 {
@@ -95,12 +96,12 @@
     font-size: 50px;
     color:#4073FF;
   }
+
   .t-subtitle5 {
     font-size: 30px;
     color:#4073FF;
     opacity: 0.4;
   }
-
 
   .t-paragraph2 {
     margin-bottom: 15px;

@@ -15,7 +15,7 @@
   transform: translateY(-30%);
 }
   
-  .survey-container {
+.survey-container {
     padding-top: 1px;
     flex-direction: column;
     justify-content: center;
@@ -24,10 +24,9 @@
     margin: 100px auto;
     z-index: 2;
     transition: opacity 0.5s ease-in-out;
-  }
+}
  
-  .q-navbar {
-    font-family: "classico-urw", sans-serif;
+.q-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +48,6 @@
 }
 
 .q-logo-text{
-    font-family: "classico-urw", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +128,6 @@
 }
 
 .nav-button{
-    font-family: "classico-urw", sans-serif;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
@@ -190,7 +187,6 @@ option.korean::after {
 .q-wrapper {
   text-align: center;
   color: white;
-  font-family: 'Arial', sans-serif; 
   position: relative;
   width: 80%;
   margin: 100px auto;
@@ -305,7 +301,6 @@ span {
 .submitted-container {
   text-align: center;
   color: white;
-  font-family: 'Arial', sans-serif;
   position: relative;
   width: 80%;
   height: 100px;
