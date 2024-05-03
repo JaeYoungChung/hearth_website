@@ -82,7 +82,7 @@ function TextSection({ color, text }) {
   return (
   // <TransitionGroup>
   //   <CSSTransition
-  //     key={selected}
+  //     key={selected} 
   //     timeout={500}
   //     classNames="fade"
   //   >

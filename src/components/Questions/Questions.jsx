@@ -414,7 +414,7 @@ function Survey() {
             {selectedScores[currentQuestion - 1] !== null && currentQuestion < totalQuestions && !isTransitioning && (
               <span className="q-next-button" onClick={handleNext}>Next</span>
             )}
-            {currentQuestion === totalQuestions && (
+            {currentQuestion === totalQuestions && selectedScores[currentQuestion - 1] !== null &&(
               <span className="q-submit-button" onClick={handleSubmit}>Submit</span>
             )}
           </div>

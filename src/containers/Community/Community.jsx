@@ -58,13 +58,13 @@ const Community = () => {
             console.error("Error saving email: ", error);
         });
     }; 
-
+ 
     return (
         <div className="community">
           <p className='c-line1'>Join the</p>
           <p className='c-line2'>Hearthside</p>
           <p className='c-line3'>and be a part of our journey to wellness & enlightenment</p>
-           <div className="c-inputBox">
+           <div className="c-inputBox"> 
              <input
                 type="text"
                 placeholder={t("community.email")}

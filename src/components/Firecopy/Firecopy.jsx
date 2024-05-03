@@ -23,7 +23,9 @@ import icon_x from '../../assets/icon_x.png'
 import email from '../../assets/email.png'
 import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
-
+import html2canvas from 'html2canvas';
+import example_fire from '../../assets/example_fire.png'
+import example_fire2 from '../../assets/example_fire.svg'
 
 const Firecopy = () => {
 
@@ -190,6 +192,7 @@ const Firecopy = () => {
     const [showNewContent, setShowNewContent] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
     const [rotationButton, setRotationButton] = useState(70);
+    const [isCheckboxTextBlinking, setIsCheckboxTextBlinking] = useState(false);
 
 
     const onRotate = (newScore) => {
@@ -413,6 +416,14 @@ const Firecopy = () => {
             setIsValidEmail(false);
             return; // Stop the registration process if the email is not valid
         }
+        if (!isFirstCheckboxChecked) {
+          // Blink the checkbox text if the checkbox is not checked
+          setIsCheckboxTextBlinking(true);
+          setTimeout(() => {
+            setIsCheckboxTextBlinking(false);
+          }, 500);
+          return; // Stop the registration process if the checkbox is not checked
+        }
         const uuid = uid();
         // Save email to Firebase
         set(ref(db, "emails/" + uuid), {
@@ -432,6 +443,47 @@ const Firecopy = () => {
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
+
+    //save results to device
+    const handleSaveClick = () => {
+      // Capture the first custom design
+      const firstDesignElement = document.getElementById('first-design');
+      html2canvas(firstDesignElement).then(canvas => {
+        // Get the color overlay element
+        const colorOverlay = firstDesignElement.querySelector('.example-color-overlay');
+        const overlayColor = window.getComputedStyle(colorOverlay).getPropertyValue('--overlay-color');
+    
+        // Extract RGB values from the overlay color
+        const rgbValues = overlayColor.match(/\d+/g);
+        const [red, green, blue] = rgbValues.map(Number);
+    
+        // Get the canvas context
+        const ctx = canvas.getContext('2d');
+    
+        // Get the image data
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+    
+        // Blend the colors
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = Math.round((data[i] * red) / 255);
+          data[i + 1] = Math.round((data[i + 1] * green) / 255);
+          data[i + 2] = Math.round((data[i + 2] * blue) / 255);
+        }
+    
+        // Put the modified image data back to the canvas
+        ctx.putImageData(imageData, 0, 0);
+    
+        // Create a download link and trigger the download
+        const link = document.createElement('a');
+        link.download = 'first-design.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    
+      // Capture the second custom design (similar code as above)
+      // ...
+    };
 
     return (
     <div className='firecopy-container'>
@@ -508,7 +560,7 @@ const Firecopy = () => {
                     </ul>
                   )} 
                 </div>
-            <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
+            <p className='blog-click' style={{marginLeft: '20px'}} onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             </div> 
         </div>
@@ -625,8 +677,10 @@ const Firecopy = () => {
             {/* <p>{`(${red}, ${green}, ${blue})`}</p> */}
             <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
             <div className="color-square" ></div>
-            <button className="text-button">Save Fire</button>
-          </div>
+            <button className="text-button" onClick={handleSaveClick}>
+              Save Fire
+            </button>          
+        </div>
           <div className="f-right-content">
             <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>
         
@@ -639,15 +693,14 @@ const Firecopy = () => {
                 id="f-inputID"
                 className={!isValidEmail ? 'invalid' : ''}
             />                
-                <p
-                className={`register ${isFirstCheckboxChecked ? 'clickable' : 'disabled'}`}
+              <p
+                className={`register ${isRegistered || !isFirstCheckboxChecked ? 'disabled' : 'clickable'}`}
                 onClick={!isRegistered && isFirstCheckboxChecked ? handleRegister : null}
-            >
+              >
                 {isRegistered ? t("community.registered") : t("community.register")}
             </p>
-                </div>
-                    {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
-
+          </div>
+              {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
             <div className='check-text'>
                   <input
                   type="checkbox"
@@ -656,8 +709,13 @@ const Firecopy = () => {
                   checked={isFirstCheckboxChecked}
                   onChange={handleFirstCheckboxChange}
               />              
-              <label for="check1" className="checkbox-label"> I have reviewed and agree to HEARTH’s Privacy Policy (required)</label>
-            </div>
+            <label
+                htmlFor="check1"
+                className={`checkbox-label ${isCheckboxTextBlinking ? 'blink' : ''}`}
+              >
+                I have reviewed and agree to HEARTH's Privacy Policy (required)
+              </label>            
+              </div>
             <div className='check-text'>
               <input type="checkbox" id="check2"  className="custom-checkbox" />
               <label for="check2" className="checkbox-label"> I agree to receive general emails and product offers from HEARTH (optional)</label>
@@ -724,7 +782,41 @@ const Firecopy = () => {
       </NavLink>
       )}
     </div>
-</div>
+
+    <div className='example-wrapper'>
+      {/* first save fire */}
+      <div id='first-design' className='example-container' style={{height: '400px', display:'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center'}}>
+        <img className='example-fire' src={example_fire} alt="Background" style={{height: '400px'}} />
+        <div className="example-color-overlay" style={{ '--overlay-color': `rgb(${red}, ${green}, ${blue})`, height: '400px' }} />
+        <p className='example-hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
+      </div>
+
+      {/* second save fire
+      <div id='second-design' className='example-container' style={{height: '400px'}}>
+        <img src={example_fire} alt="Background" style={{height: '400px'}} />
+        <div className="example-color-overlay" style={{ '--overlay-color': `rgb(${red}, ${green}, ${blue})`, width: '400px' }} />
+        <div className="example-legend-container" ref={graphRef}>
+                <ul className="f-score-list">
+                  {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
+                    const customIndex = customOrder.indexOf(originalIndex);
+                    return (
+                        <li key={score} className={currentIndex === customIndex ? "active " : ""}>
+                          <p className={`f-label-color-${originalIndex}`}>{legend_labels[originalIndex]}</p>
+                            <div className="f-progress-container">
+                                <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
+                            </div>
+                          <p className='f-percentage'>{Math.round(hexagonScores[`s${originalIndex+1}`]/36*100)}%</p>
+                        </li>
+                    );
+                  })}
+                </ul>
+            </div>
+          </div>
+        <div>
+        </div> */}
+
+        </div>
+      </div>
     );
   };
   

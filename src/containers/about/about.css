@@ -108,8 +108,10 @@
     padding: 2%;
     width: 60%;
     margin: 0 auto;
-    height: 80vh;
+    height: 85vh;
     padding: 70px;
+    display: inline-block;
+    height: auto;
   }
 
   .title{
@@ -204,15 +206,16 @@
     }
 
     .text-center {
-      padding-top: 200px;
+      padding-top: 150px;
     }
 
     .centered-text {
       width: 90%;
       height: auto;
       padding: 30px;
-      padding-top: 120px;
-      padding-bottom: 120px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      line-height: 25px;
     }
   
     .title {
@@ -223,5 +226,9 @@
     .subtitle {
       font-size: 20px;
       padding-bottom: 10px;
+    }
+
+    .rest-text {
+      opacity: 0.8;
     }
   }

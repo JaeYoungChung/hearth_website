@@ -25,7 +25,7 @@ const Header = () => {
     setIsActive(!isActive);
   };
 
-  return ( 
+  return (  
     <div className='header' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>

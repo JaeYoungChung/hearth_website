@@ -266,6 +266,7 @@ function handlePostClick(post) {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
+            <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
@@ -298,7 +299,7 @@ function handlePostClick(post) {
             </div>
           </div>
         </div>
-      )}
+      )} 
           <div className='b-navbar-lang'>
               <div className="b-dropdown">
                 <div className="b-dropdown-toggle" onClick={toggleDropdown}>
@@ -332,8 +333,12 @@ function handlePostClick(post) {
      <div className="category-dropdown">
         <select value={activeCategory} onChange={handleCategoryChange} className="category-select">
           <option value="all">All</option>
-          <option value="books">Books</option>
-          <option value="travel">Travel</option>
+          <option value="helm">Helm</option>
+          <option value="envisage">Envisage</option>
+          <option value="attune">Attune</option>
+          <option value="reverie">Reverie</option>
+          <option value="transcend">Transcend</option>
+          <option value="harmonize">Harmonize</option>
         </select>
       </div>
     {selectedPost ? (
@@ -370,10 +375,10 @@ function handlePostClick(post) {
             &gt;
           </p>
         </div>  
-        <Banner></Banner>   
-        
         </>
     )}
+            <Banner></Banner>   
+
             <div className="b-footer">
                 <div className="b-footerTexts">
                     <p>Privacy Policy</p>
@@ -472,7 +477,9 @@ function BlogPostDetail({ post, onClose }) {
             <span>Back to Home</span>
           </div>
         </div>
-        <Banner></Banner>   
+        {/* if (window.matchMedia('(max-width: 768px)').matches) {
+          <Banner></Banner>
+        }  */}
       </div>
     );
   }

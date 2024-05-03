@@ -253,7 +253,7 @@ const Test = () => {
                     {animationStage === 4 && (
                     <button className='start-test-btn' onClick={handleTextButtonClick}>Proceed to Test</button>
                     )}
-                  </div>
+                  </div> 
               </div>
           )}
         </div>

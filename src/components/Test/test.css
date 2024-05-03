@@ -405,6 +405,10 @@ option.korean::after {
     margin-left: 60px;
   }
 
+  .start-test-btn {
+    transform: translateY(-70px);
+  }
+
   .t-animation-container {
     transform: translateY(-50px);
   }

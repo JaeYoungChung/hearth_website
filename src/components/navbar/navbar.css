@@ -18,14 +18,14 @@
     padding-left: 20px;
 }
 
-.nav-item a {
+.home-nav-item a {
     opacity: 0.5;
-    font-size: 20px;
+    font-size: 25px;
     transition: opacity 0.3s, color 0.3s;
     margin-right: 25px;
   }
   
-  .nav-item a.active {
+  .home-nav-item a.active {
     opacity: 1;
   }
 
@@ -36,13 +36,12 @@
     margin-right: 25px;
 }
 
-.nav-item {
+.home-nav-item {
     padding-bottom: 0px;
     list-style: none;
-    
 }
 
-.nav-item .active {
+.home-nav-item .active {
     border-bottom: 2px solid white;
     color: white; 
     opacity: 1;
@@ -271,6 +270,7 @@ option.korean::after {
   flex-direction: column;
   opacity: 0;
   transition: opacity 0.3s ease;
+  overflow-y: scroll;
 }
 
 .navbar-mobile-menu.fade-in {
@@ -327,9 +327,9 @@ option.korean::after {
     display: none;
   }
 
-  .m-nav-button{ 
+  .h-m-nav-button{ 
     cursor: pointer; 
-    margin-top: 30px;
+    margin-top: 25px;
     width: 120px;
     min-height: 38px;
     font-size: 17px;
@@ -340,14 +340,14 @@ option.korean::after {
     border: 1px solid #FFFFFF;
   }
 
-  .nav-item a {
+  .home-nav-item a {
     margin-right: 0px;
-    font-size: 25px;
+    font-size: 22px;
     opacity: 0.2;
   }
 
-  .mobile-blog-click {
-    font-size: 23px;
+  .home-mobile-blog-click {
+    font-size: 22px;
     padding-top: 20px;
   }
 
