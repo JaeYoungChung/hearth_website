@@ -78,7 +78,7 @@ const Firecopy = () => {
     const navigate = useNavigate();
   
     const handleButtonClick = () => {
-      navigate('/questions');
+      navigate('/test');
     };
   
     const handleBlogClick = () => {
@@ -443,46 +443,47 @@ const Firecopy = () => {
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
+    
+      const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+
+      const handleCopyToClipboard = () => {
+        const textToCopy = 'cycologically@gmail.com';
+    
+        // Copy the text to the clipboard
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            setCopiedToClipboard(true);
+    
+            // Clear the message after 2 seconds
+            setTimeout(() => {
+              setCopiedToClipboard(false);
+            }, 2000);
+          })
+          .catch((error) => {
+            console.error('Failed to copy text: ', error);
+          });
+      };
 
     //save results to device
-    const handleSaveClick = () => {
-      // Capture the first custom design
-      const firstDesignElement = document.getElementById('first-design');
-      html2canvas(firstDesignElement).then(canvas => {
-        // Get the color overlay element
-        const colorOverlay = firstDesignElement.querySelector('.example-color-overlay');
-        const overlayColor = window.getComputedStyle(colorOverlay).getPropertyValue('--overlay-color');
+    const handleSaveFire = () => {
+      const firstDesign = document.getElementById('first-design');
+      const secondDesign = document.getElementById('second-design');
     
-        // Extract RGB values from the overlay color
-        const rgbValues = overlayColor.match(/\d+/g);
-        const [red, green, blue] = rgbValues.map(Number);
-    
-        // Get the canvas context
-        const ctx = canvas.getContext('2d');
-    
-        // Get the image data
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-    
-        // Blend the colors
-        for (let i = 0; i < data.length; i += 4) {
-          data[i] = Math.round((data[i] * red) / 255);
-          data[i + 1] = Math.round((data[i + 1] * green) / 255);
-          data[i + 2] = Math.round((data[i + 2] * blue) / 255);
-        }
-    
-        // Put the modified image data back to the canvas
-        ctx.putImageData(imageData, 0, 0);
-    
-        // Create a download link and trigger the download
-        const link = document.createElement('a');
-        link.download = 'first-design.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+      html2canvas(firstDesign).then((canvas) => {
+        const firstImage = canvas.toDataURL('image/png');
+        const firstLink = document.createElement('a');
+        firstLink.href = firstImage;
+        firstLink.download = 'first_save_fire.png';
+        firstLink.click();
       });
     
-      // Capture the second custom design (similar code as above)
-      // ...
+      html2canvas(secondDesign).then((canvas) => {
+        const secondImage = canvas.toDataURL('image/png');
+        const secondLink = document.createElement('a');
+        secondLink.href = secondImage;
+        secondLink.download = 'second_save_fire.png';
+        secondLink.click();
+      });
     };
 
     return (
@@ -510,7 +511,17 @@ const Firecopy = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
-              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
+              <img src={email}
+                style={{ width: '40px', cursor: 'pointer' }}
+                className="m-navbar-icon"
+                onClick={handleCopyToClipboard}
+                alt="Copy to Clipboard"
+              />     
+              {copiedToClipboard && (
+                <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
+                  Copied to Clipboard!
+                </div>
+              )}             
             </div>
             <div className="m-dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
@@ -677,13 +688,12 @@ const Firecopy = () => {
             {/* <p>{`(${red}, ${green}, ${blue})`}</p> */}
             <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
             <div className="color-square" ></div>
-            <button className="text-button" onClick={handleSaveClick}>
+            <button className="text-button" onClick={handleSaveFire}>
               Save Fire
-            </button>          
+            </button>
         </div>
           <div className="f-right-content">
-            <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>
-        
+            <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>        
           <div className="f-inputBox">
              <input
                 type="text"
@@ -791,11 +801,11 @@ const Firecopy = () => {
         <p className='example-hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
       </div>
 
-      {/* second save fire
+      {/* second save fire */}
       <div id='second-design' className='example-container' style={{height: '400px'}}>
         <img src={example_fire} alt="Background" style={{height: '400px'}} />
         <div className="example-color-overlay" style={{ '--overlay-color': `rgb(${red}, ${green}, ${blue})`, width: '400px' }} />
-        <div className="example-legend-container" ref={graphRef}>
+        <div className="example-legend-container">
                 <ul className="f-score-list">
                   {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
                     const customIndex = customOrder.indexOf(originalIndex);
@@ -813,7 +823,7 @@ const Firecopy = () => {
             </div>
           </div>
         <div>
-        </div> */}
+        </div>
 
         </div>
       </div>

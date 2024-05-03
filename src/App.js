@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navbar, Questions, Test, Firecolor, Firecopy, Blog} from './components';
-import {Header, About, Apps, Team, Community} from './containers';
+import {Header, About, About1, About2, About3, Apps, Team, Community} from './containers';
 import './App.css';
 import { Element } from 'react-scroll';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -11,10 +11,12 @@ const MainLayout = () => (
     <Navbar />
     <div>
     {/* <div className="snap-scroll-container"> */}
-      <div id="longBackground" className='longBackground'>
+      {/* <div id="longBackground" className='longBackground'> */}
         <section id="home" className="home-element"><Header /></section>
-        <section id="about" className="long-element"><About /></section>
-      </div>
+        <section id="about" className="home-element"><About1 /></section>
+        <section id="about" className="home-element"><About2 /></section>
+        <section id="about" className="home-element"><About3 /></section>
+      {/* </div> */}
         <section id="apps" className="element"><Apps /></section>
         <section id="team" className="element"><Team /></section>
         <section id="community" className="element"><Community /></section>

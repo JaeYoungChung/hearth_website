@@ -2,6 +2,10 @@
 .header {
     display: flex;
     overflow: hidden;
+    background-image: url('/public/bg_1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .header-content{
@@ -19,7 +23,6 @@
 .header-content h1 {
     position: 'absolute';
     z-index: 0;    
-    /* UI Properties */
     text-align: center;
     font: 100px;
     color: #FFFFFF;
@@ -96,15 +99,7 @@
 
 
   /* Media Query for Mobile Devices */
-@media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-    }
-    
-    .header-content {
-      padding-top: 300px;
-    }
-    
+@media (max-width: 768px) {  
     .home_title_text {
       font-size: 60px;
     }

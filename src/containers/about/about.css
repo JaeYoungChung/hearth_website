@@ -1,12 +1,35 @@
-.About {
+.About1 {
   overflow-x: hidden;
-  } 
+  height: 100vh;
+  background-image: url('/public/bg_2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  }
+.About2 {
+  overflow-x: hidden;
+  height: 100vh;
+  background-image: url('/public/bg_3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.About3 {
+  overflow-x: hidden;
+  height: 100vh;
+  background-image: url('/public/bg_4.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
   
   .section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    height: 100vh;
     padding: 10%;
   }
   

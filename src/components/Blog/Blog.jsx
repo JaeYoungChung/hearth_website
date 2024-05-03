@@ -210,6 +210,26 @@ const Blog = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+
+  const handleCopyToClipboard = () => {
+    const textToCopy = 'cycologically@gmail.com';
+
+    // Copy the text to the clipboard
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        setCopiedToClipboard(true);
+
+        // Clear the message after 2 seconds
+        setTimeout(() => {
+          setCopiedToClipboard(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy text: ', error);
+      });
+  };
+
   useEffect(() => {
     const postsRef = ref(db);
 
@@ -273,28 +293,35 @@ function handlePostClick(post) {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
-              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
+              <img src={email}
+                style={{ width: '40px', cursor: 'pointer' }}
+                className="m-navbar-icon"
+                onClick={handleCopyToClipboard}
+                alt="Copy to Clipboard"
+              />     
+              {copiedToClipboard && (
+                <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
+                  Copied to Clipboard!
+                </div>
+              )}        
             </div>
-            <div className="m-dropdown">
+            <div className="dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
                     <p >Language: {getSelectedFlagText()}</p>
                     <i className="dropdown-arrow"></i>
                   </div>
                   {isOpen && (
                     <ul className="dropdown-menu">
-                      <li onClick={() => handleChangeLanguage('en')}>
-                        <span>English</span>
-                        <img src={england_flag} alt="English" className="flag-image" />
-                      </li>
-                      <li onClick={() => handleChangeLanguage('ja')}>
-                        <span>日本語</span>
-                        <img src={japan_flag} alt="Japanese" className="flag-image" />
-                      </li>
-                      <li onClick={() => handleChangeLanguage('ko')}>
-                        <span>한국어</span>
-                        <img src={korea_flag} alt="Korean" className="flag-image" />
-                      </li>
-                    </ul>
+                    <li onClick={() => handleChangeLanguage('en')}>
+                      <span>English</span>
+                    </li>
+                    <li onClick={() => handleChangeLanguage('ja')}>
+                      <span>日本語</span>
+                    </li>
+                    <li onClick={() => handleChangeLanguage('ko')}>
+                      <span>한국어</span>
+                    </li>
+                  </ul>
                   )}
             </div>
           </div>

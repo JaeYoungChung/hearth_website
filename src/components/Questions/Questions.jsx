@@ -62,7 +62,7 @@ const Questions = () => {
   };
 
   const handleButtonClick = () => {
-    navigate('/questions');
+    navigate('/test');
   };
 
   const handleBlogClick = () => {
@@ -74,6 +74,26 @@ const Questions = () => {
   };
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+
+  const handleCopyToClipboard = () => {
+    const textToCopy = 'cycologically@gmail.com';
+
+    // Copy the text to the clipboard
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        setCopiedToClipboard(true);
+
+        // Clear the message after 2 seconds
+        setTimeout(() => {
+          setCopiedToClipboard(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy text: ', error);
+      });
   };
 
   return (
@@ -102,8 +122,17 @@ const Questions = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
-              <img src = {email} style={{width: '40px'}} className="m-navbar-icon"/>
-            </div>
+              <img src={email}
+                style={{ width: '40px', cursor: 'pointer' }}
+                className="m-navbar-icon"
+                onClick={handleCopyToClipboard}
+                alt="Copy to Clipboard"
+              />     
+              {copiedToClipboard && (
+                <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
+                  Copied to Clipboard!
+                </div>
+              )}               </div>
             <div className="dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
                     <p >Language: {getSelectedFlagText()}</p>

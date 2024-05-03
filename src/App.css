@@ -4,6 +4,7 @@
     margin: 0;
     scroll-behavior: smooth;
     font-family: "classico-urw", sans-serif;
+    scrollbar-width: none;
   }
 
 html, body {
@@ -13,16 +14,17 @@ html, body {
   height: 100vh;
 }
 
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
 body {
   overflow-x: hidden !important;
 }
 .container {
   max-width: 100% !important;
   overflow-x: hidden !important;
-}
-
-#about {
-  height: 370vh;
 }
 
 #community {
@@ -46,10 +48,10 @@ body {
 }
 
 .longBackground {
-    background-image: url('/public/main_bg.png');
+    /* background-image: url('/public/main_bg.png');
     background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 300vh;
+    background-repeat: no-repeat; */
+    /* min-height: 300vh; */
     background-position: center -130px;
     scroll-snap-type: none;
     scroll-snap-stop: none;
@@ -60,10 +62,7 @@ body {
   scroll-snap-stop: always;
   height: 100vh;
 }
-.long-element {
-  scroll-snap-align: start;
-  height: 300vh;
-}
+
 .home-element {
   scroll-snap-align: start;
   height: 100vh;
