@@ -26,6 +26,7 @@ import close_result from '../../assets/close_result.png'
 import html2canvas from 'html2canvas';
 import example_fire from '../../assets/example_fire.png'
 import example_fire2 from '../../assets/example_fire.svg'
+import emailjs from 'emailjs-com';
 
 const Firecopy = () => {
 
@@ -405,6 +406,11 @@ const Firecopy = () => {
         return regex.test(email);
     };
 
+    //email assets
+    const testResultCaption = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
+    const testResultColor = `rgb(${red}, ${green}, ${blue})`;
+    // const emailFire =  document.getElementById('first-design').outerHTML;
+
     //email register
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
@@ -434,12 +440,28 @@ const Firecopy = () => {
             setIsRegistered(true);
             setEmail(""); // Clear the email input field
             // Handle success (e.g., show notification)
+              // Send email using EmailJS
+      const templateParams = {
+        to_email: email,
+        testResultText: textToShow,
+        testResultCaption: testResultCaption,
+        // testResultImage: document.getElementById('first-design').outerHTML,
+        // testData1:
+        // Add other variables from your React code here
+      };
+      
+      emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
+        .then((response) => {
+          console.log('Email sent successfully!', response.status, response.text);
         })
-        .catch(error => {
-            // Handle error
-            console.error("Error saving email: ", error);
+        .catch((error) => {
+          console.error('Error sending email:', error);
         });
-    };
+    })
+    .catch(error => {
+      console.error("Error saving email: ", error);
+    });
+};
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
@@ -685,8 +707,7 @@ const Firecopy = () => {
         <div className="f-new-content">
           <div className="f-left-content">
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
-            {/* <p>{`(${red}, ${green}, ${blue})`}</p> */}
-            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
+            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{testResultCaption}</p>
             <div className="color-square" ></div>
             <button className="text-button" onClick={handleSaveFire}>
               Save Fire

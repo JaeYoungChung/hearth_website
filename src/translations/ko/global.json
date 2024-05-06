@@ -1,7 +1,7 @@
 {
     "header" : {
         "message": "환영합니다",
-        "take_test": "검사하기"
+        "take_test": "테스트 보기"
     },
     "navbar" : {
         "home": "홈",
@@ -10,7 +10,7 @@
         "team": "팀",
         "community": "커뮤니티",
         "blog": "블로그",
-        "take_test": "검사하기"
+        "take_test": "테스트 보기"
     },
     "about" : {
         "line1": "우리는",
