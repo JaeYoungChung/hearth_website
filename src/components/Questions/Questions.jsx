@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getQuestions } from '../../data.js';
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import { uid } from "uid";
+import { ref, set, push } from "firebase/database";
 import logo from '../../assets/test_logo.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
@@ -406,7 +409,60 @@ function Survey() {
         setTimeout(() => {
           document.querySelector('.background-image-container').classList.add('show');
         }, 500);
+
+
+      //generate unique fire code
+      const generateUniqueCode = () => {
+        const hexCode = rgbToHex(NewRedValue, NewGreenValue, NewBlueValue);
+        const randomChars = generateRandomChars(4);
+        return `${hexCode}-${randomChars}`;
       };
+      
+      const rgbToHex = (r, g, b) => {
+        const componentToHex = (c) => {
+          const hex = c.toString(16);
+          return hex.length === 1 ? '0' + hex : hex;
+        };
+      
+        return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
+      };
+      
+      const generateRandomChars = (length) => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+          result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+      };
+
+
+        //save data to user database
+        const userAnswersRef = ref(db, 'userAnswers');
+
+        const uniqueCode = generateUniqueCode();
+
+        sessionStorage.setItem('uniqueCode', JSON.stringify({
+          uniqueCode: uniqueCode
+        }));
+      
+        const userAnswers = {
+          answers: selectedScores,
+          code: uniqueCode,
+          rgb: `rgb(${AdjustedRed}, ${AdjustedGreen}, ${AdjustedBlue})`,
+        };
+      
+        push(userAnswersRef, userAnswers)
+          .then((snapshot) => {
+            const userId = snapshot.key;
+            console.log('User answers stored successfully with ID:', userId);
+          })
+          .catch((error) => {
+            console.error('Error storing user answers:', error);
+          });
+      };
+
+
  
     return (
       <div className="q-wrapper">

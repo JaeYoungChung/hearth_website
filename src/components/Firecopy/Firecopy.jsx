@@ -142,7 +142,8 @@ const Firecopy = () => {
     const red = rgbValues?.NewRedValue;
     const green = rgbValues?.NewGreenValue;
     const blue = rgbValues?.NewBlueValue;     
-    const maxminResult = sessionStorage.getItem('maxminResult') ;
+    const maxminResult = sessionStorage.getItem('maxminResult');
+    const uniqueCode = sessionStorage.getItem('uniqueCode');
     let textToShow = 'No data found';
     if (maxminResult) {
       const { max, min } = JSON.parse(maxminResult);
@@ -409,13 +410,22 @@ const Firecopy = () => {
     //email assets
     const testResultCaption = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
     const testResultColor = `rgb(${red}, ${green}, ${blue})`;
-    // const emailFire =  document.getElementById('first-design').outerHTML;
+    const score1 = Math.round(hexagonScores[0] / 36 * 100);
+    const score2 = Math.round(hexagonScores[1] / 36 * 100);
+    const score3 = Math.round(hexagonScores[2] / 36 * 100);
+    const score4 = Math.round(hexagonScores[3] / 36 * 100);
+    const score5 = Math.round(hexagonScores[4] / 36 * 100);
+    const score6 = Math.round(hexagonScores[5] / 36 * 100);
+    const score1Width = `${hexagonScores[0]/36*100}%`
+    const svgElement = svgRef.current;
+
 
     //email register
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
         setEmail(emailInput);
-        setIsValidEmail(validateEmail(emailInput));    }; 
+        setIsValidEmail(validateEmail(emailInput));    
+      }; 
 
     const handleRegister = () => {
         if (!validateEmail(email)) {
@@ -431,32 +441,42 @@ const Firecopy = () => {
           return; // Stop the registration process if the checkbox is not checked
         }
         const uuid = uid();
-        // Save email to Firebase
-        set(ref(db, "emails/" + uuid), {
-            email,
-            uuid,
-        })
-        .then(() => {
-            setIsRegistered(true);
-            setEmail(""); // Clear the email input field
-            // Handle success (e.g., show notification)
-              // Send email using EmailJS
-      const templateParams = {
-        to_email: email,
-        testResultText: textToShow,
-        testResultCaption: testResultCaption,
-        // testResultImage: document.getElementById('first-design').outerHTML,
-        // testData1:
-        // Add other variables from your React code here
-      };
-      
-      emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
-        .then((response) => {
-          console.log('Email sent successfully!', response.status, response.text);
-        })
-        .catch((error) => {
-          console.error('Error sending email:', error);
-        });
+  // Save email to Firebase
+  set(ref(db, "emails/" + uuid), {
+    email,
+    uuid,
+  })
+    .then(() => {
+      setIsRegistered(true);
+      setEmail(""); // Clear the email input field
+
+      // Capture the SVG as an image
+      const svgElement = svgRef.current;
+      html2canvas(svgElement).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+
+        // Send email using EmailJS
+        const templateParams = {
+          to_email: email,
+          testResultText: textToShow,
+          testResultCaption: uniqueCode,
+          testResultColor: testResultColor,
+          rCustomIndex: rCustomIndex,
+          // hexagonScores: hexagonScores.map(score => score / 36 * 100),
+          score1: score1,
+          score2: score2,
+          attachment: imgData, // Add the SVG image as an attachment
+          // Add other variables from your React code here
+        };
+
+        emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
+          .then((response) => {
+            console.log('Email sent successfully!', response.status, response.text);
+          })
+          .catch((error) => {
+            console.error('Error sending email:', error);
+          });
+      });
     })
     .catch(error => {
       console.error("Error saving email: ", error);
@@ -707,7 +727,7 @@ const Firecopy = () => {
         <div className="f-new-content">
           <div className="f-left-content">
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
-            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{testResultCaption}</p>
+            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{uniqueCode}</p>
             <div className="color-square" ></div>
             <button className="text-button" onClick={handleSaveFire}>
               Save Fire
