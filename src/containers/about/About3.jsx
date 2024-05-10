@@ -8,7 +8,7 @@ const About3 = () => {
   const [t, i18n] = useTranslation("global");
     return (
     <div className="About3">
-      <div className="section text-center">
+      <div className="section text-center"> 
         <div className="centered-text">
             <p className='title'>HEARTH</p>
             <p className='subtitle'>is here to help us.</p><br></br>

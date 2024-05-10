@@ -143,6 +143,8 @@ const Firecopy = () => {
     const green = rgbValues?.NewGreenValue;
     const blue = rgbValues?.NewBlueValue;     
     const maxminResult = sessionStorage.getItem('maxminResult');
+    const maxminValue = JSON.parse(sessionStorage.getItem('maxminValue'));
+    const { maxValue, minValue, maxValueImage, minValueImage } = maxminValue;
     const uniqueCode = sessionStorage.getItem('uniqueCode');
     let textToShow = 'No data found';
     if (maxminResult) {
@@ -219,10 +221,10 @@ const Firecopy = () => {
           textContainer.classList.add('appearing');
         }, 2000);
       
-        // Make the bottom text appear after 5 seconds
+        // Make the bottom text appear after 3 seconds
         setTimeout(() => {
           bottomText.style.opacity = 1; // Change opacity to make it visible
-        }, 5000); // Adjusted to 5 seconds for the sequence
+        }, 3000); // Adjusted to 3 seconds for the sequence
       }, []);
 
       const handleBottomTextClick = () => {
@@ -251,6 +253,7 @@ const Firecopy = () => {
               svgRef2.current.classList.add('slide-bottom');
             }
             if (videoRef.current) {
+              videoRef.current.style.transform = 'none';
                 videoRef.current.classList.add('slide-right');
               }
             textContainerRef.current.classList.add('hidden');
@@ -348,6 +351,7 @@ const Firecopy = () => {
         return points;
       };
       const outerHexagonPoints = getHexagonPoints(200, 200, 200);
+      const labelHexagonPoints = getHexagonPoints(200, 200, 230);
       const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
         // Find the custom index for the original index based on the custom sequence
         const customIndex = customOrder[originalIndex];
@@ -418,7 +422,14 @@ const Firecopy = () => {
     const score6 = Math.round(hexagonScores[5] / 36 * 100);
     const score1Width = `${hexagonScores[0]/36*100}%`
     const svgElement = svgRef.current;
-
+    const resultSVG = <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152.31 220">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g id="Fire_2" data-name="Fire 2">
+        <path id="Icon_ionic-ios-flame" fill={hexagonColor} stroke-width= "0px" data-name="Icon ionic-ios-flame" class="cls-1" d="M57.17,0C72.51,71.18-.53,69.75,0,141.41c.42,58.7,62.62,78.59,76.42,78.59s71.29-12.48,75.68-78.59C155.85,85.14,108.89,31.41,57.17,0ZM96.46,187.58c-5.39,20.57-34.9,20.62-40.4.05-.82-3.02-1.25-6.13-1.27-9.26,0-21.68,21.47-46.7,21.47-46.7,0,0,21.36,25.01,21.36,46.7.04,3.11-.35,6.2-1.17,9.2Z"/>
+        <path id="Icon_ionic-ios-flame-2" fill={hexagonColor} stroke-width= "0px" data-name="Icon ionic-ios-flame-2" class="cls-1" d="M57.17,0C72.51,71.18-.53,69.75,0,141.41c.42,58.7,62.62,78.59,76.42,78.59s71.29-12.48,75.68-78.59C155.85,85.14,108.89,31.41,57.17,0ZM96.46,187.58c-5.39,20.57-34.9,20.62-40.4.05-.82-3.02-1.25-6.13-1.27-9.26,0-21.68,21.47-46.7,21.47-46.7,0,0,21.36,25.01,21.36,46.7.04,3.11-.35,6.2-1.17,9.2Z"/>
+      </g>
+    </g>
+  </svg>
 
     //email register
     const handleEmailChange = (e) => {
@@ -461,11 +472,14 @@ const Firecopy = () => {
           testResultText: textToShow,
           testResultCaption: uniqueCode,
           testResultColor: testResultColor,
+          hexagonColor: hexagonColor,
           rCustomIndex: rCustomIndex,
           // hexagonScores: hexagonScores.map(score => score / 36 * 100),
           score1: score1,
           score2: score2,
           attachment: imgData, // Add the SVG image as an attachment
+          max_value_image: maxValueImage,
+          min_value_image: minValueImage      
           // Add other variables from your React code here
         };
 
@@ -682,11 +696,11 @@ const Firecopy = () => {
                 
                 {/* labels */}
                     {
-                outerHexagonPoints.map((point, i) => (
+                labelHexagonPoints.map((point, i) => (
                     <text 
-                        x={point.x - 8} 
-                        y={point.y + 11} 
-                        fontSize="24"
+                        x={point.x - 11} 
+                        y={point.y+10} 
+                        fontSize="30"
                         fill={changeTextColor ? colors[i] : "white"}
                         key={i}
                         transform={`translate(${point.x} ${point.y}) 

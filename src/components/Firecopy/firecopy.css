@@ -189,6 +189,7 @@
   transform: rotate3d(1, 0, 0, 70deg);
   transition: transform 2s ease-in-out;
   opacity: 0.5;
+  transform-style: preserve-3d;
 }
   
 .f-svg-container {
@@ -225,27 +226,23 @@
     transform-origin: center center;
     transition: transform 1s ease-in-out;
   }
+
+  @keyframes slideToRight {
+    from { transform: translate(-50%, -5%); }
+    to { transform: translate(48%, -4%); }
+  }
   
   .f-video-container.slide-right {
     animation: slideToRight 3s forwards;
   }
   
-  @keyframes slideToRight {
-    from {
-      transform: translate(0%, 0%);
-    }
-    to {
-      transform: translate(48%, -4%); 
-    }
-  }
-
   .slide-bottom {
-    animation: slideBottom 1s forwards;
+    animation: slideBottom 2s forwards;
   }
   
   @keyframes slideBottom {
     from {
-      transform: translate(0px, 0px);
+      transform: translate(0%, 0%);
     }
     to {
       transform: translate(150px, 28px);
@@ -517,7 +514,7 @@ li.active .f-progress-container {
   .hex-code {
     font-size: 21px;
     text-align: center;
-    line-height: 0.5;
+    line-height: 1;
   }
   
   .f-colored-square {
@@ -875,7 +872,7 @@ li.active .f-progress-container {
       color: white;
       position: absolute;
       right: 0;
-      left: 25vh;
+      left: 28vh;
       top: 82vh;
     }
 
@@ -910,7 +907,7 @@ li.active .f-progress-container {
 
     @keyframes slideBottom {
       from {
-        transform: translate(0px, 0px);
+        transform: translate(-50px, -250px);
       }
       to {
         transform: translate(-100px, -250px);

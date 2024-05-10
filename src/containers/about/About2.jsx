@@ -18,7 +18,7 @@ const About2 = () => {
             <p className="line6">{t("about.line6")}</p>
           </div>
         </div>
-        <div className="long-text">
+        <div className="long-text2">
           <p>We learn how to grow and control our logical brain in a systematic way; <br></br>
           through mathematics, science, economics and so on. <br></br><br></br>
 
@@ -30,6 +30,20 @@ const About2 = () => {
           of logic.<br></br><br></br>
 
           That is where HEARTH rises to the occasion, to help us refine the emotional brain <br></br>
+          and ultimately coexist with the logical brain in harmony. </p>
+        </div>
+        <div className="m-long-text2">
+          <p>We learn how to grow and control our logical brain in a systematic way;
+          through mathematics, science, economics and so on. <br></br><br></br>
+
+          But where do we learn to train our emotional brain?
+          Furthermore, where do we learn to integrate logic and emotion? <br></br><br></br>
+
+          We see the potent increase of psychological problems as a result of this soaring
+          discrepancy between these two brains, as we disregarded emotion over the sake
+          of logic.<br></br><br></br>
+
+          That is where HEARTH rises to the occasion, to help us refine the emotional brain
           and ultimately coexist with the logical brain in harmony. </p>
         </div>
       </div>

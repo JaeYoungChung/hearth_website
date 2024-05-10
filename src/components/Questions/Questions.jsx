@@ -17,6 +17,12 @@ import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
 import email from '../../assets/email.png'
+import app_helm from '../../assets/app_helm.png'
+import app_envisage from '../../assets/app_envisage.png'
+import app_attune from '../../assets/app_attune.png'
+import app_reverie from '../../assets/app_reverie.png'
+import app_transcend from '../../assets/app_transcend.png'
+import app_harmonize from '../../assets/app_harmonize.png'
 
 
 const Questions = () => {
@@ -308,6 +314,14 @@ function Survey() {
           { label: 'e', value: Volition},
           { label: 'f', value: Interpersonal}
         ];
+        const imageMap = {
+          Independence: app_helm,
+          Cogitation: app_envisage,
+          Adaptability: app_attune,
+          Creativity: app_reverie,
+          Volition: app_transcend,
+          Interpersonal: app_harmonize
+        };
         const maxPriority = ['e', 'a', 'b', 'c', 'f', 'd'];
         const minPriority = ['d', 'f', 'c', 'b', 'a', 'e'];
 
@@ -328,10 +342,16 @@ function Survey() {
         // Determine the maximum and minimum
         const max = sums.sort(findMax)[0].label;
         const min = sums.sort(findMin)[0].label;
+        const maxValue = sums.sort(findMax)[0].value;
+        const minValue = sums.sort(findMin)[0].value;
+        const maxValueImage = imageMap[maxValue];
+        const minValueImage = imageMap[minValue];
 
         sessionStorage.setItem('maxminResult', JSON.stringify({
           max, min
         }));
+        sessionStorage.setItem('maxminValue', JSON.stringify({ maxValue, minValue, maxValueImage, minValueImage }));
+
 
         // Transcend (Volition):	 		Red			Red
         // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green
@@ -413,18 +433,9 @@ function Survey() {
 
       //generate unique fire code
       const generateUniqueCode = () => {
-        const hexCode = rgbToHex(NewRedValue, NewGreenValue, NewBlueValue);
+        const hexCode = `#${NewRedValue.toString(16).padStart(2, '0')}${NewGreenValue.toString(16).padStart(2, '0')}${NewBlueValue.toString(16).padStart(2, '0')}`;
         const randomChars = generateRandomChars(4);
         return `${hexCode}-${randomChars}`;
-      };
-      
-      const rgbToHex = (r, g, b) => {
-        const componentToHex = (c) => {
-          const hex = c.toString(16);
-          return hex.length === 1 ? '0' + hex : hex;
-        };
-      
-        return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
       };
       
       const generateRandomChars = (length) => {
@@ -442,9 +453,7 @@ function Survey() {
 
         const uniqueCode = generateUniqueCode();
 
-        sessionStorage.setItem('uniqueCode', JSON.stringify({
-          uniqueCode: uniqueCode
-        }));
+        sessionStorage.setItem('uniqueCode', uniqueCode);
       
         const userAnswers = {
           answers: selectedScores,
