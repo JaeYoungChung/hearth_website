@@ -25,8 +25,14 @@ import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
 import html2canvas from 'html2canvas';
 import example_fire from '../../assets/example_fire.png'
-import example_fire2 from '../../assets/example_fire.svg'
 import emailjs from 'emailjs-com';
+import app_helm from '../../assets/app_helm.png'
+import app_envisage from '../../assets/app_envisage.png'
+import app_attune from '../../assets/app_attune.png'
+import app_reverie from '../../assets/app_reverie.png'
+import app_transcend from '../../assets/app_transcend.png'
+import app_harmonize from '../../assets/app_harmonize.png'
+
 
 const Firecopy = () => {
 
@@ -143,8 +149,18 @@ const Firecopy = () => {
     const green = rgbValues?.NewGreenValue;
     const blue = rgbValues?.NewBlueValue;     
     const maxminResult = sessionStorage.getItem('maxminResult');
-    const maxminValue = JSON.parse(sessionStorage.getItem('maxminValue'));
-    const { maxValue, minValue, maxValueImage, minValueImage } = maxminValue;
+    const {max, min} = maxminResult;
+    const maxminValue = JSON.parse(sessionStorage.getItem('maxminResult'));
+    const { maxValue, minValue } = maxminResult;
+
+    const imageMap = {
+      Independence: app_helm,
+      Cogitation: app_envisage,
+      Adaptability: app_attune,
+      Creativity: app_reverie,
+      Volition: app_transcend,
+      Interpersonal: app_harmonize
+    };
     const uniqueCode = sessionStorage.getItem('uniqueCode');
     let textToShow = 'No data found';
     if (maxminResult) {
@@ -203,7 +219,6 @@ const Firecopy = () => {
         setCurrentActiveScore(newScore);
     };
     
-  
     useEffect(() => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
@@ -410,26 +425,17 @@ const Firecopy = () => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
-
+ 
     //email assets
     const testResultCaption = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
     const testResultColor = `rgb(${red}, ${green}, ${blue})`;
-    const score1 = Math.round(hexagonScores[0] / 36 * 100);
-    const score2 = Math.round(hexagonScores[1] / 36 * 100);
-    const score3 = Math.round(hexagonScores[2] / 36 * 100);
-    const score4 = Math.round(hexagonScores[3] / 36 * 100);
-    const score5 = Math.round(hexagonScores[4] / 36 * 100);
-    const score6 = Math.round(hexagonScores[5] / 36 * 100);
-    const score1Width = `${hexagonScores[0]/36*100}%`
+    const score1 = Math.round(hexagonScores.s1 / 36 * 100);
+    const score2 = Math.round(hexagonScores.s2 / 36 * 100);
+    const score3 = Math.round(hexagonScores.s3 / 36 * 100);
+    const score4 = Math.round(hexagonScores.s4 / 36 * 100);
+    const score5 = Math.round(hexagonScores.s5 / 36 * 100);
+    const score6 = Math.round(hexagonScores.s6 / 36 * 100);
     const svgElement = svgRef.current;
-    const resultSVG = <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152.31 220">
-    <g id="Layer_1-2" data-name="Layer 1">
-      <g id="Fire_2" data-name="Fire 2">
-        <path id="Icon_ionic-ios-flame" fill={hexagonColor} stroke-width= "0px" data-name="Icon ionic-ios-flame" class="cls-1" d="M57.17,0C72.51,71.18-.53,69.75,0,141.41c.42,58.7,62.62,78.59,76.42,78.59s71.29-12.48,75.68-78.59C155.85,85.14,108.89,31.41,57.17,0ZM96.46,187.58c-5.39,20.57-34.9,20.62-40.4.05-.82-3.02-1.25-6.13-1.27-9.26,0-21.68,21.47-46.7,21.47-46.7,0,0,21.36,25.01,21.36,46.7.04,3.11-.35,6.2-1.17,9.2Z"/>
-        <path id="Icon_ionic-ios-flame-2" fill={hexagonColor} stroke-width= "0px" data-name="Icon ionic-ios-flame-2" class="cls-1" d="M57.17,0C72.51,71.18-.53,69.75,0,141.41c.42,58.7,62.62,78.59,76.42,78.59s71.29-12.48,75.68-78.59C155.85,85.14,108.89,31.41,57.17,0ZM96.46,187.58c-5.39,20.57-34.9,20.62-40.4.05-.82-3.02-1.25-6.13-1.27-9.26,0-21.68,21.47-46.7,21.47-46.7,0,0,21.36,25.01,21.36,46.7.04,3.11-.35,6.2-1.17,9.2Z"/>
-      </g>
-    </g>
-  </svg>
 
     //email register
     const handleEmailChange = (e) => {
@@ -473,14 +479,16 @@ const Firecopy = () => {
           testResultCaption: uniqueCode,
           testResultColor: testResultColor,
           hexagonColor: hexagonColor,
-          rCustomIndex: rCustomIndex,
-          // hexagonScores: hexagonScores.map(score => score / 36 * 100),
           score1: score1,
           score2: score2,
-          attachment: imgData, // Add the SVG image as an attachment
-          max_value_image: maxValueImage,
-          min_value_image: minValueImage      
-          // Add other variables from your React code here
+          score3: score3, 
+          score4: score4,
+          score5: score5,
+          score6: score6,
+          hexagonScores: hexagonScores,
+          rCustomIndex: rCustomIndex,
+          maxImage: imageMap[maxValue],
+          minImage: imageMap[minValue] 
         };
 
         emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')

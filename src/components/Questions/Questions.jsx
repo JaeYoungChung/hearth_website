@@ -17,13 +17,6 @@ import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
 import email from '../../assets/email.png'
-import app_helm from '../../assets/app_helm.png'
-import app_envisage from '../../assets/app_envisage.png'
-import app_attune from '../../assets/app_attune.png'
-import app_reverie from '../../assets/app_reverie.png'
-import app_transcend from '../../assets/app_transcend.png'
-import app_harmonize from '../../assets/app_harmonize.png'
-
 
 const Questions = () => {
   const navigate = useNavigate();
@@ -314,14 +307,7 @@ function Survey() {
           { label: 'e', value: Volition},
           { label: 'f', value: Interpersonal}
         ];
-        const imageMap = {
-          Independence: app_helm,
-          Cogitation: app_envisage,
-          Adaptability: app_attune,
-          Creativity: app_reverie,
-          Volition: app_transcend,
-          Interpersonal: app_harmonize
-        };
+
         const maxPriority = ['e', 'a', 'b', 'c', 'f', 'd'];
         const minPriority = ['d', 'f', 'c', 'b', 'a', 'e'];
 
@@ -344,15 +330,13 @@ function Survey() {
         const min = sums.sort(findMin)[0].label;
         const maxValue = sums.sort(findMax)[0].value;
         const minValue = sums.sort(findMin)[0].value;
-        const maxValueImage = imageMap[maxValue];
-        const minValueImage = imageMap[minValue];
 
         sessionStorage.setItem('maxminResult', JSON.stringify({
           max, min
-        }));
-        sessionStorage.setItem('maxminValue', JSON.stringify({ maxValue, minValue, maxValueImage, minValueImage }));
-
-
+        }));        
+        sessionStorage.setItem('maxminValue', JSON.stringify({
+          maxValue, minValue
+        }));  
         // Transcend (Volition):	 		Red			Red
         // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green
         // Reverie (Creativity):	 		Yellow		0.5 Red + 0.5 Green
@@ -447,7 +431,6 @@ function Survey() {
         return result;
       };
 
-
         //save data to user database
         const userAnswersRef = ref(db, 'userAnswers');
 
@@ -471,8 +454,6 @@ function Survey() {
           });
       };
 
-
- 
     return (
       <div className="q-wrapper">
         <div
