@@ -82,6 +82,7 @@ const Test = () => {
 
   const handleLetterClick = (letter) => {
     setSelectedLetter(letter);
+    sessionStorage.setItem('selectedLetter', letter);
   };
 
   const handleNextClick = () => {

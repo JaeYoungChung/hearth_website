@@ -328,15 +328,11 @@ function Survey() {
         // Determine the maximum and minimum
         const max = sums.sort(findMax)[0].label;
         const min = sums.sort(findMin)[0].label;
-        const maxValue = sums.sort(findMax)[0].value;
-        const minValue = sums.sort(findMin)[0].value;
 
         sessionStorage.setItem('maxminResult', JSON.stringify({
           max, min
-        }));        
-        sessionStorage.setItem('maxminValue', JSON.stringify({
-          maxValue, minValue
-        }));  
+        }));
+
         // Transcend (Volition):	 		Red			Red
         // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green
         // Reverie (Creativity):	 		Yellow		0.5 Red + 0.5 Green

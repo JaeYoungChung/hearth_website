@@ -149,26 +149,46 @@ const Firecopy = () => {
     const green = rgbValues?.NewGreenValue;
     const blue = rgbValues?.NewBlueValue;     
     const maxminResult = sessionStorage.getItem('maxminResult');
-    const {max, min} = maxminResult;
-    const maxminValue = JSON.parse(sessionStorage.getItem('maxminResult'));
-    const { maxValue, minValue } = maxminResult;
+    const { max, min } = JSON.parse(maxminResult);
+    const storedLetter = sessionStorage.getItem('selectedLetter');
 
     const imageMap = {
-      Independence: app_helm,
-      Cogitation: app_envisage,
-      Adaptability: app_attune,
-      Creativity: app_reverie,
-      Volition: app_transcend,
-      Interpersonal: app_harmonize
+      a: 'https://drive.google.com/uc?export=view&id=1p-gd7g0NiKMWU3LIgnhzrmVvd792RfE1',
+      e: 'https://drive.google.com/uc?export=view&id=1LEgIR5WKBER5qyXlNhOAKsl6xKHmutH9',
+      d: 'https://drive.google.com/uc?export=view&id=1-YBKXOKa8qM9PGrzy_EI1bvNtf_FlRVl',
+      b: 'https://drive.google.com/uc?export=view&id=1yfT4HvkSuQ0Il1rANQL6DYuFcJlsB8vz',
+      f: 'https://drive.google.com/uc?export=view&id=1Y1DfSke-b_L6Jb91mQMb4Y0T7MZufnP_',
+      c: 'https://drive.google.com/uc?export=view&id=1hJPUdlmrFWRpFm3fmaeBAAxgBYYBNWYe',
     };
+    
+    const labelMap = {
+      a: 'Helm',
+      f: 'Envisage',
+      c: 'Attune',
+      d: 'Reverie',
+      e: 'Transcend ',
+      b: 'Harmonize'
+    };
+    
+    const colorMap = {
+      a: `#0FF517`,
+      f: `#005CDE`,
+      c: `#00FFFF`,
+      d: `#FFEF00`,
+      e: `#DC143C`,
+      b: `#FF00FF`
+    };
+
     const uniqueCode = sessionStorage.getItem('uniqueCode');
     let textToShow = 'No data found';
+
     if (maxminResult) {
       const { max, min } = JSON.parse(maxminResult);
       const combinationTexts = getResults(); // Use getResults here
       const key = `${max}-${min}`;
       textToShow = combinationTexts[key] || 'No matching text found'; // Fallback text if key not found
     }
+
 
     //references
     const videoRef = useRef(null);
@@ -430,13 +450,19 @@ const Firecopy = () => {
     const testResultCaption = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
     const testResultColor = `rgb(${red}, ${green}, ${blue})`;
     const score1 = Math.round(hexagonScores.s1 / 36 * 100);
-    const score2 = Math.round(hexagonScores.s2 / 36 * 100);
+    const score2 = Math.round(hexagonScores.s6 / 36 * 100);
     const score3 = Math.round(hexagonScores.s3 / 36 * 100);
     const score4 = Math.round(hexagonScores.s4 / 36 * 100);
-    const score5 = Math.round(hexagonScores.s5 / 36 * 100);
-    const score6 = Math.round(hexagonScores.s6 / 36 * 100);
+    const score5 = Math.round(hexagonScores.s2 / 36 * 100);
+    const score6 = Math.round(hexagonScores.s5 / 36 * 100);
     const svgElement = svgRef.current;
-
+    const maxImage = imageMap[max];
+    const minImage = imageMap[min];
+    const maxLabel = labelMap[max];
+    const minLabel = labelMap[min];
+    const maxColor = colorMap[max];
+    const minColor = colorMap[min];
+    
     //email register
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
@@ -487,8 +513,12 @@ const Firecopy = () => {
           score6: score6,
           hexagonScores: hexagonScores,
           rCustomIndex: rCustomIndex,
-          maxImage: imageMap[maxValue],
-          minImage: imageMap[minValue] 
+          maxImage: maxImage,
+          minImage: minImage,
+          maxLabel: maxLabel,
+          minLabel: minLabel,
+          maxColor: maxColor,
+          minColor: minColor
         };
 
         emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
@@ -653,7 +683,7 @@ const Firecopy = () => {
             </div>
             <div className='f-column'>
               <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
-                  <p>To. O</p><br></br>
+                  <p>To. {storedLetter}</p><br></br>
                   <p>{textToShow}</p><br></br>
                   <p className='third-line'>Sincerely, HEARTH</p>
               </div>
