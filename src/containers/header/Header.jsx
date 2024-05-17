@@ -42,7 +42,7 @@ const Header = () => {
             <img src = {icon_x} className="h-icon"/>
           </div>
           <div className='h-email'>
-            {isActive && <span style={{ color: 'white', marginRight: '10px' }}>cycologically@gmail.com</span>}
+            {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}
             <img
               src={email} 
               className="h-email_img" 

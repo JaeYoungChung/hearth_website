@@ -335,26 +335,31 @@ const Firecopy = () => {
             setShowNewContent(false); // Hide new content
       };
 
-      const handleReadMoreClick = () => {
-        //fire opacity darkens
+      const handleReadMoreClick = (originalIndex) => {
+        const rotationValues = [30, 270, 330, 150, 90, 210];
+        const newMobileRotation = rotationValues[originalIndex] || 0;
+    
+        // fire opacity darkens
         videoRef.current.style.opacity = 0.5;
-        
-        //hexagon reverse tilt
+    
+        // hexagon reverse tilt
         setRotationButton(0);
-        setMobileRotation(30);
-
-        //legend goes away, force quotient goes away, finish test goes away
+        setMobileRotation(newMobileRotation);
+        const customIndex = customOrder[originalIndex];
+        setCurrentIndex(customIndex);
+        setTextRotationAdjustment(prevAdjustment => prevAdjustment);
+    
+        // legend goes away, force quotient goes away, finish test goes away
         graphRef.current.style.opacity = 0;
         forceQuotient.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 0;
-
-        //arrow show
+    
+        // arrow show
         viewRef.current.style.opacity = 1;
-
-        //show each cf
+    
+        // show each cf
         textLeftLinesRef.current.style.opacity = 1;
-        
-      }
+      };
 
       const closeResult = () => {
         videoRef.current.style.opacity = 1;
@@ -530,7 +535,7 @@ const Firecopy = () => {
       const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
       const handleCopyToClipboard = () => {
-        const textToCopy = 'cycologically@gmail.com';
+        const textToCopy = 'hearthisnear@gmail.com';
     
         // Copy the text to the clipboard
         navigator.clipboard.writeText(textToCopy)
@@ -826,7 +831,12 @@ const Firecopy = () => {
                             <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                         </div>
                       <p className='f-percentage'>{Math.round(hexagonScores[`s${originalIndex+1}`]/36*100)}%</p>
-                      <img src={read_more} className="read_more" onClick={handleReadMoreClick} alt="Description"/>
+                      <img 
+                        src={read_more} 
+                        className="read_more" 
+                        onClick={() => handleReadMoreClick(originalIndex)} 
+                        alt="Description" 
+                      />                    
                     </li>
                 );
               })}

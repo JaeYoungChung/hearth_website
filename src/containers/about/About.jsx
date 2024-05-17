@@ -23,7 +23,7 @@ const About = () => {
             <br></br><br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As the logical brain is important for solving complicated problems through meticulous thinking, the emotional brain is also crucial, since it discretely dictates our actions and thoughts behind the logical brain. Thus, the functionality of the brain, in other words Cognitive Force, should be understood as a result of the concordance of the two brains and their ability to cooperate effectively.</p>
         </div>
       </div>
-  
+   
       <div className="section inverted">
         <div className="squares-container">
           <div className="square square1"></div>
@@ -41,8 +41,8 @@ const About = () => {
           But where do we learn to train our emotional brain? <br></br>
           Furthermore, where do we learn to integrate logic and emotion? <br></br><br></br>
 
-          We see the potent increase of psychological problems as a result of this soaring<br></br>
-          discrepancy between these two brains, as we disregarded emotion over the sake <br></br>
+          We see the potent increase of psychological problems as a result of this soaring
+          discrepancy between these two brains, as we disregarded emotion over the sake
           of logic.<br></br><br></br>
 
           That is where HEARTH rises to the occasion, to help us refine the emotional brain <br></br>

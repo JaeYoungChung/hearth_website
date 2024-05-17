@@ -178,7 +178,7 @@ const Navbar = () => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
   const handleCopyToClipboard = () => {
-    const textToCopy = 'cycologically@gmail.com';
+    const textToCopy = 'hearthisnear@gmail.com';
 
     // Copy the text to the clipboard
     navigator.clipboard.writeText(textToCopy)

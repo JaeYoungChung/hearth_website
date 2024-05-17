@@ -48,23 +48,23 @@
   }
   
   .square1 {
-    top: 0;
+    top: 5%;
     left: 0;
   }
   
   .square2 {
-    bottom: 0;
+    bottom: 5%;
     right: 0;
   }
 
   .inverted .square1 {
-    top: 0;
+    top: 5%;
     right: 0;
     left: unset;
   }
   
   .inverted .square2 {
-    bottom: 0;
+    bottom: 5%;
     left: 0;
     right: unset;
   }
