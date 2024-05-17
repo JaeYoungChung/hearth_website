@@ -26,12 +26,6 @@ import close_result from '../../assets/close_result.png'
 import html2canvas from 'html2canvas';
 import example_fire from '../../assets/example_fire.png'
 import emailjs from 'emailjs-com';
-import app_helm from '../../assets/app_helm.png'
-import app_envisage from '../../assets/app_envisage.png'
-import app_attune from '../../assets/app_attune.png'
-import app_reverie from '../../assets/app_reverie.png'
-import app_transcend from '../../assets/app_transcend.png'
-import app_harmonize from '../../assets/app_harmonize.png'
 
 
 const Firecopy = () => {
@@ -493,11 +487,6 @@ const Firecopy = () => {
       setIsRegistered(true);
       setEmail(""); // Clear the email input field
 
-      // Capture the SVG as an image
-      const svgElement = svgRef.current;
-      html2canvas(svgElement).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-
         // Send email using EmailJS
         const templateParams = {
           to_email: email,
@@ -528,7 +517,7 @@ const Firecopy = () => {
           .catch((error) => {
             console.error('Error sending email:', error);
           });
-      });
+    
     })
     .catch(error => {
       console.error("Error saving email: ", error);
