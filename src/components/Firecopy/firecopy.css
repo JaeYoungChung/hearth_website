@@ -628,19 +628,13 @@ li.active .f-progress-container {
 }
 
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
   50% {
     opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
 .checkbox-label.blink {
-  animation: blink 1s ease-in-out;
+  animation: blink 3s linear infinite;
 }
 
 .save-fire-images {
@@ -717,7 +711,7 @@ li.active .f-progress-container {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
     .navbar-links {
       display: none;
     }
@@ -1095,9 +1089,10 @@ li.active .f-progress-container {
     }
   
     .hex-code {
+      width: 100px;
       font-size: 21px;
       text-align: center;
-      line-height: 0.5;
+      line-height: 1;
     }
     
     .f-colored-square {

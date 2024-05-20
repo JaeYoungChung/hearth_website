@@ -21,11 +21,19 @@ import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
 import email from '../../assets/email.png'
+import email_fire from '../../assets/email_fire.png'
+import whitelogo from '../../assets/whitelogo.png'
 import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
 import html2canvas from 'html2canvas';
 import example_fire from '../../assets/example_fire.png'
 import emailjs from 'emailjs-com';
+import app_attune from '../../assets/app_attune.png';
+import app_envisage from '../../assets/app_envisage.png';
+import app_harmonize from '../../assets/app_harmonize.png';
+import app_helm from '../../assets/app_helm.png';
+import app_reverie from '../../assets/app_reverie.png';
+import app_transcend from '../../assets/app_transcend.png';
 
 
 const Firecopy = () => {
@@ -146,13 +154,22 @@ const Firecopy = () => {
     const { max, min } = JSON.parse(maxminResult);
     const storedLetter = sessionStorage.getItem('selectedLetter');
 
+    // const imageMap = {
+    //   a: 'https://drive.google.com/uc?export=view&id=1p-gd7g0NiKMWU3LIgnhzrmVvd792RfE1',
+    //   e: 'https://drive.google.com/uc?export=view&id=1LEgIR5WKBER5qyXlNhOAKsl6xKHmutH9',
+    //   d: 'https://drive.google.com/uc?export=view&id=1-YBKXOKa8qM9PGrzy_EI1bvNtf_FlRVl',
+    //   b: 'https://drive.google.com/uc?export=view&id=1yfT4HvkSuQ0Il1rANQL6DYuFcJlsB8vz',
+    //   f: 'https://drive.google.com/uc?export=view&id=1Y1DfSke-b_L6Jb91mQMb4Y0T7MZufnP_',
+    //   c: 'https://drive.google.com/uc?export=view&id=1hJPUdlmrFWRpFm3fmaeBAAxgBYYBNWYe',
+    // };
+
     const imageMap = {
-      a: 'https://drive.google.com/uc?export=view&id=1p-gd7g0NiKMWU3LIgnhzrmVvd792RfE1',
-      e: 'https://drive.google.com/uc?export=view&id=1LEgIR5WKBER5qyXlNhOAKsl6xKHmutH9',
-      d: 'https://drive.google.com/uc?export=view&id=1-YBKXOKa8qM9PGrzy_EI1bvNtf_FlRVl',
-      b: 'https://drive.google.com/uc?export=view&id=1yfT4HvkSuQ0Il1rANQL6DYuFcJlsB8vz',
-      f: 'https://drive.google.com/uc?export=view&id=1Y1DfSke-b_L6Jb91mQMb4Y0T7MZufnP_',
-      c: 'https://drive.google.com/uc?export=view&id=1hJPUdlmrFWRpFm3fmaeBAAxgBYYBNWYe',
+      a: app_helm,
+      e: app_transcend,
+      d: app_reverie,
+      b: app_harmonize,
+      f: app_envisage,
+      c: app_attune,
     };
     
     const labelMap = {
@@ -287,7 +304,7 @@ const Firecopy = () => {
               }
             textContainerRef.current.classList.add('hidden');
             textLeftRef.current.style.opacity = 1;
-            if (window.matchMedia('(max-width: 768px)').matches) {
+            if (window.matchMedia('(max-width: 1023px)').matches) {
               textLeftLinesRef.current.style.opacity = 0;
             }
             svgRef.current.style.opacity = 1;
@@ -311,7 +328,7 @@ const Firecopy = () => {
             bottomTextRef.current.style.pointerEvents = 'auto';
             viewRef.current.style.opacity = 0;
             svgRef.current.style.opacity = 0;
-            if (window.matchMedia('(max-width: 768px)').matches) {
+            if (window.matchMedia('(max-width: 1023px)').matches) {
               videoRef.current.style.opacity = 0.5;}
             videoRef.current.classList.add('slide-bottom-big');
             setSmallTextContent('finish test'); // Change small-text content
@@ -461,73 +478,107 @@ const Firecopy = () => {
     const minLabel = labelMap[min];
     const maxColor = colorMap[max];
     const minColor = colorMap[min];
+
+    const convertImageToBase64 = (imageUrl, color, callback) => {
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = imageUrl;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+  
+        // Draw the image on the canvas
+        ctx.drawImage(img, 0, 0);
+  
+        // Overlay the color
+        ctx.fillStyle = color;
+        ctx.globalCompositeOperation = 'color'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+        // Convert canvas to base64
+        const base64Image = canvas.toDataURL('image/png');
+        callback(base64Image);
+      };
+    };
+    
     
     //email register
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
         setEmail(emailInput);
         setIsValidEmail(validateEmail(emailInput));    
-      }; 
+      };
 
-    const handleRegister = () => {
+      const handleRegister = async () => {
         if (!validateEmail(email)) {
-            setIsValidEmail(false);
-            return; // Stop the registration process if the email is not valid
+          setIsValidEmail(false);
+          return; // Stop the registration process if the email is not valid
         }
         if (!isFirstCheckboxChecked) {
           // Blink the checkbox text if the checkbox is not checked
           setIsCheckboxTextBlinking(true);
           setTimeout(() => {
             setIsCheckboxTextBlinking(false);
-          }, 500);
+          }, 2000);
           return; // Stop the registration process if the checkbox is not checked
         }
         const uuid = uid();
-  // Save email to Firebase
-  set(ref(db, "emails/" + uuid), {
-    email,
-    uuid,
-  })
-    .then(() => {
-      setIsRegistered(true);
-      setEmail(""); // Clear the email input field
+        // Save email to Firebase
+        set(ref(db, "emails/" + uuid), {
+          email,
+          uuid,
+        })
+          .then(async () => {
+            setIsRegistered(true);
+            setEmail(""); // Clear the email input field
 
-        // Send email using EmailJS
-        const templateParams = {
-          to_email: email,
-          testResultText: textToShow,
-          testResultCaption: uniqueCode,
-          testResultColor: testResultColor,
-          hexagonColor: hexagonColor,
-          score1: score1,
-          score2: score2,
-          score3: score3, 
-          score4: score4,
-          score5: score5,
-          score6: score6,
-          hexagonScores: hexagonScores,
-          rCustomIndex: rCustomIndex,
-          maxImage: maxImage,
-          minImage: minImage,
-          maxLabel: maxLabel,
-          minLabel: minLabel,
-          maxColor: maxColor,
-          minColor: minColor
-        };
-
-        emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
-          .then((response) => {
-            console.log('Email sent successfully!', response.status, response.text);
+            const testResultColor = `rgb(${red}, ${green}, ${blue})`;
+            const imageUrl = email_fire;
+      
+            convertImageToBase64(imageUrl, testResultColor, (base64Image) => {
+            // Send email using EmailJS
+            const templateParams = {
+              to_email: email,
+              testResultColor: testResultColor,
+              // attachment: base64Image.replace("data:image/png;base64,", ""), // Remove the prefix
+              attachment: base64Image, // Remove the prefix
+              testResultText: textToShow,
+              testResultCaption: uniqueCode,
+              hexagonColor: hexagonColor,
+              score1: score1,
+              score2: score2,
+              score3: score3, 
+              score4: score4,
+              score5: score5,
+              score6: score6,
+              hexagonScores: hexagonScores,
+              rCustomIndex: rCustomIndex,
+              maxImage: maxImage,
+              minImage: minImage,
+              maxImageFileName: `${max}.png`,
+              minImageFileName: `${min}.png`,
+              maxLabel: maxLabel,
+              minLabel: minLabel,
+              maxColor: maxColor,
+              minColor: minColor,
+            };
+      
+            emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
+            .then((response) => {
+                console.log('Email sent successfully!', response.status, response.text);
+              })
+              .catch((error) => {
+                console.error('Error sending email:', error);
+              });
+            });
           })
-          .catch((error) => {
-            console.error('Error sending email:', error);
+          .catch(error => {
+            console.error("Error saving email: ", error);
           });
-    
-    })
-    .catch(error => {
-      console.error("Error saving email: ", error);
-    });
-};
+      };
+
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
@@ -811,7 +862,7 @@ const Firecopy = () => {
                 className={`checkbox-label ${isCheckboxTextBlinking ? 'blink' : ''}`}
               >
                 I have reviewed and agree to HEARTH's Privacy Policy (required)
-              </label>            
+            </label>            
               </div>
             <div className='check-text'>
               <input type="checkbox" id="check2"  className="custom-checkbox" />
