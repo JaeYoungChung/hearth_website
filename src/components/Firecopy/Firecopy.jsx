@@ -300,7 +300,7 @@ const Firecopy = () => {
             }
             if (videoRef.current) {
               videoRef.current.style.transform = 'none';
-                videoRef.current.classList.add('slide-right');
+              videoRef.current.classList.add('slide-right');
               }
             textContainerRef.current.classList.add('hidden');
             textLeftRef.current.style.opacity = 1;
@@ -516,14 +516,14 @@ const Firecopy = () => {
           setIsValidEmail(false);
           return; // Stop the registration process if the email is not valid
         }
-        if (!isFirstCheckboxChecked) {
-          // Blink the checkbox text if the checkbox is not checked
-          setIsCheckboxTextBlinking(true);
-          setTimeout(() => {
-            setIsCheckboxTextBlinking(false);
-          }, 2000);
-          return; // Stop the registration process if the checkbox is not checked
-        }
+        // if (!isFirstCheckboxChecked) {
+        //   // Blink the checkbox text if the checkbox is not checked
+        //   setIsCheckboxTextBlinking(true);
+        //   setTimeout(() => {
+        //     setIsCheckboxTextBlinking(false);
+        //   }, 2000);
+        //   return; // Stop the registration process if the checkbox is not checked
+        // }
         const uuid = uid();
         // Save email to Firebase
         set(ref(db, "emails/" + uuid), {
@@ -543,7 +543,7 @@ const Firecopy = () => {
               to_email: email,
               testResultColor: testResultColor,
               // attachment: base64Image.replace("data:image/png;base64,", ""), // Remove the prefix
-              attachment: base64Image, // Remove the prefix
+              // attachment: base64Image, 
               testResultText: textToShow,
               testResultCaption: uniqueCode,
               hexagonColor: hexagonColor,
@@ -555,29 +555,47 @@ const Firecopy = () => {
               score6: score6,
               hexagonScores: hexagonScores,
               rCustomIndex: rCustomIndex,
-              maxImage: maxImage,
-              minImage: minImage,
-              maxImageFileName: `${max}.png`,
-              minImageFileName: `${min}.png`,
-              maxLabel: maxLabel,
-              minLabel: minLabel,
-              maxColor: maxColor,
-              minColor: minColor,
+              storedLetter: storedLetter,
+              // maxImage: maxImage,
+              // minImage: minImage,
+              // maxImageFileName: `${max}.png`,
+              // minImageFileName: `${min}.png`,
+              // maxLabel: maxLabel,
+              // minLabel: minLabel,
+              // maxColor: maxColor,
+              // minColor: minColor,
             };
       
             emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
             .then((response) => {
-                console.log('Email sent successfully!', response.status, response.text);
-              })
-              .catch((error) => {
-                console.error('Error sending email:', error);
-              });
+              console.log('First email sent successfully!', response.status, response.text);
+            })
+            .catch((error) => {
+              console.error('Error sending first email:', error);
             });
-          })
-          .catch(error => {
-            console.error("Error saving email: ", error);
-          });
-      };
+
+          // If the checkbox is checked, send the second email
+          if (isFirstCheckboxChecked) {
+            setTimeout(() => {
+              const secondTemplateParams = {
+                to_email: email,
+              };
+
+              emailjs.send('service_t6e2r49', 'template_1rrz4ck', secondTemplateParams, 'kD2ONhCaOmnXc8Ami')
+              .then((response) => {
+                  console.log('Second email sent successfully!', response.status, response.text);
+                })
+                .catch((error) => {
+                  console.error('Error sending second email:', error);
+                });
+            }, 300000); // send 5 minutes after
+          }
+        });
+      })
+      .catch(error => {
+        console.error("Error saving email: ", error);
+      });
+};
 
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
@@ -832,41 +850,37 @@ const Firecopy = () => {
         </div>
           <div className="f-right-content">
             <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>        
-          <div className="f-inputBox">
-             <input
+            <div className="f-inputBox" style={{border: isRegistered ? `1px solid green` : `1px solid white`}}>
+              <input
                 type="text"
                 placeholder={t("community.email")}
                 value={email}
                 onChange={handleEmailChange}
                 id="f-inputID"
                 className={!isValidEmail ? 'invalid' : ''}
-            />                
+              />                
               <p
-                className={`register ${isRegistered || !isFirstCheckboxChecked ? 'disabled' : 'clickable'}`}
-                onClick={!isRegistered && isFirstCheckboxChecked ? handleRegister : null}
+                className={`register ${isRegistered ? 'registered-green' : ''}`}
+                onClick={!isRegistered ? handleRegister : null}
               >
                 {isRegistered ? t("community.registered") : t("community.register")}
-            </p>
-          </div>
+              </p>
+            </div>
               {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
             <div className='check-text'>
-                  <input
-                  type="checkbox"
-                  id="check1"
-                  className="custom-checkbox"
-                  checked={isFirstCheckboxChecked}
-                  onChange={handleFirstCheckboxChange}
-              />              
-            <label
-                htmlFor="check1"
-                className={`checkbox-label ${isCheckboxTextBlinking ? 'blink' : ''}`}
-              >
-                I have reviewed and agree to HEARTH's Privacy Policy (required)
-            </label>            
-              </div>
-            <div className='check-text'>
-              <input type="checkbox" id="check2"  className="custom-checkbox" />
-              <label for="check2" className="checkbox-label"> I agree to receive general emails and product offers from HEARTH (optional)</label>
+                <input
+                type="checkbox"
+                id="check1"
+                className="custom-checkbox"
+                checked={isFirstCheckboxChecked}
+                onChange={handleFirstCheckboxChange}
+              />
+              <label
+                  htmlFor="check1"
+                  className={`checkbox-label`}
+                >
+                  (Optional) Join the Hearthside and subscribe to our e-letter
+              </label>            
             </div>
           </div>
         </div>
