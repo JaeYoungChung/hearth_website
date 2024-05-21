@@ -22,6 +22,7 @@ import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
 import arrowleft from '../../assets/arrow_left.png'
+import emailjs from 'emailjs-com';
  
 import {
   FacebookShareButton, FacebookIcon,
@@ -499,7 +500,7 @@ function BlogPostDetail({ post, onClose }) {
               display: 'flex',
               alignItems: 'center',
             }}
-            >
+            > 
             <img src={arrowleft} alt="Arrow Left" style={{ marginRight: '5px', width: '22px'}} />
             <span>Back to Home</span>
           </div>
@@ -524,10 +525,12 @@ function Banner() {
       return regex.test(email);
   };
 
-  const handleEmailChange = (e) => {
+    //email register
+    const handleEmailChange = (e) => {
       const emailInput = e.target.value;
       setEmail(emailInput);
-      setIsValidEmail(validateEmail(emailInput));    };
+      setIsValidEmail(validateEmail(emailInput));    
+    }; 
 
   const handleRegister = () => {
       if (!validateEmail(email)) {
@@ -535,21 +538,33 @@ function Banner() {
           return; // Stop the registration process if the email is not valid
       }
       const uuid = uid();
-      // Save email to Firebase
-      set(ref(db, "emails/" + uuid), {
-          email,
-          uuid,
-      })
-      .then(() => {
-          setIsRegistered(true);
-          setEmail(""); // Clear the email input field
-          // Handle success (e.g., show notification)
-      })
-      .catch(error => {
-          // Handle error
-          console.error("Error saving email: ", error);
-      });
-  };
+// Save email to Firebase
+set(ref(db, "emails/" + uuid), {
+  email,
+  uuid,
+})
+  .then(() => {
+    setIsRegistered(true);
+    setEmail(""); // Clear the email input field
+
+      // Send email using EmailJS
+      const templateParams = {
+        to_email: email,
+      };
+
+      emailjs.send('service_t6e2r49', 'template_1rrz4ck', templateParams, 'kD2ONhCaOmnXc8Ami')
+        .then((response) => {
+          console.log('Email sent successfully!', response.status, response.text);
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+        });
+  
+  })
+  .catch(error => {
+    console.error("Error saving email: ", error);
+  });
+};
  
   return (
     <div className="banner">

@@ -20,7 +20,7 @@ import close_btn from '../../assets/close_btn.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
-import email from '../../assets/email.png'
+import email_img from '../../assets/email.png'
 import email_fire from '../../assets/email_fire.png'
 import whitelogo from '../../assets/whitelogo.png'
 import read_more from '../../assets/read_more.png'
@@ -259,6 +259,9 @@ const Firecopy = () => {
         video.style.transition = 'opacity 1s ease-in-out';
         setTimeout(() => {
           video.style.opacity = 1;
+          if (window.matchMedia('(max-width: 1023px)').matches) {
+            video.style.opacity = 0.5;
+          }
         }, 1000);
       
         // Trigger animations after initial fade-in
@@ -277,6 +280,7 @@ const Firecopy = () => {
         setShowContent(false); // Hide text container and bottom text
         // Wait for fade out animation to complete before showing the SVG
         setTimeout(() => {
+          
           // if (svgRef.current) {
           //   if (window.matchMedia('(max-width: 768px)').matches) {
           //     svgRef.current.style.opacity = 0.5; // Set opacity to 0.5 for mobile screens
@@ -284,6 +288,9 @@ const Firecopy = () => {
           //     svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
           //   }
           // }
+          if (window.matchMedia('(max-width: 1023px)').matches) {
+            videoRef.current.style.opacity = 1;
+          }
           svgRef.current.style.opacity = 0.5;
         }, 1000);
         setTimeout(() => {
@@ -588,7 +595,7 @@ const Firecopy = () => {
                 .catch((error) => {
                   console.error('Error sending second email:', error);
                 });
-            }, 300000); // send 5 minutes after
+            }, 3000); // send 5 minutes after
           }
         });
       })
@@ -621,27 +628,46 @@ const Firecopy = () => {
           });
       };
 
-    //save results to device
-    const handleSaveFire = () => {
-      const firstDesign = document.getElementById('first-design');
-      const secondDesign = document.getElementById('second-design');
+    const [copiedFireClipboard, setCopiedFireClipboard] = useState(false);
+
+    const handleCopyFireClipboard = () => {
+      const textToCopy = uniqueCode;
+  
+      // Copy the text to the clipboard
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          setCopiedFireClipboard(true);
+  
+          // Clear the message after 2 seconds
+          setTimeout(() => {
+            setCopiedFireClipboard(false);
+          }, 2000);
+        })
+        .catch((error) => {
+          console.error('Failed to copy text: ', error);
+        });
+    };      
+
+    // const handleSaveFire = () => {
+    //   const firstDesign = document.getElementById('first-design');
+    //   const secondDesign = document.getElementById('second-design');
     
-      html2canvas(firstDesign).then((canvas) => {
-        const firstImage = canvas.toDataURL('image/png');
-        const firstLink = document.createElement('a');
-        firstLink.href = firstImage;
-        firstLink.download = 'first_save_fire.png';
-        firstLink.click();
-      });
+    //   html2canvas(firstDesign).then((canvas) => {
+    //     const firstImage = canvas.toDataURL('image/png');
+    //     const firstLink = document.createElement('a');
+    //     firstLink.href = firstImage;
+    //     firstLink.download = 'first_save_fire.png';
+    //     firstLink.click();
+    //   });
     
-      html2canvas(secondDesign).then((canvas) => {
-        const secondImage = canvas.toDataURL('image/png');
-        const secondLink = document.createElement('a');
-        secondLink.href = secondImage;
-        secondLink.download = 'second_save_fire.png';
-        secondLink.click();
-      });
-    };
+    //   html2canvas(secondDesign).then((canvas) => {
+    //     const secondImage = canvas.toDataURL('image/png');
+    //     const secondLink = document.createElement('a');
+    //     secondLink.href = secondImage;
+    //     secondLink.download = 'second_save_fire.png';
+    //     secondLink.click();
+    //   });
+    // };
 
     return (
     <div className='firecopy-container'>
@@ -668,7 +694,7 @@ const Firecopy = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
-              <img src={email}
+              <img src={email_img}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
                 onClick={handleCopyToClipboard}
@@ -844,8 +870,8 @@ const Firecopy = () => {
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
             <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{uniqueCode}</p>
             <div className="color-square" ></div>
-            <button className="text-button" onClick={handleSaveFire}>
-              Save Fire
+            <button className="text-button" onClick={handleCopyFireClipboard}>
+              Copy Code
             </button>
         </div>
           <div className="f-right-content">
@@ -882,6 +908,11 @@ const Firecopy = () => {
                   (Optional) Join the Hearthside and subscribe to our e-letter
               </label>            
             </div>
+            {copiedFireClipboard && (
+                <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
+                  Copied to Clipboard!
+                </div>
+              )} 
           </div>
         </div>
       )}

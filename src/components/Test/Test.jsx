@@ -278,7 +278,7 @@ const Test = () => {
                     )}
                     {animationStage >= 3 && (
                     <div className={`t-animation-paragraph ${fadeOut ? 'fade-out' : ''}`}>This test is designed to measure your <span className='italic'>Cognitive Force,</span> the flame that burns within you.<br></br><br className='break-line'></br>
-                      Before taking the test, bring yourself to a calm state of mind to effectively assess and rediscover your true colors.<br className='break-line'></br><br className='break-line'></br>
+                      Before taking the test, bring yourself to a calm state of mind to effectively assess and rediscover your true colors. <br className='break-line'></br><br className='break-line'></br>
                       Choose from five scales according to the degree of your personal affiliation to each sentence. </div>
                     )}
                     {animationStage === 4 && (
