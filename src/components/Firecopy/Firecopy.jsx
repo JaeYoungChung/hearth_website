@@ -8,7 +8,7 @@ import arrowright from '../../assets/arrow_right.png'
 import arrowleft from '../../assets/arrow_left.png'
 import rotateRight from '../../assets/right_arrow.png'
 import rotateLeft from '../../assets/left_arrow.png'
-import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import {db} from "../../firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
 import { getResults } from '../../data.js';
