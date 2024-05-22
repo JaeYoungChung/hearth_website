@@ -5,7 +5,7 @@ import { useState } from 'react';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
-import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
 import { useTranslation } from 'react-i18next';

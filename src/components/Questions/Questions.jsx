@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getQuestions } from '../../data.js';
-import {db} from "/Users/jeongjeyeong1/Documents/website/src/data/firebase.js";
+import {db} from "/Users/jeongjeyeong1/Documents/website/src/firebase.js";
 import { uid } from "uid";
 import { ref, set, push } from "firebase/database";
 import logo from '../../assets/test_logo.png'
