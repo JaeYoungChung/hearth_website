@@ -12,7 +12,7 @@ import icon_share from '../../assets/share.png'
 import banner_img from '../../assets/bannerimg.png'
 import { ref, child, get } from "firebase/database";
 import { set } from "firebase/database";
-import {db} from "/Users/jeongjeyeong1/Documents/website/src/firebase.js";
+import {db} from "../../firebase.js";
 import { FaLink } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { uid } from "uid";
