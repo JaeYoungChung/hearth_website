@@ -1,6 +1,6 @@
-import blogimg_1 from '/Users/jeongjeyeong1/Documents/website/src/assets/blogimg_1.png'
-import thumbsup from '/Users/jeongjeyeong1/Documents/website/src/assets/thumbs_up.png'
-import share from '/Users/jeongjeyeong1/Documents/website/src/assets/share.png'
+import blogimg_1 from './assets/blogimg_1.png'
+import thumbsup from './assets/thumbs_up.png'
+import share from './assets/share.png'
 
 export const mockPosts = [
     {
