@@ -78,8 +78,8 @@ const Community = () => {
           <p className='c-line1'>Join the</p>
           <p className='c-line2'>Hearthside</p>
           <p className='c-line3'>and be a part of our journey to wellness & enlightenment</p>
-           <div className="c-inputBox"> 
-             <input
+          <div className="c-inputBox"> 
+            <input
                 type="text"
                 placeholder={t("community.email")}
                 value={email}
@@ -87,24 +87,24 @@ const Community = () => {
                 id="c-inputID"
                 className={!isValidEmail ? 'invalid' : ''} 
             />                
-                <p className="register" onClick={!isRegistered ? handleRegister : null}>
-                    {isRegistered ? t("community.registered") : t("community.register")}
-                </p> 
-                </div>
-                    {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
+            <p className="register" onClick={!isRegistered ? handleRegister : null}>
+                {isRegistered ? t("community.registered") : t("community.register")}
+            </p> 
+          </div>
+              {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
           <div className="c-image-row">
             {images.map((src, index) => (
               <img key={index} src={src} className="c-small-image" alt={`Small ${index + 1}`}/>
             ))}
           </div>
           <div className="c-footer">
-                <hr />
-                <div className="c-footerTexts">
-                    <p>Privacy Policy</p>
-                    <p>Copyrights</p>
-                    <p>Cookie Policy</p>
-                </div>
-            </div>
+              <hr />
+              <div className="c-footerTexts">
+                  <p>Privacy Policy</p>
+                  <p>Copyrights</p>
+                  <p>Cookie Policy</p>
+              </div>
+          </div>
         </div>
       );
 }

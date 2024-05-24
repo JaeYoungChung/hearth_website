@@ -112,11 +112,12 @@ hr {
 @media screen and (max-width: 1023px) {
   .community {
     background-image: url('../../assets/community_bg.png');
+    height: 100dvh;
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 0px;
   }
   .c-line1 {
     font-size: 40px;

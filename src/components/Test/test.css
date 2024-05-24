@@ -321,6 +321,28 @@ option.korean::after {
 }
 
 @media screen and (max-width: 1023px) {
+
+  .t-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+  .t-navbar-links_logo{
+      margin-right: 1.5rem;
+  }
+
+  .t-navbar-links_logo img{
+  top: 70px;
+  left: 70px;
+  height: 56px;
+  opacity: 1;
+  }
+
   .navbar-links {
     display: none;
   }
@@ -403,6 +425,14 @@ option.korean::after {
   
   .dropdown-menu li span {
     margin-left: 60px;
+  }
+
+  .centered-container {
+    padding-top: 15dvh;
+  }
+  
+  .centered-container img {
+    height: 160px;
   }
 
   .start-test-btn {

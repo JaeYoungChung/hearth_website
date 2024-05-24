@@ -84,3 +84,9 @@ a {
   .section__margin {
     margin: 4rem 6rem;
   }
+
+  @media screen and (max-width: 1023px) {
+    #community {
+      height: 100dvh;
+    }
+  }
