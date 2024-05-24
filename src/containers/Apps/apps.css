@@ -281,15 +281,15 @@
 
     .apps-icons {
       justify-content: center;
-      margin-top: 3dvh;
+      margin-top: 2.5dvh;
     }
     
     .ios-icon {
-      width: 120px;
+      width: 100px;
       margin-right: 20px;
     }
     .android-icon {
-      width: 153px;
+      width: 133px;
       margin-left: 20px;
     }
   }

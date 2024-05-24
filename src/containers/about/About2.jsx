@@ -8,7 +8,7 @@ const About2 = () => {
   const [t, i18n] = useTranslation("global");
     return (
     <div className="About2">  
-      <div className="section inverted">
+      <div className="section inverted"> 
         <div className="squares-container">
           <div className="square square1"></div>
           <div className="square square2"></div>

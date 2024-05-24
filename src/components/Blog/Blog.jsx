@@ -51,7 +51,7 @@ const SharePopup = ({ url, onClose }) => {
    //Kakao Share
    useEffect(()=>{
       Kakao.cleanup();
-      Kakao.init('c0000000000');
+      Kakao.init('2de414b7c7ba46d03d18e0f115ad83c2');
       console.log(Kakao.isInitialized());
   },[]);
 
@@ -267,7 +267,7 @@ const Blog = () => {
 function handlePostClick(post) {
     setSelectedPost(post);
   }
-
+ 
   return (
     <div className="blog-page">
       <div className = "b-navbar">

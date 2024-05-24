@@ -588,19 +588,6 @@ option.korean::after {
   transition: background-color 0.3s ease;
 }
 
-.share-popup {
-  background-color: black;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 25vh;
-  width: 70vw;
-  border: 1px solid #ddd;
-  z-index: 1000;
-  padding: 10px;
-  box-sizing: border-box;
-}
 
 .banner {
   display: flex;
@@ -877,6 +864,20 @@ input[type="text"], textarea {
     z-index: 99;
     margin: 0;
     padding: 0;
+  }
+  
+  .share-popup {
+    background-color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 25vh;
+    width: 70vw;
+    border: 1px solid #ddd;
+    z-index: 1000;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   .modal-header {

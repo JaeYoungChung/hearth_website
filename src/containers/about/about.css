@@ -212,7 +212,7 @@
     }
 
     .inverted {
-      padding-top: 120px;
+      padding-top: 10dvh;
     }
   
     .inverted .square1 {
@@ -298,8 +298,8 @@
       padding: 20px;
       margin-top: 90px;
       margin-bottom: 10px;
-      padding-top: 60px;
-      padding-bottom: 50px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       line-height: 1.5;
     }
   
