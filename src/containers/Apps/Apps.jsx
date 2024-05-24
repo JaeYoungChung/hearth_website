@@ -85,7 +85,7 @@ function TextSection({ color, text }) {
   //     key={selected} 
   //     timeout={500}
   //     classNames="fade"
-  //   >
+  //   > 
     <div id="apps" className="apps">
       <div className='a-left-section'>
         <ImageSection image={imageData[selected].src} />

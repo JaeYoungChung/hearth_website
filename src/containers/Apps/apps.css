@@ -243,12 +243,12 @@
     }
   
     .a-text-big {
-      font-size: 60px;
+      font-size: 55px;
       line-height: 1.0;
     }
   
     .a-text-medium {
-      font-size: 32px;
+      font-size: 27px;
     }
   
     .a-text-small {
@@ -281,7 +281,7 @@
 
     .apps-icons {
       justify-content: center;
-      margin-top: 5vh;
+      margin-top: 3dvh;
     }
     
     .ios-icon {
