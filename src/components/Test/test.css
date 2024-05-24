@@ -428,7 +428,7 @@ option.korean::after {
   }
 
   .centered-container {
-    padding-top: 15dvh;
+    padding-top: 12dvh;
   }
   
   .centered-container img {
@@ -439,8 +439,27 @@ option.korean::after {
     transform: translateY(-70px);
   }
 
+  .text-overlay {
+    top: 32dvh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 24px;
+  }
+
+  .alphabet-container {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .alphabet-row button {
+    margin-top: 12px;
+    font-size: 24px;
+  }
+
   .t-animation-container {
-    transform: translateY(-50px);
+    transform: translateY(0px);
   }
 
   .move-up {
@@ -448,8 +467,12 @@ option.korean::after {
     transition: transform 1s ease-in-out;
   }
 
+  .t-animation-text {
+    font-size: 22px;
+  }
+
   .t-animation-paragraph {
-    font-size: 17px;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     transform: translateY(-90px);
   }

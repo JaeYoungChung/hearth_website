@@ -20,7 +20,7 @@ import email from '../../assets/email.png'
 
 const Questions = () => {
   const navigate = useNavigate();
-
+ 
   //language
   const [t, i18n] = useTranslation("global");
   const [isOpen, setIsOpen] = useState(false);

@@ -309,7 +309,7 @@ span {
   opacity: 0;
   animation: fade-in 3s ease-in-out forwards;
 }
-
+ 
 .loading-result {
   padding-top: 110px;
   font-size: 20px;
@@ -327,6 +327,28 @@ span {
 @media screen and (max-width: 1023px) {
   .navbar-menu {
     display: block;
+  }
+
+  .q-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  .q-navbar-links_logo{
+    margin-right: 1.5rem;
+  }
+
+  .q-navbar-links_logo img{
+    top: 60px;
+    left: 10px;
+    width: 80px;
+    height: 40px;
+    opacity: 1;
   }
 
   .q-navbar-lang{
@@ -410,9 +432,10 @@ span {
   }
 
   .survey-container {
-    padding-top: 1px;
-    width: 100%;
-    margin: 100px auto;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 10dvh auto;
   }
 
   .question-counter {
@@ -435,12 +458,14 @@ span {
   
   .disagree-text,
   .agree-text {
-    font-size: 15px;
+    font-size: 14px;
     opacity: 0.6;
     margin: 0 20px;
   }
 
   .q-circle {
+    width: 35px;
+    height: 35px;
     margin: 0 10px;
   }
 }
