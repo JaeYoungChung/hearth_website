@@ -315,6 +315,15 @@ option.korean::after {
 }
 
 @media screen and (max-width: 1023px) {
+
+.navbar-links_logo img{
+    top: 60px;
+    left: 60px;
+    width: 37px;
+    height: 60px;
+    opacity: 1;
+}
+
   .navbar-links {
     display: none;
   }

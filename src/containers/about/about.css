@@ -14,7 +14,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 .About3 {
   overflow-x: hidden;
@@ -171,6 +170,18 @@
   }
 
   @media screen and (max-width: 1023px) {
+    .About1 {
+      height: 100dvh;  
+      }
+    .About2 {
+      height: 100dvh;
+    }
+    .About3 {
+      height: 100dvh;
+    }
+    .section {
+      height: 100dvh;
+    }
     .About {
       height: auto;
     }
@@ -181,7 +192,7 @@
   
     .squares-container {
       width: 100%;
-      height: 40vh;
+      height: 36vh;
       margin-bottom: 20px;
     }
   
@@ -201,7 +212,7 @@
     }
 
     .inverted {
-      padding-top: 200px;
+      padding-top: 120px;
     }
   
     .inverted .square1 {
@@ -230,14 +241,14 @@
   
     .about-big-text .line1,
     .about-big-text .line4 {
-      font-size: 3rem;
+      font-size: 2.7rem;
       padding: 0;
     }
   
     .about-big-text .line2,
     .about-big-text .line3,
     .about-big-text .line5 {
-      font-size: 2rem;
+      font-size: 1.7rem;
     }
   
     .about-big-text .line6 {
@@ -253,8 +264,8 @@
       width: 100%;
       text-align: center;
       opacity: 0.8;
-      padding-left: 45px;
-      padding-right: 45px;
+      padding-left: 35px;
+      padding-right: 35px;
       font-size: 16px;
       line-height: 22px;
     }
@@ -266,8 +277,8 @@
       width: 100%;
       text-align: center;
       opacity: 0.8;
-      padding-left: 40px;
-      padding-right: 40px;
+      padding-left: 32px;
+      padding-right: 32px;
       font-size: 16px;
       line-height: 22px;
     }
@@ -278,23 +289,23 @@
     }
 
     .centered-text {
-      width: 90%;
+      width: 95%;
       height: auto;
       padding: 30px;
       margin-top: 90px;
       margin-bottom: 10px;
-      padding-top: 80px;
-      padding-bottom: 60px;
+      padding-top: 60px;
+      padding-bottom: 50px;
       line-height: 25px;
     }
   
     .title {
-      font-size: 40px;
+      font-size: 37px;
       padding-bottom: 20px;
     }
   
     .subtitle {
-      font-size: 20px;
+      font-size: 18px;
       padding-bottom: 10px;
     }
 
