@@ -293,10 +293,10 @@
 
     .centered-text {
       font-size: 15px;
-      width: 90%;
+      width: 93%;
       height: auto;
       padding: 20px;
-      margin-top: 90px;
+      margin-top: 10dvh;
       margin-bottom: 10px;
       padding-top: 20px;
       padding-bottom: 20px;
