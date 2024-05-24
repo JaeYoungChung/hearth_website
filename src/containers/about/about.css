@@ -192,23 +192,23 @@
   
     .squares-container {
       width: 100%;
-      height: 36vh;
+      height: 35vh;
       margin-bottom: 20px;
     }
   
     .square {
-      width: 30vw;
-      height: 30vw;
+      width: 28vw;
+      height: 28vw;
     }
 
     .square1 {
-      top: 10%;
-      left: 23%;
+      top: 15%;
+      left: 25%;
     }
     
     .square2 {
-      bottom: 10%;
-      right: 23%;
+      bottom: 15%;
+      right: 25%;
     }
 
     .inverted {
@@ -216,15 +216,15 @@
     }
   
     .inverted .square1 {
-      top: 35%;
-      right: 23%;
-      left: unset;
+      top: 37%;
+      left: 25%;
+      right: unset;
     }
     
     .inverted .square2 {
-      bottom: 35%;
-      left: 23%;
-      right: unset;
+      bottom: 37%;
+      right: 25%;
+      left: unset;
     }
 
     .inverted .squares-container {
@@ -239,9 +239,13 @@
       order: 1;
     }
   
-    .about-big-text .line1,
-    .about-big-text .line4 {
+    .about-big-text .line1 {
       font-size: 2.7rem;
+      padding: 0;
+    }
+
+    .about-big-text .line4 {
+      font-size: 2.4rem;
       padding: 0;
     }
   
@@ -252,7 +256,7 @@
     }
   
     .about-big-text .line6 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       padding: 0;
     }
   
@@ -264,8 +268,8 @@
       width: 100%;
       text-align: center;
       opacity: 0.8;
-      padding-left: 35px;
-      padding-right: 35px;
+      padding-left: 25px;
+      padding-right: 25px;
       font-size: 16px;
       line-height: 22px;
     }

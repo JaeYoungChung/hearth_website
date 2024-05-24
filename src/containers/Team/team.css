@@ -148,14 +148,15 @@
 
     .t-page1,
     .t-page2 {
-      padding-left: 0;
-      background-position: -100px 0px;
+      background-position: -10dvh 5dvh;
       background-size: contain;
       height: auto;
     }
 
     .t-page1 {
-      background-position: 100px 0px
+      padding-left: 5vw;
+      padding-right: 15vw;
+      background-position: 15vw 0px
     }
   
     .t-text-content1,
@@ -163,7 +164,6 @@
       position: relative;
       width: 100%;
       max-width: none;
-      padding: 20px;
       text-align: center;
     }
   
@@ -226,10 +226,12 @@
     position: absolute;
     justify-content: center;
     margin-right: auto;
-    left: 0;
     color: white;
     flex: 1;
-    width: 60%;
+    width: 60vw;
+    top: 5dvh;
+    left: 10%;
+    right: 30%;
     max-width: 650px;
     z-Index: 2,
   }

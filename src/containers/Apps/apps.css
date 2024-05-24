@@ -208,9 +208,9 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 120px;
-      padding-left: 80px;
-      padding-right: 80px;
+      padding-top: 10dvh;
+      padding-left: 15vw;
+      padding-right: 15vw;
       text-align: center;
       align-items: center;
       right: 0px;
@@ -252,10 +252,11 @@
    
     .a-button-section {
       justify-content: center;
-      margin-top: 90px;
+      margin-top: 10vh;
       display: flex;
       position: absolute;
-      padding-left: 0px;
+      padding-left: 5vw;
+      padding-right: 5vw;
       left: 0px;
       right: 0px;
       top: 0px;

@@ -46,7 +46,6 @@ const Team = () => {
   const Page1 = () => (
     <div className='t-page1' 
         style={{ display: 'flex',
-                paddingLeft: 100,
                 height: '110vh', 
                 backgroundImage: `url(${white_logo})`,
                 backgroundSize: 'contain',      
@@ -68,11 +67,10 @@ const Team = () => {
       </div>
     </div>
   );
-
+ 
   const Page2 = () => (
     <div className='t-page2' 
         style={{ display: 'flex',
-                paddingLeft: 100,
                 height: '110vh', 
                 backgroundImage: `url(${yellow_logo})`,
                 backgroundSize: 'contain',      
@@ -94,7 +92,6 @@ const Team = () => {
   const Page3 = () => (
     <div className='t-page2' 
         style={{ display: 'flex',
-                paddingLeft: 100,
                 height: '110vh', 
                 backgroundImage: `url(${red_logo})`,
                 backgroundSize: 'contain',      
@@ -114,7 +111,6 @@ const Team = () => {
   const Page4 = () => (
     <div className='t-page2' 
         style={{ display: 'flex',
-                paddingLeft: 100,
                 height: '110vh', 
                 backgroundImage: `url(${green_logo})`,
                 backgroundSize: 'contain',      
@@ -135,7 +131,6 @@ const Team = () => {
   const Page5 = () => (
     <div className='t-page2' 
         style={{ display: 'flex',
-                paddingLeft: 100,
                 height: '110vh', 
                 backgroundImage: `url(${blue_logo})`,
                 backgroundSize: 'contain',      
