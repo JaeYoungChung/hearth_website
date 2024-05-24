@@ -78,7 +78,7 @@ function TextSection({ color, text }) {
   </div>
   );  
 }
- 
+  
   return (
   // <TransitionGroup>
   //   <CSSTransition
@@ -89,7 +89,9 @@ function TextSection({ color, text }) {
     <div id="apps" className="apps">
       <div className='a-left-section'>
         <ImageSection image={imageData[selected].src} />
-        <ButtonSection setSelected={setSelected} selected={selected} />
+        <div className='a-btn-section'>
+          <ButtonSection setSelected={setSelected} selected={selected} />
+        </div>
       </div>
       <div className="a-right-section">
             <TextSection color={imageData[selected].color} text={imageData[selected].text} />

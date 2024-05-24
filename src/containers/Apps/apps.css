@@ -191,6 +191,15 @@
     }
     
     .a-left-section {
+      width: 90vw;
+      justify-content: center;
+      display: flex;
+    }
+
+    .a-btn-section {
+      width: 90vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
       justify-content: center;
       display: flex;
     }
@@ -201,6 +210,14 @@
       transition: transform 0.5s ease;
     }
 
+    .a-button-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+    }
+
     .a-button-container > button, .a-button-container > p {
       margin: 0 12px;
     }
@@ -208,7 +225,7 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 10dvh;
+      padding-top: 15dvh;
       padding-left: 15vw;
       padding-right: 15vw;
       text-align: center;
@@ -264,7 +281,7 @@
 
     .apps-icons {
       justify-content: center;
-      margin-top: 50px;
+      margin-top: 5vh;
     }
     
     .ios-icon {

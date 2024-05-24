@@ -3,7 +3,7 @@ import './about.css';
 import { Route } from 'react-router-dom';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
-
+ 
 const About = () => {
   const [t, i18n] = useTranslation("global");
     return (

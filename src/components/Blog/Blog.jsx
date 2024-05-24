@@ -23,7 +23,7 @@ import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
 import arrowleft from '../../assets/arrow_left.png'
 import emailjs from 'emailjs-com';
- 
+  
 import {
   FacebookShareButton, FacebookIcon,
   FacebookMessengerShareButton, FacebookMessengerIcon,
@@ -273,7 +273,7 @@ function handlePostClick(post) {
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">
             <NavLink to='/'>
-            <img src={logo} height={80} alt = "logo"></img>
+            <img src={logo} width={46} height={72} alt = "logo"></img>
             </NavLink>
           </div>
         <div className="navbar-menu" onClick={toggleMobileMenu}>
