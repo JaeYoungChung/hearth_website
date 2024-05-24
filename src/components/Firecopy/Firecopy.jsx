@@ -214,6 +214,7 @@ const Firecopy = () => {
     const textLeftRef = useRef(null); // Reference for the text on the left
     const textLeftLinesRef = useRef(null);
     const forceQuotient = useRef(null);
+    const closeButton = useRef(null);
     const smallTextRef = useRef(null);
 
 
@@ -313,6 +314,7 @@ const Firecopy = () => {
             textLeftRef.current.style.opacity = 1;
             if (window.matchMedia('(max-width: 1023px)').matches) {
               textLeftLinesRef.current.style.opacity = 0;
+              closeButton.current.style.opacity = 0;
             }
             svgRef.current.style.opacity = 1;
             forceQuotient.current.style.opacity = 1;
@@ -369,7 +371,8 @@ const Firecopy = () => {
         // hexagon reverse tilt
         setRotationButton(0);
         setMobileRotation(newMobileRotation);
-        const customIndex = customOrder[originalIndex];
+        const customIndex = customOrder.indexOf(originalIndex);
+
         setCurrentIndex(customIndex);
         setTextRotationAdjustment(prevAdjustment => prevAdjustment);
     
@@ -383,6 +386,7 @@ const Firecopy = () => {
     
         // show each cf
         textLeftLinesRef.current.style.opacity = 1;
+        closeButton.current.style.opacity = 1;
       };
 
       const closeResult = () => {
@@ -391,6 +395,7 @@ const Firecopy = () => {
         setMobileRotation(0);
         graphRef.current.style.opacity = 1;
         forceQuotient.current.style.opacity = 1;
+        closeButton.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 1;
         viewRef.current.style.opacity = 0;
         textLeftLinesRef.current.style.opacity = 0;             
@@ -775,7 +780,7 @@ const Firecopy = () => {
                   <p>To. {storedLetter}</p><br></br>
                   <p>{textToShow}</p><br></br>
                   <p className='third-line'>Sincerely, HEARTH</p>
-              </div>
+              </div> 
               <div
                 className={`bottom-text ${!showContent ? 'fading' : ''}`}
                 ref={bottomTextRef}
@@ -857,13 +862,13 @@ const Firecopy = () => {
                 </div>
                 <p className="f-main-progress-percentage">{Math.round(hexagonScores[`s${rCustomIndex + 1}`]/36*100)}%</p>
             </div>
-            <img className='close-result' src={close_result} onClick={closeResult}></img>
           </div>
             <div className='force-quotient' ref={forceQuotient}>
               <p className='left-lastline1'>※ Force Quotient (FQ)</p>
               <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
             </div>
         </div>
+        <img className='close-result' ref={closeButton} src={close_result} onClick={closeResult}></img>
         {showNewContent && (
         <div className="f-new-content">
           <div className="f-left-content">

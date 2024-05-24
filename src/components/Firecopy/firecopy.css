@@ -933,7 +933,7 @@ li.active .f-progress-container {
   .f-legend-container {
     right: 20%;
     left: 20%;
-    scale: 75%;
+    scale: 80%;
     width: 60%;
     top: 50%;
 }
@@ -980,17 +980,17 @@ li.active .f-progress-container {
   }
 
   .text-left {
-    width: 70%;
+    width: 80%;
     top: -20%;
-    left: 15%;
-    right: 15%;
+    left: 10%;
+    right: 10%;
     bottom: 0px;
   }
 
   .text-left-lines {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 110%;
+    padding-top: 45dvh;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -1067,11 +1067,14 @@ li.active .f-progress-container {
   }
 
   .close-result {
-    order: 5;
+    position: absolute;
     width: 30px;
-    margin-top: 30px;
+    opacity: 0;
+    top: 82dvh;
     cursor: pointer;
     display: flex;
+    z-index: 153;
+    bottom: 0;
   }
 
   .f-new-content {
@@ -1386,7 +1389,7 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    max-height: 80dvh;
+    max-height: 70dvh;
     overflow-y: auto;
     z-index: 151;
   }
@@ -1452,11 +1455,11 @@ li.active .f-progress-container {
   }
 
   .f-legend-container {
-    right: 20vw;
-    left: 20vw;
-    scale: 75%;
-    width: 60vw;
-    top: 40dvh;
+    right: 15vw;
+    left: 15vw;
+    scale: 80%;
+    width: 70vw;
+    top: 35dvh;
 }
 
   .f-legend-container .score-list li,
@@ -1465,8 +1468,8 @@ li.active .f-progress-container {
   }
 
   .f-svg-container {
-    left: 50vw;
-    right: 50vw;
+    left: 0;
+    right: 0;
     top: 15%;
     scale: 60%;
   }
@@ -1501,17 +1504,17 @@ li.active .f-progress-container {
   }
 
   .text-left {
-    width: 70%;
+    width: 80%;
     top: 0%;
-    left: 15%;
-    right: 15%;
+    left: 10%;
+    right: 10%;
     bottom: 0px;
   }
 
   .text-left-lines {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 50dvh;
+    padding-top: 45dvh;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -1589,11 +1592,14 @@ li.active .f-progress-container {
   }
 
   .close-result {
-    order: 5;
+    position: absolute;
     width: 30px;
-    margin-top: 30px;
+    opacity: 0;
+    top: 82dvh;
     cursor: pointer;
     display: flex;
+    z-index: 153;
+    bottom: 0;
   }
 
   .f-new-content {
