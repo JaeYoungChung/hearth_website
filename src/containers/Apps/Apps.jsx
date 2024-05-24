@@ -77,7 +77,7 @@ function TextSection({ color, text }) {
     <p className='a-text-small'>{text[2]}<em>{text[3]}</em>{text[4]}<span style={{ color }}>{text[5]}</span></p>
   </div>
   );  
-}
+} 
   
   return (
   // <TransitionGroup>
