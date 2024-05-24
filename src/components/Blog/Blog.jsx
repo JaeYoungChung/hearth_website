@@ -61,17 +61,17 @@ const SharePopup = ({ url, onClose }) => {
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-            title: '오늘의 디저트',
-            description: '아메리카노, 빵, 케익',
+            title: 'Blog Post 1',
+            description: 'Lorem Ipsum',
             imageUrl:
-            'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+            logo,
             link: {
                 mobileWebUrl: currentUrl,
             },
         },
         buttons: [
             {
-                title: '나도 테스트 하러가기',
+                title: 'View Blog',
                 link: {
                 mobileWebUrl: currentUrl,
                 },

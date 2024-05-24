@@ -216,13 +216,13 @@
     }
   
     .inverted .square1 {
-      top: 4dvh;
+      top: 3.5dvh;
       right: 23vw;
       left: unset;
     }
     
     .inverted .square2 {
-      bottom: 4dvh;
+      bottom: 3.5dvh;
       left: 23vw;
       right: unset;
     }

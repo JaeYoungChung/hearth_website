@@ -316,11 +316,15 @@ option.korean::after {
 
 @media screen and (max-width: 1023px) {
 
+.navbar {
+  padding: 1rem 2rem;
+}
+
 .navbar-links_logo img{
-    top: 60px;
+    top: 40px;
     left: 60px;
-    width: 37px;
-    height: 60px;
+    width: 30px;
+    height: 50px;
     opacity: 1;
 }
 
