@@ -197,8 +197,8 @@
     }
   
     .square {
-      width: 28vw;
-      height: 28vw;
+      width: 27vw;
+      height: 27vw;
     }
 
     .square1 {
@@ -216,13 +216,13 @@
     }
   
     .inverted .square1 {
-      top: 3.5dvh;
+      top: 3.2dvh;
       right: 23vw;
       left: unset;
     }
     
     .inverted .square2 {
-      bottom: 3.5dvh;
+      bottom: 3.2dvh;
       left: 23vw;
       right: unset;
     }
@@ -244,7 +244,7 @@
     }
 
     .about-big-text .line4 {
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       padding: 0;
     }
   
@@ -255,7 +255,7 @@
     }
   
     .about-big-text .line6 {
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       padding: 0;
     }
   
@@ -300,12 +300,12 @@
       margin-bottom: 10px;
       padding-top: 20px;
       padding-bottom: 20px;
-      line-height: 1.5;
+      line-height: 1.4;
     }
   
     .title {
       font-size: 35px;
-      padding-bottom: 10px;
+      padding-bottom: 0px;
     }
   
     .subtitle {

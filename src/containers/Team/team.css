@@ -13,7 +13,8 @@
 
 .t-page1{
     background-repeat: no-repeat;
-    background-position: 110% 0px
+    background-position: 110% 0px;
+    padding-left: 100px;
 }
 
 .t-page2{
