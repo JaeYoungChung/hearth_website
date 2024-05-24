@@ -437,7 +437,7 @@ span {
   }
 
   .question-text {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .survey-container {
@@ -448,11 +448,11 @@ span {
   }
 
   .question-counter {
-    height: 12dvh;
+    height: 13dvh;
     opacity: 0.8;
     position: absolute;
     left: 50%;
-    bottom: 5dvh;
+    bottom: 7dvh;
     transform: translateX(-50%);
     z-index: 2; 
   }

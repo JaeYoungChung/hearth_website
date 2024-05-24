@@ -763,7 +763,7 @@ const Firecopy = () => {
             <video className="f-video" autoPlay loop muted>
                 <source src={resultfire} type="video/webm" />
             </video>
-            <div
+            <div 
                 className="color-overlay"
                 style={{ 
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,

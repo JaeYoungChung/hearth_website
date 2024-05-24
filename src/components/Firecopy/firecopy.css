@@ -866,7 +866,7 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    max-height: 80vh;
+    max-height: 80dvh;
     overflow-y: auto;
     z-index: 151;
   }
@@ -1380,13 +1380,13 @@ li.active .f-progress-container {
     position: absolute;
     border: 1px solid white;
     margin-top: 0px;
-    padding: 50px;
+    padding: 30px;
     color: white;
     width: 90%;
     right: 30px;
     left: 30px;
     opacity: 0;
-    max-height: 80vh;
+    max-height: 80dvh;
     overflow-y: auto;
     z-index: 151;
   }
@@ -1442,7 +1442,7 @@ li.active .f-progress-container {
 
   .force-quotient {
     position: absolute;
-    top: 60vh;
+    top: 60dvh;
   }
 
   .left-lastline1,
@@ -1452,11 +1452,11 @@ li.active .f-progress-container {
   }
 
   .f-legend-container {
-    right: 20%;
-    left: 20%;
+    right: 20vw;
+    left: 20vw;
     scale: 75%;
-    width: 60%;
-    top: 50%;
+    width: 60vw;
+    top: 40dvh;
 }
 
   .f-legend-container .score-list li,
@@ -1465,8 +1465,8 @@ li.active .f-progress-container {
   }
 
   .f-svg-container {
-    left: 50%;
-    right: 50%;
+    left: 50vw;
+    right: 50vw;
     top: 15%;
     scale: 60%;
   }
@@ -1511,7 +1511,7 @@ li.active .f-progress-container {
   .text-left-lines {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 110%;
+    padding-top: 50dvh;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -1544,12 +1544,12 @@ li.active .f-progress-container {
 
   .left-line1 {
     order: 1;
-    font-size: 50px;
+    font-size: 46px;
     font-weight: bold;
   }
   .left-line2 {
     order: 2;
-    font-size: 31px;
+    font-size: 28px;
     font-weight: bold;
   }
   .left-line3 {
@@ -1567,8 +1567,8 @@ li.active .f-progress-container {
   }
   
   .f-main-progress-container {
-    width: 300px;
-    height: 15px;
+    width: 280px;
+    height: 13px;
     background-color: #ccc;
     border-radius: 5px;
     overflow: hidden;
@@ -1584,6 +1584,7 @@ li.active .f-progress-container {
   }
   
   .f-main-progress-percentage {
+    font-size: 14px;
     margin-left: 10px;
   }
 
@@ -1602,13 +1603,12 @@ li.active .f-progress-container {
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    padding-top: 70px;
+    padding-top: 0dvh;
     left: 0;
     right: 0;
-    width: 50%;
-    height: 100vh;
-    padding-left: 50px;
-    padding-right: 50px;
+    width: 80vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
     color: white;
     opacity: 0;
     animation: fadeIn 1s forwards;
@@ -1618,6 +1618,12 @@ li.active .f-progress-container {
   .f-left-content, .f-right-content {
     padding: 0px;
     padding-top: 30px;
+  }
+
+  .f-right-content {
+    width: 88vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
 
   .hex-code {
