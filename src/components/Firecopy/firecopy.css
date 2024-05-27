@@ -110,6 +110,10 @@
     height: 100%;
     background-color: var(--overlay-color);
     mix-blend-mode: color;
+    -webkit-mix-blend-mode: color;
+    -moz-mix-blend-mode: color;
+    -ms-mix-blend-mode: color;
+    -o-mix-blend-mode: color;
   }
 
   .f-column {
