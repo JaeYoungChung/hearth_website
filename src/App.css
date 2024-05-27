@@ -20,7 +20,8 @@ html, body {
 }
 
 body {
-  overflow-x: hidden !important;
+  overflow-x: hidden ;
+  /* overflow-x: hidden !important; */
 }
 .container {
   max-width: 100% !important;
