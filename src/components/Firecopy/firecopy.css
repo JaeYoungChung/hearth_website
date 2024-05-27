@@ -80,7 +80,7 @@ opacity: 0.5;
   /* display: inline-block; */
   background-color: white;
   transform: translate3d(0,0,0);
-  background-color: white;
+  /* background-color: white; */
 }
 
 /* .f-video-container::after {
@@ -110,9 +110,9 @@ opacity: 0.5;
   -o-mix-blend-mode: color;
 }
 
-/* #color-overlay {
+#color-overlay {
   mix-blend-mode: overlay !important;
-} */
+}
 
 /* .color-overlay:after {
   content: '';
