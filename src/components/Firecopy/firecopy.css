@@ -79,7 +79,7 @@ opacity: 0.5;
   z-index: 1; /*video is above the hexagon */
   /* display: inline-block; */
   transform: translate3d(0,0,0);
-  /* background-color: white; */
+  background-color: white;
 }
 
 /* .f-video-container::after {
@@ -91,7 +91,7 @@ opacity: 0.5;
   height: 95%;
   pointer-events: none;
 } */
- 
+
 .color-overlay {
   position: absolute;
   top: 0;
@@ -102,11 +102,11 @@ opacity: 0.5;
   border-color: black;
   pointer-events: none;
   background-color: var(--overlay-color);
-  mix-blend-mode: overlay !important;
-  -webkit-mix-blend-mode: overlay;
-  -moz-mix-blend-mode: overlay;
-  -ms-mix-blend-mode: overlay;
-  -o-mix-blend-mode: overlay;
+  mix-blend-mode: color !important;
+  -webkit-mix-blend-mode: color;
+  -moz-mix-blend-mode: color;
+  -ms-mix-blend-mode: color;
+  -o-mix-blend-mode: color;
 }
 
 /* #color-overlay {
