@@ -68,13 +68,15 @@
     align-items: center;
     transform-style: preserve-3d; /* Allow 3D transformations */
     overflow: visible; /* To ensure anything moving outside the bounds is not visible */
+    will-change: opacity;
   }
 
   .f-video-container {
+    backface-visibility: hidden;
     width: 43%;
     height: 43%;
     position: relative;
-    z-index: 0; /*video is above the hexagon */
+    z-index: 1; /*video is above the hexagon */
     display: inline-block;
   }
   
@@ -85,7 +87,7 @@
     left: 0;
     width: 100%;
     height: 95%;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
     pointer-events: none;
   }
 
@@ -106,7 +108,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--overlay-color);
-    mix-blend-mode: overlay;
+    mix-blend-mode: color;
   }
 
   .f-column {

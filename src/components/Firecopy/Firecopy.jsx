@@ -774,7 +774,7 @@ const Firecopy = () => {
           //  style={{ backgroundColor: 'rgba(255, 0, 0, 1)', mixBlendMode: 'multiply' }}
            >
             <video className="f-video" autoPlay loop muted>
-                <source src={resultfire} type="video/webm" />
+                <source src={resultfire} type="video/mp4" />
             </video>
             <div 
                 className="color-overlay"
