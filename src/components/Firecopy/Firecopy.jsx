@@ -34,7 +34,7 @@ import app_harmonize from '../../assets/app_harmonize.png';
 import app_helm from '../../assets/app_helm.png';
 import app_reverie from '../../assets/app_reverie.png';
 import app_transcend from '../../assets/app_transcend.png';
-import CssFilterConverter from 'css-filter-converter';
+import { hexToCSSFilter } from 'hex-to-css-filter';
 
 
 const Firecopy = () => {
@@ -192,6 +192,8 @@ const Firecopy = () => {
     };
 
     const uniqueCode = sessionStorage.getItem('uniqueCode');
+    const hexCode = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
+    const cssFilter = hexToCSSFilter(hexCode);
     let textToShow = 'No data found';
 
     if (maxminResult) {
@@ -256,11 +258,6 @@ const Firecopy = () => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current; // Reference to the bottom text
-        const hexCode = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
-        const filter = CssFilterConverter.hexToFilter(hexCode);
-        if (videoRef.current) {
-          videoRef.current.style.filter = filter;
-        }
 
         video.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
@@ -769,8 +766,13 @@ const Firecopy = () => {
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             </div> 
         </div>
+        {/* <div style={{ backgroundColor: 'rgba(255, 0, 0, 0.5)', mixBlendMode: 'multiply' }}>
+          <video style={{ filter: 'grayscale(1) contrast(9)' }} src={resultfire} autoPlay loop />
+        </div> */}
       <div className='firecopy'>
-          <div className="f-video-container" ref={videoRef}>
+          <div className="f-video-container" ref={videoRef} 
+          //  style={{ backgroundColor: 'rgba(255, 0, 0, 1)', mixBlendMode: 'multiply' }}
+           >
             <video className="f-video" autoPlay loop muted>
                 <source src={resultfire} type="video/webm" />
             </video>
@@ -780,7 +782,7 @@ const Firecopy = () => {
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
             />
-            </div>
+          </div>
             <div className='f-column'>
               <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
                   <p>To. {storedLetter}</p><br></br>
@@ -943,7 +945,7 @@ const Firecopy = () => {
                         className="read_more" 
                         onClick={() => handleReadMoreClick(originalIndex)} 
                         alt="Description" 
-                      />
+                      />                    
                     </li>
                 );
               })}
