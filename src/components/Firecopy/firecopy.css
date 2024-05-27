@@ -78,9 +78,10 @@
     position: relative;
     z-index: 1; /*video is above the hexagon */
     display: inline-block;
+    transform: translate3d(0,0,0);
   }
   
-  .f-video-container::before {
+  .f-video-container::after {
     content: '';
     position: absolute;
     top: 0;
@@ -102,7 +103,7 @@
     pointer-events: none;
   }
 
-  .color-overlay:before {
+  .color-overlay:after {
     content: '';
     display: block;
     width: 100%;
