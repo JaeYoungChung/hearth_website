@@ -102,6 +102,7 @@ opacity: 0.5;
   border-color: black;
   pointer-events: none;
   background-color: var(--overlay-color);
+  opacity: 0.9;
   mix-blend-mode: color !important;
   -webkit-mix-blend-mode: color;
   -moz-mix-blend-mode: color;
