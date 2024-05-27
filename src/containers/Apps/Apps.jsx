@@ -41,7 +41,7 @@ function Apps() {
     5: { src:  harmonize_flame, color: "#FF00FF", text: ["Harmonize", t('apps.interpersonal_skills'), "HARMONIZE is the Cognitive Force that enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. ", "Sensibility, Eloquence, and Resonance", " are the three key components of this ", " Magenta Flame."] },
   };
 
-
+  
 function ButtonSection({ setSelected, selected }) {
   const buttons = Object.keys(appData).map(key => (
     <div className="a-button-container" key={key}>

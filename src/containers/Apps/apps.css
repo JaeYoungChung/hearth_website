@@ -210,7 +210,7 @@
     }
 
     .a-button-container {
-      margin-top: 30px;
+      margin-top: 3dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -224,9 +224,9 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 15dvh;
-      padding-left: 15vw;
-      padding-right: 15vw;
+      padding-top: 18dvh;
+      padding-left: 12vw;
+      padding-right: 12vw;
       text-align: center;
       align-items: center;
       right: 0px;

@@ -866,8 +866,9 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    max-height: 80dvh;
-    overflow-y: auto;
+    height: 60dvh;
+    max-height: 60dvh;
+    /* overflow-y: auto; */
     z-index: 151;
   }
   
@@ -921,7 +922,7 @@ li.active .f-progress-container {
 
   .force-quotient {
     position: absolute;
-    top: 75vh;
+    top: 62vh;
   }
 
   .left-lastline1,
@@ -990,13 +991,21 @@ li.active .f-progress-container {
   .text-left-lines {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 45dvh;
+    padding-top: 48dvh;
     text-align: center;
     align-items: center;
     flex-direction: column;
   }
 
   .arrow {
+    display: none;
+  }
+
+  .left-arrow {
+    display: none;
+  }
+  
+  .right-arrow {
     display: none;
   }
 
@@ -1389,8 +1398,9 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    max-height: 70dvh;
-    overflow-y: auto;
+    height: 60dvh;
+    max-height: 60dvh;
+    /* overflow-y: auto; */
     z-index: 151;
   }
   
@@ -1445,7 +1455,7 @@ li.active .f-progress-container {
 
   .force-quotient {
     position: absolute;
-    top: 60dvh;
+    top: 62dvh;
   }
 
   .left-lastline1,
@@ -1514,13 +1524,21 @@ li.active .f-progress-container {
   .text-left-lines {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 45dvh;
+    padding-top: 48dvh;
     text-align: center;
     align-items: center;
     flex-direction: column;
   }
 
   .arrow {
+    display: none;
+  }
+
+  .left-arrow {
+    display: none;
+  }
+  
+  .right-arrow {
     display: none;
   }
 
