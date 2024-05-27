@@ -78,6 +78,7 @@ opacity: 0.5;
   position: relative;
   z-index: 1; /*video is above the hexagon */
   /* display: inline-block; */
+  background-color: white;
   transform: translate3d(0,0,0);
   background-color: white;
 }
