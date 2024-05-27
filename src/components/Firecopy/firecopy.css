@@ -102,11 +102,11 @@
     border-color: black;
     pointer-events: none;
     background-color: var(--overlay-color);
-    mix-blend-mode: color;
-    -webkit-mix-blend-mode: color;
-    -moz-mix-blend-mode: color;
-    -ms-mix-blend-mode: color;
-    -o-mix-blend-mode: color;
+    mix-blend-mode: overlay;
+    -webkit-mix-blend-mode: overlay;
+    -moz-mix-blend-mode: overlay;
+    -ms-mix-blend-mode: overlay;
+    -o-mix-blend-mode: overlay;
   }
 
   /* .color-overlay:after {
