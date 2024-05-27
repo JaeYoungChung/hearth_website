@@ -82,16 +82,15 @@
     background-color: white;
   }
   
-  .f-video-container::after {
+  /* .f-video-container::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 95%;
-    /* mix-blend-mode: multiply; */
     pointer-events: none;
-  }
+  } */
 
   .color-overlay {
     position: absolute;
@@ -102,9 +101,15 @@
     border-style: solid;
     border-color: black;
     pointer-events: none;
+    background-color: var(--overlay-color);
+    mix-blend-mode: color;
+    -webkit-mix-blend-mode: color;
+    -moz-mix-blend-mode: color;
+    -ms-mix-blend-mode: color;
+    -o-mix-blend-mode: color;
   }
 
-  .color-overlay:after {
+  /* .color-overlay:after {
     content: '';
     display: block;
     width: 100%;
@@ -115,7 +120,7 @@
     -moz-mix-blend-mode: color;
     -ms-mix-blend-mode: color;
     -o-mix-blend-mode: color;
-  }
+  } */
 
   .f-column {
     position: absolute;

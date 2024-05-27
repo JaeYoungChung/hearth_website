@@ -781,7 +781,7 @@ const Firecopy = () => {
                 style={{ 
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
-            />
+            ></div>
           </div>
             <div className='f-column'>
               <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
