@@ -766,13 +766,8 @@ const Firecopy = () => {
             <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             </div> 
         </div>
-        {/* <div style={{ backgroundColor: 'rgba(255, 0, 0, 0.5)', mixBlendMode: 'multiply' }}>
-          <video style={{ filter: 'grayscale(1) contrast(9)' }} src={resultfire} autoPlay loop />
-        </div> */}
       <div className='firecopy'>
-          <div className="f-video-container" ref={videoRef} 
-          //  style={{ backgroundColor: 'rgba(255, 0, 0, 1)', mixBlendMode: 'multiply' }}
-           >
+          <div className="f-video-container" ref={videoRef}>
             <video className="f-video" autoPlay loop muted>
                 <source src={resultfire} type="video/mp4" />
             </video>
