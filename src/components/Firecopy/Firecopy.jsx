@@ -34,6 +34,7 @@ import app_harmonize from '../../assets/app_harmonize.png';
 import app_helm from '../../assets/app_helm.png';
 import app_reverie from '../../assets/app_reverie.png';
 import app_transcend from '../../assets/app_transcend.png';
+import CssFilterConverter from 'css-filter-converter';
 
 
 const Firecopy = () => {
@@ -255,6 +256,11 @@ const Firecopy = () => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current; // Reference to the bottom text
+        const hexCode = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
+        const filter = CssFilterConverter.hexToFilter(hexCode);
+        if (videoRef.current) {
+          videoRef.current.style.filter = filter;
+        }
 
         video.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
@@ -937,7 +943,7 @@ const Firecopy = () => {
                         className="read_more" 
                         onClick={() => handleReadMoreClick(originalIndex)} 
                         alt="Description" 
-                      />                    
+                      />
                     </li>
                 );
               })}

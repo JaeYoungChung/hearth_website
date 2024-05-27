@@ -866,8 +866,9 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    height: 60dvh;
-    max-height: 60dvh;
+    height: 75dvh;
+    max-height: 75dvh;
+    min-height: 75dvh;
     /* overflow-y: auto; */
     z-index: 151;
   }
@@ -877,7 +878,7 @@ li.active .f-progress-container {
     position: absolute;
     left: 0;
     right: 0;
-    top: 82vh;
+    top: 80dvh;
     justify-content: center;
   }
 
@@ -1398,8 +1399,9 @@ li.active .f-progress-container {
     right: 30px;
     left: 30px;
     opacity: 0;
-    height: 60dvh;
-    max-height: 60dvh;
+    height: 75dvh;
+    max-height: 75dvh;
+    min-height: 75dvh;
     /* overflow-y: auto; */
     z-index: 151;
   }
@@ -1409,7 +1411,7 @@ li.active .f-progress-container {
     position: absolute;
     left: 0;
     right: 0;
-    top: 82vh;
+    top: 80dvh;
     justify-content: center;
   }
 
