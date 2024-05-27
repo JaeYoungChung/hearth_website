@@ -110,6 +110,10 @@ opacity: 0.5;
   -o-mix-blend-mode: color;
 }
 
+#color-overlay {
+  mix-blend-mode: color !important;
+}
+
 /* .color-overlay:after {
   content: '';
   display: block;

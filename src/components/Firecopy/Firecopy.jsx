@@ -778,6 +778,7 @@ const Firecopy = () => {
             </video>
             <div 
                 className="color-overlay"
+                id="color-overlay"
                 style={{ 
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
