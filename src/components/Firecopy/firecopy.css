@@ -76,11 +76,9 @@ opacity: 0.5;
   width: 43%;
   height: 43%;
   position: relative;
-  z-index: 1; /*video is above the hexagon */
+  z-index: 0; /*video is above the hexagon */
   /* display: inline-block; */
-  /* background-color: white; */
   transform: translate3d(0,0,0);
-  /* background-color: white; */
 }
 
 /* .f-video-container::after {
