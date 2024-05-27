@@ -103,15 +103,15 @@ opacity: 0.5;
   pointer-events: none;
   background-color: var(--overlay-color);
   opacity: 0.9;
-  mix-blend-mode: overlay !important;
-  -webkit-mix-blend-mode: overlay;
-  -moz-mix-blend-mode: overlay;
-  -ms-mix-blend-mode: overlay;
-  -o-mix-blend-mode: overlay;
+  mix-blend-mode: color !important;
+  -webkit-mix-blend-mode: color;
+  -moz-mix-blend-mode: color;
+  -ms-mix-blend-mode: color;
+  -o-mix-blend-mode: color;
 }
 
 #color-overlay {
-  mix-blend-mode: overlay !important;
+  mix-blend-mode: color !important;
 }
 
 /* .color-overlay:after {
