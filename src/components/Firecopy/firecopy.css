@@ -966,6 +966,7 @@ transition: opacity 1.5s ease-in-out;
   right: 50vw;
   top: 15%;
   scale: 60%;
+  z-index: 99;
 }
 
 .f-score-list {
@@ -1471,7 +1472,7 @@ to {
     transform: translate(-50dvw, -33dvh);
   }
   to {
-    transform: translate(-85dvw, -45dvh);
+    transform: translate(-95dvw, -45dvh);
     scale: 75%;
   }
 }
@@ -1505,6 +1506,7 @@ to {
   right: 0;
   top: 15%;
   scale: 60%;
+  z-index: 99;
 }
 
 .f-score-list {
@@ -1572,6 +1574,7 @@ to {
   font-size: 20px;
   margin-top: 50px;
   z-index: 150;
+  opacity: 0;
 }
 
 .views img {

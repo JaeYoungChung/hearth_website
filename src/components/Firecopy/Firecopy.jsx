@@ -856,9 +856,9 @@ const Firecopy = () => {
         <div className="text-left" ref={textLeftRef}>
           <div className='text-left-lines' ref={textLeftLinesRef}>  
             <p className='left-line1' style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].title}</p>
-            <div className='views'>
-            <img src={rotateLeft} className="left-view" ref={viewRef} onClick={rotateMobileClockwise}></img>
-            <img src={rotateRight} className="right-view" ref={viewRef} onClick={rotateMobileCounterClockwise}></img>
+            <div className='views' ref={viewRef}>
+            <img src={rotateLeft} className="left-view" onClick={rotateMobileClockwise}></img>
+            <img src={rotateRight} className="right-view" onClick={rotateMobileCounterClockwise}></img>
             </div>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
             <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
