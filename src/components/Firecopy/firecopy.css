@@ -1008,7 +1008,7 @@ transition: opacity 1.5s ease-in-out;
 .text-left-lines {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 43dvh;
+  padding-top: 38dvh;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -1471,7 +1471,7 @@ to {
     transform: translate(-50dvw, -33dvh);
   }
   to {
-    transform: translate(-65dvw, -35dvh);
+    transform: translate(-85dvw, -45dvh);
     scale: 75%;
   }
 }
@@ -1547,7 +1547,7 @@ to {
 .text-left-lines {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 43dvh;
+  padding-top: 38dvh;
   text-align: center;
   align-items: center;
   flex-direction: column;

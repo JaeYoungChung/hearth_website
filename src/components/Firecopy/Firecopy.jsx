@@ -259,6 +259,7 @@ const Firecopy = () => {
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current; // Reference to the bottom text
         closeButton.current.style.pointerEvents = 'none';
+        viewRef.current.style.opacity = 0;
 
         video.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
@@ -339,7 +340,6 @@ const Firecopy = () => {
             smallTextRef.current.style.opacity = 0;
             smallTextRef.current.style.pointerEvents = 'none';
             bottomTextRef.current.style.pointerEvents = 'auto';
-            viewRef.current.style.opacity = 0;
             svgRef.current.style.opacity = 0;
             if (window.matchMedia('(max-width: 1023px)').matches) {
               videoRef.current.style.opacity = 0.5;}
