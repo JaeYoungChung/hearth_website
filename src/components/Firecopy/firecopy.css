@@ -734,6 +734,10 @@ opacity: 0;
 transition: opacity 1.5s ease-in-out;
 }
 
+.label-text {
+  overflow: visible;
+}
+
 @media (min-width: 608px) and (max-width: 1023px) {
 /* 768 */
 .navbar-links {
@@ -919,14 +923,12 @@ transition: opacity 1.5s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d; /* Allow 3D transformations */
   justify-content: center;
-  overflow: visible;
 }
 .f-tilted-reset {
   transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
-  overflow: visible;
 }
 
 @keyframes slideBottom {
@@ -1460,7 +1462,6 @@ to {
   opacity: 0.5;
   transform-style: preserve-3d; /* Allow 3D transformations */
   justify-content: center;
-  overflow: visible;
 }
 
 .f-tilted-reset {
@@ -1468,7 +1469,6 @@ to {
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
-  overflow: visible;
 }
 
 @keyframes slideBottom {

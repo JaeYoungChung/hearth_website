@@ -832,11 +832,11 @@ const Firecopy = () => {
                 <line x1={outerHexagonPoints[0].x} y1={outerHexagonPoints[0].y} x2={outerHexagonPoints[3].x} y2={outerHexagonPoints[3].y} stroke={hexagonColor} />
                 <line x1={outerHexagonPoints[1].x} y1={outerHexagonPoints[1].y} x2={outerHexagonPoints[4].x} y2={outerHexagonPoints[4].y} stroke={hexagonColor} />
                 <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke={hexagonColor} />
-                
                 {/* labels */}
-                    {
+                {
                 labelHexagonPoints.map((point, i) => (
                     <text 
+                        className='label-text'
                         x={point.x - 11} 
                         y={point.y+10} 
                         fontSize="30"
