@@ -768,7 +768,7 @@ const Firecopy = () => {
         </div>
       <div className='firecopy'>
           <div className="f-video-container" ref={videoRef}>
-            <video className="f-video" autoPlay loop muted>
+            <video className="f-video" autoPlay loop muted playsInline>
                 <source src={resultfire} type="video/mp4" />
             </video>
             <div 
