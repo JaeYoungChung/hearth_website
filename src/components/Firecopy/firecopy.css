@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 3rem;
+  padding: 10px 1.5rem;
   position: sticky;
   top: 0;
   z-index: 40;
@@ -832,7 +832,7 @@ transition: opacity 1.5s ease-in-out;
 
 .firecopy {
   position: relative;
-  padding-top: 50px;
+  padding-top: 40px;
   max-height: 76vh;
   height: auto;
 }
@@ -921,7 +921,7 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
 }
 .f-tilted-reset {
-  transform: translate(-50vw, -33vh) scale(70%);
+  transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -929,10 +929,10 @@ transition: opacity 1.5s ease-in-out;
 
 @keyframes slideBottom {
   from {
-    transform: translate(-50vw, -33vh);
+    transform: translate(-50dvw, -33dvh);
   }
   to {
-    transform: translate(-60vw, -33vh);
+    transform: translate(-60dvw, -34dvh);
     scale: 80%;
   }
 }
@@ -1008,7 +1008,7 @@ transition: opacity 1.5s ease-in-out;
 .text-left-lines {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 48dvh;
+  padding-top: 43dvh;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -1035,6 +1035,10 @@ transition: opacity 1.5s ease-in-out;
   z-index: 150;
 }
 
+.views img {
+  width: 17px;
+}
+
 .left-view {
   z-index: 150;
   margin-right: 150px;
@@ -1055,7 +1059,8 @@ transition: opacity 1.5s ease-in-out;
 .left-line2 {
   order: 2;
   font-size: 31px;
-  font-weight: bold;
+  font-weight: normal;
+  opacity: 0.25;
 }
 .left-line3 {
   order: 4;
@@ -1365,7 +1370,7 @@ to {
 
 .firecopy {
   position: relative;
-  padding-top: 50px;
+  padding-top: 40px;
   max-height: 76vh;
   height: auto;
 }
@@ -1455,7 +1460,7 @@ to {
 }
 
 .f-tilted-reset {
-  transform: translate(-50vw, -33vh) scale(80%);
+  transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -1463,11 +1468,11 @@ to {
 
 @keyframes slideBottom {
   from {
-    transform: translate(-50vw, -33vh);
+    transform: translate(-50dvw, -33dvh);
   }
   to {
-    transform: translate(-53vw, -33vh);
-    scale: 90%;
+    transform: translate(-65dvw, -35dvh);
+    scale: 75%;
   }
 }
 
@@ -1542,7 +1547,7 @@ to {
 .text-left-lines {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 48dvh;
+  padding-top: 43dvh;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -1564,9 +1569,13 @@ to {
   position: absolute;
   display: flex;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 50px;
   z-index: 150;
+}
+
+.views img {
+  width: 15px;
 }
 
 .left-view {
@@ -1589,7 +1598,8 @@ to {
 .left-line2 {
   order: 2;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: normal;
+  opacity: 0.25;
 }
 .left-line3 {
   order: 4;
@@ -1607,7 +1617,7 @@ to {
 
 .f-main-progress-container {
   width: 280px;
-  height: 13px;
+  height: 12px;
   background-color: #ccc;
   border-radius: 5px;
   overflow: hidden;

@@ -258,6 +258,7 @@ const Firecopy = () => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current; // Reference to the bottom text
+        closeButton.current.style.pointerEvents = 'none';
 
         video.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
@@ -284,7 +285,7 @@ const Firecopy = () => {
         setShowContent(false); // Hide text container and bottom text
         // Wait for fade out animation to complete before showing the SVG
         setTimeout(() => {
-          
+
           // if (svgRef.current) {
           //   if (window.matchMedia('(max-width: 768px)').matches) {
           //     svgRef.current.style.opacity = 0.5; // Set opacity to 0.5 for mobile screens
@@ -390,6 +391,7 @@ const Firecopy = () => {
         // show each cf
         textLeftLinesRef.current.style.opacity = 1;
         closeButton.current.style.opacity = 1;
+        closeButton.current.style.pointerEvents = 'auto';
       };
 
       const closeResult = () => {
@@ -401,7 +403,8 @@ const Firecopy = () => {
         closeButton.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 1;
         viewRef.current.style.opacity = 0;
-        textLeftLinesRef.current.style.opacity = 0;             
+        textLeftLinesRef.current.style.opacity = 0;
+        closeButton.current.style.pointerEvents = 'none';            
       }
 
       const getHexagonPoints = (centerX, centerY, radius) => {
