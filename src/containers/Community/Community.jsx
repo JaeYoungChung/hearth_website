@@ -104,6 +104,10 @@ const Community = () => {
                   <p>Copyrights</p>
                   <p>Cookie Policy</p>
               </div>
+              <div className='company-name'>
+                <br/>
+                <p>Vivos Voco Inc.</p>
+              </div>
           </div>
         </div>
       );

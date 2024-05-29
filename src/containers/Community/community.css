@@ -55,7 +55,7 @@
 }
 
 .c-footerTexts {
-    padding-top: 10px; 
+    padding-top: 5px; 
     padding-left: 20%;
     padding-right: 20%;
     display: flex;
@@ -67,8 +67,12 @@
 hr {
     color: white;
     border: none;
-    height: 1px;
+    height: 0.5px;
     background: white;
+}
+
+.company-name {
+  opacity: 0.5;
 }
 
 .c-inputBox {
@@ -150,7 +154,7 @@ hr {
   .c-footer {
     opacity: 0.5;
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     width: 80%;
 }
 
@@ -174,5 +178,9 @@ hr {
     border: none;
     height: 1px;
     background: white;
+}
+
+.company-name {
+  line-height: 1;
 }
 }
