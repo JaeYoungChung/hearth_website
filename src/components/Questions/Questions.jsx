@@ -459,7 +459,7 @@ function Survey() {
             backgroundSize: `contain`,
             opacity: isSubmitted ? 0.8 : 0.3,
             transition: 'opacity 3s ease-in-out',
-          }}
+          }} 
         ></div>      
       {!isSubmitted ? (
         <div className='question-container'>

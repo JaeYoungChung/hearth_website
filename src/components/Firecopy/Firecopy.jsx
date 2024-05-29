@@ -614,7 +614,7 @@ const Firecopy = () => {
         console.error("Error saving email: ", error);
       });
 };
-
+ 
     const handleFirstCheckboxChange = (event) => {
         setIsFirstCheckboxChecked(event.target.checked);
       };
@@ -835,7 +835,8 @@ const Firecopy = () => {
                 {/* labels */}
                 {
                 labelHexagonPoints.map((point, i) => (
-                    <text 
+                    <text
+                        width={30}
                         className='label-text'
                         x={point.x - 11} 
                         y={point.y+10} 
