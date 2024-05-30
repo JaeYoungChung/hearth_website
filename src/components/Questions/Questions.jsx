@@ -103,7 +103,7 @@ const Questions = () => {
         <div className = "q-navbar">
           <div className = "q-navbar-links_logo">
             <NavLink to='/'>
-            <img src={logo} height={80} alt = "logo"></img>
+            <img src={logo} width={46} height={72} alt = "logo"></img>
             </NavLink>
           </div>
           <div className="navbar-menu" onClick={toggleMobileMenu}>

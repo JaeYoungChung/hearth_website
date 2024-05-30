@@ -1476,8 +1476,8 @@ to {
     transform: translate(-50dvw, -33dvh);
   }
   to {
-    transform: translate(-95dvw, -45dvh);
     scale: 75%;
+    transform: translate(-65dvw, -34dvh);
   }
 }
 

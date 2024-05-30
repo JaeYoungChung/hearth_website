@@ -342,7 +342,7 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     position: sticky;
     top: 0;
     z-index: 40;
@@ -355,8 +355,8 @@ span {
   .q-navbar-links_logo img{
     top: 60px;
     left: 10px;
-    width: 80px;
-    height: 40px;
+    width: 72px;
+    height: 46px;
     opacity: 1;
   }
 
