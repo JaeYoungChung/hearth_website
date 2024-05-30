@@ -925,7 +925,7 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
 }
 .f-tilted-reset {
-  transform: translate(-50dvw, -33dvh) scale(80%);
+  transform: translate(-50dvw, -34dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -933,10 +933,10 @@ transition: opacity 1.5s ease-in-out;
 
 @keyframes slideBottom {
   from {
-    transform: translate(-50dvw, -33dvh);
+    transform: translate(-50dvw, -34dvh);
   }
   to {
-    transform: translate(-60dvw, -34dvh);
+    transform: translate(-60dvw, -35dvh);
     scale: 80%;
   }
 }
