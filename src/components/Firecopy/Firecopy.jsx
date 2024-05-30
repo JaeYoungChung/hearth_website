@@ -420,7 +420,7 @@ const Firecopy = () => {
         return points;
       };
       const outerHexagonPoints = getHexagonPoints(200, 200, 200);
-      const labelHexagonPoints = getHexagonPoints(200, 200, 230);
+      const labelHexagonPoints = getHexagonPoints(200, 213, 230);
       const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
         // Find the custom index for the original index based on the custom sequence
         const customIndex = customOrder[originalIndex];
@@ -811,9 +811,6 @@ const Firecopy = () => {
             style={{ transform: rotationButton !== 0 ? `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` : null }}
           >
               <svg
-                width="380" // Set the width of the SVG
-                height="380" // Set the height of the SVG
-                viewBox="0 0 380 380"
                 className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
                 style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(70%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
               >
@@ -841,8 +838,8 @@ const Firecopy = () => {
                     <text
                         width={30}
                         className='label-text'
-                        x={point.x - 11} 
-                        y={point.y+10} 
+                        x={point.x} 
+                        y={point.y} 
                         fontSize="30"
                         fill={changeTextColor ? colors[i] : "white"}
                         key={i}
