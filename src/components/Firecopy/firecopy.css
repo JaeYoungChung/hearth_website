@@ -1494,7 +1494,7 @@ to {
 }
 
 .f-tilted-reset {
-  -webkit-transform: translate(-50vw, -33dvh) scale(80%);
+  -webkit-transform: translate(-70vw, -33dvh) scale(80%);
   transform: translate(-50vw, -33dvh) scale(80%);
   -webkit-transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
@@ -1506,11 +1506,11 @@ to {
 
 @keyframes slideBottom {
   from {
-    -webkit-transform: translate(-50vw, -26dvh);
+    -webkit-transform: translate(-70vw, -36dvh);
     transform: translate(-50vw, -26dvh);
   }
   to {
-    -webkit-transform: translate(-50vw, -26dvh) scale(75%);
+    -webkit-transform: translate(-70vw, -36dvh) scale(75%);
     transform: translate(-50vw, -26dvh) scale(75%);
     
   }
