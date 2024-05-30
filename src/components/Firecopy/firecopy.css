@@ -974,6 +974,7 @@ transition: opacity 1.5s ease-in-out;
   position: absolute;
   top: 12%;
   left: 50%;
+  right: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 100%; /* Adjust as necessary */
@@ -1493,8 +1494,8 @@ to {
 }
 
 .f-tilted-reset {
-  -webkit-transform: translate(-50dvw, -33dvh) scale(80%);
-  transform: translate(-50dvw, -33dvh) scale(80%);
+  -webkit-transform: translate(-50vw, -33dvh) scale(80%);
+  transform: translate(-50vw, -33dvh) scale(80%);
   -webkit-transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   opacity: 0.5;
@@ -1505,13 +1506,13 @@ to {
 
 @keyframes slideBottom {
   from {
-    -webkit-transform: translate(-50dvw, -34dvh);
-    transform: translate(-50dvw, -34dvh);
+    -webkit-transform: translate(-50vw, -26dvh);
+    transform: translate(-50vw, -26dvh);
   }
   to {
-    -webkit-transform: translate(-65dvw, -35dvh);
-    transform: translate(-65dvw, -35dvh);
-    scale: 75%;
+    -webkit-transform: translate(-50vw, -26dvh) scale(75%);
+    transform: translate(-50vw, -26dvh) scale(75%);
+    
   }
 }
 
@@ -1542,6 +1543,7 @@ to {
 .svg-wrapper {
   position: absolute;
   top: 12%;
+  right: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1558,8 +1560,8 @@ to {
   position: absolute;
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
-  left: 0;
-  right: 0;
+  right: 50%;
+  left: 50%;
   top: 12%;
   scale: 60%;
   z-index: 99;
