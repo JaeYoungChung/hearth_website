@@ -1530,7 +1530,6 @@ to {
   top: 15%;
   right: 50%;
   left: 50%;
-  transform: translateY(20%);
   justify-self: center;
   opacity: 0;
   position: absolute;
@@ -1544,7 +1543,7 @@ to {
   top: 12%;
   right: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateY(20%);
   pointer-events: none; /* To ensure it doesn't interfere with interactions */
 }
 
