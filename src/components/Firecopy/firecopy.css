@@ -967,12 +967,31 @@ transition: opacity 1.5s ease-in-out;
   opacity: 1.0;
 }
 
+.svg-wrapper {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 100%; /* Adjust as necessary */
+  height: 100%; /* Adjust as necessary */
+  pointer-events: none; /* To ensure it doesn't interfere with interactions */
+}
+
 .f-svg-container {
-  left: 50vw;
-  right: 50vw;
+  -webkit-transform: translateY(40%);
+  transform: translateY(40%);
+  justify-self: center;
+  opacity: 0; /* Start hidden */
+  position: absolute;
+  transform-style: preserve-3d; /* Allow 3D transformations */ 
+  left: 0;
+  right: 0;
   top: 15%;
   scale: 60%;
   z-index: 99;
+  overflow: visible;
+  pointer-events: all; /* To ensure it is interactive */
 }
 
 .f-score-list {
@@ -1509,12 +1528,31 @@ to {
   opacity: 1.0;
 }
 
+.svg-wrapper {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 100%; /* Adjust as necessary */
+  height: 100%; /* Adjust as necessary */
+  pointer-events: none; /* To ensure it doesn't interfere with interactions */
+}
+
 .f-svg-container {
+  -webkit-transform: translateY(40%);
+  transform: translateY(40%);
+  justify-self: center;
+  opacity: 0; /* Start hidden */
+  position: absolute;
+  transform-style: preserve-3d; /* Allow 3D transformations */ 
   left: 0;
   right: 0;
   top: 15%;
   scale: 60%;
   z-index: 99;
+  overflow: visible;
+  pointer-events: all; /* To ensure it is interactive */
 }
 
 .f-score-list {
