@@ -925,6 +925,7 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
 }
 .f-tilted-reset {
+  -webkit-transform: translate(-50dvw, -33dvh) scale(80%);
   transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
@@ -1486,6 +1487,7 @@ to {
 }
 
 .f-tilted-reset {
+  -webkit-transform: translate(-50dvw, -33dvh) scale(80%);
   transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
