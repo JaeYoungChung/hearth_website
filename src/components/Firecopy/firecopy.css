@@ -918,6 +918,8 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-tilted {
+  -webkit-transform: rotate3d(1, 0, 0, 70deg);
+  -webkit-transition: transform 2s ease-in-out;
   transform: rotate3d(1, 0, 0, 70deg);
   transition: transform 2s ease-in-out;
   opacity: 0.5;
@@ -980,8 +982,8 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
-  -webkit-transform: translateY(40%);
-  transform: translateY(40%);
+  -webkit-transform: translateY(20%);
+  transform: translateY(20%);
   justify-self: center;
   opacity: 0; /* Start hidden */
   position: absolute;
@@ -1479,9 +1481,12 @@ to {
 }
 
 .f-tilted {
+  -webkit-transform: rotate3d(1, 0, 0, 70deg);
+  -webkit-transition: transform 2s ease-in-out;
   transform: rotate3d(1, 0, 0, 70deg);
   transition: transform 2s ease-in-out;
   opacity: 0.5;
+  -webkit-transform-style: preserve-3d; /* Allow 3D transformations */
   transform-style: preserve-3d; /* Allow 3D transformations */
   justify-content: center;
 }
@@ -1489,8 +1494,10 @@ to {
 .f-tilted-reset {
   -webkit-transform: translate(-50dvw, -33dvh) scale(80%);
   transform: translate(-50dvw, -33dvh) scale(80%);
+  -webkit-transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   opacity: 0.5;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 
@@ -1542,11 +1549,12 @@ to {
 }
 
 .f-svg-container {
-  -webkit-transform: translateY(40%);
-  transform: translateY(40%);
+  -webkit-transform: translateY(20%);
+  transform: translateY(20%);
   justify-self: center;
   opacity: 0; /* Start hidden */
   position: absolute;
+  -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   left: 0;
   right: 0;
