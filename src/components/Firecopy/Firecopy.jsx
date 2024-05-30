@@ -35,6 +35,7 @@ import app_helm from '../../assets/app_helm.png';
 import app_reverie from '../../assets/app_reverie.png';
 import app_transcend from '../../assets/app_transcend.png';
 import { hexToCSSFilter } from 'hex-to-css-filter';
+import { svg } from 'd3';
 
 
 const Firecopy = () => {

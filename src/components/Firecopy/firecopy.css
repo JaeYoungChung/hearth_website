@@ -966,11 +966,15 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
-  left: 50vw;
-  right: 50vw;
   top: 15%;
+  right: 50%;
+  left: 50%;
+  justify-self: center;
+  opacity: 0;
+  position: absolute;
   scale: 60%;
   z-index: 99;
+  overflow: visible;
 }
 
 .f-score-list {
@@ -1465,7 +1469,7 @@ to {
 }
 
 .f-tilted-reset {
-  transform: translate(-50dvw, -33dvh) scale(80%);
+  transform: translate(-50dvw, 0dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -1507,10 +1511,10 @@ to {
 
 .f-svg-container {
   top: 15%;
+  right: 50%;
   left: 50%;
-  transform: translate(-50%, 40%);
   justify-self: center;
-  opacity: 0; /* Start hidden */
+  opacity: 0;
   position: absolute;
   scale: 60%;
   z-index: 99;
