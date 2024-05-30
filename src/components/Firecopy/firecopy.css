@@ -981,6 +981,7 @@ transition: opacity 1.5s ease-in-out;
 .svg-wrapper {
   position: absolute;
   top: 12%;
+  right: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%; /* Adjust as necessary */
@@ -1536,6 +1537,7 @@ to {
 .svg-wrapper {
   position: absolute;
   top: 12%;
+  right: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%; /* Adjust as necessary */
