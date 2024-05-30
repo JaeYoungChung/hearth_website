@@ -1489,6 +1489,7 @@ to {
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */
   transform-style: preserve-3d; /* Allow 3D transformations */
   justify-content: center;
+  transform-origin: center center;
 }
 
 .f-tilted-reset {
@@ -1499,6 +1500,7 @@ to {
   opacity: 0.5;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  transform-origin: center center;
 }
 
 @keyframes slideBottom {
@@ -1558,7 +1560,7 @@ to {
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   left: 0;
   right: 0;
-  top: 15%;
+  top: 12%;
   scale: 60%;
   z-index: 99;
   overflow: visible;
