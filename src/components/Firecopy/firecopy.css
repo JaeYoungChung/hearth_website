@@ -925,7 +925,7 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
 }
 .f-tilted-reset {
-  transform: translate(-50dvw, -34dvh) scale(80%);
+  transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -933,9 +933,11 @@ transition: opacity 1.5s ease-in-out;
 
 @keyframes slideBottom {
   from {
+    -webkit-transform: translate(-50dvw, -34dvh);
     transform: translate(-50dvw, -34dvh);
   }
   to {
+    -webkit-transform: translate(-60dvw, -35dvh);
     transform: translate(-60dvw, -35dvh);
     scale: 80%;
   }
@@ -966,27 +968,11 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
+  left: 50vw;
+  right: 50vw;
   top: 15%;
-  right: 50%;
-  left: 50%;
-  transform: translateY(40%);
-  justify-self: center;
-  opacity: 0;
-  position: absolute;
   scale: 60%;
   z-index: 99;
-  overflow: visible;
-}
-
-.svg-wrapper {
-  position: absolute;
-  top: 12%;
-  right: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; /* Adjust as necessary */
-  height: 100%; /* Adjust as necessary */
-  pointer-events: none; /* To ensure it doesn't interfere with interactions */
 }
 
 .f-score-list {
@@ -1481,7 +1467,7 @@ to {
 }
 
 .f-tilted-reset {
-  transform: translate(-50dvw, 0dvh) scale(80%);
+  transform: translate(-50dvw, -33dvh) scale(80%);
   transition: transform 1s ease-in-out;
   opacity: 0.5;
   transform-style: preserve-3d;
@@ -1489,11 +1475,13 @@ to {
 
 @keyframes slideBottom {
   from {
-    transform: translate(-50dvw, -33dvh);
+    -webkit-transform: translate(-50dvw, -34dvh);
+    transform: translate(-50dvw, -34dvh);
   }
   to {
+    -webkit-transform: translate(-65dvw, -35dvh);
+    transform: translate(-65dvw, -35dvh);
     scale: 75%;
-    transform: translate(-65dvw, -34dvh);
   }
 }
 
@@ -1521,30 +1509,12 @@ to {
   opacity: 1.0;
 }
 
-.tilted-svg {
-  display: flex;
-  justify-content: center;
-}
-
 .f-svg-container {
+  left: 0;
+  right: 0;
   top: 15%;
-  right: 50%;
-  left: 50%;
-  justify-self: center;
-  opacity: 0;
-  position: absolute;
   scale: 60%;
   z-index: 99;
-  overflow: visible;
-}
-
-.svg-wrapper {
-  position: absolute;
-  top: 12%;
-  right: 50%;
-  left: 50%;
-  transform: translateY(20%);
-  pointer-events: none; /* To ensure it doesn't interfere with interactions */
 }
 
 .f-score-list {
