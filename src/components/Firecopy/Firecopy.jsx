@@ -806,6 +806,7 @@ const Firecopy = () => {
             <img src={rotateLeft} className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}></img>
             <img src={rotateRight} className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}></img>
           <div className={tiltedsvg ? 'tilted-svg' : ''}>
+          <div className="svg-wrapper">
           <div
             className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
             ref={svgRef}
@@ -855,6 +856,7 @@ const Firecopy = () => {
                 ))
                 }
             </svg>
+            </div>
             </div>
           </div>
         <div className="text-left" ref={textLeftRef}>
