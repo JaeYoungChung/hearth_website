@@ -420,7 +420,7 @@ const Firecopy = () => {
         return points;
       };
       const outerHexagonPoints = getHexagonPoints(200, 200, 200);
-      const labelHexagonPoints = getHexagonPoints(200, 213, 230);
+      const labelHexagonPoints = getHexagonPoints(200, 200, 200);
       const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
         // Find the custom index for the original index based on the custom sequence
         const customIndex = customOrder[originalIndex];
@@ -843,6 +843,8 @@ const Firecopy = () => {
                         fontSize="30"
                         fill={changeTextColor ? colors[i] : "white"}
                         key={i}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
                         transform={`translate(${point.x} ${point.y}) 
                             rotate(${-rotation + textRotationAdjustment -2}) 
                             translate(${-point.x} ${-point.y})`}
