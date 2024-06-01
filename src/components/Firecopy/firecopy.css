@@ -1547,8 +1547,6 @@ to {
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  width: 100%; /* Adjust as necessary */
-  height: 100%; /* Adjust as necessary */
   pointer-events: none; /* To ensure it doesn't interfere with interactions */
 }
 
@@ -1562,6 +1560,8 @@ to {
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   right: 50%;
   left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   top: 12%;
   scale: 60%;
   z-index: 99;
