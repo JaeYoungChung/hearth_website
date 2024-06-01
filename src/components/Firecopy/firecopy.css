@@ -1542,12 +1542,13 @@ to {
 .svg-wrapper {
   position: absolute;
   top: 12%;
-  right: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  pointer-events: none; /* To ensure it doesn't interfere with interactions */
+  pointer-events: none; /* Ensure it doesn't interfere with interactions */
+  display: flex; /* Add flex properties */
+  justify-content: center; /* Center content horizontally */
 }
+
 
 .f-svg-container {
   -webkit-transform: translateY(20%);
@@ -1559,6 +1560,7 @@ to {
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   right: 50%;
   left: 50%;
+  transform: translateX(-50%) translateY(20%); /* Center it horizontally */
   top: 12%;
   scale: 60%;
   z-index: 99;
