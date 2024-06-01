@@ -9,10 +9,6 @@
   z-index: 40;
 }
 
-iframe#customFieldFrame_18 {
-  min-width: 100%!important;
-}
-
 .q-navbar-links_logo{
 margin-right: 1.5rem;
 }
@@ -1562,16 +1558,13 @@ to {
   position: absolute;
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
-  right: 50%;
+  right: 50% !important;
   left: 50%;
   top: 12%;
   scale: 60%;
   z-index: 99;
   overflow: visible;
   pointer-events: all; /* To ensure it is interactive */
-  display: -webkit-box;
--webkit-box-pack: center; /* justify-content */
--webkit-box-align: center; /* align-items */
 }
 
 .f-score-list {
