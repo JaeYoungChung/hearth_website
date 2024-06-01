@@ -1560,12 +1560,14 @@ to {
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   right: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(20%); /* Center it horizontally */
   top: 12%;
   scale: 60%;
   z-index: 99;
   overflow: visible;
   pointer-events: all; /* To ensure it is interactive */
+  display: -webkit-box;
+-webkit-box-pack: center; /* justify-content */
+-webkit-box-align: center; /* align-items */
 }
 
 .f-score-list {
