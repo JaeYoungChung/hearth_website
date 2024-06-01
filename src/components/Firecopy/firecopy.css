@@ -9,6 +9,10 @@
   z-index: 40;
 }
 
+iframe#customFieldFrame_18 {
+  min-width: 100%!important;
+}
+
 .q-navbar-links_logo{
 margin-right: 1.5rem;
 }
