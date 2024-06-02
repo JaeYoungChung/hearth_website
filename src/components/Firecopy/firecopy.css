@@ -1522,6 +1522,7 @@ to {
   transform: translateX(-50%);
   justify-content: center; /* Center content horizontally */
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
+  display: inline-block;
 }
 
 
@@ -1532,6 +1533,7 @@ to {
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
+  display: inline-block;
   scale: 60%;
   left: 50%;
   right: 50%;
