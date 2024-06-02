@@ -957,17 +957,17 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
-  -webkit-transform: translateY(20%);
-  transform: translateY(20%);
+  position: absolute;
+  scale: 60%;
   justify-self: center;
   opacity: 0; /* Start hidden */
-  position: absolute;
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   right: 50%;
   left: 50%;
   top: 15%;
-  scale: 60%;
+  -webkit-transform: translateY(20%);
+  transform: translateY(20%);
   z-index: 99;
   overflow: visible;
   pointer-events: all; /* To ensure it is interactive */
@@ -1522,18 +1522,21 @@ to {
   transform: translateX(-50%);
   justify-content: center; /* Center content horizontally */
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
-  display: inline-block;
+  list-style-type: none;
+margin: 0;
+display: inline-block;
+-webkit-padding-start: 0;
 }
 
 
 .f-svg-container {
+  background-color: white;
   position: absolute;
   -webkit-transform: translateY(20%) translateX(-50%);
   transform: translateY(20%) translateX(-50%);
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
-  display: inline-block;
   scale: 60%;
   left: 50%;
   right: 50%;
@@ -1542,6 +1545,10 @@ to {
   overflow: visible;
   justify-self: center;
   pointer-events: all; /* To ensure it is interactive */
+  list-style-type: none;
+margin: 0;
+display: inline-block;
+-webkit-padding-start: 0;
 }
 
 
