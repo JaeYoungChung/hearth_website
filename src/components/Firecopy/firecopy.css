@@ -1864,12 +1864,12 @@ to {
 }
 }
 
-@media only screen and (max-device-width: 608px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (max-width: 608px) and (-webkit-min-device-pixel-ratio: 2) {
   .svg-wrapper {
     top: 10%; /* Adjust as necessary */
   }
   
   .f-svg-container {
-    transform: translateX(-50%) translateY(10%) scale(60%);
+    transform: translateX(-60%) translateY(10%) scale(60%);
   }
 }
