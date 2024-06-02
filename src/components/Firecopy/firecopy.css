@@ -1528,8 +1528,8 @@ to {
 
 .f-svg-container {
   position: absolute;
-  -webkit-transform: translateY(20%);
-  transform: translateY(20%);
+  -webkit-transform: translateY(20%) translateX(-50%);
+  transform: translateY(20%) translateX(-50%);
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
