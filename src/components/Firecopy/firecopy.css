@@ -77,19 +77,8 @@ opacity: 0.5;
   height: 43%;
   position: relative;
   z-index: 0; /*video is above the hexagon */
-  /* display: inline-block; */
   transform: translate3d(0,0,0);
 }
-
-/* .f-video-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 95%;
-  pointer-events: none;
-} */
 
 .color-overlay {
   position: absolute;
@@ -111,19 +100,6 @@ opacity: 0.5;
 #color-overlay {
   mix-blend-mode: overlay !important;
 }
-
-/* .color-overlay:after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: var(--overlay-color);
-  mix-blend-mode: color;
-  -webkit-mix-blend-mode: color;
-  -moz-mix-blend-mode: color;
-  -ms-mix-blend-mode: color;
-  -o-mix-blend-mode: color;
-} */
 
 .f-column {
   position: absolute;
@@ -1511,7 +1487,6 @@ to {
   to {
     -webkit-transform: translate(-70vw, -36dvh) scale(75%);
     transform: translate(-50vw, -26dvh) scale(75%);
-    
   }
 }
 
@@ -1541,31 +1516,32 @@ to {
 
 .svg-wrapper {
   position: absolute;
+  display: flex; /* Add flex properties */
   top: 12%;
   left: 50%;
   transform: translateX(-50%);
-  pointer-events: none; /* Ensure it doesn't interfere with interactions */
-  display: flex; /* Add flex properties */
   justify-content: center; /* Center content horizontally */
+  pointer-events: none; /* Ensure it doesn't interfere with interactions */
 }
 
 
 .f-svg-container {
+  position: absolute;
   -webkit-transform: translateY(20%);
   transform: translateY(20%);
-  justify-self: center;
   opacity: 0; /* Start hidden */
-  position: absolute;
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
-  right: 50% !important;
-  left: 50%;
-  top: 12%;
   scale: 60%;
+  left: 50%;
+  right: 50%;
+  top: 12%;
   z-index: 99;
   overflow: visible;
+  justify-self: center;
   pointer-events: all; /* To ensure it is interactive */
 }
+
 
 .f-score-list {
   list-style: none;
