@@ -1546,10 +1546,10 @@ to {
   position: absolute;
   display: flex;
   justify-content: center;
-  /* -webkit-transform: translateY(20%) translateX(-50%);
-  transform: translateY(20%) translateX(-50%); */
+  -webkit-transform: translateY(20%) translateX(-50%);
+  transform: translateY(20%) translateX(-50%);
   -webkit-transform: translateY(20%);
-  transform: translateY(20%);
+  transform: translateY(20%); 
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
