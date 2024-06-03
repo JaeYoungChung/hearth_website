@@ -1378,6 +1378,8 @@ to {
 .firecopy {
   position: absolute;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   padding-top: 40px;
   max-height: 76vh;
   height: auto;
@@ -1529,6 +1531,7 @@ to {
   position: absolute;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   top: 12%;
   left: 50%;
@@ -1542,6 +1545,7 @@ to {
 
 .f-svg-container {
   position: absolute;
+  text-align: center;
   /* display: flex; */
   display: inline-block;
   justify-content: center;
