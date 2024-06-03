@@ -1532,8 +1532,8 @@ to {
   top: 12%;
   left: 50%;
   right: 50%;
-  /* transform: translateX(-50%);
-  -webkit-transform: translateX(-50%); */
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
   list-style-type: none;
   margin: 0;
@@ -1548,8 +1548,8 @@ to {
   justify-content: center;
   -webkit-transform: translateY(20%) translateX(-50%);
   transform: translateY(20%) translateX(-50%);
-  -webkit-transform: translateY(20%);
-  transform: translateY(20%); 
+  /* -webkit-transform: translateY(20%);
+  transform: translateY(20%);  */
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
