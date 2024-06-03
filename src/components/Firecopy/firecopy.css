@@ -1527,13 +1527,13 @@ to {
 
 .svg-wrapper {
   position: absolute;
-  display: flex; /* Add flex properties */
+  display: flex;
+  justify-content: center; 
   top: 12%;
   left: 50%;
   right: 50%;
   /* transform: translateX(-50%);
   -webkit-transform: translateX(-50%); */
-  justify-content: center; /* Center content horizontally */
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
   list-style-type: none;
   margin: 0;
@@ -1544,9 +1544,10 @@ to {
 
 .f-svg-container {
   position: absolute;
+  display: flex;
   justify-content: center;
-  -webkit-transform: translateY(20%) translateX(-50%);
-  transform: translateY(20%) translateX(-50%);
+  /* -webkit-transform: translateY(20%) translateX(-50%);
+  transform: translateY(20%) translateX(-50%); */
   -webkit-transform: translateY(20%);
   transform: translateY(20%);
   opacity: 0; /* Start hidden */
@@ -1562,7 +1563,6 @@ to {
   pointer-events: all; /* To ensure it is interactive */
   list-style-type: none;
   margin: 0;
-  display: inline-block;
   -webkit-padding-start: 0;
 }
 
