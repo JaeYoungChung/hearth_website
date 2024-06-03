@@ -1542,8 +1542,8 @@ to {
 
 .f-svg-container {
   position: absolute;
-  display: flex;
-  /* display: inline-block; */
+  /* display: flex; */
+  display: inline-flex;
   justify-content: center;
   /* -webkit-transform: translateY(20%) translateX(-50%);
   transform: translateY(20%) translateX(-50%); */
