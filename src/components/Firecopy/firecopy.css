@@ -1528,7 +1528,8 @@ to {
 .svg-wrapper {
   position: absolute;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+  text-align: center;
   top: 12%;
   left: 50%;
   right: 50%;
@@ -1537,7 +1538,6 @@ to {
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
   list-style-type: none;
   margin: 0;
-  display: inline-block;
   -webkit-padding-start: 0;
 }
 
