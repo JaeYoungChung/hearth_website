@@ -1543,7 +1543,7 @@ to {
 .f-svg-container {
   position: absolute;
   /* display: flex; */
-  display: inline-flex;
+  display: inline-block;
   justify-content: center;
   /* -webkit-transform: translateY(20%) translateX(-50%);
   transform: translateY(20%) translateX(-50%); */
