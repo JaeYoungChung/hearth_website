@@ -819,9 +819,13 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .firecopy {
-  position: relative;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding-top: 40px;
   max-height: 76vh;
+  width: 100%;
   height: auto;
 }
 
@@ -903,6 +907,8 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-tilted {
+  width: 100%;
+  height: 100%;
   -webkit-transform: rotate3d(1, 0, 0, 70deg);
   -webkit-transition: transform 2s ease-in-out;
   transform: rotate3d(1, 0, 0, 70deg);
@@ -961,6 +967,8 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .svg-wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -971,6 +979,9 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
+  top: 2%;
+  width: 100%;
+  height: 100%;
   text-align: center;
   display: inline-block;
   justify-content: center;
@@ -1391,6 +1402,7 @@ to {
   text-align: center;
   padding-top: 40px;
   max-height: 76vh;
+  width: 100%;
   height: auto;
 }
 
@@ -1474,6 +1486,8 @@ to {
 }
 
 .f-tilted {
+  width: 100%;
+  height: 100%;
   -webkit-transform: rotate3d(1, 0, 0, 70deg);
   -webkit-transition: transform 2s ease-in-out;
   transform: rotate3d(1, 0, 0, 70deg);
@@ -1538,16 +1552,21 @@ to {
 }
 
 .svg-wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  top: 12%;
+  top: 0%;
   pointer-events: none;
   list-style-type: none;
 }
 
 .f-svg-container {
+  top: 2%;
+  width: 100%;
+  height: 100%;
   text-align: center;
   display: inline-block;
   justify-content: center;
@@ -1555,14 +1574,12 @@ to {
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   scale: 60%;
-  left: 50%;
-  right: 50%;
+  right: 0%;
   z-index: 199;
   overflow: visible;
   justify-self: center;
   pointer-events: all;
 }
-
 
 .f-score-list {
   list-style: none;

@@ -271,7 +271,7 @@ const Firecopy = () => {
         setTimeout(() => {
           if (window.matchMedia('(max-width: 1023px)').matches) {
             videoRef.current.style.opacity = 1;
-          }
+          } 
           svgRef.current.style.opacity = 0.5;
         }, 1000);
         setTimeout(() => {
