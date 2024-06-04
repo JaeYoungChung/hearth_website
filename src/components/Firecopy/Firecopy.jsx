@@ -796,7 +796,7 @@ const Firecopy = () => {
             <button className="text-button" onClick={handleCopyFireClipboard}>
               Copy Code
             </button>
-        </div>
+          </div>
           <div className="f-right-content">
             <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>        
             <div className="f-inputBox" style={{border: isRegistered ? `1px solid green` : `1px solid white`}}>

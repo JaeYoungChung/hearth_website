@@ -198,9 +198,9 @@ const Navbar = () => {
   return (
     <div className = "navbar">
       <div className = "navbar-links_logo">
-        <NavLink to='/'> 
-         <img src={logo} width={46} height={72} alt = "logo"></img>
-        </NavLink>
+      <a href="#home">
+        <img src={logo} width={46} height={72} alt="logo" />
+      </a>
       </div>
       <div className="navbar-menu" onClick={toggleMobileMenu}>
         <img src={navbar_menu} width={30} alt = "logo"></img>

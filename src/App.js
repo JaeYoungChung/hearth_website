@@ -3,7 +3,7 @@ import {Navbar, Questions, Test, Firecopy, Blog} from './components';
 import {Header, About, About1, About2, About3, Apps, Team, Community} from './containers';
 import './App.css';
 import { Element } from 'react-scroll';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 const MainLayout = () => (
