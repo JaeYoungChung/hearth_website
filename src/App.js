@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Questions, Test, Firecolor, Firecopy, Blog} from './components';
+import {Navbar, Questions, Test, Firecopy, Blog} from './components';
 import {Header, About, About1, About2, About3, Apps, Team, Community} from './containers';
 import './App.css';
 import { Element } from 'react-scroll';
@@ -30,16 +30,10 @@ const App = () => {
     <div className = "App">
         <div className='gradient_bg'>
                   <Routes>
-                  {/* <Route path="/" element = {<Header/>} />
-                  <Route path="/about" element = {<About/>} />
-                  <Route path="/apps" element = {<Apps/>} />
-                  <Route path="/team" element = {<Team/>} />
-                  <Route path="/community" element = {<Community/>} />*/}
                   <Route path="/" element={<MainLayout />} />
                   <Route path="/blog" element={<Blog />} /> 
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
-                  <Route path="/firecolor" element={<Firecolor />} />
                   <Route path="/firecopy" element={<Firecopy />} />
                   </Routes>
           </div>

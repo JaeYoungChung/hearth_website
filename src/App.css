@@ -48,10 +48,6 @@ body {
 }
 
 .longBackground {
-    /* background-image: url('/public/main_bg.png');
-    background-size: cover;
-    background-repeat: no-repeat; */
-    /* min-height: 300vh; */
     background-position: center -130px;
     scroll-snap-type: none;
     scroll-snap-stop: none;

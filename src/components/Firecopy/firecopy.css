@@ -66,10 +66,19 @@ opacity: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d; /* Allow 3D transformations */
-  overflow: visible; /* To ensure anything moving outside the bounds is not visible */
+  transform-style: preserve-3d;
+  overflow: visible;
   will-change: opacity;
 }
+
+video {
+  width: 100%; /* full width of the container */
+  height: 100%; /* full height of the container */
+  object-fit: cover; /* Resize to cover the container */
+  background-color: transparent;
+  /* border-bottom: 1px solid transparent; */
+}
+
 
 .f-video-container {
   backface-visibility: hidden;
@@ -131,8 +140,8 @@ opacity: 0.5;
   bottom: 0;
   padding-top: 20px;
   z-index: 151;
-  opacity: 0; /* Start hidden */
-  transition: opacity 1s ease-in-out; /* Fade in transition */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 .hidden {
@@ -166,7 +175,7 @@ opacity: 0.5;
 }
 
 .fading {
-  animation: fadeOut 1s forwards; /* Apply fade-out animation */
+  animation: fadeOut 1s forwards;
 }
 
 @keyframes fadeOut {
@@ -664,7 +673,6 @@ top: 0;
 left: 0;
 width: 400px;
 height: 400px;
-/* mix-blend-mode: multiply; */
 pointer-events: none;
 }
 
@@ -867,7 +875,6 @@ transition: opacity 1.5s ease-in-out;
   height: 75dvh;
   max-height: 75dvh;
   min-height: 75dvh;
-  /* overflow-y: auto; */
   z-index: 151;
 }
 
@@ -914,19 +921,16 @@ transition: opacity 1.5s ease-in-out;
 
 @keyframes slideBottom {
   from {
-    -webkit-transform: translate(-50dvw, -34dvh);
-    transform: translate(-50dvw, -34dvh);
+    transform: translate(0vw, 0dvh);
   }
   to {
-    -webkit-transform: translate(-60dvw, -35dvh);
-    transform: translate(-60dvw, -35dvh);
-    scale: 80%;
+    transform: translate(0vw, -6dvh) scale(75%);
   }
 }
 
 .force-quotient {
   position: absolute;
-  top: 62vh;
+  top: 77dvh;
 }
 
 .left-lastline1,
@@ -948,31 +952,38 @@ transition: opacity 1.5s ease-in-out;
   opacity: 1.0;
 }
 
-.svg-wrapper {
+.tilted-svg {
+  display: flex;
+  justify-content: center;
   position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.svg-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   top: 12%;
-  /* left: 50%;
-  right: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%); */
-  pointer-events: none; /* To ensure it doesn't interfere with interactions */
+  pointer-events: none;
+  list-style-type: none;
 }
 
 .f-svg-container {
-  position: absolute;
-  scale: 60%;
-  justify-self: center;
+  text-align: center;
+  display: inline-block;
+  justify-content: center;
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
-  right: 50%;
+  scale: 60%;
   left: 50%;
-  top: 15%;
-  -webkit-transform: translateY(20%);
-  transform: translateY(20%);
-  z-index: 99;
+  right: 50%;
+  z-index: 199;
   overflow: visible;
-  pointer-events: all; /* To ensure it is interactive */
+  justify-self: center;
+  pointer-events: all;
 }
 
 .f-score-list {
@@ -1005,10 +1016,10 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .text-left {
-  width: 80%;
+  width: 70%;
   top: -20%;
-  left: 10%;
-  right: 10%;
+  left: 15%;
+  right: 15%;
   bottom: 0px;
 }
 
@@ -1122,13 +1133,10 @@ transition: opacity 1.5s ease-in-out;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 70px;
-  left: 0;
-  right: 0;
-  width: 50%;
-  height: 100vh;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-top: 0dvh;
+  width: 80vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
   color: white;
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -1157,6 +1165,7 @@ transition: opacity 1.5s ease-in-out;
 
 .text-button{
   width: 100px;
+  margin-top: 10px;
   background-color: #1a1a1a;
   color: white;
   padding: 7px 5px;
@@ -1264,7 +1273,7 @@ right: 50px;
 z-index: 153;
 }
 
-.f-video-container.slide-bottom-big {
+/* .f-video-container.slide-bottom-big {
 animation: slideBottomBig 1s forwards;
 }
 
@@ -1277,7 +1286,7 @@ to {
   transform: translateY(10%); 
   scale: 200%;
 }
-}
+} */
 }
 
 @media screen and (max-width: 608px) {
@@ -1489,12 +1498,10 @@ to {
 
 @keyframes slideBottom {
   from {
-    -webkit-transform: translate(-70vw, -36dvh);
-    transform: translate(-50vw, -26dvh);
+    transform: translate(0vw, 0dvh);
   }
   to {
-    -webkit-transform: translate(-70vw, -36dvh) scale(75%);
-    transform: translate(-50vw, -26dvh) scale(75%);
+    transform: translate(0vw, -6dvh) scale(75%);
   }
 }
 
@@ -1525,45 +1532,35 @@ to {
 .tilted-svg {
   display: flex;
   justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .svg-wrapper {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   top: 12%;
-  left: 50%;
-  right: 50%;
-  /* transform: translateX(-50%);
-  -webkit-transform: translateX(-50%); */
-  pointer-events: none; /* Ensure it doesn't interfere with interactions */
+  pointer-events: none;
   list-style-type: none;
 }
 
-
 .f-svg-container {
-  position: absolute;
   text-align: center;
-  /* display: flex; */
   display: inline-block;
   justify-content: center;
-  /* -webkit-transform: translateY(20%) translateX(-50%);
-  transform: translateY(20%) translateX(-50%); */
-  /* -webkit-transform: translateY(20%);
-  transform: translateY(20%);  */
   opacity: 0; /* Start hidden */
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   scale: 60%;
   left: 50%;
   right: 50%;
-  /* top: 12%; */
   z-index: 199;
   overflow: visible;
   justify-self: center;
-  pointer-events: all; /* To ensure it is interactive */
+  pointer-events: all;
 }
 
 
@@ -1758,6 +1755,7 @@ to {
   width: 100px;
   background-color: #1a1a1a;
   color: white;
+  margin-top: 10px;
   padding: 7px 5px;
   border: none;
   border-radius: 10px;
@@ -1862,7 +1860,7 @@ right: 50px;
 z-index: 153;
 }
 
-.f-video-container.slide-bottom-big {
+/* .f-video-container.slide-bottom-big {
 animation: slideBottomBig 1s forwards;
 }
 
@@ -1875,5 +1873,5 @@ to {
   transform: translateY(10%); 
   scale: 200%;
 }
-}
+} */
 }

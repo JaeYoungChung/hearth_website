@@ -22,11 +22,8 @@ import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
 import email_img from '../../assets/email.png'
 import email_fire from '../../assets/email_fire.png'
-import whitelogo from '../../assets/whitelogo.png'
 import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
-import html2canvas from 'html2canvas';
-import example_fire from '../../assets/example_fire.png'
 import emailjs from 'emailjs-com';
 import app_attune from '../../assets/app_attune.png';
 import app_envisage from '../../assets/app_envisage.png';
@@ -35,7 +32,6 @@ import app_helm from '../../assets/app_helm.png';
 import app_reverie from '../../assets/app_reverie.png';
 import app_transcend from '../../assets/app_transcend.png';
 import { hexToCSSFilter } from 'hex-to-css-filter';
-import { svg } from 'd3';
 
 
 const Firecopy = () => {
@@ -85,7 +81,7 @@ const Firecopy = () => {
         },
       ];
 
-    //navbar
+  //navbar
     const navigate = useNavigate();
   
     const handleButtonClick = () => {
@@ -156,15 +152,6 @@ const Firecopy = () => {
     const { max, min } = JSON.parse(maxminResult);
     const storedLetter = sessionStorage.getItem('selectedLetter');
 
-    // const imageMap = {
-    //   a: 'https://drive.google.com/uc?export=view&id=1p-gd7g0NiKMWU3LIgnhzrmVvd792RfE1',
-    //   e: 'https://drive.google.com/uc?export=view&id=1LEgIR5WKBER5qyXlNhOAKsl6xKHmutH9',
-    //   d: 'https://drive.google.com/uc?export=view&id=1-YBKXOKa8qM9PGrzy_EI1bvNtf_FlRVl',
-    //   b: 'https://drive.google.com/uc?export=view&id=1yfT4HvkSuQ0Il1rANQL6DYuFcJlsB8vz',
-    //   f: 'https://drive.google.com/uc?export=view&id=1Y1DfSke-b_L6Jb91mQMb4Y0T7MZufnP_',
-    //   c: 'https://drive.google.com/uc?export=view&id=1hJPUdlmrFWRpFm3fmaeBAAxgBYYBNWYe',
-    // };
-
     const imageMap = {
       a: app_helm,
       e: app_transcend,
@@ -199,9 +186,9 @@ const Firecopy = () => {
 
     if (maxminResult) {
       const { max, min } = JSON.parse(maxminResult);
-      const combinationTexts = getResults(); // Use getResults here
+      const combinationTexts = getResults(); 
       const key = `${max}-${min}`;
-      textToShow = combinationTexts[key] || 'No matching text found'; // Fallback text if key not found
+      textToShow = combinationTexts[key] || 'No matching text found'; 
     }
 
 
@@ -209,13 +196,13 @@ const Firecopy = () => {
     const videoRef = useRef(null);
     const textContainerRef = useRef(null);
     const bottomTextRef = useRef(null);
-    const svgRef = useRef(null); // Reference for the SVG element
-    const svgRef2 = useRef(null); // Reference for the SVG element
+    const svgRef = useRef(null); 
+    const svgRef2 = useRef(null);
     const leftArrowRef = useRef(null);
     const rightArrowRef = useRef(null);
     const viewRef = useRef(null);
-    const graphRef = useRef(null); // Reference for the graph
-    const textLeftRef = useRef(null); // Reference for the text on the left
+    const graphRef = useRef(null);
+    const textLeftRef = useRef(null);
     const textLeftLinesRef = useRef(null);
     const forceQuotient = useRef(null);
     const closeButton = useRef(null);
@@ -240,25 +227,20 @@ const Firecopy = () => {
     const [tilted, setTilted] = useState(false);
     const [tiltedsvg, setTiltedSVG] = useState(false);
     const [textRotationAdjustment, setTextRotationAdjustment] = useState(0);
-    const [slideBottom, setSlideBottom] = useState(false);
-    const [slideBottomBig, setSlideBottomBig] = useState(false);
-    const [currentActiveScore, setCurrentActiveScore] = useState('s1');
+    // const [slideBottom, setSlideBottom] = useState(false);
+    // const [slideBottomBig, setSlideBottomBig] = useState(false);
+    // const [currentActiveScore, setCurrentActiveScore] = useState('s1');
     const [showBackButton, setShowBackButton] = useState(false);
     const [smallTextContent, setSmallTextContent] = useState('finish test');
     const [showNewContent, setShowNewContent] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
     const [rotationButton, setRotationButton] = useState(70);
     const [isCheckboxTextBlinking, setIsCheckboxTextBlinking] = useState(false);
-
-
-    const onRotate = (newScore) => {
-        setCurrentActiveScore(newScore);
-    };
     
     useEffect(() => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
-        const bottomText = bottomTextRef.current; // Reference to the bottom text
+        const bottomText = bottomTextRef.current;
         closeButton.current.style.pointerEvents = 'none';
         viewRef.current.style.opacity = 0;
 
@@ -279,22 +261,14 @@ const Firecopy = () => {
       
         // Make the bottom text appear after 3 seconds
         setTimeout(() => {
-          bottomText.style.opacity = 1; // Change opacity to make it visible
-        }, 3000); // Adjusted to 3 seconds for the sequence
+          bottomText.style.opacity = 1;
+        }, 3000);
       }, []);
 
       const handleBottomTextClick = () => {
         setShowContent(false); // Hide text container and bottom text
         // Wait for fade out animation to complete before showing the SVG
         setTimeout(() => {
-
-          // if (svgRef.current) {
-          //   if (window.matchMedia('(max-width: 768px)').matches) {
-          //     svgRef.current.style.opacity = 0.5; // Set opacity to 0.5 for mobile screens
-          //   } else {
-          //     svgRef.current.style.opacity = 1; // Set opacity to 1 for larger screens
-          //   }
-          // }
           if (window.matchMedia('(max-width: 1023px)').matches) {
             videoRef.current.style.opacity = 1;
           }
@@ -345,9 +319,9 @@ const Firecopy = () => {
             if (window.matchMedia('(max-width: 1023px)').matches) {
               videoRef.current.style.opacity = 0.5;}
             videoRef.current.classList.add('slide-bottom-big');
-            setSmallTextContent('finish test'); // Change small-text content
-            setShowBackButton(true); // Show back button
-            setTimeout(() => setShowNewContent(true), 1000); // Delay new content appearance
+            setSmallTextContent('finish test');
+            setShowBackButton(true);
+            setTimeout(() => setShowNewContent(true), 1000);
       };
     
       const handleBackButtonClick = () => {
@@ -361,9 +335,9 @@ const Firecopy = () => {
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
             videoRef.current.classList.remove('slide-bottom-big');
-            setSmallTextContent('finish test'); // Revert small-text content
-            setShowBackButton(false); // Hide back button
-            setShowNewContent(false); // Hide new content
+            setSmallTextContent('finish test');
+            setShowBackButton(false);
+            setShowNewContent(false);
       };
 
       const handleReadMoreClick = (originalIndex) => {
@@ -473,7 +447,7 @@ const Firecopy = () => {
 
     const [email, setEmail] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
-    const [isValidEmail, setIsValidEmail] = useState(true); // New state for email validity
+    const [isValidEmail, setIsValidEmail] = useState(true);
 
     const validateEmail = (email) => {
         // Regular expression for email validation
@@ -482,46 +456,12 @@ const Firecopy = () => {
     };
  
     //email assets
-    const testResultCaption = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
-    const testResultColor = `rgb(${red}, ${green}, ${blue})`;
     const score1 = Math.round(hexagonScores.s1 / 36 * 100);
     const score2 = Math.round(hexagonScores.s6 / 36 * 100);
     const score3 = Math.round(hexagonScores.s3 / 36 * 100);
     const score4 = Math.round(hexagonScores.s4 / 36 * 100);
     const score5 = Math.round(hexagonScores.s2 / 36 * 100);
-    const score6 = Math.round(hexagonScores.s5 / 36 * 100);
-    const svgElement = svgRef.current;
-    const maxImage = imageMap[max];
-    const minImage = imageMap[min];
-    const maxLabel = labelMap[max];
-    const minLabel = labelMap[min];
-    const maxColor = colorMap[max];
-    const minColor = colorMap[min];
-
-    const convertImageToBase64 = (imageUrl, color, callback) => {
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.src = imageUrl;
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
-  
-        // Draw the image on the canvas
-        ctx.drawImage(img, 0, 0);
-  
-        // Overlay the color
-        ctx.fillStyle = color;
-        ctx.globalCompositeOperation = 'color'; 
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-        // Convert canvas to base64
-        const base64Image = canvas.toDataURL('image/png');
-        callback(base64Image);
-      };
-    };
-    
+    const score6 = Math.round(hexagonScores.s5 / 36 * 100);  
     
     //email register
     const handleEmailChange = (e) => {
@@ -556,13 +496,10 @@ const Firecopy = () => {
             const testResultColor = `rgb(${red}, ${green}, ${blue})`;
             const imageUrl = email_fire;
       
-            convertImageToBase64(imageUrl, testResultColor, (base64Image) => {
             // Send email using EmailJS
             const templateParams = {
               to_email: email,
               testResultColor: testResultColor,
-              // attachment: base64Image.replace("data:image/png;base64,", ""), // Remove the prefix
-              // attachment: base64Image, 
               testResultText: textToShow,
               testResultCaption: uniqueCode,
               hexagonColor: hexagonColor,
@@ -575,14 +512,6 @@ const Firecopy = () => {
               hexagonScores: hexagonScores,
               rCustomIndex: rCustomIndex,
               storedLetter: storedLetter,
-              // maxImage: maxImage,
-              // minImage: minImage,
-              // maxImageFileName: `${max}.png`,
-              // minImageFileName: `${min}.png`,
-              // maxLabel: maxLabel,
-              // minLabel: minLabel,
-              // maxColor: maxColor,
-              // minColor: minColor,
             };
       
             emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
@@ -609,7 +538,6 @@ const Firecopy = () => {
                 });
             }, 3000); // send 5 minutes after
           }
-        });
       })
       .catch(error => {
         console.error("Error saving email: ", error);
@@ -660,27 +588,6 @@ const Firecopy = () => {
         });
     };      
 
-    // const handleSaveFire = () => {
-    //   const firstDesign = document.getElementById('first-design');
-    //   const secondDesign = document.getElementById('second-design');
-    
-    //   html2canvas(firstDesign).then((canvas) => {
-    //     const firstImage = canvas.toDataURL('image/png');
-    //     const firstLink = document.createElement('a');
-    //     firstLink.href = firstImage;
-    //     firstLink.download = 'first_save_fire.png';
-    //     firstLink.click();
-    //   });
-    
-    //   html2canvas(secondDesign).then((canvas) => {
-    //     const secondImage = canvas.toDataURL('image/png');
-    //     const secondLink = document.createElement('a');
-    //     secondLink.href = secondImage;
-    //     secondLink.download = 'second_save_fire.png';
-    //     secondLink.click();
-    //   });
-    // };
-
     return (
     <div className='firecopy-container'>
         <div className = "f-navbar">
@@ -700,6 +607,7 @@ const Firecopy = () => {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
+            <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
@@ -718,26 +626,23 @@ const Firecopy = () => {
                 </div>
               )}             
             </div>
-            <div className="m-dropdown">
+            <div className="dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
                     <p >Language: {getSelectedFlagText()}</p>
                     <i className="dropdown-arrow"></i>
                   </div>
                   {isOpen && (
                     <ul className="dropdown-menu">
-                      <li onClick={() => handleChangeLanguage('en')}>
-                        <span>English</span>
-                        <img src={england_flag} alt="English" className="flag-image" />
-                      </li>
-                      <li onClick={() => handleChangeLanguage('ja')}>
-                        <span>日本語</span>
-                        <img src={japan_flag} alt="Japanese" className="flag-image" />
-                      </li>
-                      <li onClick={() => handleChangeLanguage('ko')}>
-                        <span>한국어</span>
-                        <img src={korea_flag} alt="Korean" className="flag-image" />
-                      </li>
-                    </ul>
+                    <li onClick={() => handleChangeLanguage('en')}>
+                      <span>English</span>
+                    </li>
+                    <li onClick={() => handleChangeLanguage('ja')}>
+                      <span>日本語</span>
+                    </li>
+                    <li onClick={() => handleChangeLanguage('ko')}>
+                      <span>한국어</span>
+                    </li>
+                  </ul>
                   )}
             </div>
           </div>
@@ -998,41 +903,7 @@ const Firecopy = () => {
       </NavLink>
       )}
     </div>
-
-    <div className='example-wrapper'>
-      {/* first save fire */}
-      <div id='first-design' className='example-container' style={{height: '400px', display:'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center'}}>
-        <img className='example-fire' src={example_fire} alt="Background" style={{height: '400px'}} />
-        <div className="example-color-overlay" style={{ '--overlay-color': `rgb(${red}, ${green}, ${blue})`, height: '400px' }} />
-        <p className='example-hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{`#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`}</p>
-      </div>
-
-      {/* second save fire */}
-      <div id='second-design' className='example-container' style={{height: '400px'}}>
-        <img src={example_fire} alt="Background" style={{height: '400px'}} />
-        <div className="example-color-overlay" style={{ '--overlay-color': `rgb(${red}, ${green}, ${blue})`, width: '400px' }} />
-        <div className="example-legend-container">
-                <ul className="f-score-list">
-                  {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
-                    const customIndex = customOrder.indexOf(originalIndex);
-                    return (
-                        <li key={score} className={currentIndex === customIndex ? "active " : ""}>
-                          <p className={`f-label-color-${originalIndex}`}>{legend_labels[originalIndex]}</p>
-                            <div className="f-progress-container">
-                                <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
-                            </div>
-                          <p className='f-percentage'>{Math.round(hexagonScores[`s${originalIndex+1}`]/36*100)}%</p>
-                        </li>
-                    );
-                  })}
-                </ul>
-            </div>
-          </div>
-        <div>
-        </div>
-
-        </div>
-      </div>
+  </div>
     );
   };
   

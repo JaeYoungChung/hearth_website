@@ -1,6 +1,5 @@
 .navbar {
     display: flex;
-    /* display: none; */
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
@@ -253,7 +252,7 @@ option.korean::after {
 }
 
 .q-dropdown-toggle.active .dropdown-menu {
-  display: block; /* Show dropdown when toggle is active */
+  display: block; 
 }
 
 

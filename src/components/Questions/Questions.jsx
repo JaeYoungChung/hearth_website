@@ -333,13 +333,6 @@ function Survey() {
           max, min
         }));
 
-        // Transcend (Volition):	 		Red			Red
-        // Attune (Adaptability):	 		Cyan		0.5 Blue + 0.5 Green
-        // Reverie (Creativity):	 		Yellow		0.5 Red + 0.5 Green
-        // Envisage (Cogitation):		 	Blue			Blue
-        // Helm (Independence):	 		Green		Green
-        // Harmonize (Interpersonal):		Magenta		0.5 Red + 0.5 Blue
-
         //Range -36 ~ 36
         const RedValue = 0.5 * Creativity + 0.5 * Interpersonal + Volition;                        
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
