@@ -723,6 +723,8 @@ transition: opacity 1.5s ease-in-out;
 
 .label-text {
   overflow: visible;
+  /* line-height: normal; */
+
 }
 
 @media (min-width: 608px) and (max-width: 1023px) {

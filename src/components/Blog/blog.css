@@ -1251,6 +1251,11 @@ input[type="text"], textarea {
     
   .modal-body {
     background-color: black;
+    color: white;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
   }
   
   .modal-body p {
