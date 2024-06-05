@@ -724,7 +724,12 @@ transition: opacity 1.5s ease-in-out;
 .label-text {
   overflow: visible;
   /* line-height: normal; */
+}
 
+.rect {
+  display: flex;
+  flex-grow: 0; 
+  flex-shrink: 0;
 }
 
 @media (min-width: 608px) and (max-width: 1023px) {
