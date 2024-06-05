@@ -186,11 +186,10 @@ const Firecopy = () => {
 
     if (maxminResult) {
       const { max, min } = JSON.parse(maxminResult);
-      const combinationTexts = getResults(); 
+      const combinationTexts = getResults(t);
       const key = `${max}-${min}`;
       textToShow = combinationTexts[key] || 'No matching text found'; 
     }
-
 
     //references
     const videoRef = useRef(null);

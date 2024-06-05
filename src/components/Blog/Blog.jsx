@@ -402,10 +402,12 @@ function handlePostClick(post) {
           >
             &gt;
           </p>
+
         </div>  
+        <Banner></Banner>   
+
         </>
     )}
-            <Banner></Banner>   
 
             <div className="b-footer">
                 <div className="b-footerTexts">
@@ -445,13 +447,13 @@ function PageHeader({ backgroundImage }) {
         <div className="post-image">
           <img src={post.imageUrl} alt={post.title} />
           <div className="overlay-top-left">
-            <p>Aug</p>
+            <p>June</p>
             <p className='blog-date'>17</p>
           </div>
           <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
         </div>
         <div className='post-contents'>
-          <h2>{post.title}</h2>
+          <h3>{post.title}</h3>
           <p className='post-description'>{post.description}</p>
         </div>
       </div>
@@ -488,7 +490,7 @@ function BlogPostDetail({ post, onClose }) {
             {showPopup && <SharePopup url={currentUrl} onClose={() => setShowPopup(false)} />}
           </div>
           </div>
-          <img className="overlay-bottom-right2" src={post.overlayImage} alt="Overlay" />
+          {/* <img className="overlay-bottom-right2" src={post.imageUrl} alt="Overlay" /> */}
         </div>
         <div className="modal-body">
           <h2>{post.title}</h2>

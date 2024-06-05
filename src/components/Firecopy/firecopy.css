@@ -826,16 +826,17 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 0px;
   max-height: 76vh;
   width: 100%;
   height: auto;
 }
 
 .f-video-container {
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 85%;
   left: 0px;
+  right: 0px;
   position: relative;
   justify-content: center;
   display: flex;
@@ -845,8 +846,8 @@ transition: opacity 1.5s ease-in-out;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  height: 95%;
+  width: 85%;
+  height: 80%;
   display: flex;
 }
 
@@ -910,16 +911,19 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-tilted {
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 85%;
   -webkit-transform: rotate3d(1, 0, 0, 70deg);
   -webkit-transition: transform 2s ease-in-out;
   transform: rotate3d(1, 0, 0, 70deg);
   transition: transform 2s ease-in-out;
   opacity: 0.5;
+  -webkit-transform-style: preserve-3d; /* Allow 3D transformations */
   transform-style: preserve-3d; /* Allow 3D transformations */
   justify-content: center;
+  transform-origin: center center;
 }
+
 .f-tilted-reset {
   /* -webkit-transform: translate(-70vw, -33dvh) scale(80%);
   transform: translate(-50vw, -33dvh) scale(80%); */
@@ -936,7 +940,7 @@ transition: opacity 1.5s ease-in-out;
     transform: translate(0vw, 0dvh);
   }
   to {
-    transform: translate(0vw, -6dvh) scale(75%);
+    transform: translate(0vw, -2dvh) scale(75%);
   }
 }
 
@@ -973,21 +977,21 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .svg-wrapper {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  top: 12%;
+  top: 0%;
   pointer-events: none;
   list-style-type: none;
 }
 
 .f-svg-container {
   top: 2%;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -995,8 +999,7 @@ transition: opacity 1.5s ease-in-out;
   -webkit-transform-style: preserve-3d; /* Allow 3D transformations */ 
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   scale: 60%;
-  left: 50%;
-  right: 50%;
+  right: 0%;
   z-index: 99;
   overflow: visible;
   justify-self: center;
