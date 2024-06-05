@@ -753,9 +753,11 @@ const Firecopy = () => {
               />
               <text
                 className='label-text'
+                width={25}
+                fontSize={22}
                 x={point.x} 
                 y={point.y} 
-                fill={changeTextColor ? colors[i] : "white"}
+                fill={changeTextColor ? colors[i] : "transparent"}
                 textAnchor="middle"
                 dominantBaseline="middle"
                 transform={`translate(${point.x} ${point.y}) 
