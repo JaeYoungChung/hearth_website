@@ -755,7 +755,7 @@ const Firecopy = () => {
               <text
                 className='label-text'
                 width={25}
-                fontSize={32}
+                fontSize={35}
                 x={point.x} 
                 y={point.y} 
                 fill={changeTextColor ? colors[i] : "transparent"}
