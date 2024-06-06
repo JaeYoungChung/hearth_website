@@ -61,8 +61,8 @@ const SharePopup = ({ url, onClose }) => {
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-            title: 'Blog Post 1',
-            description: 'Lorem Ipsum',
+            title: 'HEARTH Blog',
+            // description: 'New blog post',
             imageUrl:
             logo,
             link: {
@@ -119,6 +119,7 @@ const SharePopup = ({ url, onClose }) => {
           alt="카카오링크 보내기 버튼"
           style={{
             width: '40px',
+            backgroundColor: 'transparent'
           }}
         />
       </button>

@@ -556,6 +556,7 @@ color: rgb(255, 0, 255);
 
 .check-text {
   margin-bottom: 10px;
+  text-align: start;
 }
 
 .custom-checkbox {

@@ -719,7 +719,7 @@ const Firecopy = () => {
               >
                 <svg
                   className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
-                  style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
+                  style={{ transform: rotationButton === 0 ? `translate(0px, -350px) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
                 >
                   {/* Outer grey hexagon */}
                   <polygon
