@@ -203,7 +203,7 @@ justify-self: center;
 opacity: 0; /* Start hidden */
 position: absolute;
 transform-style: preserve-3d; /* Allow 3D transformations */ 
-z-index: 1;
+z-index: -1;
 overflow: visible;
 }
 
@@ -1007,7 +1007,6 @@ transition: opacity 1.5s ease-in-out;
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   scale: 60%;
   right: 0%;
-  z-index: 99;
   overflow: visible;
   justify-self: center;
   pointer-events: all;
@@ -1292,6 +1291,7 @@ top: 80vh;
 left: 50px;
 z-index: 153;
 }
+
 .f-home-button {
 color: white;
 position: absolute;
@@ -1531,7 +1531,7 @@ to {
     transform: translate(0vw, 0dvh);
   }
   to {
-    transform: translate(0vw, -6dvh) scale(75%);
+    transform: translate(0vw, -6.3dvh) scale(75%);
   }
 }
 
@@ -1591,7 +1591,6 @@ to {
   transform-style: preserve-3d; /* Allow 3D transformations */ 
   scale: 60%;
   right: 0%;
-  z-index: 99;
   overflow: visible;
   justify-self: center;
   pointer-events: all;
