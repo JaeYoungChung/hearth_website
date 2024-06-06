@@ -948,7 +948,7 @@ transition: opacity 1.5s ease-in-out;
     transform: translate(0vw, 0dvh);
   }
   to {
-    transform: translate(0vw, -2dvh) scale(75%);
+    transform: translate(0vw, -2.5dvh) scale(75%);
   }
 }
 
@@ -1533,7 +1533,7 @@ to {
     transform: translate(0vw, 0dvh);
   }
   to {
-    transform: translate(0vw, -6.3dvh) scale(75%);
+    transform: translate(0vw, -7.5dvh) scale(75%);
   }
 }
 
