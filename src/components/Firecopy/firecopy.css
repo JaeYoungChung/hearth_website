@@ -996,6 +996,7 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .f-svg-container {
+  z-index: 0;
   top: 2%;
   width: 95%;
   height: 95%;
@@ -1580,6 +1581,7 @@ to {
 }
 
 .f-svg-container {
+  z-index: 0;
   top: 2%;
   width: 100%;
   height: 100%;
