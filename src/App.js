@@ -4,6 +4,8 @@ import {Header, About, About1, About2, About3, Apps, Team, Community} from './co
 import './App.css';
 import { Element } from 'react-scroll';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import TermsUse from './components/TermsUse/TermsUse';
 
 
 const MainLayout = () => (
@@ -35,6 +37,8 @@ const App = () => {
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
                   <Route path="/firecopy" element={<Firecopy />} />
+                  <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+                  <Route path="/termsuse" element={<TermsUse />} /> 
                   </Routes>
           </div>
     </div>

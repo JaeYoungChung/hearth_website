@@ -10,6 +10,7 @@ import { uid } from "uid";
 import { ref, set } from "firebase/database";
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
+import { useNavigate } from 'react-router-dom';
 
 
 const images = [
@@ -29,6 +30,15 @@ const Community = () => {
         // Regular expression for email validation
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
+    };
+
+    const navigate = useNavigate();
+
+    const handlePolicyClick = () => {
+      navigate('/privacypolicy');
+    };
+    const handleTermsClick = () => {
+      navigate('/termsuse');
     };
 
     //email register
@@ -100,14 +110,15 @@ const Community = () => {
           <div className="c-footer">
               <hr />
               <div className="c-footerTexts">
-                  <p>Privacy Policy</p>
-                  <p>Copyrights</p>
-                  <p>Cookie Policy</p>
+                  <p onClick={handlePolicyClick}>Privacy Policy</p>
+                  <p>Vivos Voco Inc.</p>
+                  <p onClick={handleTermsClick}>Terms Of Use</p> 
+                  {/* <p>Cookie Policy</p> */}
               </div>
-              <div className='company-name'>
+              {/* <div className='company-name'>
                 <br/>
                 <p>Vivos Voco Inc.</p>
-              </div>
+              </div> */}
           </div>
         </div>
       );

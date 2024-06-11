@@ -197,6 +197,13 @@ const Blog = () => {
 
   const navigate = useNavigate();
 
+  const handlePolicyClick = () => {
+    navigate('/privacypolicy');
+  };
+  const handleTermsClick = () => {
+    navigate('/termsuse');
+  };
+
   const handleButtonClick = () => {
     navigate('/test');
   };
@@ -211,6 +218,7 @@ const Blog = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+  
 
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
@@ -412,10 +420,15 @@ function handlePostClick(post) {
 
             <div className="b-footer">
                 <div className="b-footerTexts">
-                    <p>Privacy Policy</p>
-                    <p>Copyrights</p>
-                    <p>Cookie Policy</p>
-                </div>
+                <p onClick={handlePolicyClick}>Privacy Policy</p>
+                  <p>Vivos Voco Inc.</p>
+                  <p onClick={handleTermsClick}>Terms Of Use</p> 
+                  {/* <p>Cookie Policy</p> */}
+              </div>
+              {/* <div className='company-name'>
+                <br/>
+                <p>Vivos Voco Inc.</p>
+              </div> */}
             </div>  
     </div>
     
