@@ -513,8 +513,7 @@ const Firecopy = () => {
               rCustomIndex: rCustomIndex,
               storedLetter: storedLetter,
             };
-      
-            emailjs.send('service_t6e2r49', 'template_wni0z5c', templateParams, 'kD2ONhCaOmnXc8Ami')
+            emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_SECOND, templateParams, process.env.REACT_APP_PUBLIC_KEY)
             .then((response) => {
               console.log('First email sent successfully!', response.status, response.text);
             })
@@ -529,7 +528,7 @@ const Firecopy = () => {
                 to_email: email,
               };
 
-              emailjs.send('service_t6e2r49', 'template_1rrz4ck', secondTemplateParams, 'kD2ONhCaOmnXc8Ami')
+            emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE, templateParams, process.env.REACT_APP_PUBLIC_KEY)
               .then((response) => {
                   console.log('Second email sent successfully!', response.status, response.text);
                 })

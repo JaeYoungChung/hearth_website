@@ -58,7 +58,7 @@ const Community = () => {
           to_email: email,
         };
 
-        emailjs.send('service_t6e2r49', 'template_1rrz4ck', templateParams, 'kD2ONhCaOmnXc8Ami')
+      emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE, templateParams, process.env.REACT_APP_PUBLIC_KEY)
           .then((response) => {
             console.log('Email sent successfully!', response.status, response.text);
           })
