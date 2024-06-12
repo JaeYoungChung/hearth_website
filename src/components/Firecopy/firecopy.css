@@ -976,6 +976,11 @@ transition: opacity 1.5s ease-in-out;
   opacity: 1.0;
 }
 
+svg {
+  width: 105%;
+  height: 70%;
+}
+
 .tilted-svg {
   display: flex;
   justify-content: center;
