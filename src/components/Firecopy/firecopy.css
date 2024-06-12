@@ -1561,6 +1561,10 @@ to {
   opacity: 1.0;
 }
 
+svg {
+  width: 100%;
+}
+
 .tilted-svg {
   display: flex;
   justify-content: center;
