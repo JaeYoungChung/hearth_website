@@ -719,10 +719,14 @@ const Firecopy = () => {
                 style={{ transform: rotationButton !== 0 ? `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` : null }}
               >
                 <svg
-                  className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
-                  style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
-                  viewBox="0 0 420 420"
-                >
+  className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' : ''}
+  style={{ 
+    transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, 
+    overflow: 'visible',
+    padding: '20px' /* Adding padding for spacing */
+  }}
+  viewBox="0 0 450 450" /* Increase viewBox if necessary */
+>
                   {/* Outer grey hexagon */}
                   <polygon
                   points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
@@ -744,33 +748,38 @@ const Firecopy = () => {
                   <line x1={outerHexagonPoints[2].x} y1={outerHexagonPoints[2].y} x2={outerHexagonPoints[5].x} y2={outerHexagonPoints[5].y} stroke={hexagonColor} />
                   {/* labels */}
                   {
-          labelHexagonPoints.map((point, i) => (
-            <g key={i}>
-              <rect
-                x={point.x - 12.5}
-                y={point.y - 15}
-                width="25"
-                height="30"
-                fill="none"
-              />
-              <text
-                className='label-text'
-                width={25}
-                fontSize={35}
-                x={point.x} 
-                y={point.y} 
-                fill={changeTextColor ? colors[i] : "transparent"}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                transform={`translate(${point.x} ${point.y}) 
-                  rotate(${-rotation + textRotationAdjustment -2}) 
-                  translate(${-point.x} ${-point.y})`}
-              >
-                {hexagon_labels[i]}
-              </text>
-            </g>
-          ))
-        }
+  labelHexagonPoints.map((point, i) => (
+    <g key={i}>
+      <rect
+        x={point.x - 12.5}
+        y={point.y - 15}
+        width="25"
+        height="30"
+        fill="none"
+      />
+      <text
+        className='label-text'
+        width={25}
+        fontSize={35}
+        x={point.x} 
+        y={point.y} 
+        fill={changeTextColor ? colors[i] : "transparent"}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        transform={`translate(${point.x} ${point.y}) 
+          rotate(${-rotation + textRotationAdjustment - 2}) 
+          translate(${-point.x} ${-point.y})`}
+        style={{
+          fontSize: '1.5rem', /* Increase font size if needed */
+          padding: '10px', /* Add padding for more space */
+        }}
+      >
+        {hexagon_labels[i]}
+      </text>
+    </g>
+  ))
+}
+
                 </svg>
               </div>
             </div>
