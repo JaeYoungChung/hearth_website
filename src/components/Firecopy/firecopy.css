@@ -1544,7 +1544,7 @@ to {
 
 .force-quotient {
   position: absolute;
-  top: 62dvh;
+  top: 60dvh;
 }
 
 .left-lastline1,
@@ -1623,7 +1623,7 @@ to {
 .f-small-text {
   justify-content: center;
   position: fixed; 
-  top: dvh;
+  top: 75dvh;
   right: 0px;
   left: 0px; 
   color: #fff; 
