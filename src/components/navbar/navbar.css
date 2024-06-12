@@ -364,8 +364,6 @@ option.korean::after {
   }
 
   .m-navbar-icons {
-    padding-left: 15%;
-    padding-right: 15%;
     display: flex; 
     position: relative;
     flex-direction: row;
@@ -374,8 +372,8 @@ option.korean::after {
   }
 
   .m-navbar-icon {
-    width: 25px;
-    margin: 0px 30px;
+    width: 30px;
+    margin: 10px 20px;
   }
 
   .q-dropdown {

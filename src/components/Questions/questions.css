@@ -247,6 +247,7 @@ option.korean::after {
 .agree-text {
   opacity: 0.6;
   margin: 0 20px;
+  direction: ltr;
 }
 
 .q-circle-container {
@@ -397,7 +398,7 @@ span {
 
   .m-navbar-icon {
     width: 30px;
-    margin: 10px 30px;
+    margin: 10px 20px;
   }
 
   .q-dropdown {
