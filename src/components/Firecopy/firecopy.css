@@ -1566,10 +1566,10 @@ to {
   opacity: 1.0;
 }
 
-svg {
-  width: 103%;
-  height: 70%;
-}
+/* svg {
+  width: 100%;
+  height: 100%;
+} */
 
 .tilted-svg {
   display: flex;
@@ -1623,7 +1623,7 @@ svg {
 .f-small-text {
   justify-content: center;
   position: fixed; 
-  top: 76dvh;
+  top: dvh;
   right: 0px;
   left: 0px; 
   color: #fff; 
