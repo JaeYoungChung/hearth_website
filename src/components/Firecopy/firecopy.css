@@ -1033,7 +1033,7 @@ svg {
 .f-small-text {
   justify-content: center;
   position: fixed; 
-  top: 80vh;
+  top: 80dvh;
   right: 0px;
   left: 0px; 
   color: #fff; 
@@ -1558,7 +1558,7 @@ to {
   left: 15vw;
   scale: 80%;
   width: 70vw;
-  top: 35dvh;
+  top: 30dvh;
 }
 
 .f-legend-container .score-list li,
@@ -1567,7 +1567,7 @@ to {
 }
 
 svg {
-  width: 105%;
+  width: 103%;
   height: 70%;
 }
 
@@ -1623,7 +1623,7 @@ svg {
 .f-small-text {
   justify-content: center;
   position: fixed; 
-  top: 80vh;
+  top: 76dvh;
   right: 0px;
   left: 0px; 
   color: #fff; 
@@ -1640,7 +1640,7 @@ svg {
 
 .text-left {
   width: 80%;
-  top: 0%;
+  top: -10%;
   left: 10%;
   right: 10%;
   bottom: 0px;
