@@ -396,7 +396,7 @@ const Firecopy = () => {
         return points;
       };
       const outerHexagonPoints = getHexagonPoints(200, 200, 200);
-      const labelHexagonPoints = getHexagonPoints(205, 200, 230);
+      const labelHexagonPoints = getHexagonPoints(200, 200, 200);
       const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
         // Find the custom index for the original index based on the custom sequence
         const customIndex = customOrder[originalIndex];
@@ -721,8 +721,8 @@ const Firecopy = () => {
                 <svg
                   className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
                   style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
-                  viewBox="0 0 500 500" // Increase the viewBox dimensions
-                  >
+                  viewBox="0 0 410 410"
+                >
                   {/* Outer grey hexagon */}
                   <polygon
                   points={outerHexagonPoints.map(p => `${p.x},${p.y}`).join(" ")}
