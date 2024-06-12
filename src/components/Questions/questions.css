@@ -353,10 +353,9 @@ span {
   }
 
   .q-navbar-links_logo img{
-    top: 60px;
-    left: 10px;
-    width: 72px;
-    height: 46px;
+    top: 70px;
+    left: 70px;
+    height: 56px;
     opacity: 1;
   }
 
@@ -469,7 +468,7 @@ span {
   
   .disagree-text,
   .agree-text {
-    font-size: 11.5px;
+    font-size: 11px;
     opacity: 0.6;
     margin: 0 1.5vw;
   }

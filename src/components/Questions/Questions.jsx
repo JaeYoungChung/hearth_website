@@ -104,7 +104,7 @@ const Questions = () => {
         <div className = "q-navbar">
           <div className = "q-navbar-links_logo">
             <NavLink to='/'>
-            <img src={logo} alt = "logo"></img>
+              <img src={logo} height={80} alt = "logo"></img>
             </NavLink>
           </div>
           <div className="navbar-menu" onClick={toggleMobileMenu}>
@@ -454,7 +454,7 @@ function Survey() {
             backgroundSize: `contain`,
             opacity: isSubmitted ? 0.8 : 0.3,
             transition: 'opacity 3s ease-in-out',
-          }} 
+          }}  
         ></div>      
       {!isSubmitted ? (
         <div className='question-container'>
