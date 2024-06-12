@@ -16,6 +16,7 @@ import close_btn from '../../assets/close_btn.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import email from '../../assets/email.png'
 
 const Questions = () => {
@@ -103,7 +104,7 @@ const Questions = () => {
         <div className = "q-navbar">
           <div className = "q-navbar-links_logo">
             <NavLink to='/'>
-            <img src={logo} width={46} height={72} alt = "logo"></img>
+            <img src={logo} alt = "logo"></img>
             </NavLink>
           </div>
           <div className="navbar-menu" onClick={toggleMobileMenu}>
@@ -124,6 +125,7 @@ const Questions = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {icon_threads} className="m-navbar-icon"/>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
@@ -460,7 +462,7 @@ function Survey() {
             <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>
             <p className='question-text'>{questions[currentQuestion - 1]}</p>
             <div className="response-container">
-              <span className="disagree-text">Strongly<br></br>Disagree</span>
+              <span className="disagree-text">{t("questions.strongly")}<br></br>{t("questions.disagree")}</span>
               <div className="q-circle-container">
                 {[1, 2, 3, 4, 5].map(score => (
                   <div
@@ -470,22 +472,22 @@ function Survey() {
                   />
                 ))}
               </div>
-              <span className="agree-text">Strongly<br></br>Agree</span>
+              <span className="agree-text">{t("questions.strongly")}<br></br>{t("questions.agree")}</span>
             </div>
             {currentQuestion > 1 && (
-              <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>Back</span>
+              <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>{t("questions.back")}</span>
             )}
             {selectedScores[currentQuestion - 1] !== null && currentQuestion < totalQuestions && !isTransitioning && (
-              <span className="q-next-button" onClick={handleNext}>Next</span>
+              <span className="q-next-button" onClick={handleNext}>{t("questions.next")}</span>
             )}
             {currentQuestion === totalQuestions && selectedScores[currentQuestion - 1] !== null &&(
-              <span className="q-submit-button" onClick={handleSubmit}>Submit</span>
+              <span className="q-submit-button" onClick={handleSubmit}>{t("questions.submit")}</span>
             )}
           </div>
         </div>
       ) : (
         <div className="submitted-container">
-          <p className='loading-result'>Loading Result{loadingDots}</p>
+          <p className='loading-result'>{t("questions.loading")}{loadingDots}</p>
         </div>
       )}
     </div>

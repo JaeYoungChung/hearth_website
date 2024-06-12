@@ -5,6 +5,7 @@ import home_flame from '../../assets/home_flame.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import email from '../../assets/email.png'
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -40,6 +41,7 @@ const Header = () => {
             <img src = {icon_instagram} className="h-icon"/>
             <img src = {icon_facebook} className="h-icon"/>
             <img src = {icon_x} className="h-icon"/>
+            <img src = {icon_threads} className="h-icon"/>
           </div>
           <div className='h-email'>
             {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}

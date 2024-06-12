@@ -10,6 +10,7 @@ import japan_flag from '../../assets/japan.png';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import email from '../../assets/email.png'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -108,7 +109,7 @@ const Navbar = () => {
             className={activeSection === 'home' ? 'active' : ''}
             onClick={() => handleClick('home')}
           >
-            HOME
+            {t("navbar.home")}
           </a>
         </p>
       </li>
@@ -119,7 +120,7 @@ const Navbar = () => {
             className={activeSection === 'about' ? 'active' : ''}
             onClick={() => handleClick('about')}
           >
-            ABOUT
+            {t("navbar.about")}
           </a>
         </p>
       </li>
@@ -130,7 +131,7 @@ const Navbar = () => {
             className={activeSection === 'apps' ? 'active' : ''}
             onClick={() => handleClick('apps')}
           >
-            APPS
+            {t("navbar.apps")}
           </a>
         </p>
       </li>
@@ -141,7 +142,7 @@ const Navbar = () => {
             className={activeSection === 'team' ? 'active' : ''}
             onClick={() => handleClick('team')}
           >
-            TEAM
+            {t("navbar.team")}
           </a>
         </p>
       </li>
@@ -152,7 +153,7 @@ const Navbar = () => {
             className={activeSection === 'community' ? 'active' : ''}
             onClick={() => handleClick('community')}
           >
-            COMMUNITY
+            {t("navbar.community")}
           </a>
         </p>
       </li>
@@ -220,6 +221,7 @@ const Navbar = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {icon_threads} className="m-navbar-icon"/>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"

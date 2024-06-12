@@ -5,6 +5,7 @@ import { useState } from 'react';
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import {db} from "../../firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
@@ -17,6 +18,7 @@ const images = [
     icon_instagram,
     icon_facebook,
     icon_x,
+    icon_threads
   ];
 
 const Community = () => {
@@ -81,7 +83,7 @@ const Community = () => {
       console.error("Error saving email: ", error);
     });
 };
-
+ 
  
     return (
         <div className="community">

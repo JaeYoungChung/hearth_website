@@ -303,6 +303,7 @@ function handlePostClick(post) {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {icon_threads} className="m-navbar-icon"/>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
@@ -451,6 +452,7 @@ function PageHeader({ backgroundImage }) {
         <img src = {icon_instagram} className="blog-icon"/>
         <img src = {icon_facebook} className="blog-icon"/>
         <img src = {icon_x} className="blog-icon"/>
+        <img src = {icon_threads} className="blog-icon"/>
       </div>
     );
   } 

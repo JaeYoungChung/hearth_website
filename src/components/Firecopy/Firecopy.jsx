@@ -20,6 +20,7 @@ import close_btn from '../../assets/close_btn.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import email_img from '../../assets/email.png'
 import email_fire from '../../assets/email_fire.png'
 import read_more from '../../assets/read_more.png'
@@ -613,6 +614,7 @@ const Firecopy = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {icon_threads} className="m-navbar-icon"/>
               <img src={email_img}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
@@ -691,7 +693,7 @@ const Firecopy = () => {
               <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
                   <p>To. {storedLetter}</p><br></br>
                   <p>{textToShow}</p><br></br>
-                  <p className='third-line'>Sincerely, HEARTH</p>
+                  <p className='third-line'>{t("firecopy.sincerely")}</p>
               </div> 
               <div
                 className={`bottom-text ${!showContent ? 'fading' : ''}`}
@@ -703,7 +705,7 @@ const Firecopy = () => {
                   alignItems: 'center',
                 }}
                 > 
-                <span>see details</span>
+                <span>{t("firecopy.details")}</span>
                 <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
               </div>
             </div>

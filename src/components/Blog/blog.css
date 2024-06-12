@@ -648,7 +648,7 @@ option.korean::after {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  width: 400px;
+  width: 440px;
   align-items: center;
   border: 1px solid white;
   border-radius: 20px;
@@ -657,7 +657,7 @@ option.korean::after {
 }
 
 input[type="text"], textarea {
-  width: 350px;
+  width: 320px;
   color: white;
   background-color : transparent;
   border: none;

@@ -12,6 +12,7 @@ import close_btn from '../../assets/close_btn.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
+import icon_threads from '../../assets/icon_threads.png'
 import email from '../../assets/email.png'
  
 const Test = () => {
@@ -163,6 +164,7 @@ const Test = () => {
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
+              <img src = {icon_threads} className="m-navbar-icon"/>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
@@ -239,7 +241,7 @@ const Test = () => {
             <>
               <div className='centered-content' >
                 <img src={logo} alt='logo' className={fadeOut ? 'fade-image' : ''}/>
-                <div className='text-overlay'>Who are you?</div>
+                <div className='text-overlay'>{t("test.who")}</div>
                 <input type="text" className='test-input' value={selectedLetter} readOnly />
               </div>
               <div className="alphabet-container">
@@ -258,7 +260,7 @@ const Test = () => {
               </div>
               {selectedLetter && (
                 <div className='next-button' onClick={handleNextClick}>
-                  Next <span className='arrow-icon'>&gt;</span>
+                  {t("test.next")} <span className='arrow-icon'>&gt;</span>
                 </div>
               )}
             </>
@@ -268,21 +270,21 @@ const Test = () => {
                   <div className={`t-animation-content ${fadeOut ? 'fade-out' : ''}`}>
                     {animationStage >= 1 && (
                     <div className={`t-animation-text ${animationStage >= 2 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
-                      Hello, {selectedLetter}
+                      {t("test.hello")}, {selectedLetter}
                     </div>
                     )}
                     {animationStage >= 2 && (
                     <div className={`t-animation-text ${animationStage >= 3 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>
-                      Welcome to the HEARTH Test.
+                      {t("test.welcome")}
                     </div>
                     )}
                     {animationStage >= 3 && (
-                    <div className={`t-animation-paragraph ${fadeOut ? 'fade-out' : ''}`}>This test is designed to measure your <span className='italic'>Cognitive Force,</span> the flame that burns within you.<br></br><br className='break-line'></br>
-                      Before taking the test, bring yourself to a calm state of mind to effectively assess and rediscover your true colors. <br className='break-line'></br><br className='break-line'></br>
-                      Choose from five scales according to the degree of your personal affiliation to each sentence. </div>
+                    <div className={`t-animation-paragraph ${fadeOut ? 'fade-out' : ''}`}>{t("test.measure")} <span className='italic'>{t("test.cf")}</span> {t("test.within")}<br></br><br className='break-line'></br>
+                      {t("test.before")} <br className='break-line'></br><br className='break-line'></br>
+                      {t("test.choose")} </div>
                     )}
                     {animationStage === 4 && (
-                    <button className='start-test-btn' onClick={handleTextButtonClick}>Proceed to Test</button>
+                    <button className='start-test-btn' onClick={handleTextButtonClick}>{t("test.proceed")}</button>
                     )}
                   </div> 
               </div>
