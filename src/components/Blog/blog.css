@@ -1014,6 +1014,7 @@ input[type="text"], textarea {
 }
 
 .b-footerTexts {
+  font-size: 15px;
   padding-top: 10px;
   padding-left: 10%;
   padding-right: 10%;
@@ -1036,7 +1037,7 @@ input[type="text"], textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     position: sticky;
     top: 0;
     z-index: 40;
@@ -1352,6 +1353,7 @@ input[type="text"], textarea {
 }
 
 .b-footerTexts {
+  font-size: 12px;
   padding-top: 10px;
   padding-left: 10%;
   padding-right: 10%;
