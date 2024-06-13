@@ -122,8 +122,8 @@ const Firecopy = () => {
       switch (selectedLanguage) {
         case 'en':
           return 'ENG';
-        case 'ja':
-          return '日本語';
+        // case 'ja':
+        //   return '日本語';
         case 'ko':
           return '한국어';
         default:
