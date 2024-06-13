@@ -326,9 +326,9 @@ function handlePostClick(post) {
                     <li onClick={() => handleChangeLanguage('en')}>
                       <span>English</span>
                     </li>
-                    <li onClick={() => handleChangeLanguage('ja')}>
+                    {/* <li onClick={() => handleChangeLanguage('ja')}>
                       <span>日本語</span>
-                    </li>
+                    </li> */}
                     <li onClick={() => handleChangeLanguage('ko')}>
                       <span>한국어</span>
                     </li>
@@ -350,10 +350,10 @@ function handlePostClick(post) {
                       <span>English</span>
                       <img src={england_flag} alt="English" className="flag-image" />
                     </li>
-                    <li onClick={() => handleChangeLanguage('ja')}>
+                    {/* <li onClick={() => handleChangeLanguage('ja')}>
                       <span>日本語</span>
                       <img src={japan_flag} alt="Japanese" className="flag-image" />
-                    </li> 
+                    </li>  */}
                     <li onClick={() => handleChangeLanguage('ko')}>
                       <span>한국어</span>
                       <img src={korea_flag} alt="Korean" className="flag-image" />

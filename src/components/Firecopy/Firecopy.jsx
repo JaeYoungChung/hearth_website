@@ -637,9 +637,9 @@ const Firecopy = () => {
                     <li onClick={() => handleChangeLanguage('en')}>
                       <span>English</span>
                     </li>
-                    <li onClick={() => handleChangeLanguage('ja')}>
+                    {/* <li onClick={() => handleChangeLanguage('ja')}>
                       <span>日本語</span>
-                    </li>
+                    </li> */}
                     <li onClick={() => handleChangeLanguage('ko')}>
                       <span>한국어</span>
                     </li>
@@ -661,10 +661,10 @@ const Firecopy = () => {
                         <img src={england_flag} alt="English" className="flag-image" />
                         <span>English</span>
                       </li>
-                      <li onClick={() => handleChangeLanguage('ja')}>
+                      {/* <li onClick={() => handleChangeLanguage('ja')}>
                         <img src={japan_flag} alt="Japanese" className="flag-image" />
                         <span>日本語</span>
-                      </li> 
+                      </li>  */}
                       <li onClick={() => handleChangeLanguage('ko')}>
                         <img src={korea_flag} alt="Korean" className="flag-image" />
                         <span>한국어</span>
