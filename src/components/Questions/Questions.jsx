@@ -456,7 +456,7 @@ function Survey() {
             transition: 'opacity 3s ease-in-out',
           }}  
         ></div>      
-      {!isSubmitted ? (
+      {!isSubmitted ? ( 
         <div className='question-container'>
           <div className="survey-container">
             <p className="question-counter">Question {currentQuestion} of {totalQuestions}</p>

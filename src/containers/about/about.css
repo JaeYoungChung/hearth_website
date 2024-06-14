@@ -5,7 +5,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   }
 .About2 {
   overflow-x: hidden;
@@ -181,6 +180,7 @@
     }
     .section {
       height: 100dvh;
+      justify-content: center;
     }
     .About {
       height: auto;

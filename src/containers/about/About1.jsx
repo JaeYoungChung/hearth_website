@@ -30,5 +30,5 @@ const About1 = () => {
     </div>
     ) 
 }
-
+ 
 export default About1;
