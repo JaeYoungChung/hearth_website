@@ -32,6 +32,7 @@ const Questions = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
     setIsOpen(false);
+    localStorage.setItem('selectedLanguage', language);
   };
  
   const getSelectedFlagImage = () => {
@@ -59,6 +60,12 @@ const Questions = () => {
         return 'ENG';
     }
   }
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    setSelectedLanguage(savedLanguage);
+    i18n.changeLanguage(savedLanguage);
+  }, [i18n]);
   
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import logo from '../../assets/test_logo.png'
 import white_logo from '../../assets/whitelogo.png'
@@ -35,7 +35,14 @@ const Test = () => {
       setSelectedLanguage(language);
       i18n.changeLanguage(language);
       setIsOpen(false);
+      localStorage.setItem('selectedLanguage', language);
     };
+
+    useEffect(() => {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      setSelectedLanguage(savedLanguage);
+      i18n.changeLanguage(savedLanguage);
+    }, [i18n]);
   
     const getSelectedFlagImage = () => {
       switch (selectedLanguage) {

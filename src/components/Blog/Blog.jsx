@@ -9,6 +9,8 @@ import icon_x from '../../assets/icon_x.png'
 import email from '../../assets/email.png'
 import icon_threads from '../../assets/icon_threads.png'
 import icon_share from '../../assets/share.png'
+import share_kakao from '../../assets/share_kakao.png'
+import share_link from '../../assets/share_link.png'
 import banner_img from '../../assets/bannerimg.png'
 import { ref, child, get } from "firebase/database";
 import { set } from "firebase/database";
@@ -115,16 +117,24 @@ const SharePopup = ({ url, onClose }) => {
       </EmailShareButton>
       <button className='button-share' onClick={shareKakao}>
         <img className='copy-link'
-          src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+          src={share_kakao}
           alt="카카오링크 보내기 버튼"
           style={{
             width: '40px',
+            height: '40px',
             backgroundColor: 'transparent'
           }}
         />
       </button>
       <button className='button-share' onClick={copyToClipboard}>
-        <FaLink className='copy-link' />
+        <img className='copy-link'
+          src={share_link}
+          style={{
+            width: '40px',
+            height: '40px',
+            backgroundColor: 'black'
+          }}
+        />
       </button>
     </div>  
       </div>
@@ -163,6 +173,7 @@ const Blog = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
     setIsOpen(false);
+    localStorage.setItem('selectedLanguage', language);
   };
 
   const getSelectedFlagImage = () => {
@@ -239,6 +250,12 @@ const Blog = () => {
         console.error('Failed to copy text: ', error);
       });
   };
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    setSelectedLanguage(savedLanguage);
+    i18n.changeLanguage(savedLanguage);
+  }, [i18n]);
 
   useEffect(() => {
     const postsRef = ref(db);

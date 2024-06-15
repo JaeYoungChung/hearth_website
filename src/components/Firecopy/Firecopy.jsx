@@ -103,6 +103,7 @@ const Firecopy = () => {
       setSelectedLanguage(language);
       i18n.changeLanguage(language);
       setIsOpen(false);
+      localStorage.setItem('selectedLanguage', language);
     };
 
     const getSelectedFlagImage = () => {
@@ -237,6 +238,12 @@ const Firecopy = () => {
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
     const [rotationButton, setRotationButton] = useState(70);
     const [isCheckboxTextBlinking, setIsCheckboxTextBlinking] = useState(false);
+
+    useEffect(() => {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      setSelectedLanguage(savedLanguage);
+      i18n.changeLanguage(savedLanguage);
+    }, [i18n]);
     
     useEffect(() => {
         const video = videoRef.current;

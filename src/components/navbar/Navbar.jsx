@@ -31,6 +31,7 @@ const Navbar = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
     setIsOpen(false);
+    localStorage.setItem('selectedLanguage', language);
   };
  
   const getSelectedFlagImage = () => {
@@ -66,6 +67,12 @@ const Navbar = () => {
   const location = useLocation(); // Use useLocation hook to get the current location object
   const shouldShowMenu = location.pathname !== '/blog' && location.pathname !== '/test';
   const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    setSelectedLanguage(savedLanguage);
+    i18n.changeLanguage(savedLanguage);
+  }, [i18n]);
 
   useEffect(() => {
     const handleIntersection = (entries) => {
