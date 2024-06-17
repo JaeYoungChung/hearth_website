@@ -473,7 +473,7 @@ span {
     word-break: keep-all; /* Prevents breaks between characters */
     font-size: 11px;
     opacity: 0.6;
-    margin: 0 1.5vw;
+    margin: 0 1vw;
   }
 
   .q-circle {
