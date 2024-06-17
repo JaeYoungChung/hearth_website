@@ -118,7 +118,7 @@ const Firecopy = () => {
           return england_flag;
       }
     }
-
+ 
     const getSelectedFlagText = () => {
       switch (selectedLanguage) {
         case 'en':

@@ -19,32 +19,22 @@ const About2 = () => {
           </div>
         </div>
         <div className="long-text2">
-          <p>We learn how to grow and control our logical brain in a systematic way; <br></br>
-          through mathematics, science, economics and so on. <br></br><br></br>
+          <p>{t("about.long-text2-first")}<br></br><br></br>
 
-          But where do we learn to train our emotional brain? <br></br>
-          Furthermore, where do we learn to integrate logic and emotion? <br></br><br></br>
+          {t("about.long-text2-second")}<br></br><br></br>
 
-          We see the potent increase of psychological problems as a result of this soaring<br></br>
-          discrepancy between these two brains, as we disregarded emotion over the sake <br></br>
-          of logic.<br></br><br></br>
+          {t("about.long-text2-third")}<br></br><br></br>
 
-          That is where HEARTH rises to the occasion, to help us refine the emotional brain <br></br>
-          and ultimately coexist with the logical brain in harmony. </p>
+          {t("about.long-text2-fourth")}</p>
         </div>
         <div className="m-long-text2">
-          <p>We learn how to grow and control our logical brain in a systematic way;
-          through mathematics, science, economics and so on. <br></br><br></br>
+          <p>{t("about.long-text2-first")}<br></br><br></br>
 
-          But where do we learn to train our emotional brain?
-          Furthermore, where do we learn to integrate logic and emotion? <br></br><br></br>
+          {t("about.long-text2-second")}<br></br><br></br>
 
-          We see the potent increase of psychological problems as a result of this soaring
-          discrepancy between these two brains, as we disregarded emotion over the sake
-          of logic.<br></br><br></br>
+          {t("about.long-text2-third")}<br></br><br></br>
 
-          That is where HEARTH rises to the occasion, to help us refine the emotional brain
-          and ultimately coexist with the logical brain in harmony. </p>
+          {t("about.long-text2-fourth")}</p>
         </div>
       </div>
     </div>

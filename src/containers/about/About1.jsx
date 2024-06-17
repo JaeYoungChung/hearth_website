@@ -19,12 +19,12 @@ const About1 = () => {
           </div>
         </div>
         <div className="long-text1">
-          <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some may view emotion as the unwanted sibling of logic, sometimes heavily burdening us with fear and sorrow. However, emotion serves a distinct purpose of its own. Alongside with its ability to give pleasure, it has evolutionarily developed to act as an alarm, an instant signal to let us be aware of any potential danger or threat.
-            <br></br><br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As the logical brain is important for solving complicated problems through meticulous thinking, the emotional brain is also crucial, since it discretely dictates our actions and thoughts behind the logical brain. Thus, the functionality of the brain, in other words Cognitive Force, should be understood as a result of the concordance of the two brains and their ability to cooperate effectively.</p>
+          <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{t("about.long-text1-first")}
+            <br></br><br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{t("about.long-text1-second")}</p>
         </div>
         <div className="m-long-text1">
-          <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some may view emotion as the unwanted sibling of logic, sometimes heavily burdening us with fear and sorrow. However, emotion serves a distinct purpose of its own. Alongside with its ability to give pleasure, it has evolutionarily developed to act as an alarm, an instant signal to let us be aware of any potential danger or threat.
-            <br></br><br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As the logical brain is important for solving complicated problems through meticulous thinking, the emotional brain is also crucial, since it discretely dictates our actions and thoughts behind the logical brain. Thus, the functionality of the brain, in other words Cognitive Force, should be understood as a result of the concordance of the two brains and their ability to cooperate effectively.</p>
+          <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{t("about.long-text1-first")}
+            <br></br><br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{t("about.long-text1-second")}</p>
         </div>
       </div>
     </div>
