@@ -472,7 +472,7 @@ function Survey() {
               <span className="disagree-text">{t("questions.strongly")}<br></br>{t("questions.disagree")}</span>
               <div className="q-circle-container">
                 {[1, 2, 3, 4, 5].map(score => (
-                  <div
+                  <div 
                     key={score}
                     onClick={() => handleAnswer(score)}
                     className={`q-circle ${selectedScores[currentQuestion - 1] === score - 3 ? "selected" : ""}`}

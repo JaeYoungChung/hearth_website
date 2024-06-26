@@ -438,9 +438,9 @@ function handlePostClick(post) {
 
             <div className="b-footer">
                 <div className="b-footerTexts">
-                <p onClick={handlePolicyClick}>Privacy Policy</p>
+                <p onClick={handlePolicyClick}>{t("community.privacy-policy")}</p>
                   <p>Vivos Voco Inc.</p>
-                  <p onClick={handleTermsClick}>Terms Of Use</p> 
+                  <p onClick={handleTermsClick}>{t("community.termsofuse")}</p> 
                   {/* <p>Cookie Policy</p> */}
               </div>
               {/* <div className='company-name'>
@@ -605,7 +605,7 @@ set(ref(db, "emails/" + uuid), {
     <div className="banner">
         <div className='banner-left'>
           <p className='b-line1'>Join the Hearthside</p>
-          <p className='b-line2'>and be a part of our journey to wellness & enlightenment</p>
+          <p className='b-line2'>{t("community.c-line3")}</p>
           <div className="b-inputBox">
               <input
                   type="text"

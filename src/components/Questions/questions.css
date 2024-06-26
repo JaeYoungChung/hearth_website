@@ -257,6 +257,7 @@ option.korean::after {
 }
 
 .q-circle {
+  display: block;
   width: 40px;
   height: 40px;
   border-radius: 25px;
@@ -264,6 +265,7 @@ option.korean::after {
   margin: 0 20px;
   cursor: pointer;
   opacity: 0.1;
+  -moz-opacity: 0.1;
 }
 
 .q-circle.selected {
@@ -470,7 +472,7 @@ span {
   .disagree-text,
   .agree-text {
     white-space: normal;
-    word-break: keep-all; /* Prevents breaks between characters */
+    word-break: keep-all;
     font-size: 11px;
     opacity: 0.6;
     margin: 0 1vw;

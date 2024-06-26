@@ -89,7 +89,7 @@ const Community = () => {
         <div className="community">
           <p className='c-line1'>Join the</p>
           <p className='c-line2'>Hearthside</p>
-          <p className='c-line3'>and be a part of our journey to wellness & enlightenment</p>
+          <p className='c-line3'>{t("community.c-line3")}</p>
           <div className="c-inputBox"> 
             <input
                 type="text"
@@ -112,9 +112,9 @@ const Community = () => {
           <div className="c-footer">
               <hr />
               <div className="c-footerTexts">
-                  <p onClick={handlePolicyClick}>Privacy Policy</p>
+                  <p onClick={handlePolicyClick}>{t("community.privacy-policy")}</p>
                   <p>Vivos Voco Inc.</p>
-                  <p onClick={handleTermsClick}>Terms Of Use</p> 
+                  <p onClick={handleTermsClick}>{t("community.termsofuse")}</p> 
                   {/* <p>Cookie Policy</p> */}
               </div>
               {/* <div className='company-name'>

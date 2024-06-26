@@ -35,7 +35,79 @@
         "adaptability": "Adaptability",
         "creativity": "Creativity",
         "volition": "Volition",
-        "interpersonal_skills": "Interpersonal Skills"
+        "interpersonal_skills": "Interpersonal Skills",
+
+        "helm": "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this Emerald Flame.",
+        "helm_intro": "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. ",
+        "helm_components": "Introspection, Integration, and Individuation ",
+        "helm_are": "are the three key components of this ",
+        "helm_flame": "Emerald Flame.",
+
+        "envisage": "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this Cobalt Flame.",
+        "envisage_intro": "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. ",
+        "envisage_components": "Reflection, Systemization, and Sagacity ",
+        "envisage_are": "are the three key components of this ",
+        "envisage_flame": "Cobalt Flame.",
+        
+        "attune": "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this Cyan Flame.",
+        "attune_intro": "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity.",
+        "attune_components": "Perceptivity, Plasticity, and Optimization ",
+        "attune_are": "are the three key components of this ",
+        "attune_flame": "Cyan Flame.",
+
+        "reverie": "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this Canary Flame.",
+        "reverie_intro": "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. ", 
+        "reverie_components": "Curiosity, Originality, and Artistry ", 
+        "reverie_are": "are the three key components of this ",
+        "reverie_flame": "Canary Flame.",
+
+        "transcend": "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency are the three key components of this Crimson Flame.",
+        "transcend_intro": "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. ",
+        "transcend_components": "Passion, Resilience, and Ascendency ",
+        "transcend_are": "are the three key components of this ",
+        "transcend_flame": "Crimson Flame.",
+
+        "harmonize": "HARMONIZE is the Cognitive Force that enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this Magenta Flame.",
+        "harmonize_intro": "HARMONIZE is the Cognitive Force that enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. ", 
+        "harmonize_components": "Sensibility, Eloquence, and Resonance",
+        "harmonize_are": "are the three key components of this ",
+        "harmonize_flame": "Magenta Flame."
+    },
+    "team": {
+        "line1": "Team HEARTH was created to accomplish the mission of elevating mental wellness of humanity via offering a personalized help structure.",
+        "line2": "As we recognize that health encompasses not only the body, but also the mind and soul,",
+        "line3": "we are here to ensure the holistic development of the triad by uplifting the latter.",
+        "line4": "Our vision is to help everyone in need through fostering depth, strength, and beauty by the means of creative and sustainable methods.",
+        "line5": "“There will always be rocks in the road ahead of us. They will be stumbling blocks or stepping stones; it all depends on how you use them.”",
+        "line6": "As you navigate through life, Team HEARTH wishes to accompany your journey and assist you along the way",
+        "line7": "by providing philosophical and psychological insights. As we are here to help you, you can also help others by taking part in our mission.",
+        "line8": "Join us in our community, participate in diverse programs, and help build a healthy community that will enlighten yourself and the world.",
+        "line9": "For any inquiry, feel free to contact us on ",
+        "line10": "hearthisnear@gmail.com.",
+
+        "p2_line1": "Director, building and refining the overarching structure",
+        "p2_line2": "of HEARTH, establishing a clear vision.",
+        "p2_line3": "As a M.D. who is deeply engrossed in philosophy and psychology,",
+        "p2_line4": "Endeavors to foster a holistic healing process",
+        "p2_line5": "and take part in the ennoblement of humanity.",
+
+        "p3_line1": "Visualizer, directing the artistic and creative elements of projects.",
+        "p3_line2": "Designer of User Interface and Experience,",
+        "p3_line3": "Driven to develop concepts and ideas into visual narratives,",
+        "p3_line4": "Crafting digital interactions into user-centric journeys.",
+
+        "p4_line1": "Program creator and assessor, producing new materials ",
+        "p4_line2": "and improving content quality through philosophical contemplations. ",
+        "p4_line3": "Having background in both Psychology and Mechanical Engineering, ",
+        "p4_line4": "Seeks to understand the underlying mechanics of human psychology,",
+        "p4_line5": "and uncover the path to a more fulfilled life.",
+        
+        "p5_line1": "Operator, maintaining a panoramic view of projects",
+        "p5_line2": "and orchestrating the workflow to keep all facets ",
+        "p5_line3": "of the operation on track.",
+        "p5_line4": "With a background in Computer Science,",
+        "p5_line5": "Transforms the team’s concepts into tangible realities",
+        "p5_line6": "While balancing our mission to be both innovative and resonant."
     },
     "community" : {
         "c-big-text": "Join our",
@@ -51,13 +123,18 @@
         "original_text3": "Newsletters \n & Channels",
         "additional_text3": "weekly notifications on\nOur Blog and SNS posts",
         "error_message": "Please enter a valid email address.",
-        "visit_blog": "Visit BLOG"
+        "visit_blog": "Visit BLOG",
+        "c-line3": "and be a part of our journey to wellness & enlightenment",
+        "privacy-policy": "Privacy Policy",
+        "termsofuse": "Terms of Use"
     },
     "blog" : {
         "email": "abcdefg@email.com",
         "register": "Register",
         "registered": "Registered ✔",
-        "error_message": "Please enter a valid email address."
+        "error_message": "Please enter a valid email address.",
+        "privacy-policy": "Privacy Policy",
+        "termsofuse": "Terms of Use"
     },
     "test" : {
         "start": "Start",
