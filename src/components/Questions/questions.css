@@ -264,8 +264,8 @@ option.korean::after {
   background-color: white;
   margin: 0 20px;
   cursor: pointer;
-  opacity: 0.1;
-  -moz-opacity: 0.1;
+  opacity: 0.2;
+  -moz-opacity: 0.2;
 }
 
 .q-circle.selected {
@@ -468,7 +468,7 @@ span {
     padding-left: 10px;
     padding-right: 10px;
   }
-  
+   
   .disagree-text,
   .agree-text {
     white-space: normal;
