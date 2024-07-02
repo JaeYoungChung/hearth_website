@@ -264,8 +264,8 @@ option.korean::after {
   background-color: white;
   margin: 0 20px;
   cursor: pointer;
-  opacity: 0.2;
-  -moz-opacity: 0.2;
+  opacity: 0.1;
+  -moz-opacity: 0.1;
 }
 
 .q-circle.selected {
@@ -483,6 +483,10 @@ span {
     height: 35px;
     margin: 0 10px;
   }
+
+  [prefers-color-scheme="dark"] .q-circle {
+    opacity: 0.3;
+}
 
   .q-next-button {
     position: absolute;
