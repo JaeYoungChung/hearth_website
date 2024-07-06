@@ -18,7 +18,7 @@ import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
- 
+  
 function Apps() {
   const [t, i18n] = useTranslation("global");
   const [selected, setSelected] = useState(0);
@@ -89,15 +89,15 @@ function TextSection({ color, text }) {
     <div id="apps" className="apps">
       <div className='a-left-section'>
         <ImageSection image={imageData[selected].src} />
-        <div className='a-btn-section'>
-          <ButtonSection setSelected={setSelected} selected={selected} />
-        </div>
       </div>
       <div className="a-right-section">
-            <TextSection color={imageData[selected].color} text={imageData[selected].text} />
+          <TextSection color={imageData[selected].color} text={imageData[selected].text} />
           <div className="apps-icons">
             <img src = {download_appstore} className="ios-icon"/>
-            <img src = {download_playstore} className="android-icon"/>
+            <img src = {download_playstore} className="android-icon"/>    
+          </div>
+          <div className='a-btn-section'>
+            <ButtonSection setSelected={setSelected} selected={selected} />
           </div>
       </div>
     </div>

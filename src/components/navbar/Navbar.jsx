@@ -207,7 +207,7 @@ const Navbar = () => {
     <div className = "navbar">
       <div className = "navbar-links_logo">
       <a href="#home">
-        <img src={logo} width={46} height={72} alt="logo" />
+        <img src={logo} width={72} height={100} alt="logo" />
       </a>
       </div>
       <div className="navbar-menu" onClick={toggleMobileMenu}>

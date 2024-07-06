@@ -57,14 +57,10 @@ const Team = () => {
         <p className="t-title1">Team</p>
         <p className="t-subtitle1">HEARTH</p><br/>
         <div className="t-paragraph1">
-            <p>{t("team.line1")}</p>
-            <p>{t("team.line2")}</p>
-            <p>{t("team.line3")}</p>
-            <p>{t("team.line4")}</p><br/>
+            <p>{t("team.line1")}{t("team.line2")}{t("team.line3")}{t("team.line4")}</p><br/>
             <em>{t("team.line5")}</em><br/><br></br>
             <p>{t("team.line6")}</p>
-            <p>{t("team.line7")}</p>
-            <p>{t("team.line8")}</p><br/>
+            <p>{t("team.line7")}{t("team.line8")}</p><br/>
             <p>{t("team.line9")}<em>{t("team.line10")}</em></p>
         </div>
       </div>
@@ -130,7 +126,7 @@ const Team = () => {
         </div>
       </div>
     </div>
-  );
+  ); 
   const Page5 = ({ t }) => (
     <div className='t-page2' 
         style={{ display: 'flex',

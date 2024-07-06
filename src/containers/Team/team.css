@@ -13,8 +13,8 @@
 
 .t-page1{
     background-repeat: no-repeat;
-    background-position: 110% 0px;
-    padding-left: 100px;
+    background-position: 170% 100px;
+    padding-left: 15%;
 }
 
 .t-page2{
@@ -59,7 +59,7 @@
     line-height: 1.0;
   }
   .t-paragraph1 {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.5;
   }
 
@@ -112,7 +112,7 @@
   .t-page-indicators {
     color: white;
     position: absolute;
-    bottom: 90px;
+    bottom: 15%;
     right: 120px;
     z-index: 5;
   }

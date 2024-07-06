@@ -25,15 +25,31 @@ const Header = () => {
   const handleImageClick = () => {
     setIsActive(!isActive);
   };
-
+ 
   return (  
     <div className='header' id='home'>
       <div className='header-content'>
         <h1 className='home_title_text'>H E A R T H</h1>
         <p className='home_subtitle_text'>Here to Help</p>
         <div className='header-content__input'>
-          <button type="button" className='take-test-btn' onClick={handleButtonClick}>{t("header.take_test")}
-          </button>
+        <button 
+          type="button" 
+          className='take-test-btn' 
+          onClick={handleButtonClick}
+          style={{
+            transition: 'all 0.3s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#0056b3';
+            e.target.style.transform = 'scale(1.05)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '';
+            e.target.style.transform = 'scale(1)';
+          }}
+        >
+  {t("header.take_test")}
+</button>
         </div>
       </div>  
       <div className='header-side' id='home'>

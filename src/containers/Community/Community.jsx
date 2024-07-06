@@ -83,14 +83,14 @@ const Community = () => {
       console.error("Error saving email: ", error);
     });
 };
- 
- 
+
     return (
         <div className="community">
           <p className='c-line1'>Join the</p>
           <p className='c-line2'>Hearthside</p>
           <p className='c-line3'>{t("community.c-line3")}</p>
-          <div className="c-inputBox"> 
+          <div className="c-inputBox"
+            style={{borderColor: !isRegistered ? 'white' : 'green'}}>
             <input
                 type="text"
                 placeholder={t("community.email")}
@@ -99,7 +99,8 @@ const Community = () => {
                 id="c-inputID"
                 className={!isValidEmail ? 'invalid' : ''} 
             />                
-            <p className="register" onClick={!isRegistered ? handleRegister : null}>
+            <p className="register" onClick={!isRegistered ? handleRegister : null}
+                style={{color: !isRegistered ? 'white' : 'green'}}>
                 {isRegistered ? t("community.registered") : t("community.register")}
             </p> 
           </div>
@@ -110,7 +111,7 @@ const Community = () => {
             ))}
           </div>
           <div className="c-footer">
-              <hr />
+              {/* <hr /> */}
               <div className="c-footerTexts">
                   <p onClick={handlePolicyClick}>{t("community.privacy-policy")}</p>
                   <p>Vivos Voco Inc.</p>

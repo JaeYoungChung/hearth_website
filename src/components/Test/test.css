@@ -17,7 +17,7 @@
     height: 180px;
     justify-content: center;
     z-index: -30;
-    opacity: 0.5;
+    opacity: 1;
   }
 
   .fade-out {
@@ -36,26 +36,26 @@
 
   .second-text {
     letter-spacing: 5px;
-    margin-top: 10px;
-    font-size: 1.2em;
+    margin-top: 0px;
+    font-size: 1.7em;
     color: white;
     }
   
   .centered-container p {
     letter-spacing: 3px;
-    margin-top: 15px;
-    font-size: 1.2em;
+    margin-top: 0px;
+    font-size: 1.7em;
     color: white;
     }
 
   .centered-container p:last-child {
-        font-size: 1.2em;
-        color: white;
-        padding-bottom: 50px;
+    font-size: 1.2em;
+    color: white;
+    padding-bottom: 50px;
   }
   
   .centered-container button {
-    padding: 5px 20px;
+    padding: 3px 25px;
     font-size: 1.2em;
     color: white;
     border: 1px solid white;
@@ -71,7 +71,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3rem;
+    padding: 1rem 3rem;
     position: sticky;
     top: 0;
     z-index: 40;
@@ -84,7 +84,8 @@
 .t-navbar-links_logo img{
 top: 70px;
 left: 70px;
-height: 76px;
+width: 100px;
+height: 100px;
 opacity: 1;
 }
 
@@ -170,7 +171,7 @@ option.korean::after {
 .centered-content img {
   height: 150px;
   z-index: -10;
-  opacity: 0.7;
+  opacity: 0.3;
 }
 
 .text-overlay {
@@ -185,12 +186,16 @@ option.korean::after {
 
 .test-input {
   position: absolute;
-  margin-top: 90px;
+  top: 42%;
   text-align: center;
   border-bottom: 2px solid white;
   background-color: transparent;
   color: white;
   font-size: 50px;
+}
+
+.alphabet-container {
+  padding-top: 30px;
 }
 
 .alphabet-row {
@@ -204,7 +209,7 @@ option.korean::after {
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 0;
   margin-left: 0;
   opacity: 0.5;
@@ -220,10 +225,10 @@ option.korean::after {
 
 .next-button {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 50px;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -339,7 +344,8 @@ option.korean::after {
   .t-navbar-links_logo img{
   top: 70px;
   left: 70px;
-  height: 56px;
+  width: 70px;
+  height: 70px;
   opacity: 1;
   }
 
@@ -448,6 +454,14 @@ option.korean::after {
     text-align: center;
     color: white;
     font-size: 24px;
+  }
+  
+  .test-input {
+    top: 35dvh;
+  }
+  
+  .alphabet-container {
+    padding-top: 30px;
   }
 
   .alphabet-container {

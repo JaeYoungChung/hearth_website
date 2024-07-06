@@ -7,12 +7,14 @@ import { getQuestions } from '../../data.js';
 import {db} from "../../firebase.js";
 import { uid } from "uid";
 import { ref, set, push } from "firebase/database";
-import logo from '../../assets/test_logo.png'
+import logo from '../../assets/home_logo.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
+import left_btn from '../../assets/arrow_left.png'
+import right_btn from '../../assets/arrow_right.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
@@ -127,7 +129,6 @@ const Questions = () => {
           <div className="navbar-mobile-menu_content">
             <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
@@ -191,7 +192,6 @@ const Questions = () => {
                   )}
                 </div>
             <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
           </div> 
         </div>
           <div className="survey-container">
@@ -461,7 +461,7 @@ function Survey() {
             backgroundSize: `contain`,
             opacity: isSubmitted ? 0.8 : 0.3,
             transition: 'opacity 3s ease-in-out',
-          }}  
+          }}   
         ></div>      
       {!isSubmitted ? ( 
         <div className='question-container'>
@@ -480,15 +480,21 @@ function Survey() {
                 ))}
               </div>
               <span className="agree-text">{t("questions.strongly")}<br></br>{t("questions.agree")}</span>
-            </div>
+            </div> 
             {currentQuestion > 1 && (
-              <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>{t("questions.back")}</span>
+              <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>
+                <img src={left_btn} width={22}></img>{t("questions.back")}
+              </span>
             )}
             {selectedScores[currentQuestion - 1] !== null && currentQuestion < totalQuestions && !isTransitioning && (
-              <span className="q-next-button" onClick={handleNext}>{t("questions.next")}</span>
+              <span className="q-next-button" onClick={handleNext}>
+                {t("questions.next")}<img src={right_btn} width={22}></img>
+              </span>
             )}
             {currentQuestion === totalQuestions && selectedScores[currentQuestion - 1] !== null &&(
-              <span className="q-submit-button" onClick={handleSubmit}>{t("questions.submit")}</span>
+              <span className="q-submit-button" onClick={handleSubmit}>
+                {t("questions.submit")}<img src={right_btn} width={22}></img>
+              </span>
             )}
           </div>
         </div>

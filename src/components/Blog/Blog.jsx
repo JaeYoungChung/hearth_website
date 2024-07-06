@@ -19,7 +19,7 @@ import { FaLink } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { uid } from "uid";
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/test_logo.png'
+import logo from '../../assets/home_logo.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
@@ -293,13 +293,13 @@ const Blog = () => {
 function handlePostClick(post) {
     setSelectedPost(post);
   }
- 
+
   return (
     <div className="blog-page">
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">
             <NavLink to='/'>
-            <img src={logo} width={46} height={72} alt = "logo"></img>
+            <img src={logo} width={120} height={120} alt="logo" />
             </NavLink>
           </div>
         <div className="navbar-menu" onClick={toggleMobileMenu}>
@@ -331,7 +331,7 @@ function handlePostClick(post) {
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
                   Copied to Clipboard!
                 </div>
-              )}        
+              )}
             </div>
             <div className="dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>

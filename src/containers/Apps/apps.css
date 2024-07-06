@@ -11,9 +11,9 @@
 }
 
 .a-right-section {
-  right: 100px;
+  right: 90px;
   position: absolute;
-  padding-top: 200px;
+  padding-top: 10%;
   width: 50%;
   color: white;
   display: flex;
@@ -103,9 +103,8 @@
   display: flex;
   position: absolute;
   z-index: 3;
-  padding-left: 110px;
-  left: 70px;
-  top: 50px;
+  left: 42%;
+  top: 100%;
 }
 
 .a-button-container {
@@ -196,6 +195,7 @@
     }
 
     .a-btn-section {
+      order: 1;
       width: 90vw;
       padding-left: 5vw;
       padding-right: 5vw;
@@ -210,7 +210,7 @@
     }
 
     .a-button-container {
-      margin-top: 3dvh;
+      margin-top: 0dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -224,7 +224,7 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 18dvh;
+      padding-top: 15dvh;
       padding-left: 12vw;
       padding-right: 12vw;
       text-align: center;
@@ -267,8 +267,8 @@
     }
    
     .a-button-section {
+      order: 2;
       justify-content: center;
-      margin-top: 10vh;
       display: flex;
       position: absolute;
       padding-left: 10vw;
@@ -279,6 +279,7 @@
     }
 
     .apps-icons {
+      order: 2;
       justify-content: center;
       margin-top: 2.0dvh;
     }

@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   position: sticky;
   top: 0;
   z-index: 40;
@@ -21,8 +21,8 @@
 .b-navbar-links_logo img{
 top: 70px;
 left: 70px;
-width: 76px;
-height: 76px;
+width: 100px;
+height: 100px;
 opacity: 1;
 }
 
@@ -74,7 +74,7 @@ opacity: 1;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: black;
+  background-color: transparent;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -88,6 +88,7 @@ opacity: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .b-dropdown-menu li:hover {
@@ -492,13 +493,13 @@ option.korean::after {
   
   .modal-body h2 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 26px;
+    margin-bottom: 30px;
   }
   
   .modal-body p {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 17px;
+    line-height: 1.6;
   }
   
   .modal-body button {
@@ -517,7 +518,7 @@ option.korean::after {
   }
 
   .back-home {
-    padding-top: 20px;
+    padding-top: 70px;
     justify-content: center;
   }
 
@@ -712,8 +713,8 @@ input[type="text"], textarea {
   .b-navbar-links_logo img{
     top: 60px;
     left: 10px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     opacity: 1;
   }
 
@@ -1046,8 +1047,8 @@ input[type="text"], textarea {
   .b-navbar-links_logo img{
     top: 60px;
     left: 10px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     opacity: 1;
   }
 

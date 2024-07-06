@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3rem;
+    padding: 0.5rem 2rem;
     padding-bottom: 0;
     position: sticky;
     top: 0;
@@ -58,7 +58,8 @@
 .navbar-links_logo img{
     top: 70px;
     left: 70px;
-    height: 76px;
+    width: 100px;
+    height: 100px;
     opacity: 1;
 }
 
@@ -322,8 +323,8 @@ option.korean::after {
 .navbar-links_logo img{
     top: 40px;
     left: 60px;
-    width: 30px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     opacity: 1;
 }
 

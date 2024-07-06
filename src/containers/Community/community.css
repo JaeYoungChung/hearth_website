@@ -10,11 +10,12 @@
     background-size: cover;
     color: white;
     text-align: center;
-    padding-bottom: 120px;
+    padding-bottom: 10%;
   }
 
   .c-line1 {
     font-size: 60px;
+    line-height: 20px;
   }
   .c-line2{
     font-size: 80px;
@@ -78,6 +79,7 @@ hr {
 .c-inputBox {
     width: 40%;
     display: flex;
+    font-size: 18px;
     justify-content: space-between;
     align-items: center;
     border: 1px solid white;
@@ -85,6 +87,10 @@ hr {
     margin-top: 50px;
     padding: 10px;
     background: transparent;
+}
+
+#c-inputID {
+  font-size: 18px;
 }
  
 #c-inputID::placeholder {
@@ -98,6 +104,7 @@ hr {
 
 .register {
     cursor: pointer;
+    font-size: 18px;
     font-weight: 100;
     padding-right: 20px;
     color: white;
@@ -109,7 +116,7 @@ hr {
 
 .error-message {
     color: red;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-top: 15px;
 }
 
@@ -138,9 +145,22 @@ hr {
     opacity: 0.5;
   }
 
+  #c-inputID {
+    font-size: 16px;
+  }
+
   .c-inputBox {
     width: 80%;
+    font-size: 16px;
     margin-top: 30px;
+}
+
+  .register {
+    font-size: 16px;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
 }
 
   .c-image-row {

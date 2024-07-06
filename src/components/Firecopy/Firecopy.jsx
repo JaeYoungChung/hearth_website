@@ -2,7 +2,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import './firecopy.css';
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/test_logo.png'
+import logo from '../../assets/home_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
 import arrowright from '../../assets/arrow_right.png'
 import arrowleft from '../../assets/arrow_left.png'
@@ -257,7 +257,10 @@ const Firecopy = () => {
         setTimeout(() => {
           video.style.opacity = 1;
           if (window.matchMedia('(max-width: 1023px)').matches) {
-            video.style.opacity = 0.5;
+            video.style.opacity = 1;
+            setTimeout(() => {
+              video.style.opacity = 0.4;
+            }, 1000);
           }
         }, 1000);
       
@@ -616,7 +619,6 @@ const Firecopy = () => {
           <div className="navbar-mobile-menu_content">
             <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
@@ -680,7 +682,6 @@ const Firecopy = () => {
                   )} 
                 </div>
             <p className='blog-click' style={{marginLeft: '20px'}} onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             </div> 
         </div>
       <div className='firecopy'>
@@ -695,7 +696,7 @@ const Firecopy = () => {
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
             ></div>
-          </div>
+          </div> 
             <div className='f-column'>
               <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
                   <p>To. {storedLetter}</p><br></br>
@@ -727,8 +728,7 @@ const Firecopy = () => {
               >
                 <svg
                   className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
-                  style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}
-                  
+                  style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}  
                 >
                   {/* Outer grey hexagon */}
                   <polygon
@@ -792,6 +792,7 @@ const Firecopy = () => {
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
             <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
             <div className="f-main-progress-wrapper">
+                <p>FQ</p>
                 <div className="f-main-progress-container">
                   <div className={`f-main-progress-fill f-color-${rCustomIndex}`} style={{ width: `${hexagonScores[`s${rCustomIndex + 1}`]/36*100}%` }}>
                   </div>
@@ -829,6 +830,7 @@ const Firecopy = () => {
               <p
                 className={`register ${isRegistered ? 'registered-green' : ''}`}
                 onClick={!isRegistered ? handleRegister : null}
+                style={{color: !isRegistered ? 'white' : 'green'}}
               >
                 {isRegistered ? t("community.registered") : t("community.register")}
               </p>
@@ -839,13 +841,13 @@ const Firecopy = () => {
                 type="checkbox"
                 id="check1"
                 className="custom-checkbox"
+                style={{borderColor: `rgb(${red}, ${green}, ${blue})`}} 
                 checked={isFirstCheckboxChecked}
                 onChange={handleFirstCheckboxChange}
               />
               <label
                   htmlFor="check1"
-                  className={`checkbox-label`}
-                >
+                  className={`checkbox-label`}>
                   (Optional) Join the Hearthside and subscribe to our e-letter
               </label>            
             </div>

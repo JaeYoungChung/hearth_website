@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
-import logo from '../../assets/test_logo.png'
+import logo from '../../assets/home_logo.png'
 import white_logo from '../../assets/whitelogo.png'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
@@ -167,7 +167,6 @@ const Test = () => {
           <div className="navbar-mobile-menu_content">
           <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
@@ -231,7 +230,6 @@ const Test = () => {
                   )}
                 </div>
             <p className='blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
           </div>
         </div>
 
@@ -239,14 +237,14 @@ const Test = () => {
       {!showContent ? (
         <>
           <img src={logo} alt='logo' />
-          <p>HEARTH</p>
+          <p className='t-first-text'>HEARTH</p>
           <div className='second-text'>T E S T</div>
           <button type="button" className='test-button' onClick={handleButtonClick2}>{t("test.start")}</button>
         </>
       ) : (
         <div className='fade-in'>
           {!showAnimation ? (
-            <>
+            <> 
               <div className='centered-content' >
                 <img src={logo} alt='logo' className={fadeOut ? 'fade-image' : ''}/>
                 <div className='text-overlay'>{t("test.who")}</div>
@@ -265,7 +263,7 @@ const Test = () => {
                     </button>
                   ))}
                 </div>
-              </div>
+              </div> 
               {selectedLetter && (
                 <div className='next-button' onClick={handleNextClick}>
                   {t("test.next")} <span className='arrow-icon'>&gt;</span>

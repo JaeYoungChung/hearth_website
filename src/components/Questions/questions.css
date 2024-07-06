@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
     margin: 100px auto;
     z-index: 2;
     /* transition: opacity 0.5s ease-in-out; */
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     position: sticky;
     top: 0;
     z-index: 40;
@@ -43,7 +43,8 @@
 .q-navbar-links_logo img{
     top: 70px;
     left: 70px;
-    height: 76px;
+    width: 100px;
+    height: 100px;
     opacity: 1;
 }
 
@@ -281,25 +282,47 @@ span {
   display: inline-block;
   margin: 10px;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .q-next-button {
   position: absolute;
-  top: 250px;
+  top: 50dvh;
   right: 0px;
+  font-size: 18px;
+  vertical-align: middle;
 }
 
 .q-back-button {
   position: absolute;
-  top: 250px;
+  top: 50dvh;
   left: 0px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.q-back-button img {
+  margin-right: 10px;
+  width: 18px;
+  vertical-align: middle;
+}
+
+.q-next-button img {
+  margin-left: 10px;
+  width: 18px;
+  vertical-align: middle;
 }
 
 .q-submit-button {
   position: absolute;
-  top: 250px;
+  top: 50dvh;
+  font-size: 18px;
   right: 0px;
+  vertical-align: middle;
+}
+
+.q-submit-button img{
+  margin-left: 10px;
 }
 
 .submitted-container {
@@ -358,7 +381,8 @@ span {
   .q-navbar-links_logo img{
     top: 70px;
     left: 70px;
-    height: 56px;
+    width: 70px;
+    height: 70px;    
     opacity: 1;
   }
 
