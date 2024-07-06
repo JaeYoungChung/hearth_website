@@ -303,7 +303,7 @@ function Survey() {
                             +selectedScores[30]+selectedScores[31]+selectedScores[32]
                             +selectedScores[48]+selectedScores[49]+selectedScores[50];   
 
-        const Interpersonal =  selectedScores[15]+selectedScores[16]+selectedScores[17]
+        const Cooperability =  selectedScores[15]+selectedScores[16]+selectedScores[17]
                               +selectedScores[33]+selectedScores[34]+selectedScores[35]
                               +selectedScores[51]+selectedScores[52]+selectedScores[53];
 
@@ -314,7 +314,7 @@ function Survey() {
           { label: 'c', value: Adaptability},
           { label: 'd', value: Creativity},
           { label: 'e', value: Volition},
-          { label: 'f', value: Interpersonal}
+          { label: 'f', value: Cooperability}
         ];
 
         const maxPriority = ['e', 'a', 'b', 'c', 'f', 'd'];
@@ -343,9 +343,9 @@ function Survey() {
         }));
 
         //Range -36 ~ 36
-        const RedValue = 0.5 * Creativity + 0.5 * Interpersonal + Volition;                        
+        const RedValue = 0.5 * Creativity + 0.5 * Cooperability + Volition;                        
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
-        const BlueValue = 0.5 * Interpersonal + 0.5 * Adaptability + Cogitation;
+        const BlueValue = 0.5 * Cooperability + 0.5 * Adaptability + Cogitation;
         
         //Range 0 ~ 144
         const NewRedValue = 2 * RedValue + 72;
@@ -400,7 +400,7 @@ function Survey() {
         const s3 = Adaptability + 18;
         const s4 = Creativity + 18;
         const s5 = Volition + 18;
-        const s6 = Interpersonal + 18;
+        const s6 = Cooperability + 18;
         
         sessionStorage.setItem('hexagonScores', JSON.stringify({
           s1, s2, s3, s4, s5, s6,

@@ -7,14 +7,23 @@
   overflow: hidden;
   box-sizing: border-box;
   transition: opacity 1s ease;
+}
 
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
 .a-right-section {
   right: 90px;
   position: absolute;
   padding-top: 10%;
-  width: 50%;
+  width: 54%;
   color: white;
   display: flex;
   flex-direction: column;

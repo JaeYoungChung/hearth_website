@@ -63,7 +63,7 @@ const Firecopy = () => {
         {
           title: "Harmonize",
           color: "rgb(255, 0, 255)",
-          subTitle: "Interpersonal Skills",
+          subTitle: "Cooperability",
           paragraph: "HARMONIZE is the Cognitive Force which enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this ",
           belowText: "Magenta Flame.",
         },
@@ -439,7 +439,7 @@ const Firecopy = () => {
       setMobileRotation(newMobileRotation);
       const newIndex = (currentIndex - 1 + 6) % 6;
       setCurrentIndex(newIndex);
-      setTextRotationAdjustment(prevAdjustment => prevAdjustment);
+      setTextRotationAdjustment(prevAdjustment => prevAdjustment + 60);
             
       // Set the --mobile-rotation CSS variable on the SVG element
       // svgRef.current.style.setProperty('--mobile-rotation', `${mobileRotation}deg`);
@@ -450,7 +450,7 @@ const Firecopy = () => {
       setMobileRotation(newMobileRotation);
       const newIndex = (currentIndex + 1) % 6;
       setCurrentIndex(newIndex);
-      setTextRotationAdjustment(prevAdjustment => prevAdjustment);
+      setTextRotationAdjustment(prevAdjustment => prevAdjustment - 60);
       
       // Set the --mobile-rotation CSS variable on the SVG element
       // svgRef.current.style.setProperty('--mobile-rotation', `${mobileRotation}deg`);
