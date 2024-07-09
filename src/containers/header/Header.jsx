@@ -37,7 +37,7 @@ const Header = () => {
   }, []);
  
   return (
-    <div className={`header ${isLoaded ? 'loaded' : ''}`} id='home'>
+    <div className='header' id='home'>
       <motion.div 
         className='header-content'
         initial={{ opacity: 0 }}

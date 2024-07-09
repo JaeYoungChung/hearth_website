@@ -7,25 +7,6 @@
     background-position: center;
 }
 
-.header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/public/bg_1.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.header.loaded::before {
-  opacity: 1;
-}
-
 .header-content{
     height: 100%;
     position: relative;
@@ -119,7 +100,7 @@
   }
 
 
-  /* Media Query for Mobile Devices */
+/* Media Query for Mobile Devices */
 @media (max-width: 1023px) { 
 
   .header-content{
