@@ -32,7 +32,7 @@ function Apps() {
     4: { src:  app_transcend, text: "T" },
     5: { src:  app_harmonize, text: "H" },
   };
- 
+  
   const imageData = {
     0: { src:  helm_flame, color: "#0FF517", text: ["Helm", t("apps.independence"), t("apps.helm_intro"), t("apps.helm_components"), t("apps.helm_are"), t("apps.helm_flame")] },
     1: { src:  envisage_flame, color: "#005CDE", text: ["Envisage", t('apps.cogitation'), t("apps.envisage_intro"), t("apps.envisage_components"), t("apps.envisage_are"), t("apps.envisage_flame")]},
@@ -93,13 +93,15 @@ function Apps() {
       </div>
       <div className="a-right-section">
           <TextSection color={imageData[selected].color} text={imageData[selected].text} fade={fade} />
-          <div className="apps-icons">
-            <img src={download_appstore} className="ios-icon"/>
-            <img src={download_playstore} className="android-icon"/>    
-          </div>
-          <div className='a-btn-section'>
-            <ButtonSection setSelected={setSelected} selected={selected} setFade={setFade} />
-          </div>
+      </div>
+      <div className="a-right-section">
+        <div className="apps-icons">
+              <img src={download_appstore} className="ios-icon"/>
+              <img src={download_playstore} className="android-icon"/>    
+            </div>
+            <div className='a-btn-section'>
+              <ButtonSection setSelected={setSelected} selected={selected} setFade={setFade} />
+        </div>
       </div>
     </div>
   );

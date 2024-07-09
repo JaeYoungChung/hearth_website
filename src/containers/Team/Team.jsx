@@ -1,7 +1,7 @@
 import React from 'react';
 import './team.css';
 import { Route } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import white_logo from '../../assets/whitelogo.png'
 import blue_logo from '../../assets/bluelogo.png'
 import green_logo from '../../assets/greenlogo.png'
@@ -14,45 +14,81 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
 const Team = () => {
-    const [currentPage, setCurrentPage] = useState(0);
-    const { t, i18n } = useTranslation("global");
-  
-    const pages = [<Page1 t={t}/>, <Page2 t={t}/>, <Page3 t={t}/>, <Page4 t={t}/>, <Page5 t={t}/>];
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const { t, i18n } = useTranslation("global");
 
-    const handleSwipe = (direction) => {
-      if (direction === 'Left' && currentPage < pages.length - 1) {
-        setCurrentPage(currentPage + 1);
-      } else if (direction === 'Right' && currentPage > 0) {
-        setCurrentPage(currentPage - 1);
+  const pages = [<Page1 t={t}/>, <Page2 t={t}/>, <Page3 t={t}/>, <Page4 t={t}/>, <Page5 t={t}/>];
+
+  const handlePageChange = (newPage) => {
+    if (newPage !== currentPage && !isTransitioning && newPage >= 0 && newPage < pages.length) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentPage(newPage);
+        setIsTransitioning(false);
+      }, 300); // This should match the transition duration in CSS
+    }
+  };
+
+  const handleSwipe = (direction) => {
+    if (direction === 'Left' && currentPage < pages.length - 1) {
+      handlePageChange(currentPage + 1);
+    } else if (direction === 'Right' && currentPage > 0) {
+      handlePageChange(currentPage - 1);
+    }
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleSwipe('Left'),
+    onSwipedRight: () => handleSwipe('Right'),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        handlePageChange(currentPage - 1);
+      } else if (event.key === 'ArrowRight') {
+        handlePageChange(currentPage + 1);
       }
     };
-  
-    const swipeHandlers = useSwipeable({
-      onSwipedLeft: () => handleSwipe('Left'),
-      onSwipedRight: () => handleSwipe('Right'),
-      preventDefaultTouchmoveEvent: true,
-      trackMouse: true,
-    });
 
-    return (
-      <div className="team" {...swipeHandlers}>
-      {pages[currentPage]}
-        <div className="t-page-indicators">
-          {pages.map((_, index) => (
-            <span key={index} className={`t-indicator ${index === currentPage ? 'active' : ''}`} onClick={() => setCurrentPage(index)}></span>
-          ))}
-        </div>
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentPage]); // Re-run effect when currentPage changes
+
+  return (
+    <div className="team" {...swipeHandlers}>
+      <div className={`t-page ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
+        {pages[currentPage]}
       </div>
-    );  
-  };
-  
+      <div className="t-page-indicators">
+        {pages.map((_, index) => (
+          <span 
+            key={index} 
+            className={`t-indicator ${index === currentPage ? 'active' : ''}`} 
+            onClick={() => handlePageChange(index)}
+          ></span>
+        ))}
+      </div>
+    </div>
+  );  
+};
+
   const Page1 = ({ t }) => (
     <div className='t-page1' 
-        style={{ display: 'flex',
-                height: '110vh', 
-                backgroundImage: `url(${white_logo})`,
-                backgroundSize: 'contain',      
-                }}>
+    style={{
+      display: 'flex',
+      height: '110vh',
+      backgroundImage: `url(${white_logo})`,
+      backgroundSize: '90%',
+      backgroundRepeat: 'no-repeat',
+    }}>
       <div className="t-text-content1" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left'}}>
         <p className="t-title1">Team</p>
         <p className="t-subtitle1">HEARTH</p><br/>
@@ -72,7 +108,8 @@ const Team = () => {
         style={{ display: 'flex',
                 height: '110vh', 
                 backgroundImage: `url(${yellow_logo})`,
-                backgroundSize: 'contain',      
+                backgroundSize: '90%',
+                backgroundRepeat: 'no-repeat',     
                 }}>
       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
         <p className="t-title2">K</p>
@@ -93,7 +130,8 @@ const Team = () => {
         style={{ display: 'flex',
                 height: '110vh', 
                 backgroundImage: `url(${red_logo})`,
-                backgroundSize: 'contain',      
+                backgroundSize: '90%',
+                backgroundRepeat: 'no-repeat',     
                 }}>
       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
         <p className="t-title3">C</p>
@@ -112,7 +150,8 @@ const Team = () => {
         style={{ display: 'flex',
                 height: '110vh', 
                 backgroundImage: `url(${green_logo})`,
-                backgroundSize: 'contain',      
+                backgroundSize: '90%',
+                backgroundRepeat: 'no-repeat',     
                 }}>
       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
         <p className="t-title4">H</p>
@@ -132,7 +171,8 @@ const Team = () => {
         style={{ display: 'flex',
                 height: '110vh', 
                 backgroundImage: `url(${blue_logo})`,
-                backgroundSize: 'contain',      
+                backgroundSize: '90%',
+                backgroundRepeat: 'no-repeat',    
                 }}>
       <div className="t-text-content2" style={{display:'flex', flexDirection:'column', height:'100%', textAlign:'left', marginLeft: 'auto',}}>
         <p className="t-title5">J</p>

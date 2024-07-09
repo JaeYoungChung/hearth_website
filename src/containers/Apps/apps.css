@@ -90,7 +90,7 @@
 
 .a-text-small {
     padding-top: 10px;
-    padding-left: 220px;
+    padding-left: 15dvw;
     font-size: 18px;
     font-weight: normal;
   }
@@ -169,7 +169,7 @@
 
   .apps-icons {
     position: relative;
-    padding-top: 15px;
+    padding-top: 55dvh;
     justify-content: right;
     display: flex; 
   }
@@ -233,7 +233,7 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 15dvh;
+      padding-top: 3dvh;
       padding-left: 12vw;
       padding-right: 12vw;
       text-align: center;
@@ -256,13 +256,13 @@
     }
   
     .a-text-medium {
-      font-size: 27px;
+      font-size: 30px;
     }
   
     .a-text-small {
       padding-left: 0;
       padding-right: 0;
-      font-size: 16px;
+      font-size: 17px;
       opacity: 0.8;
       user-select: none;
     }

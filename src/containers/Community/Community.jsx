@@ -63,7 +63,6 @@ const Community = () => {
   })
     .then(() => {
       setIsRegistered(true);
-      setEmail(""); // Clear the email input field
 
         // Send email using EmailJS
         const templateParams = {
@@ -90,7 +89,7 @@ const Community = () => {
           <p className='c-line2'>Hearthside</p>
           <p className='c-line3'>{t("community.c-line3")}</p>
           <div className="c-inputBox"
-            style={{borderColor: !isRegistered ? 'white' : 'green'}}>
+            style={{borderColor: !isRegistered ? 'white' : '#39FF14'}}>
             <input
                 type="text"
                 placeholder={t("community.email")}
@@ -100,7 +99,7 @@ const Community = () => {
                 className={!isValidEmail ? 'invalid' : ''} 
             />                
             <p className="register" onClick={!isRegistered ? handleRegister : null}
-                style={{color: !isRegistered ? 'white' : 'green'}}>
+                style={{color: !isRegistered ? 'white' : '#39FF14'}}>
                 {isRegistered ? t("community.registered") : t("community.register")}
             </p> 
           </div>
