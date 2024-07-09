@@ -84,7 +84,7 @@ const Navbar = () => {
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1,
+      threshold: 0.5,
     });
 
     const sections = document.querySelectorAll('section');
@@ -103,11 +103,12 @@ const Navbar = () => {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(elementId); // Add this line
     }
     closeMobileMenu();
   };
 
-  const Menu = () => (
+  const Menu = ({ activeSection }) => (
     <>
       <li className='home-nav-item'>
         <p>
@@ -221,10 +222,13 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
-            <Menu/>
+          <Menu activeSection={activeSection} />
             <p className='home-mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
-            <button type="button" className='h-m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-            <div className="m-navbar-icons">
+            {activeSection !== 'home' && (
+    <button type="button" className='h-m-nav-button' onClick={handleButtonClick}>
+      {t("navbar.take_test")}
+    </button>
+  )}            <div className="m-navbar-icons">
               <img src = {icon_instagram} className="m-navbar-icon"/>
               <img src = {icon_facebook} className="m-navbar-icon"/>
               <img src = {icon_x} className="m-navbar-icon"/>
@@ -267,7 +271,7 @@ const Navbar = () => {
       {shouldShowMenu && (
           <div className = "navbar-links">      
               <div className="navbar-links_container">
-                <Menu/>
+                <Menu activeSection={activeSection} />
               </div>
           </div>
         )}
@@ -296,8 +300,11 @@ const Navbar = () => {
                   )}
             </div>
           <p onClick={handleBlogClick}>{t("navbar.blog")}</p>
-          <button type="button" className='nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
-        </div>
+          {activeSection !== 'home' && (
+    <button type="button" className='nav-button' onClick={handleButtonClick}>
+      {t("navbar.take_test")}
+    </button>
+  )}        </div>
       </div>
   )
 }
