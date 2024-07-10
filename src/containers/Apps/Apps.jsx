@@ -85,7 +85,7 @@ function Apps() {
     </div>
     );  
   }
-   
+
   return (
     <div id="apps" className="apps">
       <div className='a-left-section'>

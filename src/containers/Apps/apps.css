@@ -262,7 +262,7 @@
     .a-text-small {
       padding-left: 0;
       padding-right: 0;
-      font-size: 17px;
+      font-size: 16px;
       opacity: 0.8;
       user-select: none;
     }
@@ -290,7 +290,7 @@
     .apps-icons {
       order: 2;
       justify-content: center;
-      margin-top: 2.0dvh;
+      margin-top: 3.0dvh;
     }
     
     .ios-icon {
