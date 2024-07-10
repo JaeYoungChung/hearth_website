@@ -94,13 +94,13 @@ function Apps() {
       <div className="a-right-section">
           <TextSection color={imageData[selected].color} text={imageData[selected].text} fade={fade} />
       </div>
-      <div className="a-right-section">
+      <div className="a-right-bottom-section">
         <div className="apps-icons">
-              <img src={download_appstore} className="ios-icon"/>
-              <img src={download_playstore} className="android-icon"/>    
-            </div>
-            <div className='a-btn-section'>
-              <ButtonSection setSelected={setSelected} selected={selected} setFade={setFade} />
+          <img src={download_appstore} className="ios-icon"/>
+          <img src={download_playstore} className="android-icon"/>    
+        </div>
+        <div className='a-btn-section'>
+          <ButtonSection setSelected={setSelected} selected={selected} setFade={setFade} />
         </div>
       </div>
     </div>

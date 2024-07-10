@@ -95,8 +95,7 @@ const Team = () => {
         <div className="t-paragraph1">
             <p>{t("team.line1")}{t("team.line2")}{t("team.line3")}{t("team.line4")}</p><br/>
             <em>{t("team.line5")}</em><br/><br></br>
-            <p>{t("team.line6")}</p>
-            <p>{t("team.line7")}{t("team.line8")}</p><br/>
+            <p>{t("team.line6")}{t("team.line7")}{t("team.line8")}</p><br/>
             <p>{t("team.line9")}<em>{t("team.line10")}</em></p>
         </div>
       </div>

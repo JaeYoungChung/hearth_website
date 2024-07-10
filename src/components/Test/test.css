@@ -2,79 +2,14 @@
   font-style: italic;
 }
 
-.centered-container {
-    padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .centered-container img {
-    position: relative;
-    height: 180px;
-    justify-content: center;
-    z-index: -30;
-    opacity: 1;
-  }
-
-  .fade-out {
-    opacity: 0;
-  }
-
-  .fade-in {
-    opacity: 0;
-    animation: fadeInAnimation 0.5s ease-in forwards;
-  }
-
-  .fade-transition {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-
-  .second-text {
-    letter-spacing: 5px;
-    margin-top: 0px;
-    font-size: 1.7em;
-    color: white;
-    }
-  
-  .centered-container p {
-    letter-spacing: 3px;
-    margin-top: 0px;
-    font-size: 1.7em;
-    color: white;
-    }
-
-  .centered-container p:last-child {
-    font-size: 1.2em;
-    color: white;
-    padding-bottom: 50px;
-  }
-  
-  .centered-container button {
-    padding: 3px 25px;
-    font-size: 1.2em;
-    color: white;
-    border: 1px solid white;
-    cursor: pointer;
-    margin-top: 50px;
-  }
-  
-  .centered-container button:hover {
-    background-color: #0056b3;
-  }
-
-  .t-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    position: sticky;
-    top: 0;
-    z-index: 40;
+.t-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
 }
 
 .t-navbar-links_logo{
@@ -162,6 +97,71 @@ option.korean::after {
   }
 }
 
+.centered-container {
+  padding-top: 7dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity 1s ease-in-out;
+}
+
+.centered-container img {
+  position: relative;
+  height: 180px;
+  justify-content: center;
+  z-index: -30;
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 0.5s ease-in forwards;
+}
+
+.fade-transition {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.second-text {
+  letter-spacing: 5px;
+  margin-top: 0px;
+  font-size: 1.7em;
+  color: white;
+  }
+
+.centered-container p {
+  letter-spacing: 3px;
+  margin-top: 0px;
+  font-size: 1.7em;
+  color: white;
+  }
+
+.centered-container p:last-child {
+  font-size: 1.2em;
+  color: white;
+  padding-bottom: 50px;
+}
+
+.centered-container button {
+  padding: 3px 25px;
+  font-size: 1.2em;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.centered-container button:hover {
+  background-color: #0056b3;
+}
+
 .centered-content {
   display: flex;
   flex-direction: column;
@@ -169,14 +169,14 @@ option.korean::after {
 }
 
 .centered-content img {
-  height: 150px;
+  height: 20dvh;
   z-index: -10;
   opacity: 0.3;
 }
 
 .text-overlay {
   position: absolute;
-  top: 40%;
+  top: 35dvh;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -186,7 +186,7 @@ option.korean::after {
 
 .test-input {
   position: absolute;
-  top: 42%;
+  top: 42dvh;
   text-align: center;
   border-bottom: 2px solid white;
   background-color: transparent;
@@ -195,7 +195,7 @@ option.korean::after {
 }
 
 .alphabet-container {
-  padding-top: 30px;
+  padding-top: 7dvh;
 }
 
 .alphabet-row {

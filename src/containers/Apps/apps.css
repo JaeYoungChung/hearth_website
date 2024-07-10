@@ -48,6 +48,19 @@
   opacity: 0.5;
 }
 
+.a-right-bottom-section {
+  right: 90px;
+  position: absolute;
+  padding-top: 12%;
+  width: 54%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  justify-content: space-between;
+  transition: opacity 0.5s ease;
+}
+
 .a-full-screen-image {
   height: 100vh;
   object-fit: cover;
@@ -125,14 +138,14 @@
 }
 
 .a-button-container > button, .a-button-container > p {
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .a-square-button {
   margin-bottom: 5px;
   background-color: grey;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -165,6 +178,12 @@
   
   .purple {
     background-color: purple;
+  }
+
+  .a-btn-section {
+    position: relative;
+    justify-content: right;
+    display: flex; 
   }
 
   .apps-icons {
@@ -203,15 +222,6 @@
       display: flex;
     }
 
-    .a-btn-section {
-      order: 1;
-      width: 90vw;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      justify-content: center;
-      display: flex;
-    }
-
     .a-square-button {
       width: 43px;
       height: 43px;
@@ -234,6 +244,22 @@
       width: 100%;
       display: flex;
       padding-top: 3dvh;
+      padding-left: 12vw;
+      padding-right: 12vw;
+      text-align: center;
+      align-items: center;
+      right: 0px;
+      left: 0px;
+      position: absolute;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .a-right-bottom-section {
+      width: 100%;
+      display: flex;
+      padding-top: 4dvh;
       padding-left: 12vw;
       padding-right: 12vw;
       text-align: center;
@@ -285,6 +311,16 @@
       left: 0px;
       right: 0px;
       top: 0px;
+    }
+
+    .a-btn-section {
+      order: 1;
+      width: 90vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
+      justify-content: center;
+      display: flex;
+      padding-top: 5dvh;
     }
 
     .apps-icons {
