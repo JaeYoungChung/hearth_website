@@ -262,7 +262,7 @@ svg {
     transform: translate(0%, 0%);
   }
   to {
-    transform: translate(12.5dvw, 2dvh);
+    transform: translate(13dvw, 2dvh);
   }
 }
 
@@ -927,7 +927,7 @@ transition: opacity 1.5s ease-in-out;
     scale: 100%;
   }
   to {
-    transform: translateY(-54%); 
+    transform: translateY(-53%); 
     scale: 50%;
   }
 }
@@ -1048,8 +1048,8 @@ transition: opacity 1.5s ease-in-out;
   justify-content: center;
   position: fixed; 
   top: 80dvh;
-  right: 0px;
-  left: 0px; 
+  right: 30px;
+  /* left: 0px;  */
   color: #fff; 
   opacity: 0;
   transition: opacity 1.5s ease-in-out; 
@@ -1057,9 +1057,16 @@ transition: opacity 1.5s ease-in-out;
 }
 
 .read_more {
-  display: inline;
-  margin-left: 5px;
-  width: 20px;
+  color: black;
+  display: flex;
+  position: absolute;
+  top: 75dvh;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .text-left {
@@ -1166,7 +1173,7 @@ transition: opacity 1.5s ease-in-out;
   position: absolute;
   width: 30px;
   opacity: 0;
-  top: 82dvh;
+  top: 78dvh;
   cursor: pointer;
   display: flex;
   z-index: 153;
@@ -1637,9 +1644,9 @@ to {
 .f-small-text {
   justify-content: center;
   position: fixed; 
-  top: 79.5dvh;
-  right: 0px;
-  left: 0px; 
+  top: 80dvh;
+  right: 30px;
+  /* left: 0px;  */
   color: #fff; 
   opacity: 0;
   transition: opacity 1.5s ease-in-out; 
@@ -1647,9 +1654,16 @@ to {
 }
 
 .read_more {
-  display: inline;
-  margin-left: 5px;
-  width: 20px;
+  color: black;
+  display: flex;
+  position: absolute;
+  top: 75dvh;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .text-left {
@@ -1758,7 +1772,7 @@ to {
   position: absolute;
   width: 30px;
   opacity: 0;
-  top: 82dvh;
+  top: 78dvh;
   cursor: pointer;
   display: flex;
   z-index: 153;
@@ -1917,6 +1931,18 @@ position: absolute;
 top: 80vh;
 right: 50px;
 z-index: 153;
+}
+
+.rotating-button {
+  transition: transform 0.3s ease;
+}
+
+.rotating-button.plus {
+  transform: rotate(45deg);
+}
+
+.rotating-button.x {
+  transform: rotate(0deg);
 }
 
 .f-video-container.slide-bottom-big {

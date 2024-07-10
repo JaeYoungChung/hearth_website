@@ -204,6 +204,7 @@ const Firecopy = () => {
     const rightArrowRef = useRef(null);
     const viewRef = useRef(null);
     const graphRef = useRef(null);
+    const readMoreRef = useRef(null);
     const textLeftRef = useRef(null);
     const textLeftLinesRef = useRef(null);
     const forceQuotient = useRef(null);
@@ -244,7 +245,7 @@ const Firecopy = () => {
       setSelectedLanguage(savedLanguage);
       i18n.changeLanguage(savedLanguage);
     }, [i18n]);
-    
+
     useEffect(() => {
         const video = videoRef.current;
         const textContainer = textContainerRef.current;
@@ -312,6 +313,7 @@ const Firecopy = () => {
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
+            readMoreRef.current.style.opacity = 1;
             smallTextRef.current.style.opacity = 1;
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
@@ -323,6 +325,7 @@ const Firecopy = () => {
             leftArrowRef.current.style.opacity = 0;
             rightArrowRef.current.style.opacity = 0;
             graphRef.current.style.opacity = 0;
+            readMoreRef.current.style.opacity = 0;
             smallTextRef.current.style.opacity = 0;
             smallTextRef.current.style.pointerEvents = 'none';
             bottomTextRef.current.style.pointerEvents = 'auto';
@@ -340,6 +343,7 @@ const Firecopy = () => {
             leftArrowRef.current.style.opacity = 1;
             rightArrowRef.current.style.opacity = 1;
             graphRef.current.style.opacity = 1;
+            readMoreRef.current.style.opacity = 1;
             smallTextRef.current.style.opacity = 1;
             svgRef.current.style.opacity = 1;
             videoRef.current.style.opacity = 1;
@@ -356,7 +360,7 @@ const Firecopy = () => {
         const newMobileRotation = rotationValues[originalIndex] || 0;
     
         // fire opacity darkens
-        videoRef.current.style.opacity = 0.5;
+        videoRef.current.style.opacity = 0.2;
     
         // hexagon reverse tilt
         setRotationButton(0);
@@ -368,6 +372,7 @@ const Firecopy = () => {
     
         // legend goes away, force quotient goes away, finish test goes away
         graphRef.current.style.opacity = 0;
+        readMoreRef.current.style.opacity = 0;
         forceQuotient.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 0;
     
@@ -385,6 +390,7 @@ const Firecopy = () => {
         setRotationButton(30);
         setMobileRotation(0);
         graphRef.current.style.opacity = 1;
+        readMoreRef.current.style.opacity = 1;
         forceQuotient.current.style.opacity = 1;
         closeButton.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 1;
@@ -406,7 +412,7 @@ const Firecopy = () => {
         return points;
       };
       const outerHexagonPoints = getHexagonPoints(200, 200, 200);
-      const labelHexagonPoints = getHexagonPoints(200, 200, 200);
+      const labelHexagonPoints = getHexagonPoints(200, 200, 250);
       const innerHexagonPoints = getHexagonPoints(200, 200, 200).map((point, originalIndex) => {
         // Find the custom index for the original index based on the custom sequence
         const customIndex = customOrder[originalIndex];
@@ -763,7 +769,7 @@ const Firecopy = () => {
               <text
                 className='label-text'
                 width={25}
-                fontSize={35}
+                fontSize={45}
                 x={point.x} 
                 y={point.y} 
                 fill={changeTextColor ? colors[i] : "transparent"}
@@ -818,7 +824,7 @@ const Firecopy = () => {
           </div>
           <div className="f-right-content">
             <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>        
-            <div className="f-inputBox" style={{border: isRegistered ? `1px solid green` : `1px solid white`}}>
+            <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
               <input
                 type="text"
                 placeholder={t("community.email")}
@@ -830,7 +836,7 @@ const Firecopy = () => {
               <p
                 className={`register ${isRegistered ? 'registered-green' : ''}`}
                 onClick={!isRegistered ? handleRegister : null}
-                style={{color: !isRegistered ? 'white' : 'green'}}
+                style={{color: !isRegistered ? 'white' : '#39FF14'}}
               >
                 {isRegistered ? t("community.registered") : t("community.register")}
               </p>
@@ -870,12 +876,7 @@ const Firecopy = () => {
                             <div className={`f-progress-fill f-color-${originalIndex}`} style={{ width: `${hexagonScores[score] / 36 * 100}%` }}></div>
                         </div>
                       <p className='f-percentage'>{Math.round(hexagonScores[`s${originalIndex+1}`]/36*100)}%</p>
-                      <img 
-                        src={read_more} 
-                        className="read_more" 
-                        onClick={() => handleReadMoreClick(originalIndex)} 
-                        alt="Description" 
-                      />                    
+                                        
                     </li>
                 );
               })}
@@ -891,9 +892,11 @@ const Firecopy = () => {
             }}
             >
           <span>{smallTextContent}</span>
-          <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
+          {/* <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} /> */}
         </div>
-        
+        <button className="read_more" ref={readMoreRef} onClick={() => handleReadMoreClick(0)}>
+          Read More
+        </button>
         {showBackButton && (
         <div className="f-back-button" onClick={handleBackButtonClick}
           style={{
