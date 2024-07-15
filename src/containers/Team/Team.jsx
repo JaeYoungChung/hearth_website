@@ -12,7 +12,7 @@ import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-
+ 
 const Team = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -25,10 +25,8 @@ const Team = () => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentPage(newPage);
-      }, 200); // This should match the transition duration in CSS
-      setTimeout(() => {
         setIsTransitioning(false);
-      }, 500); // Delay longer than the transition duration
+      }, 300);
     }
   };
   
