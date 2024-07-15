@@ -72,7 +72,7 @@ function Apps() {
   }
 
   function ImageSection({ image, fade }) {
-    return <img className={`a-full-screen-image ${fade ? 'fade-in' : 'fade-out'}`} src={image} alt="background" />;
+    return <img className={`a-full-screen-image ${fade ? 'fade-in' : 'fade-out'}`} src={image} loading="eager" alt="background" />;
   }
   
   function TextSection({ color, text, fade }) {
