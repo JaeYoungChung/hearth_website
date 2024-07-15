@@ -28,7 +28,7 @@ const Team = () => {
       }, 200); // This should match the transition duration in CSS
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 400); // Delay longer than the transition duration
+      }, 500); // Delay longer than the transition duration
     }
   };
   

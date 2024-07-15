@@ -321,13 +321,13 @@
       padding-right: 5vw;
       justify-content: center;
       display: flex;
-      padding-top: 5dvh;
+      padding-top: 6dvh;
     }
 
     .apps-icons {
       order: 2;
       justify-content: center;
-      margin-top: 5.0dvh;
+      margin-top: 7.0dvh;
     }
     
     .ios-icon {

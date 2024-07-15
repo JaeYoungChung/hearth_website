@@ -18,7 +18,7 @@ import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-  
+
 function Apps() {
   const [t, i18n] = useTranslation("global");
   const [selected, setSelected] = useState(0);
