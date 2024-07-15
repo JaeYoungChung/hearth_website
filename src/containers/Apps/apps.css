@@ -243,7 +243,7 @@
     .a-right-section {
       width: 100%;
       display: flex;
-      padding-top: 3dvh;
+      padding-top: 8dvh;
       padding-left: 12vw;
       padding-right: 12vw;
       text-align: center;
@@ -259,7 +259,7 @@
     .a-right-bottom-section {
       width: 100%;
       display: flex;
-      padding-top: 4dvh;
+      padding-top: 6dvh;
       padding-left: 12vw;
       padding-right: 12vw;
       text-align: center;

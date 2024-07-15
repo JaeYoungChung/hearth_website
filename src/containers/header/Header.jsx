@@ -38,6 +38,7 @@ const Header = () => {
  
   return (
     <div className='header' id='home'>
+    {/* <div className={`header-background ${isLoaded ? 'loaded' : ''}`}></div> */}
       <motion.div 
         className='header-content'
         initial={{ opacity: 0 }}
@@ -106,5 +107,47 @@ const Header = () => {
     </div>
   )
 }
+
+// return (
+//   <div className='header' id='home'>
+//     <div className={`header-background ${isLoaded ? 'loaded' : ''}`}></div>
+//     <div className='header-content'>
+//       <h1 className='home_title_text'>
+//         H E A R T H
+//       </h1>
+//       <p className='home_subtitle_text'>
+//         Here to Help
+//       </p>
+//       <div className='header-content__input'>
+//         <button 
+//           type="button" 
+//           className='take-test-btn' 
+//           onClick={handleButtonClick}
+//         >
+//           {t("header.take_test")}
+//         </button>
+//       </div>
+//     </div> 
+//     <div className='header-side' id='home'>
+//       <div className="h-icons">
+//         <img src={icon_instagram} className="h-icon" alt="Instagram"/>
+//         <img src={icon_facebook} className="h-icon" alt="Facebook"/>
+//         <img src={icon_x} className="h-icon" alt="X"/>
+//         <img src={icon_threads} className="h-icon" alt="Threads"/>
+//       </div>
+//       <div className='h-email'>
+//         {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}
+//         <img
+//           src={email} 
+//           className="h-email_img" 
+//           style={{ opacity: isActive ? 0.5 : 1 }} 
+//           onClick={handleImageClick} 
+//           alt="Email"
+//         /> 
+//       </div> 
+//     </div>
+//   </div>
+// )
+// }
 
 export default Header

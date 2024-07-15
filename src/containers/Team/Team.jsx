@@ -25,10 +25,13 @@ const Team = () => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentPage(newPage);
+      }, 200); // This should match the transition duration in CSS
+      setTimeout(() => {
         setIsTransitioning(false);
-      }, 300); // This should match the transition duration in CSS
+      }, 400); // Delay longer than the transition duration
     }
   };
+  
 
   const handleSwipe = (direction) => {
     if (direction === 'Left' && currentPage < pages.length - 1) {
@@ -77,8 +80,9 @@ const Team = () => {
         ))}
       </div>
     </div>
-  );  
-};
+  );
+        }
+  
 
   const Page1 = ({ t }) => (
     <div className='t-page1' 
@@ -116,9 +120,7 @@ const Team = () => {
         <div className="t-paragraph2">
             <p>{t("team.p2_line1")}</p>
             <p>{t("team.p2_line2")}</p><br/>
-            <p>{t("team.p2_line3")}</p>
-            <p>{t("team.p2_line4")}</p>
-            <p>{t("team.p2_line5")}</p>
+            <p>{t("team.p2_line3")} {t("team.p2_line4")} {t("team.p2_line5")}</p>
         </div>
       </div>
     </div>
@@ -137,13 +139,11 @@ const Team = () => {
         <p className="t-subtitle3">Visualizer</p><br/>
         <div className="t-paragraph2">
             <p>{t("team.p3_line1")}</p><br/>
-            <p>{t("team.p3_line2")}</p>
-            <p>{t("team.p3_line3")}</p>
-            <p>{t("team.p3_line4")}</p>
+            <p>{t("team.p3_line2")} {t("team.p3_line3")} {t("team.p3_line4")}</p>
         </div>
       </div>
     </div>
-  );
+  ); 
   const Page4 = ({ t }) => (
     <div className='t-page2' 
         style={{ display: 'flex',
@@ -158,9 +158,7 @@ const Team = () => {
         <div className="t-paragraph2">
             <p>{t("team.p4_line1")}</p>
             <p>{t("team.p4_line2")}</p><br/>
-            <p>{t("team.p4_line3")}</p>
-            <p>{t("team.p4_line4")}</p>
-            <p>{t("team.p4_line5")}</p>
+            <p>{t("team.p4_line3")} {t("team.p4_line4")} {t("team.p4_line5")}</p>
         </div>
       </div>
     </div>
@@ -180,9 +178,7 @@ const Team = () => {
             <p>{t("team.p5_line1")}</p>
             <p>{t("team.p5_line2")}</p>
             <p>{t("team.p5_line3")}</p><br/>
-            <p>{t("team.p5_line4")}</p>
-            <p>{t("team.p5_line5")}</p>
-            <p>{t("team.p5_line6")}</p>
+            <p>{t("team.p5_line4")} {t("team.p5_line5")} {t("team.p5_line6")}</p>
         </div>
       </div>
     </div>
