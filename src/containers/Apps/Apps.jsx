@@ -1,6 +1,6 @@
 import React from 'react';
 import './apps.css';
-import helm_flame from '../../assets/helm_flame.png'
+import helm_flame from '../../assets/helm_flame2.png'
 import envisage_flame from '../../assets/envisage_flame.png'
 import attune_flame from '../../assets/attune_flame.png'
 import reverie_flame from '../../assets/reverie_flame.png'
