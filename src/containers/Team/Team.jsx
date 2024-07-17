@@ -79,7 +79,7 @@ const Team = () => {
       </div>
     </div>
   );
-        }
+}
   
 
   const Page1 = ({ t }) => (

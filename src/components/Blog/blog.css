@@ -472,7 +472,8 @@ option.korean::after {
   }
   .blog-icon-2 img{
     z-index: 30;
-    width: 20px;
+    width: 30px;
+    margin: 10px;
   }
   
   .overlay-bottom-right {
@@ -892,6 +893,12 @@ input[type="text"], textarea {
     margin: 0;
     padding: 0;
   }
+
+  .blog-icon-2 img{
+    z-index: 30;
+    width: 20px;
+    margin: 5px;
+  }
   
   .share-popup {
     background-color: black;
@@ -1225,6 +1232,12 @@ input[type="text"], textarea {
     z-index: 99;
     margin: 0;
     padding: 0;
+  }
+
+  .blog-icon-2 img{
+    z-index: 30;
+    width: 20px;
+    margin: 5px;
   }
   
   .share-popup {

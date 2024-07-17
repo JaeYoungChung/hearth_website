@@ -71,7 +71,7 @@ const Header = () => {
             type="button" 
             className='take-test-btn' 
             onClick={handleButtonClick}
-            whileHover={{ scale: 1.05, backgroundColor: '#0056b3' }}
+            whileHover={{ scale: 1.05, backgroundColor: 'white', color: 'black' }}
             animate={{ 
               boxShadow: ['0px 0px 0px rgba(255,255,255,0)', '0px 0px 20px rgba(255,255,255,0.5)', '0px 0px 0px rgba(255,255,255,0)']
             }}

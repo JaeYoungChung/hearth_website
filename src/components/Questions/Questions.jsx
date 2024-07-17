@@ -241,13 +241,13 @@ function Survey() {
       // Move to the next question with fading transition if the question is not answered
       if (currentQuestion < totalQuestions && selectedScores[currentQuestion - 1] === null) {
         setIsTransitioning(true);
-        document.querySelector('.survey-container').classList.add('fade-out');
+        document.querySelector('.question-text').classList.add('fade-out');
         setTimeout(() => {
           setCurrentQuestion(currentQuestion + 1);
-          document.querySelector('.survey-container').classList.remove('fade-out');
-          document.querySelector('.survey-container').classList.add('fade-in');
+          document.querySelector('.question-text').classList.remove('fade-out');
+          document.querySelector('.question-text').classList.add('fade-in');
           setTimeout(() => {
-            document.querySelector('.survey-container').classList.remove('fade-in');
+            document.querySelector('.question-text').classList.remove('fade-in');
             setIsTransitioning(false);
           }, 500);
         }, 500);
@@ -257,13 +257,13 @@ function Survey() {
     const handleNext = () => {
       if (currentQuestion < totalQuestions) {
         setIsTransitioning(true);
-        document.querySelector('.survey-container').classList.add('fade-out');
+        document.querySelector('.question-text').classList.add('fade-out');
         setTimeout(() => {
           setCurrentQuestion(currentQuestion + 1);
-          document.querySelector('.survey-container').classList.remove('fade-out');
-          document.querySelector('.survey-container').classList.add('fade-in');
+          document.querySelector('.question-text').classList.remove('fade-out');
+          document.querySelector('.question-text').classList.add('fade-in');
           setTimeout(() => {
-            document.querySelector('.survey-container').classList.remove('fade-in');
+            document.querySelector('.question-text').classList.remove('fade-in');
             setIsTransitioning(false);
           }, 500);
         }, 500);
@@ -462,7 +462,7 @@ function Survey() {
             opacity: isSubmitted ? 0.8 : 0.3,
             transition: 'opacity 3s ease-in-out',
           }}   
-        ></div>      
+        ></div>
       {!isSubmitted ? ( 
         <div className='question-container'>
           <div className="survey-container">

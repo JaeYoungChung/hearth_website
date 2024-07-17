@@ -91,6 +91,7 @@ hr {
 
 #c-inputID {
   font-size: 18px;
+  padding-left: 15px;
 }
  
 #c-inputID::placeholder {

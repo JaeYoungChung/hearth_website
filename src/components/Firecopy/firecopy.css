@@ -124,7 +124,6 @@ video {
  
 .f-text-container {
   position: relative;
-  border: 1px solid white;
   padding: 40px;
   color: white;
   right: 100px;
@@ -246,7 +245,7 @@ svg {
 
 @keyframes slideToRight {
   from { transform: translate(-50%, -5%); }
-  to { transform: translate(21dvw, -2dvh); }
+  to { transform: translate(21dvw, -2.5dvh); }
 }
 
 .f-video-container.slide-right {
@@ -262,7 +261,7 @@ svg {
     transform: translate(0%, 0%);
   }
   to {
-    transform: translate(13dvw, 2dvh);
+    transform: translate(11.8dvw, 2.5dvh);
   }
 }
 
@@ -308,6 +307,7 @@ svg {
   font-weight: bold;
 }
 .left-line3 {
+  height: 150px;
   padding-top: 30px;
   font-size: 15px;
   text-align: center;
@@ -579,7 +579,7 @@ color: rgb(255, 0, 255);
   -moz-appearance: none;
   width: 17px;
   height: 17px;
-  border: 2px solid green;
+  border: 2px solid rgb(var(--red), var(--green), var(--blue));
   border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
@@ -588,7 +588,7 @@ color: rgb(255, 0, 255);
 }
 
 .custom-checkbox:checked {
-  background-color: green;
+  background-color: rgb(var(--red), var(--green), var(--blue));
 }
 
 .custom-checkbox:focus {

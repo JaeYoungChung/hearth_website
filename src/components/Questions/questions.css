@@ -262,15 +262,14 @@ option.korean::after {
   width: 40px;
   height: 40px;
   border-radius: 25px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   margin: 0 20px;
   cursor: pointer;
-  opacity: 0.1;
-  -moz-opacity: 0.1;
 }
 
 .q-circle.selected {
-  opacity: 1;
+  background-color: white;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
 }
 
 .q-circle-label {

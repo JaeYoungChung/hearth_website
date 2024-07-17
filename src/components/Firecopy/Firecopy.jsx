@@ -847,7 +847,7 @@ const Firecopy = () => {
                 type="checkbox"
                 id="check1"
                 className="custom-checkbox"
-                style={{borderColor: `rgb(${red}, ${green}, ${blue})`}} 
+                style={{ '--red': red, '--green': green, '--blue': blue }}
                 checked={isFirstCheckboxChecked}
                 onChange={handleFirstCheckboxChange}
               />

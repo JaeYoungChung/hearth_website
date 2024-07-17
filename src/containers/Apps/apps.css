@@ -124,9 +124,9 @@
 
 .a-button-section {
   display: flex;
-  position: absolute;
+  position: relative;
   z-index: 3;
-  left: 42%;
+  right: 5%;
   top: 100%;
 }
 
@@ -184,7 +184,7 @@
   .a-btn-section {
     position: relative;
     justify-content: right;
-    display: flex; 
+    display: flex;
   }
 
   .apps-icons {

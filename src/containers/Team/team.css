@@ -48,6 +48,7 @@
 .t-page-indicators {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .t-indicator {

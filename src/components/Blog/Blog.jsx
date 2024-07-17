@@ -507,7 +507,7 @@ function BlogPostDetail({ post, onClose }) {
   
       return () => {
         window.removeEventListener('popstate', handlePopState);
-      };
+      }; 
     }, [onClose]);
     return (
       <div className="blog-post-detail">

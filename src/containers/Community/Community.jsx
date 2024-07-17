@@ -82,7 +82,7 @@ const Community = () => {
       console.error("Error saving email: ", error);
     });
 };
-
+ 
     return (
         <div className="community">
           <p className='c-line1'>Join the</p>
@@ -125,5 +125,5 @@ const Community = () => {
         </div>
       );
 }
-
+ 
 export default Community;
