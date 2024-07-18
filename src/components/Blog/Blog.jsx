@@ -527,7 +527,9 @@ function BlogPostDetail({ post, onClose }) {
         </div>
         <div className="modal-body">
           <h2>{post.title}</h2>
-          <p>{post.content}</p>
+          {post.content.split('\\n\\n').map((paragraph, index) => (
+          <p key={index}>{paragraph}<br></br></p>
+        ))}
           <div className='back-home'
             onClick={onClose}              
             style={{
