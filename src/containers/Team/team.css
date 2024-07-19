@@ -258,7 +258,8 @@
     .t-page-indicators {
       color: white;
       position: absolute;
-      top: 120px;
+      top: 15%;
+      bottom: 75%;
       right: 50px;
       gap: 3px;
       z-index: 5;
