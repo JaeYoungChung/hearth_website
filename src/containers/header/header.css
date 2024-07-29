@@ -104,7 +104,7 @@
 @media (max-width: 1023px) { 
 
   .header-content{
-      padding-top: 50%;
+      padding-top: 35dvh;
     }
   
     .home_title_text {

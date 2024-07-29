@@ -27,13 +27,13 @@ const Test = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
 
   const buttonStyle = {
     transform: isHovered ? 'scale(1.1)' : 'scale(1)',
     backgroundColor: isHovered ? 'white' : 'black',
     color: isHovered ? 'black' : 'white',
   };
-
 
     //language
     const [t, i18n] = useTranslation("global");
@@ -306,10 +306,9 @@ const Test = () => {
                     )}
                     {animationStage === 4 && (
                     <button className='start-test-btn'
-                    style={buttonStyle}
                     onClick={handleTextButtonClick}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setIsHovered2(true)}
+                    onMouseLeave={() => setIsHovered2(false)}
                     >
                       {t("test.proceed")}</button>
                     )}

@@ -269,7 +269,6 @@ option.korean::after {
   transition: opacity 1s ease-in-out;
 }
 
-
 .move-up {
   transform: translateY(-120px);
   transition: transform 1s ease-in-out;
@@ -434,7 +433,7 @@ option.korean::after {
   }
 
   .centered-container {
-    padding-top: 10dvh;
+    padding-top: 8dvh;
   }
   
   .centered-container img {
@@ -457,11 +456,11 @@ option.korean::after {
   }
   
   .test-input {
-    top: 35dvh;
+    top: 33dvh;
   }
   
   .alphabet-container {
-    padding-top: 30px;
+    padding-top: 25px;
   }
 
   .alphabet-container {
