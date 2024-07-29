@@ -257,10 +257,12 @@ const Firecopy = () => {
 
         video.style.opacity = 0;
         overlay.style.opacity = 0;
+        overlay.style.display = 'none';
         video.style.transition = 'opacity 1s ease-in-out';
         overlay.style.transition = 'opacity 1s ease-in-out';
         setTimeout(() => {
           video.style.opacity = 1;
+          overlay.style.display = 'block';
           overlay.style.opacity = 1;
           if (window.matchMedia('(max-width: 1023px)').matches) {
             video.style.opacity = 1;
