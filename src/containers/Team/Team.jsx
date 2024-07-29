@@ -25,6 +25,7 @@ const Team = () => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentPage(newPage);
+        // Remove the second setTimeout
         setIsTransitioning(false);
       }, 300);
     }
@@ -65,7 +66,7 @@ const Team = () => {
 
   return (
     <div className="team" {...swipeHandlers}>
-      <div className={`t-page ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
+      <div className={`t-page ${isTransitioning ? 'transitioning' : ''}`}>
         {pages[currentPage]}
       </div>
       <div className="t-page-indicators">
