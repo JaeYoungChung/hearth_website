@@ -26,6 +26,15 @@ const Test = () => {
   const [brightness, setBrightness] = useState(1.0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const buttonStyle = {
+    transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+    backgroundColor: isHovered ? 'white' : 'black',
+    color: isHovered ? 'black' : 'white',
+  };
+
+
     //language
     const [t, i18n] = useTranslation("global");
     const [isOpen, setIsOpen] = useState(false);
@@ -239,7 +248,13 @@ const Test = () => {
           <img src={logo} alt='logo' />
           <p className='t-first-text'>HEARTH</p>
           <div className='second-text'>T E S T</div>
-          <button type="button" className='test-button' onClick={handleButtonClick2}>{t("test.start")}</button>
+          <button type="button" className='test-button'
+          style={buttonStyle}
+           onClick={handleButtonClick2}
+           onMouseEnter={() => setIsHovered(true)}
+           onMouseLeave={() => setIsHovered(false)}
+           >
+            {t("test.start")}</button>
         </>
       ) : (
         <div className='fade-in'>
@@ -290,7 +305,13 @@ const Test = () => {
                       {t("test.choose")} </div>
                     )}
                     {animationStage === 4 && (
-                    <button className='start-test-btn' onClick={handleTextButtonClick}>{t("test.proceed")}</button>
+                    <button className='start-test-btn'
+                    style={buttonStyle}
+                    onClick={handleTextButtonClick}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    >
+                      {t("test.proceed")}</button>
                     )}
                   </div> 
               </div>

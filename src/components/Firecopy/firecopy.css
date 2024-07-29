@@ -83,10 +83,10 @@ video {
 
 .f-video-container {
   backface-visibility: hidden;
-  /* width: 600px;
-  height: 610px; */
-  width: 43%;
-  height: 43%;
+  width: 600px;
+  height: 610px;
+  /* width: 43%;
+  height: 43%; */
   position: relative;
   z-index: 0; /*video is above the hexagon */
   transform: translate3d(0,0,0);
@@ -107,6 +107,7 @@ video {
   -moz-mix-blend-mode: color;
   -ms-mix-blend-mode: color;
   -o-mix-blend-mode: color;
+  transition: background-color 0.3s ease-in-out;
 }
 
 #color-overlay {
@@ -284,7 +285,7 @@ svg {
   transition: opacity 1s ease-in-out; /* Delayed fade effect */
   top: 0;
   left: 150px;
-  bottom: 50px;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -1524,7 +1525,7 @@ to {
     scale: 100%;
   }
   to {
-    transform: translateY(-57%); 
+    transform: translateY(-59%); 
     scale: 60%;
   }
 }
@@ -1559,7 +1560,7 @@ to {
     transform: translate(0vw, 0dvh);
   }
   to {
-    transform: translate(0vw, -7.5dvh) scale(75%);
+    transform: translate(0vw, -7dvh) scale(75%);
   }
 }
 

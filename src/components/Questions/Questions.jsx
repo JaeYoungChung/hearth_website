@@ -483,17 +483,20 @@ function Survey() {
             </div> 
             {currentQuestion > 1 && (
               <span className="q-back-button" onClick={() => setCurrentQuestion(currentQuestion - 1)}>
-                <img src={left_btn} width={22}></img>{t("questions.back")}
+                {/* <img src={left_btn} width={22}></img> */}
+                {t("questions.back")}
               </span>
             )}
             {selectedScores[currentQuestion - 1] !== null && currentQuestion < totalQuestions && !isTransitioning && (
               <span className="q-next-button" onClick={handleNext}>
-                {t("questions.next")}<img src={right_btn} width={22}></img>
+                {t("questions.next")}
+                {/* <img src={right_btn} width={22}></img> */}
               </span>
             )}
             {currentQuestion === totalQuestions && selectedScores[currentQuestion - 1] !== null &&(
               <span className="q-submit-button" onClick={handleSubmit}>
-                {t("questions.submit")}<img src={right_btn} width={22}></img>
+                {t("questions.submit")}
+                {/* <img src={right_btn} width={22}></img> */}
               </span>
             )}
           </div>

@@ -16,12 +16,11 @@
 }
   
 .survey-container {
-    padding-top: 1px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 100px auto;
+    margin: 27dvh auto;
     z-index: 2;
     /* transition: opacity 0.5s ease-in-out; */
 }
@@ -259,8 +258,8 @@ option.korean::after {
 
 .q-circle {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.1);
   margin: 0 20px;
@@ -286,36 +285,36 @@ span {
 
 .q-next-button {
   position: absolute;
-  top: 50dvh;
+  top: 40dvh;
   right: 0px;
-  font-size: 18px;
+  font-size: 22px;
   vertical-align: middle;
 }
 
 .q-back-button {
   position: absolute;
-  top: 50dvh;
+  top: 40dvh;
   left: 0px;
-  font-size: 18px;
+  font-size: 22px;
   vertical-align: middle;
 }
 
 .q-back-button img {
   margin-right: 10px;
-  width: 18px;
+  width: 22px;
   vertical-align: middle;
 }
 
 .q-next-button img {
   margin-left: 10px;
-  width: 18px;
+  width: 22px;
   vertical-align: middle;
 }
 
 .q-submit-button {
   position: absolute;
-  top: 50dvh;
-  font-size: 18px;
+  top: 40dvh;
+  font-size: 22px;
   right: 0px;
   vertical-align: middle;
 }

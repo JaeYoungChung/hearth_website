@@ -196,6 +196,7 @@ const Firecopy = () => {
 
     //references
     const videoRef = useRef(null);
+    const overlayRef = useRef(null);
     const textContainerRef = useRef(null);
     const bottomTextRef = useRef(null);
     const svgRef = useRef(null); 
@@ -248,15 +249,19 @@ const Firecopy = () => {
 
     useEffect(() => {
         const video = videoRef.current;
+        const overlay = overlayRef.current;
         const textContainer = textContainerRef.current;
         const bottomText = bottomTextRef.current;
         closeButton.current.style.pointerEvents = 'none';
         viewRef.current.style.opacity = 0;
 
         video.style.opacity = 0;
+        overlay.style.opacity = 0;
         video.style.transition = 'opacity 1s ease-in-out';
+        overlay.style.transition = 'opacity 1s ease-in-out';
         setTimeout(() => {
           video.style.opacity = 1;
+          overlay.style.opacity = 1;
           if (window.matchMedia('(max-width: 1023px)').matches) {
             video.style.opacity = 1;
             setTimeout(() => {
@@ -698,6 +703,7 @@ const Firecopy = () => {
             <div 
                 className="color-overlay"
                 id="color-overlay"
+                ref={overlayRef}
                 style={{ 
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
@@ -723,8 +729,8 @@ const Firecopy = () => {
                 <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
               </div>
             </div>
-            <img src={rotateLeft} className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}></img>
-            <img src={rotateRight} className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}></img>
+          <img src={rotateLeft} className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}></img>
+          <img src={rotateRight} className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}></img>
           <div className={tiltedsvg ? 'tilted-svg' : ''}>
             <div className="svg-wrapper">
               <div
