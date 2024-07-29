@@ -94,6 +94,7 @@ video {
 
 .color-overlay {
   position: absolute;
+  opacity: 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -120,7 +121,10 @@ video {
   left: 57%;
   width: 100%;
   top: 0;
+  bottom: 0;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 }
  
 .f-text-container {
@@ -1485,7 +1489,7 @@ to {
   right: 0;
   left: 0;
   width: 100%;
-  top: 0;
+  top: 10dvh;
   flex-direction: column;
 }
 
@@ -1511,7 +1515,7 @@ to {
   position: absolute;
   left: 0;
   right: 0;
-  top: 80dvh;
+  top: 70dvh;
   justify-content: center;
 }
 
