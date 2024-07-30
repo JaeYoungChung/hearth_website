@@ -307,8 +307,6 @@ const Test = () => {
                     {animationStage === 4 && (
                     <button className='start-test-btn'
                     onClick={handleTextButtonClick}
-                    onMouseEnter={() => setIsHovered2(true)}
-                    onMouseLeave={() => setIsHovered2(false)}
                     >
                       {t("test.proceed")}</button>
                     )}

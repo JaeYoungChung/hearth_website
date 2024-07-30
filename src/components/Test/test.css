@@ -98,7 +98,7 @@ option.korean::after {
 }
 
 .centered-container {
-  padding-top: 7dvh;
+  padding-top: 10dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -296,7 +296,13 @@ option.korean::after {
   opacity: 0;
   animation: fadeInAnimation 1s ease-in forwards;
   transform: translateY(-50px);
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out, background-color 0.3s, color 0.3s;
+  border: 2px solid white; /* Add a border to make the button visible when transparent */
+}
+
+.start-test-btn:hover {
+  background-color: white !important;
+  color: black;
 }
 
 .fade-image-in.brighter {

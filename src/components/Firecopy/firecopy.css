@@ -134,7 +134,7 @@ video {
   right: 100px;
   width: 45%;
   opacity: 0;
-  min-height: 80vh; /* Set a fixed height for mobile */
+  max-height: 80vh; /* Set a fixed height for mobile */
   overflow-y: auto; /* Enable vertical scrolling */
   z-index: 50;
   font-size: 16px;
@@ -576,6 +576,8 @@ color: rgb(255, 0, 255);
 .check-text {
   margin-bottom: 10px;
   text-align: start;
+  display: flex;
+  align-items: center;
 }
 
 .custom-checkbox {

@@ -249,8 +249,8 @@ function Survey() {
           setTimeout(() => {
             document.querySelector('.question-text').classList.remove('fade-in');
             setIsTransitioning(false);
-          }, 500);
-        }, 500);
+          }, 300);
+        }, 300);
       }
     };
 
