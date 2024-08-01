@@ -92,7 +92,7 @@ function Apps() {
         <ImageSection image={imageData[selected].src} fade={fade} />
       </div>
       <div className="a-right-section">
-          <TextSection color={imageData[selected].color} text={imageData[selected].text} fade={fade} />
+        <TextSection color={imageData[selected].color} text={imageData[selected].text} fade={fade} />
       </div>
       <div className="a-right-bottom-section">
         <div className="apps-icons">

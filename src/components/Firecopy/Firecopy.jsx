@@ -35,51 +35,41 @@ import app_transcend from '../../assets/app_transcend.png';
 import { hexToCSSFilter } from 'hex-to-css-filter';
 import { isVisible } from '@testing-library/user-event/dist/utils';
 
-
 const Firecopy = () => {
-
+    const [t, i18n] = useTranslation("global");
     const hexagonData = [
         {
-            title: "Helm",
-            color: "rgb(0, 255, 0)",
-            subTitle: "Independence",
-            paragraph: "HELM is the Cognitive Force that allows one to lead a meaningful life and develop a character of depth. It is a path that must be cultivated in order to reach self-actualization and fulfill the calling given to each and every one, covering the full spectrum from the archetypal to the idiosyncratic. Introspection, Integration, and Individuation are the three key components of this ",
-            belowText: "Emerald Flame.",
+          title: "Helm",
+          color: "rgb(0, 255, 0)",
+          subTitle: t("apps.independence"),
+          text: [t("apps.helm_intro"), t("apps.helm_components"), t("apps.helm_are"), t("apps.helm_flame")]
         },
         {
           title: "Transcend",
           color: "rgb(255, 0, 0)",
-          subTitle: "Volition",
-          paragraph: "TRANSCEND is the Cognitive Force that conquers and expands through courage and determination, enabling one to confront and march above one’s own fear and pain. It is the mindset of a warrior, which must be harnessed as a means to exceed preconceived limitations, and perform valiantly under pressure. Passion, Resilience, and Ascendency  are the three key components of this ",
-          belowText: "Crimson Flame.",
-        },
+          subTitle: t('apps.volition'),
+          text: [t("apps.transcend_intro"), t("apps.transcend_components"), t("apps.transcend_are"), t("apps.transcend_flame")]        },
         {
           title: "Reverie",
           color: "rgb(255, 255, 0)",
-          subTitle: "Creativity",
-          paragraph: "REVERIE is the Cognitive Force that endows novelty and vivacity, blessing one’s mind with beauty and freedom of thought. It is the gift of vivid imagination and innovative creativity, which through playful roaming or cathartic brooding, kindles major breakthroughs and paradigm shifts. Curiosity, Originality, and Artistry are the three key components of this ",
-          belowText: "Canary Flame.",
-        },
+          subTitle: t('apps.creativity'),
+          text: [t("apps.reverie_intro"), t("apps.reverie_components"), t("apps.reverie_are"), t("apps.reverie_flame")]         },
         {
           title: "Harmonize",
           color: "rgb(255, 0, 255)",
-          subTitle: "Cooperability",
-          paragraph: "HARMONIZE is the Cognitive Force which enriches one’s journey with true companions and mutual cooperative alliance. It is the ability to graciously synergize through genuine bonding, creating positive relationships with others regardless of their personality or background. Sensibility, Eloquence, and Resonance are the three key components of this ",
-          belowText: "Magenta Flame.",
-        },
+          subTitle: t('apps.cooperability'),
+          text: [t("apps.harmonize_intro"), t("apps.harmonize_components"), t("apps.harmonize_are"), t("apps.harmonize_flame")]         },
         {
           title: "Envisage",
           color: "rgb(0, 0, 255)",
-          subTitle: "Cogitation",
-          paragraph: "ENVISAGE is the Cognitive Force that engenders deep insight and permits one to intuitively fathom the true nature of things. It is the art of abstract thinking and theorization, which shines through in complex decision-making processes that necessitate both analytic and holistic cognition. Reflection, Systemization, and Sagacity are the three key components of this ",
-          belowText: "Cobalt Flame.",
+          subTitle: t('apps.cogitation'),
+          text: [t("apps.envisage_intro"), t("apps.envisage_components"), t("apps.envisage_are"), t("apps.envisage_flame")]
         },
         {
           title: "Attune",
           color: "rgb(0, 255, 255)",
-          subTitle: "Adpatability",
-          paragraph: "ATTUNE is the Cognitive Force that modifies and maneuvers with great precision and pertinence, facilitating one to cleverly advance in the face of adversity. It is the tactical acumen and wits of a diplomat, which is essential for navigating through predicaments and role conflicts while maintaining balance and integrity. Perceptivity, Plasticity, and Optimization are the three key components of this ",
-          belowText: "Cyan Flame.",
+          subTitle: t('apps.adaptability'),
+          text: [t("apps.attune_intro"), t("apps.attune_components"), t("apps.attune_are"), t("apps.attune_flame")] 
         },
       ];
 
@@ -95,7 +85,6 @@ const Firecopy = () => {
     };
 
     //language
-    const [t, i18n] = useTranslation("global");
     const [isOpen, setIsOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState('en');
 
@@ -235,7 +224,7 @@ const Firecopy = () => {
     // const [slideBottomBig, setSlideBottomBig] = useState(false);
     // const [currentActiveScore, setCurrentActiveScore] = useState('s1');
     const [showBackButton, setShowBackButton] = useState(false);
-    const [smallTextContent, setSmallTextContent] = useState('finish test');
+    const [smallTextContent, setSmallTextContent] = useState("");
     const [showNewContent, setShowNewContent] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
     const [rotationButton, setRotationButton] = useState(70);
@@ -254,6 +243,7 @@ const Firecopy = () => {
         const bottomText = bottomTextRef.current;
         closeButton.current.style.pointerEvents = 'none';
         viewRef.current.style.opacity = 0;
+        setSmallTextContent(t("firecopy.finishTest"));
 
         video.style.opacity = 0;
         overlay.style.opacity = 0;
@@ -340,7 +330,7 @@ const Firecopy = () => {
             if (window.matchMedia('(max-width: 1023px)').matches) {
               videoRef.current.style.opacity = 0.5;}
             videoRef.current.classList.add('slide-bottom-big');
-            setSmallTextContent('finish test');
+            setSmallTextContent(t("firecopy.finishTest"));
             setShowBackButton(true);
             setTimeout(() => setShowNewContent(true), 1000);
       };
@@ -357,7 +347,7 @@ const Firecopy = () => {
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
             videoRef.current.classList.remove('slide-bottom-big');
-            setSmallTextContent('finish test');
+            setSmallTextContent(t("firecopy.finishTest"));
             setShowBackButton(false);
             setShowNewContent(false);
       };
@@ -609,7 +599,15 @@ const Firecopy = () => {
         .catch((error) => {
           console.error('Failed to copy text: ', error);
         });
-    };      
+    };
+    
+    function TextSection({ color, text }) {
+      return (
+      <div>
+        <p>{text[0]}<em>{text[1]}</em>{text[2]}<span style={{ color }}>{text[3]}</span></p>
+      </div>
+      );  
+    }
 
     return (
     <div className='firecopy-container'>
@@ -630,7 +628,7 @@ const Firecopy = () => {
             </div>
           </div>
           <div className="navbar-mobile-menu_content">
-            <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
+            <NavLink to='/'><p className='mobile-blog-click'>{t("firecopy.home")}</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <div className="m-navbar-icons">
               <img src = {icon_instagram} className="m-navbar-icon"/>
@@ -645,7 +643,7 @@ const Firecopy = () => {
               />     
               {copiedToClipboard && (
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
-                  Copied to Clipboard!
+                  {t("firecopy.copyClipboard")}
                 </div>
               )}             
             </div>
@@ -804,7 +802,7 @@ const Firecopy = () => {
             <img src={rotateRight} className="right-view" onClick={rotateMobileCounterClockwise}></img>
             </div>
             <p className='left-line2'>{hexagonData[currentIndex].subTitle}</p>
-            <p className='left-line3'>{hexagonData[currentIndex].paragraph}<span style={{color: hexagonData[currentIndex].color}}>{hexagonData[currentIndex].belowText}</span></p>
+            <p className='left-line3'><TextSection color={hexagonData[currentIndex].color} text={hexagonData[currentIndex].text}/></p>
             <div className="f-main-progress-wrapper">
                 <p>FQ</p>
                 <div className="f-main-progress-container">
@@ -816,7 +814,7 @@ const Firecopy = () => {
           </div>
             <div className='force-quotient' ref={forceQuotient}>
               <p className='left-lastline1'>※ Force Quotient (FQ)</p>
-              <p className='left-lastline2'>Keep in mind that the result does not reflect your absolute value, but is rather a comparative assessment of yourself within your perspective of the world. For instance, low scores may indicate that you have a high expectation of yourself, while high scores indicate the opposite.</p>
+              <p className='left-lastline2'>{t("firecopy.forceQuotient")}</p>
             </div>
         </div>
         <img className='close-result' ref={closeButton} src={close_result} onClick={closeResult}></img>
@@ -827,11 +825,13 @@ const Firecopy = () => {
             <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{uniqueCode}</p>
             <div className="color-square" ></div>
             <button className="text-button" onClick={handleCopyFireClipboard}>
-              Copy Code
+              {t("firecopy.copyCode")}
             </button>
           </div>
           <div className="f-right-content">
-            <p className='copy-result-text'>Would you like to get a copy of your results? Register now and start your journey with HEARTH.</p>        
+            <p className='copy-result-text'>
+              {t("firecopy.copyResult")}
+            </p>        
             <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
               <input
                 type="text"
@@ -862,12 +862,12 @@ const Firecopy = () => {
               <label
                   htmlFor="check1"
                   className={`checkbox-label`}>
-                  (Optional) Join the Hearthside and subscribe to our e-letter
+                  {t("firecopy.subscribeLetter")}
               </label>            
             </div>
             {copiedFireClipboard && (
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
-                  Copied to Clipboard!
+                  {t("firecopy.copyClipboard")}
                 </div>
               )} 
           </div>
@@ -903,7 +903,7 @@ const Firecopy = () => {
           {/* <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} /> */}
         </div>
         <button className="read_more" ref={readMoreRef} onClick={() => handleReadMoreClick(0)}>
-          Read More
+          {t("firecopy.readMore")}
         </button>
         {showBackButton && (
         <div className="f-back-button" onClick={handleBackButtonClick}
@@ -915,7 +915,7 @@ const Firecopy = () => {
             }}
             >
           <img src={arrowleft} alt="Arrow Left" style={{marginRight: '5px', width: '20px'}} />
-          <span>results</span>
+          <span>{t("firecopy.results")}</span>
         </div>    
       )}
       {showBackButton && (
@@ -928,7 +928,7 @@ const Firecopy = () => {
               alignItems: 'center',
             }}
             >
-          <span>back to home</span>
+          <span>{t("firecopy.backtohome")}</span>
           <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
         </div> 
       </NavLink>

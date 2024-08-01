@@ -930,7 +930,6 @@ input[type="text"], textarea {
   
   .modal-body p {
     font-size: 15px;
-    opacity: 0.5;
     line-height: 1.5;
   }
 
@@ -1275,7 +1274,6 @@ input[type="text"], textarea {
   
   .modal-body p {
     font-size: 15px;
-    opacity: 0.5;
     line-height: 1.5;
   }
 
