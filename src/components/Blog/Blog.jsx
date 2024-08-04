@@ -608,19 +608,22 @@ set(ref(db, "emails/" + uuid), {
         <div className='banner-left'>
           <p className='b-line1'>Join the Hearthside</p>
           <p className='b-line2'>{t("community.c-line3")}</p>
-          <div className="b-inputBox">
-              <input
-                  type="text"
-                  placeholder={t("blog.email")} 
-                  value={email}
-                  onChange={handleEmailChange}
-                  className={!isValidEmail ? 'invalid' : ''}
-              />                
-              <p className="register" onClick={!isRegistered ? handleRegister : null}>
-                  {isRegistered ? t("blog.registered") : t("blog.register")}
-              </p>
-            </div>
-                  {!isValidEmail && <p className="error-message">{t("blog.error_message")}</p>}          
+          <div className="b-inputBox"
+            style={{borderColor: !isRegistered ? 'white' : '#39FF14'}}>
+            <input
+                type="text"
+                placeholder={t("blog.email")}
+                value={email}
+                onChange={handleEmailChange}
+                id="b-inputID"
+                className={!isValidEmail ? 'invalid' : ''} 
+            />                
+            <p className="register" onClick={!isRegistered ? handleRegister : null}
+                style={{color: !isRegistered ? 'white' : '#39FF14'}}>
+                {isRegistered ? t("blog.registered") : t("blog.register")}
+            </p> 
+          </div>
+                {!isValidEmail && <p className="error-message">{t("blog.error_message")}</p>}          
             <div className="b-image-row"></div>    
         </div>
         <div className='banner-icons'>

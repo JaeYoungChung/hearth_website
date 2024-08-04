@@ -415,7 +415,7 @@ function Survey() {
 
       //generate unique fire code
       const generateUniqueCode = () => {
-        const hexCode = `#${NewRedValue.toString(16).padStart(2, '0')}${NewGreenValue.toString(16).padStart(2, '0')}${NewBlueValue.toString(16).padStart(2, '0')}`;
+        const hexCode = `#${AdjustedRed.toString(16).padStart(2, '0')}${AdjustedGreen.toString(16).padStart(2, '0')}${AdjustedBlue.toString(16).padStart(2, '0')}`;
         const randomChars = generateRandomChars(4);
         return `${hexCode}-${randomChars}`;
       };
