@@ -647,6 +647,7 @@ option.korean::after {
 }
 
 .b-inputBox {
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
@@ -659,6 +660,7 @@ option.korean::after {
 }
 
 input[type="text"], textarea {
+  font-size: 18px;
   width: 320px;
   color: white;
   background-color : transparent;
@@ -992,6 +994,7 @@ input[type="text"], textarea {
 }
 
 input[type="text"], textarea {
+  font-size: 16px;
   width: 330px;
 }
 
@@ -999,7 +1002,7 @@ input[type="text"], textarea {
   cursor: pointer;
   font-weight: 100;
   padding-right: 20px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .invalid {
@@ -1330,6 +1333,7 @@ input[type="text"], textarea {
 }
 
 .b-inputBox {
+  font-size: 16px;
   display: flex;
   margin-top: 30px;
   width: 380px;
@@ -1337,12 +1341,14 @@ input[type="text"], textarea {
 }
 
 input[type="text"], textarea {
+  font-size: 16px;
   width: 330px;
 }
 
 .register {
   cursor: pointer;
   font-weight: 100;
+  font-size: 14px;
   padding-right: 20px;
 }
 

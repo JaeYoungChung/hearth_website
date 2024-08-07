@@ -10,8 +10,10 @@ import email from '../../assets/email.png'
 import icon_threads from '../../assets/icon_threads.png'
 import icon_share from '../../assets/share.png'
 import share_kakao from '../../assets/share_kakao.png'
-import share_link from '../../assets/share_link.png'
-import banner_img from '../../assets/bannerimg.png'
+import share_link from '../../assets/share_link.png';
+import banner_img from '../../assets/bannerimg.png';
+import profile_K from '../../assets/profile_K.png';
+import profile_H from '../../assets/profile_H.png';
 import { ref, child, get } from "firebase/database";
 import { set } from "firebase/database";
 import {db} from "../../firebase.js";
@@ -480,10 +482,11 @@ function PageHeader({ backgroundImage }) {
         <div className="post-image">
           <img src={post.imageUrl} alt={post.title} />
           <div className="overlay-top-left">
-            <p>June</p>
-            <p className='blog-date'>17</p>
+            <p>Aug</p>
+            <p className='blog-date'>8</p>
           </div>
-          <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" />
+          {/* <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" /> */}
+          <img className="overlay-bottom-right" src={profile_K} alt="Overlay" />
         </div>
         <div className='post-contents'>
           <h3>{post.title}</h3>
@@ -515,7 +518,7 @@ function BlogPostDetail({ post, onClose }) {
           <img src={post.imageUrl} alt={post.title} className="modal-header-image" />
           <div className="overlay-top-left2">
             <p>Aug</p>
-            <p className='blog-date2'>17</p>
+            <p className='blog-date2'>8</p>
           </div>
           <div className="overlay-top-right">
           <div className='blog-icon-2'>
