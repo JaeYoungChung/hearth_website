@@ -262,7 +262,7 @@ option.korean::after {
 .t-animation-paragraph {
   color: white;
   font-size: 20px;
-  width: 80%;
+  width: 100%;
   opacity: 0;
   animation: fadeInAnimation 1s ease-in forwards;
   transform: translateY(-80px);

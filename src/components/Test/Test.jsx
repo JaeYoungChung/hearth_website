@@ -301,7 +301,10 @@ const Test = () => {
                     )}
                     {animationStage >= 3 && (
                     <div className={`t-animation-paragraph ${fadeOut ? 'fade-out' : ''}`}>{t("test.measure")} <span className='italic'>{t("test.cf")}</span> {t("test.within")}<br></br><br className='break-line'></br>
-                      {t("test.before")} <br className='break-line'></br><br className='break-line'></br>
+                      {t("test.before")} 
+                      <br></br>
+                      <br className='break-line'></br>
+                      {/* <br className='break-line'></br> */}
                       {t("test.choose")} </div>
                     )}
                     {animationStage === 4 && (
