@@ -137,6 +137,12 @@ select {
     transform: rotate(45deg);
     margin-left: 5px;
   }
+
+  .language-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
   
   .dropdown-menu {
     position: absolute;

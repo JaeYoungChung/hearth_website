@@ -199,9 +199,11 @@
     margin: 30px 20px;
   }
   .ios-icon {
+    height: 70px;
     width: 140px;
   }
   .android-icon {
+    height: 70px;
     width: 173px;
   }
 
@@ -331,10 +333,12 @@
     }
     
     .ios-icon {
+      height: 50px;
       width: 100px;
       margin-right: 20px;
     }
     .android-icon {
+      height: 50px;
       width: 133px;
       margin-left: 20px;
     }

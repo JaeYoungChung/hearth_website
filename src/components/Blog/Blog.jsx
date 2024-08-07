@@ -1,5 +1,5 @@
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './blog.css';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
@@ -292,8 +292,12 @@ const Blog = () => {
     setCurrentPage(1); // Reset to first page when category changes
   }; 
 
-function handlePostClick(post) {
-    setSelectedPost(post);
+  function handlePostClick(post) {
+    document.body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+      setSelectedPost(post);
   }
 
   return (

@@ -284,7 +284,7 @@ const Navbar = () => {
                   </div>
                   {isOpen && (
                     <ul className="dropdown-menu">
-                      <li onClick={() => handleChangeLanguage('en')}>
+                      <li onClick={() => handleChangeLanguage('en')} className="language-item">
                         <span>English</span>
                         <img src={england_flag} alt="English" className="flag-image" />
                       </li>
@@ -292,7 +292,7 @@ const Navbar = () => {
                         <span>日本語</span>
                         <img src={japan_flag} alt="Japanese" className="flag-image" />
                       </li> */}
-                      <li onClick={() => handleChangeLanguage('ko')}>
+                      <li onClick={() => handleChangeLanguage('ko')} className="language-item">
                         <span>한국어</span>
                         <img src={korea_flag} alt="Korean" className="flag-image" />
                       </li>

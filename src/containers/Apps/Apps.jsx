@@ -34,12 +34,24 @@ function Apps() {
   };
   
   const imageData = {
-    0: { src:  helm_flame, color: "#0FF517", text: ["Helm", t("apps.independence"), t("apps.helm_intro"), t("apps.helm_components"), t("apps.helm_are"), t("apps.helm_flame")] },
-    1: { src:  envisage_flame, color: "#005CDE", text: ["Envisage", t('apps.cogitation'), t("apps.envisage_intro"), t("apps.envisage_components"), t("apps.envisage_are"), t("apps.envisage_flame")]},
-    2: { src:  attune_flame, color: "#00FFFF", text: ["Attune", t('apps.adaptability'),  t("apps.attune_intro"), t("apps.attune_components"), t("apps.attune_are"), t("apps.attune_flame")] },
-    3: { src:  reverie_flame, color: "#FFEF00", text: ["Reverie", t('apps.creativity'),  t("apps.reverie_intro"), t("apps.reverie_components"), t("apps.reverie_are"), t("apps.reverie_flame")] },
-    4: { src:  transcend_flame, color: "#DC143C", text: ["Transcend", t('apps.volition'),  t("apps.transcend_intro"), t("apps.transcend_components"), t("apps.transcend_are"), t("apps.transcend_flame")] },
-    5: { src:  harmonize_flame, color: "#FF00FF", text: ["Harmonize", t('apps.cooperability'),  t("apps.harmonize_intro"), t("apps.harmonize_components"), t("apps.harmonize_are"), t("apps.harmonize_flame")] },
+    0: { src: helm_flame, color: "#0FF517", text: ["Helm", t("apps.independence"), t("apps.helm_intro"), t("apps.helm_components"), t("apps.helm_are"), t("apps.helm_flame")], 
+              apple_link: "https://apps.apple.com/us/app/helm-independence/id6503661843?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.helm&pcampaignid=web_share" },
+    1: { src: envisage_flame, color: "#005CDE", text: ["Envisage", t('apps.cogitation'), t("apps.envisage_intro"), t("apps.envisage_components"), t("apps.envisage_are"), t("apps.envisage_flame")],              
+              apple_link: "https://apps.apple.com/us/app/envisage-cogitation/id6511226593?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.envisage&pcampaignid=web_share" },
+    2: { src: attune_flame, color: "#00FFFF", text: ["Attune", t('apps.adaptability'),  t("apps.attune_intro"), t("apps.attune_components"), t("apps.attune_are"), t("apps.attune_flame")],           
+              apple_link: "https://apps.apple.com/us/app/attune-adaptability/id6511226618?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.attune&pcampaignid=web_share" },
+    3: { src: reverie_flame, color: "#FFEF00", text: ["Reverie", t('apps.creativity'),  t("apps.reverie_intro"), t("apps.reverie_components"), t("apps.reverie_are"), t("apps.reverie_flame")],              
+              apple_link: "https://apps.apple.com/us/app/reverie-creativity/id6511226787?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.reverie&pcampaignid=web_share" },
+    4: { src: transcend_flame, color: "#DC143C", text: ["Transcend", t('apps.volition'),  t("apps.transcend_intro"), t("apps.transcend_components"), t("apps.transcend_are"), t("apps.transcend_flame")],              
+              apple_link: "https://apps.apple.com/us/app/transcend-volition/id6511226840?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.transcend&pcampaignid=web_share" },
+    5: { src: harmonize_flame, color: "#FF00FF", text: ["Harmonize", t('apps.cooperability'),  t("apps.harmonize_intro"), t("apps.harmonize_components"), t("apps.harmonize_are"), t("apps.harmonize_flame")],               
+              apple_link: "https://apps.apple.com/us/app/harmonize-cooperability/id6511226852?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.harmonize&pcampaignid=web_share" },
   };
 
   function ButtonSection({ setSelected, selected, setFade }) {
@@ -96,8 +108,12 @@ function Apps() {
       </div>
       <div className="a-right-bottom-section">
         <div className="apps-icons">
-          <img src={download_appstore} className="ios-icon"/>
-          <img src={download_playstore} className="android-icon"/>    
+        <a href={imageData[selected].apple_link} target="_blank" rel="noopener noreferrer">
+          <img src={download_appstore} alt="Download on the App Store" className="ios-icon"/>
+        </a>
+        <a href={imageData[selected].google_link} target="_blank" rel="noopener noreferrer">
+          <img src={download_playstore} className="android-icon"/>  
+        </a>  
         </div>
         <div className='a-btn-section'>
           <ButtonSection setSelected={setSelected} selected={selected} setFade={setFade} />
