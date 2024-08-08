@@ -490,7 +490,7 @@ function PageHeader({ backgroundImage }) {
             <p className='blog-date'>8</p>
           </div>
           {/* <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" /> */}
-          <img className="overlay-bottom-right" src={profile_K} alt="Overlay" />
+          {/* <img className="overlay-bottom-right" src={profile_K} alt="Overlay" /> */}
         </div>
         <div className='post-contents'>
           <h3>{post.title}</h3>
