@@ -229,10 +229,10 @@ const Navbar = () => {
       {t("navbar.take_test")}
     </button>
   )}            <div className="m-navbar-icons">
-              <img src = {icon_instagram} className="m-navbar-icon"/>
-              <img src = {icon_facebook} className="m-navbar-icon"/>
-              <img src = {icon_x} className="m-navbar-icon"/>
-              <img src = {icon_threads} className="m-navbar-icon"/>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon"/></a>
+            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon"/></a>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"

@@ -323,10 +323,10 @@ const Blog = () => {
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
-              <img src = {icon_instagram} className="m-navbar-icon"/>
-              <img src = {icon_facebook} className="m-navbar-icon"/>
-              <img src = {icon_x} className="m-navbar-icon"/>
-              <img src = {icon_threads} className="m-navbar-icon"/>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon"/></a>
+            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon"/></a>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
@@ -472,10 +472,10 @@ function PageHeader({ backgroundImage }) {
   function Sidebar() {
     return (
       <div className="blog-icons">
-        <img src = {icon_instagram} className="blog-icon"/>
-        <img src = {icon_facebook} className="blog-icon"/>
-        <img src = {icon_x} className="blog-icon"/>
-        <img src = {icon_threads} className="blog-icon"/>
+        <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="blog-icon"/></a>
+        <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="blog-icon"/></a>
+        <a href='https://x.com/hearthishere '><img src = {icon_x} className="blog-icon"/></a>
+        <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="blog-icon"/></a>
       </div>
     );
   } 
@@ -634,10 +634,10 @@ set(ref(db, "emails/" + uuid), {
             <div className="b-image-row"></div>    
         </div>
         <div className='banner-icons'>
-          <img src={icon_instagram} alt="" />
-          <img src={icon_facebook} alt="" />
-          <img src={icon_x} alt="" />
-          <img src={icon_threads} alt="" />
+          <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram}/></a>
+          <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook}/></a>
+          <a href='https://x.com/hearthishere '><img src = {icon_x}/></a>
+          <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads}/></a>
         </div>
     </div>
   );

@@ -89,10 +89,10 @@ const Header = () => {
       </motion.div> 
       <div className='header-side' id='home'>
           <div className="h-icons">
-            <img src = {icon_instagram} className="h-icon"/>
-            <img src = {icon_facebook} className="h-icon"/>
-            <img src = {icon_x} className="h-icon"/>
-            <img src = {icon_threads} className="h-icon"/>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="h-icon"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="h-icon"/></a>
+            <a href='https://x.com/hearthishere '><img src = {icon_x} className="h-icon"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="h-icon"/></a>
           </div>
           <div className='h-email'>
             {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}
