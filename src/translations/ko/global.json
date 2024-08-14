@@ -110,18 +110,9 @@
         "p5_line6": "울림을 주는 혁신을 균형잡힌 방식으로 불러오고자합니다."
     },
     "community" : {
-        "c-big-text": "커뮤니티에",
-        "c-bigger-text": "가입하세요!",
-        "c-small-text": "HEARTH의 무료 컨텐츠를 받으실 수 있습니다.",
         "email": "abcdefg@email.com",
         "register": "등록",
         "registered": "등록 완료!",
-        "original_text1": "블로그 글",
-        "additional_text1": "심리학 & 철학\n주간 에세이",
-        "original_text2": "SNS",
-        "additional_text2": "이번주\n동기부여 명언",
-        "original_text3": "뉴스레터 \n & 채널",
-        "additional_text3": "블로그와 SNS\n주간 포스트",
         "error_message": "유효한 이메일 주소를 입력하십시오.",
         "visit_blog": "블로그 방문하기",
         "c-line3": "건강과 깨달음을 향한 우리의 여정에 동참하세요",
