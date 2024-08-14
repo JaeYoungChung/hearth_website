@@ -91,7 +91,7 @@ const Header = () => {
           <div className="h-icons">
             <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="h-icon"/></a>
             <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="h-icon"/></a>
-            <a href='https://x.com/hearthishere '><img src = {icon_x} className="h-icon"/></a>
+            <a href='https://x.com/hearthishere'><img src = {icon_x} className="h-icon"/></a>
             <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="h-icon"/></a>
           </div>
           <div className='h-email'>

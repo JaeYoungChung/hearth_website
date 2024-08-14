@@ -21,6 +21,13 @@ const images = [
     icon_threads
   ];
 
+  const links = [
+    'https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA==',
+    'https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d',
+    'https://x.com/hearthishere',
+    'https://www.threads.net/@hearth.ig'
+  ]
+
 const Community = () => {
     const [t, i18n] = useTranslation("global");
 
@@ -106,7 +113,7 @@ const Community = () => {
               {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
           <div className="c-image-row">
             {images.map((src, index) => (
-              <img key={index} src={src} className="c-small-image" alt={`Small ${index + 1}`}/>
+              <a href={links[index]}><img key={index} src={src} className="c-small-image" alt={`Small ${index + 1}`}/></a>
             ))}
           </div>
           <div className="c-footer">
