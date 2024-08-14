@@ -462,7 +462,8 @@ option.korean::after {
   }
   
   .test-input {
-    top: 33dvh;
+    top: 35dvh;
+    font-size: 36px !important;
   }
   
   .alphabet-container {
@@ -476,7 +477,11 @@ option.korean::after {
 
   .alphabet-row button {
     margin-top: 12px;
-    font-size: 24px;
+    font-size: 20px;
+  }
+
+  .next-button {
+    font-size: 16px;
   }
 
   .t-animation-container {
