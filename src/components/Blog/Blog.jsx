@@ -163,7 +163,7 @@ const Blog = () => {
   //firebase
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
-  const firstPostImage = posts.length > 0 ? posts[0].imageUrl : '';
+  const firstPostImage = posts.length > 0 ? posts[posts.length - 1].imageUrl : '';
 
   //language
   const [t, i18n] = useTranslation("global");
@@ -407,9 +407,11 @@ const Blog = () => {
     ) : (
       <>
         <div className="posts">
-          {currentPosts.map(post => (
-            <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
-          ))}
+          {[...currentPosts]
+            .sort((a, b) => b.id - a.id)
+            .map(post => (
+              <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
+            ))}
         </div>
         <div className="pagination">
           <p 
@@ -486,8 +488,8 @@ function PageHeader({ backgroundImage }) {
         <div className="post-image">
           <img src={post.imageUrl} alt={post.title} />
           <div className="overlay-top-left">
-            <p>Aug</p>
-            <p className='blog-date'>8</p>
+            <p>{post.month}</p>
+            <p className='blog-date'>{post.date}</p>
           </div>
           {/* <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" /> */}
           {/* <img className="overlay-bottom-right" src={profile_K} alt="Overlay" /> */}
@@ -521,8 +523,8 @@ function BlogPostDetail({ post, onClose }) {
         <div className="modal-header">
           <img src={post.imageUrl} alt={post.title} className="modal-header-image" />
           <div className="overlay-top-left2">
-            <p>Aug</p>
-            <p className='blog-date2'>8</p>
+            <p>{post.month}</p>
+            <p className='blog-date2'>{post.date}</p>
           </div>
           <div className="overlay-top-right">
           <div className='blog-icon-2'>
