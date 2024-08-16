@@ -71,8 +71,8 @@ const Test = () => {
       switch (selectedLanguage) {
         case 'en':
           return 'ENG';
-        // case 'ja':
-        //   return '日本語';
+        case 'ja':
+          return '日本語';
         case 'ko':
           return '한국어';
         default:
@@ -203,9 +203,9 @@ const Test = () => {
                       <li onClick={() => handleChangeLanguage('en')}>
                         <span>English</span>
                       </li>
-                      {/* <li onClick={() => handleChangeLanguage('ja')}>
+                      <li onClick={() => handleChangeLanguage('ja')}>
                         <span>日本語</span>
-                      </li> */}
+                      </li>
                       <li onClick={() => handleChangeLanguage('ko')}>
                         <span>한국어</span>
                       </li>

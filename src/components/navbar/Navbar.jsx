@@ -51,8 +51,8 @@ const Navbar = () => {
     switch (selectedLanguage) {
       case 'en':
         return 'ENG';
-      // case 'ja':
-      //   return '日本語';
+      case 'ja':
+        return '日本語';
       case 'ko':
         return '한국어';
       default:
@@ -255,9 +255,9 @@ const Navbar = () => {
                       <li onClick={() => handleChangeLanguage('en')}>
                         <span>ENG</span>
                       </li>
-                      {/* <li onClick={() => handleChangeLanguage('ja')}>
+                      <li onClick={() => handleChangeLanguage('ja')}>
                         <span>日本語</span>
-                      </li> */}
+                      </li>
                       <li onClick={() => handleChangeLanguage('ko')}>
                         <span>한국어</span>
                       </li>
@@ -288,7 +288,7 @@ const Navbar = () => {
                         <span>English</span>
                         <img src={england_flag} alt="English" className="flag-image" />
                       </li>
-                      <li onClick={() => handleChangeLanguage('ja')}>
+                      <li onClick={() => handleChangeLanguage('ja')} className="language-item">
                         <span>日本語</span>
                         <img src={japan_flag} alt="Japanese" className="flag-image" />
                       </li>

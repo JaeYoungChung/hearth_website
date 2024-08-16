@@ -37,15 +37,15 @@
         "volition": "意志力",
         "cooperability": "協調力",
 
-        "helm": "Helmは人生に真の深みをもたらす精神力であり、我々が自分の存在の中で個人的な意味を見出すよう助けてくれます。これは典型性から独自性へと導き、与えられた使命を発見し完遂することで自己実現の状態に到達させます。自己省察（Introspection）、内的統合（Integration）、個性化（Individuation）がこの緑色の炎を形成する三つの核心要素となります。",
+        "helm": "Helmは人生に真の深みをもたらす精神力であり、我々が自分の存在の中で個人的な意味を見出すよう助けてくれます。これは典型性から独自性へと導き、与えられた使命を発見し完遂することで自己実現の状態に到達させます。自己省察（Introspection）、内的統合（ Integration）、個性化（Individuation）がこの緑色の炎を形成する三つの核心要素となります。",
         "helm_intro": "Helmは人生に真の深みをもたらす精神力であり、我々が自分の存在の中で個人的な意味を見出すよう助けてくれます。これは典型性から独自性へと導き、与えられた使命を発見し完遂することで自己実現の状態に到達させます。 ",
-        "helm_components": "自己省察（Introspection）、内的統合（Integration）、個性化（Individuation）",
+        "helm_components": "自己省察（Introspection）、内的統合（ Integration）、個性化（Individuation）",
         "helm_are": "が三つの核心要素としてこの",
         "helm_flame": "緑色の炎を形成します。",
 
-        "envisage": "Envisageは万物の本質を直観的に理解させる精神力であり、深い知恵と洞察の源です。これは抽象的な思考と理論化の技術として、分析的かつ全体的な認知が要求される複雑な意思決定の過程で光を放ちます。思惟（Reflection）、体系化（Systemization）、賢明さ（Sagacity）がこの青色の炎を形成する三つの核心要素となります。",
+        "envisage": "Envisageは万物の本質を直観的に理解させる精神力であり、深い知恵と洞察の源です。これは抽象的な思考と理論化の技術として、分析的かつ全体的な認知が要求される複雑な意思決定の過程で光を放ちます。思惟（Reflection）、体系化（ Systemization）、賢明さ（Sagacity）がこの青色の炎を形成する三つの核心要素となります。",
         "envisage_intro": "Envisageは万物の本質を直観的に理解させる精神力であり、深い知恵と洞察の源です。これは抽象的な思考と理論化の技術として、分析的かつ全体的な認知が要求される複雑な意思決定の過程で光を放ちます。 ",
-        "envisage_components": "思惟（Reflection）、体系化（Systemization）、賢明さ（Sagacity）",
+        "envisage_components": "思惟（Reflection）、体系化（ Systemization）、賢明さ（Sagacity）",
         "envisage_are": "が三つの核心要素としてこの",
         "envisage_flame": "青色の炎を形成します。",
         
@@ -57,7 +57,7 @@
 
         "reverie": "Reverieは美しい魂を祝福する精神力であり、自由な思考で人生に新鮮さと活気を吹き込みます。時には遊び心を持ち、また時には真剣に、笑いと涙、孤独と歓喜の間で生き生きとした想像力と革新的な創造性より重大な進展をもたらし、パラダイムの転換を引き起こします。好奇心（Curiosity）、独創性（Originality）、芸術性（Artistry）がこの金色の炎を形成する三つの核心要素となります。",
         "reverie_intro": "Reverieは美しい魂を祝福する精神力であり、自由な思考で人生に新鮮さと活気を吹き込みます。時には遊び心を持ち、また時には真剣に、笑いと涙、孤独と歓喜の間で生き生きとした想像力と革新的な創造性より重大な進展をもたらし、パラダイムの転換を引き起こします。 ", 
-        "reverie_components": "好奇心（Curiosity）、独創性（Originality）、芸術性（Artistry）", 
+        "reverie_components": "好奇心（Curiosity）、独創性（ Originality）、芸術性（Artistry）", 
         "reverie_are": "が三つの核心要素としてこの",
         "reverie_flame": "金色の炎を形成します。",
 
