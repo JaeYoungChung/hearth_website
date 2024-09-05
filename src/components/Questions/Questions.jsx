@@ -346,47 +346,92 @@ function Survey() {
         const RedValue = 0.5 * Creativity + 0.5 * Cooperability + Volition;                        
         const GreenValue = 0.5 * Adaptability + 0.5 * Creativity + Independence;
         const BlueValue = 0.5 * Cooperability + 0.5 * Adaptability + Cogitation;
-        
-        //Range 0 ~ 144
-        const NewRedValue = 2 * RedValue + 72;
-        const NewGreenValue = 2 * GreenValue + 72;
-        const NewBlueValue = 2 * BlueValue + 72;
- 
-        const FirstPlace = Math.max(NewRedValue,NewGreenValue,NewBlueValue);
-        const SecondPlace = mid3(NewRedValue,NewGreenValue,NewBlueValue);
-        const ThirdPlace = Math.min(NewRedValue,NewGreenValue,NewBlueValue);
 
-        let AdjustedRed, AdjustedGreen, AdjustedBlue;
+        // Initial adjustment (range 0 ~ 144)
+        let AdjustedRed = 2 * RedValue + 72;
+        let AdjustedGreen = 2 * GreenValue + 72;
+        let AdjustedBlue = 2 * BlueValue + 72;
+        
+        const traits = [
+          { name: 'Independence', value: Independence, color: 'Green' },
+          { name: 'Cogitation', value: Cogitation, color: 'Blue' },
+          { name: 'Adaptability', value: Adaptability, color: ['Blue', 'Green'] },
+          { name: 'Creativity', value: Creativity, color: ['Red', 'Green'] },
+          { name: 'Volition', value: Volition, color: 'Red' },
+          { name: 'Cooperability', value: Cooperability, color: ['Red', 'Blue'] }
+      ];
+
+        // Sort traits by value in descending order
+        traits.sort((a, b) => b.value - a.value);
+
+        // Function to adjust color values
+        const adjustColor = (colorName, amount) => {
+          switch (colorName) {
+              case 'Red':
+                  AdjustedRed += amount;
+                  break;
+              case 'Green':
+                  AdjustedGreen += amount;
+                  break;
+              case 'Blue':
+                  AdjustedBlue += amount;
+                  break;
+          }
+      };
+
+        // Adjust for the first biggest value
+        if (Array.isArray(traits[0].color)) {
+          traits[0].color.forEach(color => adjustColor(color, 40));
+        } else {
+            adjustColor(traits[0].color, 80);
+        }
+
+        // Adjust for the second biggest value
+        if (Array.isArray(traits[1].color)) {
+            traits[1].color.forEach(color => adjustColor(color, 20));
+        } else {
+            adjustColor(traits[1].color, 40);
+        }
+
+        //Range 0 ~ 144
+        // const NewRedValue = 2 * RedValue + 72;
+        // const NewGreenValue = 2 * GreenValue + 72;
+        // const NewBlueValue = 2 * BlueValue + 72;
+ 
+        //1 ~ 3 rgb
+        // const FirstPlace = Math.max(NewRedValue,NewGreenValue,NewBlueValue);
+        // const SecondPlace = mid3(NewRedValue,NewGreenValue,NewBlueValue);
+        // const ThirdPlace = Math.min(NewRedValue,NewGreenValue,NewBlueValue);
 
         // Check which color corresponds to each place and add the respective values
-        if (FirstPlace === NewRedValue) {
-          AdjustedRed = NewRedValue + 80;
-          if (SecondPlace === NewGreenValue) {
-            AdjustedGreen = NewGreenValue + 40;
-            AdjustedBlue = NewBlueValue;
-          } else {
-            AdjustedGreen = NewGreenValue;
-            AdjustedBlue = NewBlueValue + 40;
-          }
-        } else if (FirstPlace === NewGreenValue) {
-          AdjustedGreen = NewGreenValue + 80;
-          if (SecondPlace === NewRedValue) {
-            AdjustedRed = NewRedValue + 40;
-            AdjustedBlue = NewBlueValue;
-          } else {
-            AdjustedRed = NewRedValue;
-            AdjustedBlue = NewBlueValue + 40;
-          }
-        } else {
-          AdjustedBlue = NewBlueValue + 80;
-          if (SecondPlace === NewRedValue) {
-            AdjustedRed = NewRedValue + 40;
-            AdjustedGreen = NewGreenValue;
-          } else {
-            AdjustedRed = NewRedValue;
-            AdjustedGreen = NewGreenValue + 40;
-          }
-        }
+        // if (FirstPlace === NewRedValue) {
+        //   AdjustedRed = NewRedValue + 80;
+        //   if (SecondPlace === NewGreenValue) {
+        //     AdjustedGreen = NewGreenValue + 40;
+        //     AdjustedBlue = NewBlueValue;
+        //   } else {
+        //     AdjustedGreen = NewGreenValue;
+        //     AdjustedBlue = NewBlueValue + 40;
+        //   }
+        // } else if (FirstPlace === NewGreenValue) {
+        //   AdjustedGreen = NewGreenValue + 80;
+        //   if (SecondPlace === NewRedValue) {
+        //     AdjustedRed = NewRedValue + 40;
+        //     AdjustedBlue = NewBlueValue;
+        //   } else {
+        //     AdjustedRed = NewRedValue;
+        //     AdjustedBlue = NewBlueValue + 40;
+        //   }
+        // } else {
+        //   AdjustedBlue = NewBlueValue + 80;
+        //   if (SecondPlace === NewRedValue) {
+        //     AdjustedRed = NewRedValue + 40;
+        //     AdjustedGreen = NewGreenValue;
+        //   } else {
+        //     AdjustedRed = NewRedValue;
+        //     AdjustedGreen = NewGreenValue + 40;
+        //   }
+        // }
 
         sessionStorage.setItem('rgbValues', JSON.stringify({
           NewRedValue: AdjustedRed,
