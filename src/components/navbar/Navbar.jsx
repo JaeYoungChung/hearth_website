@@ -103,7 +103,7 @@ const Navbar = () => {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(elementId); // Add this line
+      setActiveSection(elementId);
     }
     closeMobileMenu();
   };
