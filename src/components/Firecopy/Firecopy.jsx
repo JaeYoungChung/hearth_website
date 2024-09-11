@@ -32,6 +32,8 @@ import app_harmonize from '../../assets/app_harmonize.png';
 import app_helm from '../../assets/app_helm.png';
 import app_reverie from '../../assets/app_reverie.png';
 import app_transcend from '../../assets/app_transcend.png';
+import download_appstore from '../../assets/download_appstore.svg';
+import download_playstore from '../../assets/download_playstore.png';
 import { hexToCSSFilter } from 'hex-to-css-filter';
 import { isVisible } from '@testing-library/user-event/dist/utils';
 
@@ -146,35 +148,78 @@ const Firecopy = () => {
 
     const imageMap = {
       a: app_helm,
-      e: app_transcend,
-      d: app_reverie,
-      b: app_harmonize,
-      f: app_envisage,
+      b: app_envisage,
       c: app_attune,
+      d: app_reverie,
+      e: app_transcend,
+      f: app_harmonize,
     };
-    
+
     const labelMap = {
       a: 'Helm',
-      f: 'Envisage',
+      b: 'Envisage',
       c: 'Attune',
       d: 'Reverie',
-      e: 'Transcend ',
-      b: 'Harmonize'
+      e: 'Transcend',
+      f: 'Harmonize'
     };
     
     const colorMap = {
       a: `#0FF517`,
-      f: `#005CDE`,
+      b: `#005CDE`,
       c: `#00FFFF`,
       d: `#FFEF00`,
       e: `#DC143C`,
-      b: `#FF00FF`
+      f: `#FF00FF`
     };
+
+    const imageData = {
+      a: {  apple_link: "https://apps.apple.com/us/app/helm-independence/id6503661843?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.helm&pcampaignid=web_share" },
+      b: {  apple_link: "https://apps.apple.com/us/app/envisage-cogitation/id6511226593?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.envisage&pcampaignid=web_share" },
+      c: {  apple_link: "https://apps.apple.com/us/app/attune-adaptability/id6511226618?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.attune&pcampaignid=web_share" },
+      d: {  apple_link: "https://apps.apple.com/us/app/reverie-creativity/id6511226787?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.reverie&pcampaignid=web_share" },
+      e: {  apple_link: "https://apps.apple.com/us/app/transcend-volition/id6511226840?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.transcend&pcampaignid=web_share" },
+      f: {  apple_link: "https://apps.apple.com/us/app/harmonize-cooperability/id6511226852?itsct=apps_box_link&itscg=30200",
+              google_link: "https://play.google.com/store/apps/details?id=com.vivosvoco.harmonize&pcampaignid=web_share" },
+    };
+    
+    // const labelMap = {
+    //   a: 'Helm',
+    //   f: 'Envisage',
+    //   c: 'Attune',
+    //   d: 'Reverie',
+    //   e: 'Transcend',
+    //   b: 'Harmonize'
+    // };
+    
+    // const colorMap = {
+    //   a: `#0FF517`,
+    //   f: `#005CDE`,
+    //   c: `#00FFFF`,
+    //   d: `#FFEF00`,
+    //   e: `#DC143C`,
+    //   b: `#FF00FF`
+    // };
 
     const uniqueCode = sessionStorage.getItem('uniqueCode');
     const hexCode = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
     const cssFilter = hexToCSSFilter(hexCode);
     let textToShow = 'No data found';
+    const maxValue = labelMap[max] || 'Unknown';
+    const minValue = labelMap[min] || 'Unknown';
+    const maxColor = colorMap[max] || 'Unknown';
+    const minColor = colorMap[min] || 'Unknown';
+    const maxImage = imageMap[max] || 'Unknown';
+    const minImage = imageMap[min] || 'Unknown';
+    const maxAppStore = imageData[max].apple_link || 'Unknown';
+    const maxGoogleStore = imageData[max].google_link || 'Unknown';
+    const minAppStore = imageData[min].apple_link || 'Unknown';
+    const minGoogleStore = imageData[min].google_link || 'Unknown';
 
     if (maxminResult) {
       const { max, min } = JSON.parse(maxminResult);
@@ -257,7 +302,7 @@ const Firecopy = () => {
           if (window.matchMedia('(max-width: 1023px)').matches) {
             video.style.opacity = 1;
             setTimeout(() => {
-              video.style.opacity = 0.4;
+              video.style.opacity = 0.2;
             }, 1000);
           }
         }, 1000);
@@ -536,7 +581,7 @@ const Firecopy = () => {
             });
 
           // If the checkbox is checked, send the second email
-          if (isFirstCheckboxChecked) {
+          // if (isFirstCheckboxChecked) {
             setTimeout(() => {
               const secondTemplateParams = {
                 to_email: email,
@@ -550,7 +595,7 @@ const Firecopy = () => {
                   console.error('Error sending second email:', error);
                 });
             }, 3000); // send 5 minutes after
-          }
+          // }
       })
       .catch(error => {
         console.error("Error saving email: ", error);
@@ -818,39 +863,87 @@ const Firecopy = () => {
             </div>
         </div>
         <img className='close-result' ref={closeButton} src={close_result} onClick={closeResult}></img>
-        {showNewContent && (
+       
+       
+       
+       {showNewContent && (
         <div className="f-new-content">
-          <div className="f-left-content">
+
+          {/* <div className="f-left-content">
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
-            <p className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`}}>{uniqueCode}</p>
             <div className="color-square" ></div>
             <button className="text-button" onClick={handleCopyFireClipboard}>
               {t("firecopy.copyCode")}
             </button>
+          </div> */}
+
+<div className="content-wrapper">
+    <div className="register-section">
+      <p className='receive-result'>Receive Test Result</p>
+      <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
+        <input
+          type="text"
+          placeholder={t("community.email")}
+          value={email}
+          onChange={handleEmailChange}
+          id="f-inputID"
+          className={!isValidEmail ? 'invalid' : ''}
+        />                
+        <p
+          className={`register ${isRegistered ? 'registered-green' : ''}`}
+          onClick={!isRegistered ? handleRegister : null}
+          style={{color: !isRegistered ? 'white' : '#39FF14'}}
+        >
+          {isRegistered ? t("community.registered") : t("community.register")}
+        </p>
+      </div>
+        {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}     
+    </div> 
+    <hr className='f-hr' />
+    <div className="potential-section">
+      <p className='live-up'>Live Up to Your Fullest Potential</p>
+      <p className='get-app'>Get your HEARTH Apps and</p>
+      <p className='personalize'>Personalize your experience with your HEARTH Code  <span className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`, border: `2px solid rgb(${red}, ${green}, ${blue})` }}>{uniqueCode}</span></p>
+    </div>
+    <div className="app-section">
+      <div className="strength">
+        <p>Further enhance your <span style={{color: maxColor}}>strength</span></p>
+        <div className="app-content">
+          <div className="app-left">
+            <img src={maxImage} alt="Helm App" className="app-helm-icon" />
+            <p>{maxValue}</p>
           </div>
-          <div className="f-right-content">
-            <p className='copy-result-text'>
-              {t("firecopy.copyResult")}
-            </p>        
-            <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
-              <input
-                type="text"
-                placeholder={t("community.email")}
-                value={email}
-                onChange={handleEmailChange}
-                id="f-inputID"
-                className={!isValidEmail ? 'invalid' : ''}
-              />                
-              <p
-                className={`register ${isRegistered ? 'registered-green' : ''}`}
-                onClick={!isRegistered ? handleRegister : null}
-                style={{color: !isRegistered ? 'white' : '#39FF14'}}
-              >
-                {isRegistered ? t("community.registered") : t("community.register")}
-              </p>
+          <div className="app-right">
+            <a href={maxAppStore} target="_blank" rel="noopener noreferrer">
+              <img src={download_appstore} alt="Download on the App Store" className="f-ios-icon"/>
+            </a>
+            <a href={maxGoogleStore} target="_blank" rel="noopener noreferrer">
+              <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="weakness">
+        <p>Improve on your <span style={{color: minColor}}>weakness</span></p>
+        <div className="app-content">
+          <div className="app-left">
+            <img src={minImage} alt="Helm App" className="app-helm-icon" />
+            <p>{minValue}</p>
+          </div>
+          <div className="app-right">
+            <a href={minAppStore} target="_blank" rel="noopener noreferrer">
+              <img src={download_appstore} alt="Download on the App Store"  className="f-ios-icon"/>
+            </a>
+            <a href={minGoogleStore} target="_blank" rel="noopener noreferrer">
+              <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
+            </a>
+          </div>
+        </div>
+      </div>
+   
+
             </div>
-              {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
-            <div className='check-text'>
+            {/* <div className='check-text'>
                 <input
                 type="checkbox"
                 id="check1"
@@ -869,10 +962,15 @@ const Firecopy = () => {
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
                   {t("firecopy.copyClipboard")}
                 </div>
-              )} 
+              )}  */}
           </div>
+
         </div>
       )}
+
+
+
+
         <div className="f-legend-container" ref={graphRef}>
             <ul className="f-score-list">
               {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
