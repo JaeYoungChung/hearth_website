@@ -879,7 +879,7 @@ const Firecopy = () => {
 
 <div className="content-wrapper">
     <div className="register-section">
-      <p className='receive-result'>Receive Test Result</p>
+      <p className='receive-result'>{t("firecopy.receiveResult")}</p>
       <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
         <input
           type="text"
@@ -901,13 +901,13 @@ const Firecopy = () => {
     </div> 
     <hr className='f-hr' />
     <div className="potential-section">
-      <p className='live-up'>Live Up to Your Fullest Potential</p>
-      <p className='get-app'>Get your HEARTH Apps and</p>
-      <p className='personalize'>Personalize your experience with your HEARTH Code  <span className='hex-code' style={{color: `rgb(${red}, ${green}, ${blue})`, border: `2px solid rgb(${red}, ${green}, ${blue})` }}>{uniqueCode}</span></p>
+      <p className='live-up'>{t("firecopy.liveUp")}</p>
+      <p className='get-app'>{t("firecopy.getApp")}</p>
+      <p className='personalize'>{t("firecopy.personalize")}  <span className='hex-code' style={{ '--red': red, '--green': green, '--blue': blue }}>{uniqueCode}</span></p>
     </div>
     <div className="app-section">
       <div className="strength">
-        <p>Further enhance your <span style={{color: maxColor}}>strength</span></p>
+        <p>{t("firecopy.furtherEnhance")} <span style={{color: maxColor, fontSize: `16px`}}>{t("firecopy.strength")}</span></p>
         <div className="app-content">
           <div className="app-left">
             <img src={maxImage} alt="Helm App" className="app-helm-icon" />
@@ -924,7 +924,7 @@ const Firecopy = () => {
         </div>
       </div>
       <div className="weakness">
-        <p>Improve on your <span style={{color: minColor}}>weakness</span></p>
+        <p>{t("firecopy.improveOn")} <span style={{color: minColor, fontSize: `16px`}}>{t("firecopy.weakness")}</span></p>
         <div className="app-content">
           <div className="app-left">
             <img src={minImage} alt="Helm App" className="app-helm-icon" />

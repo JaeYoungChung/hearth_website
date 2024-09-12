@@ -539,6 +539,7 @@ color: rgb(255, 0, 255);
 
 .hex-code {
   font-size: 20px;
+  color: rgb(var(--red), var(--green), var(--blue));
   text-align: center;
   line-height: 1;
   padding: 5px;
@@ -2003,6 +2004,7 @@ to {
   font-size: 20px;
   text-align: center;
   font-weight: bold;
+  border: 2px solid rgb(var(--red), var(--green), var(--blue));
   line-height: 1;
   padding: 5px;
 }
