@@ -159,7 +159,8 @@ const Blog = () => {
   //Category
   const [filteredPosts, setFilteredPosts] = useState([]); 
   const [activeCategory, setActiveCategory] = useState('all'); 
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const sortedPosts = [...filteredPosts].sort((a, b) => b.id - a.id);
+  const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);  
   //firebase
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -407,11 +408,9 @@ const Blog = () => {
     ) : (
       <>
         <div className="posts">
-          {[...currentPosts]
-            .sort((a, b) => b.id - a.id)
-            .map(post => (
-              <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
-            ))}
+        {currentPosts.map(post => (
+          <BlogPost key={post.id} post={post} onClick={() => handlePostClick(post)} />
+        ))}
         </div>
         <div className="pagination">
           <p 
