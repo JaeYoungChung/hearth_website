@@ -1978,6 +1978,7 @@ to {
   align-items: center;
   flex-wrap: wrap;
   width: 80vw;
+  margin: 50px auto 0 auto;
   /* Remove padding-left and padding-right */
   /* padding-left: 10vw; */
   /* padding-right: 10vw; */
