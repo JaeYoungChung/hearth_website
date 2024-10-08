@@ -1625,8 +1625,7 @@ to {
 .body, html {
   height: 100%;
   margin: 0;
-  overflow-y: hidden; /* Ensures the page is scrollable */
-  overflow-x: hidden;
+  overflow-y: auto; /* Ensures the page is scrollable */
 }
 
 .firecopy {
@@ -1972,16 +1971,16 @@ to {
 .f-new-content {
   display: flex;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   justify-content: center;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 0dvh;
-  left: 0;
-  right: 0;
   width: 80vw;
-  padding-left: 10vw;
-  padding-right: 10vw;
+  /* Remove padding-left and padding-right */
+  /* padding-left: 10vw; */
+  /* padding-right: 10vw; */
   color: white;
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -2162,8 +2161,9 @@ to {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: auto;
-  /* width: 100%; */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .register-section,
