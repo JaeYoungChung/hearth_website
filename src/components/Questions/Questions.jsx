@@ -351,6 +351,31 @@ function Survey() {
         let AdjustedRed = 2 * RedValue + 72;
         let AdjustedGreen = 2 * GreenValue + 72;
         let AdjustedBlue = 2 * BlueValue + 72;
+
+      //   // New adjustments based on max value
+        switch (max) {
+          case 'a':
+              AdjustedGreen += 20;
+              break;
+          case 'b':
+              AdjustedBlue += 20;
+              break;
+          case 'c':
+              AdjustedBlue += 10;
+              AdjustedGreen += 10;
+              break;
+          case 'd':
+              AdjustedRed += 10;
+              AdjustedGreen += 10;
+              break;
+          case 'e':
+              AdjustedRed += 20;
+              break;
+          case 'f':
+              AdjustedRed += 10;
+              AdjustedBlue += 10;
+              break;
+      }
         
         const traits = [
           { name: 'Independence', value: Independence, color: 'Green' },
@@ -381,7 +406,7 @@ function Survey() {
 
         // Adjust for the first biggest value
         if (Array.isArray(traits[0].color)) {
-          traits[0].color.forEach(color => adjustColor(color, 40));
+          traits[0].color.forEach(color => adjustColor(color, 60));
         } else {
             adjustColor(traits[0].color, 80);
         }
@@ -390,7 +415,7 @@ function Survey() {
         if (Array.isArray(traits[1].color)) {
             traits[1].color.forEach(color => adjustColor(color, 20));
         } else {
-            adjustColor(traits[1].color, 40);
+            adjustColor(traits[1].color, 30);
         }
 
         //Range 0 ~ 144
