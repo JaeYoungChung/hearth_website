@@ -169,7 +169,7 @@ const Test = () => {
             </NavLink>
           </div>
       <div className="navbar-menu" onClick={toggleMobileMenu}>
-        <img src={navbar_menu} width={30} alt = "logo"></img>
+        <img src={navbar_menu} width={30} alt = "menu"></img>
       </div>
       {isMobileMenuOpen && (
         <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'fade-in' : 'fade-out'}`}>
@@ -182,15 +182,15 @@ const Test = () => {
           <NavLink to='/'><p className='mobile-blog-click'>HOME</p></NavLink>
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <div className="m-navbar-icons">
-            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon"/></a>
-            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon"/></a>
-            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon"/></a>
-            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon"/></a>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon" alt = "instagram"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon" alt = "facebook"/></a>
+            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon" alt = "twitter"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon" alt = "threads"/></a>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
                 onClick={handleCopyToClipboard}
-                alt="Copy to Clipboard"
+                alt="email"
               />     
               {copiedToClipboard && (
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
@@ -223,7 +223,7 @@ const Test = () => {
           <div className='t-navbar-lang'>
           <div className="q-dropdown">
                   <div className="q-dropdown-toggle" onClick={toggleDropdown}>
-                    <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                    <img src={getSelectedFlagImage()} alt="Language" className="flag-image" />
                     <i className="q-dropdown-arrow"></i>
                   </div>
                   {isOpen && (
@@ -292,7 +292,7 @@ const Test = () => {
             </>
           ) : (            
               <div className='t-animation-container'>
-                  <img src={white_logo} alt='whitelogo' className={`fade-image-in ${brighter ? 'brighter' : 'show'} ${fadedOut ? 'fadedOut' : ''}`}></img>
+                  <img src={white_logo} alt='hearth' className={`fade-image-in ${brighter ? 'brighter' : 'show'} ${fadedOut ? 'fadedOut' : ''}`}></img>
                   <div className={`t-animation-content ${fadeOut ? 'fade-out' : ''}`}>
                     {animationStage >= 1 && (
                     <div className={`t-animation-text ${animationStage >= 2 ? 'move-up' : ''} ${fadeOut ? 'fade-out' : ''}`}>

@@ -13,8 +13,6 @@ import icon_share from '../../assets/share.png'
 import share_kakao from '../../assets/share_kakao.png'
 import share_link from '../../assets/share_link.png';
 import banner_img from '../../assets/bannerimg.png';
-import profile_K from '../../assets/profile_K.png';
-import profile_H from '../../assets/profile_H.png';
 import { ref, child, get } from "firebase/database";
 import { set } from "firebase/database";
 import {db} from "../../firebase.js";
@@ -121,7 +119,7 @@ const SharePopup = ({ url, onClose }) => {
       <button className='button-share' onClick={shareKakao}>
         <img className='copy-link'
           src={share_kakao}
-          alt="카카오링크 보내기 버튼"
+          alt="share on kakao"
           style={{
             width: '40px',
             height: '40px',
@@ -132,6 +130,7 @@ const SharePopup = ({ url, onClose }) => {
       <button className='button-share' onClick={copyToClipboard}>
         <img className='copy-link'
           src={share_link}
+          alt="copy link"
           style={{
             width: '40px',
             height: '40px',
@@ -311,7 +310,7 @@ const Blog = () => {
             </NavLink>
           </div>
         <div className="navbar-menu" onClick={toggleMobileMenu}>
-          <img src={navbar_menu} width={30} alt = "logo"></img>
+          <img src={navbar_menu} width={30} alt = "menu"></img>
         </div>
         {isMobileMenuOpen && (
         <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'fade-in' : 'fade-out'}`}>
@@ -325,15 +324,15 @@ const Blog = () => {
             <p className='mobile-blog-click' onClick={handleBlogClick}>{t("navbar.blog")}</p>
             <button type="button" className='m-nav-button' onClick={handleButtonClick}>{t("navbar.take_test")}</button>
             <div className="m-navbar-icons">
-            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon"/></a>
-            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon"/></a>
-            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon"/></a>
-            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon"/></a>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="m-navbar-icon" alt = "instagram"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="m-navbar-icon" alt = "facebook"/></a>
+            <a href='https://x.com/hearthishere '><img src = {icon_x} className="m-navbar-icon" alt = "twitter"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="m-navbar-icon" alt = "threads"/></a>
               <img src={email}
                 style={{ width: '40px', cursor: 'pointer' }}
                 className="m-navbar-icon"
                 onClick={handleCopyToClipboard}
-                alt="Copy to Clipboard"
+                alt="email"
               />     
               {copiedToClipboard && (
                 <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
@@ -366,7 +365,7 @@ const Blog = () => {
           <div className='b-navbar-lang'>
               <div className="b-dropdown">
                 <div className="b-dropdown-toggle" onClick={toggleDropdown}>
-                  <img src={getSelectedFlagImage()} alt="Selected Language" className="flag-image" />
+                  <img src={getSelectedFlagImage()} alt="Language" className="flag-image" />
                   <i className="b-dropdown-arrow"></i>
                 </div>
                 {isOpen && (
@@ -474,10 +473,10 @@ function PageHeader({ backgroundImage }) {
   function Sidebar() {
     return (
       <div className="blog-icons">
-        <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="blog-icon"/></a>
-        <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="blog-icon"/></a>
-        <a href='https://x.com/hearthishere '><img src = {icon_x} className="blog-icon"/></a>
-        <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="blog-icon"/></a>
+        <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="blog-icon" alt = "instagram"/></a>
+        <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="blog-icon" alt = "facebook"/></a>
+        <a href='https://x.com/hearthishere '><img src = {icon_x} className="blog-icon" alt = "twitter"/></a>
+        <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="blog-icon" alt = "threads"/></a>
       </div>
     );
   } 
@@ -538,7 +537,7 @@ function PageHeader({ backgroundImage }) {
           </div>
           <div className="overlay-top-right">
           <div className='blog-icon-2'>
-            <img src={icon_share} alt="Icon 2" onClick={() => setShowPopup(true)} />
+            <img src={icon_share} alt="Share" onClick={() => setShowPopup(true)} />
             {showPopup && <SharePopup url={currentUrl} onClose={() => setShowPopup(false)} />}
           </div>
           </div>
@@ -560,7 +559,7 @@ function PageHeader({ backgroundImage }) {
       >
         <img
           src={arrowleft}
-          alt="Arrow Left"
+          alt="Back"
           style={{ marginRight: '5px', width: '22px' }}
         />
         <span>Back to Home</span>
@@ -650,10 +649,10 @@ set(ref(db, "emails/" + uuid), {
             <div className="b-image-row"></div>    
         </div>
         <div className='banner-icons'>
-          <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram}/></a>
-          <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook}/></a>
-          <a href='https://x.com/hearthishere '><img src = {icon_x}/></a>
-          <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads}/></a>
+          <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} alt = "instagram"/></a>
+          <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} alt = "facebook"/></a>
+          <a href='https://x.com/hearthishere '><img src = {icon_x} alt = "twitter"/></a>
+          <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} alt = "threads"/></a>
         </div>
     </div>
   );

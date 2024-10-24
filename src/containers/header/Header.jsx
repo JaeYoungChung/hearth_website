@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './header.css';
-import home_flame from '../../assets/home_flame.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
@@ -89,16 +88,17 @@ const Header = () => {
       </motion.div> 
       <div className='header-side' id='home'>
           <div className="h-icons">
-            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="h-icon"/></a>
-            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="h-icon"/></a>
-            <a href='https://x.com/hearthishere'><img src = {icon_x} className="h-icon"/></a>
-            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="h-icon"/></a>
+            <a href='https://www.instagram.com/hearth.ig/profilecard/?igsh=MXczeGlka2hkODg0NA=='><img src = {icon_instagram} className="h-icon" alt = "instagram"/></a>
+            <a href='https://www.facebook.com/profile.php?id=61563995550443&mibextid=LQQJ4d'><img src = {icon_facebook} className="h-icon" alt = "facebook"/></a>
+            <a href='https://x.com/hearthishere'><img src = {icon_x} className="h-icon" alt = "twitter"/></a>
+            <a href='https://www.threads.net/@hearth.ig'><img src = {icon_threads} className="h-icon" alt = "threads"/></a>
           </div>
           <div className='h-email'>
             {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}
             <img
               src={email} 
-              className="h-email_img" 
+              className="h-email_img"
+              alt = "email"
               style={{ opacity: isActive ? 0.5 : 1 }} 
               onClick={handleImageClick} 
             /> 
@@ -107,47 +107,5 @@ const Header = () => {
     </div>
   )
 }
-
-// return (
-//   <div className='header' id='home'>
-//     <div className={`header-background ${isLoaded ? 'loaded' : ''}`}></div>
-//     <div className='header-content'>
-//       <h1 className='home_title_text'>
-//         H E A R T H
-//       </h1>
-//       <p className='home_subtitle_text'>
-//         Here to Help
-//       </p>
-//       <div className='header-content__input'>
-//         <button 
-//           type="button" 
-//           className='take-test-btn' 
-//           onClick={handleButtonClick}
-//         >
-//           {t("header.take_test")}
-//         </button>
-//       </div>
-//     </div> 
-//     <div className='header-side' id='home'>
-//       <div className="h-icons">
-//         <img src={icon_instagram} className="h-icon" alt="Instagram"/>
-//         <img src={icon_facebook} className="h-icon" alt="Facebook"/>
-//         <img src={icon_x} className="h-icon" alt="X"/>
-//         <img src={icon_threads} className="h-icon" alt="Threads"/>
-//       </div>
-//       <div className='h-email'>
-//         {isActive && <span style={{ color: 'white', marginRight: '10px' }}>hearthisnear@gmail.com</span>}
-//         <img
-//           src={email} 
-//           className="h-email_img" 
-//           style={{ opacity: isActive ? 0.5 : 1 }} 
-//           onClick={handleImageClick} 
-//           alt="Email"
-//         /> 
-//       </div> 
-//     </div>
-//   </div>
-// )
-// }
 
 export default Header

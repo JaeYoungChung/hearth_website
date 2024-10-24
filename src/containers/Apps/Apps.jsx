@@ -112,7 +112,7 @@ function Apps() {
           <img src={download_appstore} alt="Download on the App Store" className="ios-icon"/>
         </a>
         <a href={imageData[selected].google_link} target="_blank" rel="noopener noreferrer">
-          <img src={download_playstore} className="android-icon"/>  
+          <img src={download_playstore} alt="Download on Google Play" className="android-icon"/>  
         </a>  
         </div>
         <div className='a-btn-section'>

@@ -113,7 +113,7 @@ const Community = () => {
               {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}          
           <div className="c-image-row">
             {images.map((src, index) => (
-              <a href={links[index]}><img key={index} src={src} className="c-small-image" alt={`Small ${index + 1}`}/></a>
+              <a href={links[index]}><img key={index} src={src} className="c-small-image" alt={`links ${index + 1}`}/></a>
             ))}
           </div>
           <div className="c-footer">
