@@ -1,5 +1,6 @@
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import './blog.css';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
@@ -294,15 +295,15 @@ const Blog = () => {
   }; 
 
   function handlePostClick(post) {
-    document.body.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-  });
-      setSelectedPost(post);
+    navigate(`/blog/${post.id}`);
   }
 
   return (
     <div className="blog-page">
+      <Helmet>
+        <title>HEARTH Blog - Weekly Insights on Psychology and Philosophy</title>
+        <meta name="description" content="Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning." />
+      </Helmet>
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">
             <NavLink to='/'>
@@ -501,22 +502,32 @@ function PageHeader({ backgroundImage }) {
     );
   }
 
-function BlogPostDetail({ post, onClose }) {
-    //share sns
-    const [showPopup, setShowPopup] = useState(false);
-    const currentUrl = window.location.href;
-    useEffect(() => {
-      const handlePopState = () => {
-        onClose();
-      };
-  
-      window.history.pushState(null, '', window.location.pathname);
-      window.addEventListener('popstate', handlePopState);
-  
-      return () => {
-        window.removeEventListener('popstate', handlePopState);
-      }; 
-    }, [onClose]);
+  function BlogPostDetail() {
+    const navigate = useNavigate();
+
+    const { postId } = useParams();
+  const [post, setPost] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const currentUrl = window.location.href;
+
+  useEffect(() => {
+    const postsRef = ref(db);
+    get(child(postsRef, `/blog/${postId}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setPost(snapshot.val());
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [postId]);
+
+  if (!post) {
+    return <div>Loading...</div>; // Or handle loading state appropriately
+  }
     return (
       <div className="blog-post-detail">
         <div className="modal-header">
@@ -538,17 +549,22 @@ function BlogPostDetail({ post, onClose }) {
           {post.content.split('\\n\\n').map((paragraph, index) => (
           <p key={index}>{paragraph}<br></br></p>
         ))}
-          <div className='back-home'
-            onClick={onClose}              
-            style={{
-              fontSize: 16,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            > 
-            <img src={arrowleft} alt="Arrow Left" style={{ marginRight: '5px', width: '22px'}} />
-            <span>Back to Home</span>
-          </div>
+          <div
+        className="back-home"
+        onClick={() => navigate(-1)} // Navigate back to the previous page
+        style={{
+          fontSize: 16,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <img
+          src={arrowleft}
+          alt="Arrow Left"
+          style={{ marginRight: '5px', width: '22px' }}
+        />
+        <span>Back to Home</span>
+      </div>
         </div>
         {/* if (window.matchMedia('(max-width: 768px)').matches) {
           <Banner></Banner>
@@ -604,7 +620,6 @@ set(ref(db, "emails/" + uuid), {
         .catch((error) => {
           console.error('Error sending email:', error);
         });
-  
   })
   .catch(error => {
     console.error("Error saving email: ", error);
@@ -644,5 +659,5 @@ set(ref(db, "emails/" + uuid), {
   );
 }
 
-export default Blog;
+export { Blog, BlogPostDetail };
 

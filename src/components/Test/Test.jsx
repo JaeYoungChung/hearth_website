@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import logo from '../../assets/home_logo.png'
 import white_logo from '../../assets/whitelogo.png'
 import england_flag from '../../assets/england.png';
@@ -157,6 +158,10 @@ const Test = () => {
 
   return (
  <div className='test-page'>
+    <Helmet>
+      <title>HEARTH Test - Discover your Inner Flame</title>
+      <meta name="description" content="Take the official HEARTH test to discover how you score on each of your Cognitive Forces and uncover the true color of your inner flame." />
+    </Helmet>
       <div className = "t-navbar">
           <div className = "t-navbar-links_logo">
             <NavLink to='/'>
