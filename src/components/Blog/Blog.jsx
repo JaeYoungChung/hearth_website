@@ -1,6 +1,5 @@
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
 import './blog.css';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
@@ -12,7 +11,6 @@ import icon_threads from '../../assets/icon_threads.png'
 import icon_share from '../../assets/share.png'
 import share_kakao from '../../assets/share_kakao.png'
 import share_link from '../../assets/share_link.png';
-import banner_img from '../../assets/bannerimg.png';
 import { ref, child, get } from "firebase/database";
 import { set } from "firebase/database";
 import {db} from "../../firebase.js";
@@ -119,7 +117,7 @@ const SharePopup = ({ url, onClose }) => {
       <button className='button-share' onClick={shareKakao}>
         <img className='copy-link'
           src={share_kakao}
-          alt="share on kakao"
+          alt="share kakao"
           style={{
             width: '40px',
             height: '40px',
@@ -130,7 +128,7 @@ const SharePopup = ({ url, onClose }) => {
       <button className='button-share' onClick={copyToClipboard}>
         <img className='copy-link'
           src={share_link}
-          alt="copy link"
+          alt="share link"
           style={{
             width: '40px',
             height: '40px',
@@ -294,15 +292,15 @@ const Blog = () => {
   }; 
 
   function handlePostClick(post) {
-    navigate(`/blog/${post.id}`);
+    document.body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+      setSelectedPost(post);
   }
 
   return (
     <div className="blog-page">
-      <Helmet>
-        <title>HEARTH Blog - Weekly Insights on Psychology and Philosophy</title>
-        <meta name="description" content="Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning." />
-      </Helmet>
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">
             <NavLink to='/'>
@@ -501,32 +499,22 @@ function PageHeader({ backgroundImage }) {
     );
   }
 
-  function BlogPostDetail() {
-    const navigate = useNavigate();
-
-    const { postId } = useParams();
-  const [post, setPost] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
-  const currentUrl = window.location.href;
-
-  useEffect(() => {
-    const postsRef = ref(db);
-    get(child(postsRef, `/blog/${postId}`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setPost(snapshot.val());
-        } else {
-          console.log('No data available');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [postId]);
-
-  if (!post) {
-    return <div>Loading...</div>; // Or handle loading state appropriately
-  }
+function BlogPostDetail({ post, onClose }) {
+    //share sns
+    const [showPopup, setShowPopup] = useState(false);
+    const currentUrl = window.location.href;
+    useEffect(() => {
+      const handlePopState = () => {
+        onClose();
+      };
+  
+      window.history.pushState(null, '', window.location.pathname);
+      window.addEventListener('popstate', handlePopState);
+  
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      }; 
+    }, [onClose]);
     return (
       <div className="blog-post-detail">
         <div className="modal-header">
@@ -537,7 +525,7 @@ function PageHeader({ backgroundImage }) {
           </div>
           <div className="overlay-top-right">
           <div className='blog-icon-2'>
-            <img src={icon_share} alt="Share" onClick={() => setShowPopup(true)} />
+            <img src={icon_share} alt="share" onClick={() => setShowPopup(true)} />
             {showPopup && <SharePopup url={currentUrl} onClose={() => setShowPopup(false)} />}
           </div>
           </div>
@@ -548,22 +536,17 @@ function PageHeader({ backgroundImage }) {
           {post.content.split('\\n\\n').map((paragraph, index) => (
           <p key={index}>{paragraph}<br></br></p>
         ))}
-          <div
-        className="back-home"
-        onClick={() => navigate(-1)} // Navigate back to the previous page
-        style={{
-          fontSize: 16,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <img
-          src={arrowleft}
-          alt="Back"
-          style={{ marginRight: '5px', width: '22px' }}
-        />
-        <span>Back to Home</span>
-      </div>
+          <div className='back-home'
+            onClick={onClose}              
+            style={{
+              fontSize: 16,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            > 
+            <img src={arrowleft} alt="back" style={{ marginRight: '5px', width: '22px'}} />
+            <span>Back to Home</span>
+          </div>
         </div>
         {/* if (window.matchMedia('(max-width: 768px)').matches) {
           <Banner></Banner>
@@ -619,6 +602,7 @@ set(ref(db, "emails/" + uuid), {
         .catch((error) => {
           console.error('Error sending email:', error);
         });
+  
   })
   .catch(error => {
     console.error("Error saving email: ", error);
@@ -658,5 +642,5 @@ set(ref(db, "emails/" + uuid), {
   );
 }
 
-export { Blog, BlogPostDetail };
+export default Blog;
 

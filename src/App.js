@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Questions, Test, Firecopy, Blog, BlogPostDetail} from './components';
+import {Navbar, Questions, Test, Firecopy, Blog} from './components';
 import {Header, About, About1, About2, About3, Apps, Team, Community} from './containers';
 import { Helmet } from 'react-helmet-async';
 import './App.css';
@@ -32,14 +32,13 @@ const App = () => {
   return (
     <div className = "App">
         <Helmet>
-          <title>HEARTH: Cognitive Force Test | Discover your Inner Flame</title>
-          <meta name="description" content="HEARTH is here to understand our true potential through self-analyzation, by finding out what each of our distinct cognitive abilities are, from strength to weakness." />
+          <title>HEARTH: Test Your Cognitive Force & Improve Yourself</title>
+          <meta name="description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
         </Helmet>
         <div className='gradient_bg'>
                   <Routes>
                   <Route path="/" element={<MainLayout />} />
                   <Route path="/blog" element={<Blog />} /> 
-                  <Route path="/blog/:postId" element={<BlogPostDetail />} />
                   <Route path="/test" element={<Test/>} />
                   <Route path="/questions" element={<Questions />} />
                   <Route path="/firecopy" element={<Firecopy />} />

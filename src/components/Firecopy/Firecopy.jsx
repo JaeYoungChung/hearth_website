@@ -932,7 +932,7 @@ const Firecopy = () => {
           </div>
           <div className="app-right">
             <a href={minAppStore} target="_blank" rel="noopener noreferrer">
-              <img src={download_appstore} alt="Download on the App Store"  className="f-ios-icon"/>
+              <img src={download_appstore} alt="Download on App Store"  className="f-ios-icon"/>
             </a>
             <a href={minGoogleStore} target="_blank" rel="noopener noreferrer">
               <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
