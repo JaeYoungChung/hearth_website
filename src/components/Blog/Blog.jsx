@@ -1,5 +1,6 @@
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import './blog.css';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
