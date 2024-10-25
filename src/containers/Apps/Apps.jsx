@@ -73,6 +73,7 @@ function Apps() {
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
           }}
+          aria-label="apps"
         />
         <p style={{ opacity: selected === parseInt(key) ? 1 : 0.5, fontSize: selected === parseInt(key) ? 17 : 15}}>
           {appData[key].text[0]}

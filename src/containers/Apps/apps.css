@@ -10,11 +10,13 @@
 }
 
 .fade-in {
+  height: auto;
   opacity: 1;
   transition: opacity 0.3s ease-in;
 }
 
 .fade-out {
+  height: auto;
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
