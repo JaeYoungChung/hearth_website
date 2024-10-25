@@ -161,6 +161,7 @@ const Test = () => {
     <Helmet>
       <title>HEARTH Test - Discover your Inner Flame</title>
       <meta name="description" content="Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color." />
+      <meta name="robots" content="index, follow"></meta>
     </Helmet>
       <div className = "t-navbar">
           <div className = "t-navbar-links_logo">

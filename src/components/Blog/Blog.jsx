@@ -301,6 +301,11 @@ const Blog = () => {
 
   return (
     <div className="blog-page">
+      <Helmet>
+        <title>HEARTH Blog - Weekly Insights on Psychology and Philosophy</title>
+        <meta name="description" content="Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning." />
+        <meta name="robots" content="index, follow"></meta>
+      </Helmet>
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">
             <NavLink to='/'>

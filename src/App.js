@@ -34,6 +34,7 @@ const App = () => {
         <Helmet>
           <title>HEARTH: Test Your Cognitive Force & Improve Yourself</title>
           <meta name="description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
+          <meta name="robots" content="index, follow"></meta>
         </Helmet>
         <div className='gradient_bg'>
                   <Routes>
