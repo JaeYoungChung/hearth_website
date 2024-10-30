@@ -164,7 +164,7 @@ const Test = () => {
       <meta name="robots" content="index, follow"></meta>
       <meta property="og:site_name" content="HEARTH Test" />
       <meta property="og:title" content="HEARTH Test - Discover your Inner Flame" />
-      <meta property="og:url" content="www.hearthishere.com/test" />
+      <meta property="og:url" content="https://hearthishere.com/test" />
       <meta property="og:description" content="Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color." />  
     </Helmet>
       <div className = "t-navbar">

@@ -54,7 +54,7 @@ const Header = memo(() => {
           <meta name="robots" content="index, follow"></meta>
           <meta property="og:site_name" content="HEARTH" />
           <meta property="og:title" content="HEARTH: Test Your Cognitive Force & Improve Yourself" />
-          <meta property="og:url" content="www.hearthishere.com" />
+          <meta property="og:url" content="https://hearthishere.com/" />
           <meta property="og:description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
         </Helmet>
       <div className='header-content'>
