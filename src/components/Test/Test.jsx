@@ -157,7 +157,7 @@ const Test = () => {
   };
 
   return (
- <div className='test-page'>
+  <div className='test-page'>
     <Helmet>
       <title>HEARTH Test - Discover your Inner Flame</title>
       <meta name="description" content="Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color." />

@@ -58,7 +58,7 @@ const routeMetaTags = {
 
 const MetaTags = () => {
   const location = useLocation();
-  const currentPath = location.pathname.replace(/\/$/, '');
+  const currentPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, '');
   const currentMeta = routeMetaTags[currentPath] || routeMetaTags['/'];
   const currentUrl = formatUrl(currentPath);
 
@@ -94,15 +94,6 @@ const App = () => {
   return (
     <div className = "App">
         <MetaTags />
-        {/* <Helmet>
-          <title>HEARTH: Test Your Cognitive Force & Improve Yourself</title>
-          <meta name="description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
-          <meta name="robots" content="index, follow"></meta>
-          <meta property="og:site_name" content="HEARTH" />
-          <meta property="og:title" content="HEARTH: Test Your Cognitive Force & Improve Yourself" />
-          <meta property="og:url" content="https://hearthishere.com" />
-          <meta property="og:description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
-        </Helmet> */}
         <div className='gradient_bg'>
             <Routes>
               <Route path="/" element={<MainLayout />} />
