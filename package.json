@@ -49,11 +49,7 @@
     "include": [
       "/",
       "/blog",
-      "/test",
-      "/questions",
-      "/firecopy",
-      "/privacypolicy",
-      "/termsuse"
+      "/test"
     ]
   },  
   "eslintConfig": {
