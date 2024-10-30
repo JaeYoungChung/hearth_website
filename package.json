@@ -38,21 +38,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build && cp _redirects build/_redirects",
+    "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "inlineCss": true,
-    "source": "build",
-    "destination": "build",
-    "crawl": true,
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    },
-    "waitFor": 1000
   },
   "eslintConfig": {
     "extends": [
@@ -62,7 +51,7 @@
   },
   "browserslist": {
     "production": [
-      ">0.01%",
+      ">0.02%",
       "not dead",
       "not op_mini all"
     ],
