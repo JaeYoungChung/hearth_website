@@ -1,10 +1,10 @@
 import React from 'react'
 import {Navbar, Questions, Test, Firecopy, Blog} from './components';
 import {Header, About, About1, About2, About3, Apps, Team, Community} from './containers';
-import { Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './App.css';
 import { Element } from 'react-scroll';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import TermsUse from './components/TermsUse/TermsUse';
 
@@ -28,10 +28,73 @@ const MainLayout = () => (
   </>
 );
 
+const formatUrl = (path) => {
+  const baseUrl = 'https://hearthishere.com'; // Your actual domain
+  const cleanPath = path === '/' ? '' : path;
+  return `${baseUrl}${cleanPath}`;
+};
+
+// Detailed meta configurations for each route
+const routeMetaTags = {
+  '/': {
+    title: "HEARTH: Test Your Cognitive Force & Improve Yourself",
+    description: "Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement.",
+    // image: "https://hearthishere.com/images/home-preview.jpg",
+    type: "website"
+  },
+  '/blog': {
+    title: "HEARTH Blog - Weekly Insights on Psychology and Philosophy",
+    description: "Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning.",
+    // image: "https://hearthishere.com/images/blog-preview.jpg",
+    type: "article"
+  },
+  '/test': {
+    title: "HEARTH Test - Discover your Inner Flame",
+    description: "Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color.",
+    // image: "https://hearthishere.com/images/test-preview.jpg",
+    type: "website"
+  },
+};
+
+const MetaTags = () => {
+  const location = useLocation();
+  const currentPath = location.pathname.replace(/\/$/, ''); // Remove trailing slash
+  const currentMeta = routeMetaTags[currentPath] || routeMetaTags['/'];
+  const currentUrl = formatUrl(currentPath);
+
+  return (
+    <Helmet>
+      {/* Basic Meta Tags */}
+      <title>{currentMeta.title}</title>
+      <meta name="description" content={currentMeta.description} />
+      <link rel="canonical" href={currentUrl} />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:type" content={currentMeta.type} />
+      <meta property="og:site_name" content="HEARTH" />
+      <meta property="og:url" content={currentUrl} />
+      <meta property="og:title" content={currentMeta.title} />
+      <meta property="og:description" content={currentMeta.description} />
+      {/* <meta property="og:image" content={currentMeta.image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" /> */}
+
+      {/* Twitter Card Tags */}
+      {/* <meta name="twitter:card" content="summary_large_image" /> */}
+      <meta name="twitter:domain" content="hearthishere.com" />
+      <meta name="twitter:url" content={currentUrl} />
+      <meta name="twitter:title" content={currentMeta.title} />
+      <meta name="twitter:description" content={currentMeta.description} />
+      {/* <meta name="twitter:image" content={currentMeta.image} /> */}
+    </Helmet>
+  );
+};
+
 const App = () => {
   return (
     <div className = "App">
-        <Helmet>
+        <MetaTags />
+        {/* <Helmet>
           <title>HEARTH: Test Your Cognitive Force & Improve Yourself</title>
           <meta name="description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
           <meta name="robots" content="index, follow"></meta>
@@ -39,7 +102,7 @@ const App = () => {
           <meta property="og:title" content="HEARTH: Test Your Cognitive Force & Improve Yourself" />
           <meta property="og:url" content="https://hearthishere.com" />
           <meta property="og:description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
-        </Helmet>
+        </Helmet> */}
         <div className='gradient_bg'>
             <Routes>
               <Route path="/" element={<MainLayout />} />
