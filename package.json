@@ -43,6 +43,19 @@
     "eject": "react-scripts eject",
     "postbuild": "react-snap"
   },
+  "reactSnap": {
+    "inlineCss": true,
+    "puppeteerArgs": ["--no-sandbox"],
+    "include": [
+      "/",
+      "/blog",
+      "/test",
+      "/questions",
+      "/firecopy",
+      "/privacypolicy",
+      "/termsuse"
+    ]
+  },  
   "eslintConfig": {
     "extends": [
       "react-app",
