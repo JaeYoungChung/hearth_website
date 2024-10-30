@@ -37,15 +37,15 @@ const App = () => {
           <meta name="robots" content="index, follow"></meta>
         </Helmet>
         <div className='gradient_bg'>
-                  <Routes>
-                  <Route path="/" element={<MainLayout />} />
-                  <Route path="/blog" element={<Blog />} /> 
-                  <Route path="/test" element={<Test/>} />
-                  <Route path="/questions" element={<Questions />} />
-                  <Route path="/firecopy" element={<Firecopy />} />
-                  <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-                  <Route path="/termsuse" element={<TermsUse />} /> 
-                  </Routes>
+            <Routes>
+              <Route path="/" element={<MainLayout />} />
+              <Route path="/blog" element={<Blog />} /> 
+              <Route path="/test" element={<Test/>} />
+              <Route path="/questions" element={<Questions />} />
+              <Route path="/firecopy" element={<Firecopy />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="/termsuse" element={<TermsUse />} /> 
+            </Routes>
           </div>
     </div>
   )

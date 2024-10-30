@@ -6,6 +6,7 @@ import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
 import icon_threads from '../../assets/icon_threads.png'
 import email from '../../assets/email.png'
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,6 +48,11 @@ const Header = memo(() => {
 
   return (
     <div className='header' id='home'>
+      <Helmet>
+          <title>HEARTH: Test Your Cognitive Force & Improve Yourself</title>
+          <meta name="description" content="Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement." />
+          <meta name="robots" content="index, follow"></meta>
+        </Helmet>
       <div className='header-content'>
         {/* Priority LCP element */}
         <h1 className='home_title_text'>

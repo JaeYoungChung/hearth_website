@@ -9,6 +9,7 @@ import global_en from './translations/en/global.json';
 import global_ko from './translations/ko/global.json';
 import global_ja from './translations/ja/global.json';
 import { HelmetProvider } from "react-helmet-async";
+import { hydrateRoot, createRoot } from 'react-dom/client';
 
 i18next.init({
     interporlation: {escapeValue: false},
@@ -26,16 +27,23 @@ i18next.init({
     }
 })
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
 
-root.render (
+const app = (
     <React.StrictMode>
         <BrowserRouter>
             <I18nextProvider i18n={i18next}>
                 <HelmetProvider>
-                    <App/>
+                    <App />
                 </HelmetProvider>
             </I18nextProvider>
         </BrowserRouter>
     </React.StrictMode>
-)
+);
+
+// Check if the element has been server-rendered by React Snap
+if (rootElement.hasAttribute('data-server-rendered')) {
+    hydrateRoot(rootElement, app);
+} else {
+    createRoot(rootElement).render(app);
+}
