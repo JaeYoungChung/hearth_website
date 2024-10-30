@@ -306,10 +306,6 @@ const Blog = () => {
         <title>HEARTH Blog - Weekly Insights on Psychology and Philosophy</title>
         <meta name="description" content="Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning." />
         <meta name="robots" content="index, follow"></meta>
-        <meta property="og:site_name" content="HEARTH Blog" />
-        <meta property="og:title" content="HEARTH Blog - Weekly Insights on Psychology and Philosophy" />
-        <meta property="og:url" content="https://hearthishere.com/blog" />
-        <meta property="og:description" content="Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning." />
       </Helmet>
       <div className = "b-navbar">
           <div className = "b-navbar-links_logo">

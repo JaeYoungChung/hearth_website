@@ -29,7 +29,7 @@ const MainLayout = () => (
 );
 
 const formatUrl = (path) => {
-  const baseUrl = 'https://hearthishere.com'; // Your actual domain
+  const baseUrl = 'https://hearthishere.com';
   const cleanPath = path === '/' ? '' : path;
   return `${baseUrl}${cleanPath}`;
 };
@@ -58,7 +58,7 @@ const routeMetaTags = {
 
 const MetaTags = () => {
   const location = useLocation();
-  const currentPath = location.pathname.replace(/\/$/, ''); // Remove trailing slash
+  const currentPath = location.pathname.replace(/\/$/, '');
   const currentMeta = routeMetaTags[currentPath] || routeMetaTags['/'];
   const currentUrl = formatUrl(currentPath);
 
