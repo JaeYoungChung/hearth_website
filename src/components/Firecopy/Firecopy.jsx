@@ -26,12 +26,12 @@ import email_fire from '../../assets/email_fire.png'
 import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
 import emailjs from 'emailjs-com';
-import app_attune from '../../assets/app_attune.png';
-import app_envisage from '../../assets/app_envisage.png';
-import app_harmonize from '../../assets/app_harmonize.png';
-import app_helm from '../../assets/app_helm.png';
-import app_reverie from '../../assets/app_reverie.png';
-import app_transcend from '../../assets/app_transcend.png';
+import app_attune from '../../assets/app_attune.webp';
+import app_envisage from '../../assets/app_envisage.webp';
+import app_harmonize from '../../assets/app_harmonize.webp';
+import app_helm from '../../assets/app_helm.webp';
+import app_reverie from '../../assets/app_reverie.webp';
+import app_transcend from '../../assets/app_transcend.webp';
 import download_appstore from '../../assets/download_appstore.svg';
 import download_playstore from '../../assets/download_playstore.png';
 import { hexToCSSFilter } from 'hex-to-css-filter';

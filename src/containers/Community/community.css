@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     height: 120dvh;
-    background-image: url('../../assets/community_bg.png');
+    background-image: url('../../assets/community_bg.webp');
     background-size: cover;
     color: white;
     text-align: center;
@@ -123,7 +123,7 @@ hr {
 
 @media screen and (max-width: 1023px) {
   .community {
-    background-image: url('../../assets/community_bg.png');
+    background-image: url('../../assets/community_bg.webp');
     height: 100dvh;
     background-size: cover;
     background-position: center;

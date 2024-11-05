@@ -39,19 +39,19 @@ const routeMetaTags = {
   '/': {
     title: "HEARTH: Test Your Cognitive Force & Improve Yourself",
     description: "Hearth is here to help. Know yourself better and utilize the power of mind. With the HEARTH Apps, walk your continuous journey of self-improvement.",
-    // image: "https://hearthishere.com/images/home-preview.jpg",
+    image: "public/og_home.png",
     type: "website"
   },
   '/blog': {
     title: "HEARTH Blog - Weekly Insights on Psychology and Philosophy",
     description: "Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning.",
-    // image: "https://hearthishere.com/images/blog-preview.jpg",
+    image: "public/og_blog.png",
     type: "article"
   },
   '/test': {
     title: "HEARTH Test - Discover your Inner Flame",
     description: "Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color.",
-    // image: "https://hearthishere.com/images/test-preview.jpg",
+    image: "public/og_test.png",
     type: "website"
   },
 };

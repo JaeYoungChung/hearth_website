@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import logo from '../../assets/home_logo.png'
-import white_logo from '../../assets/whitelogo.png'
+import white_logo from '../../assets/whitelogo.webp'
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';

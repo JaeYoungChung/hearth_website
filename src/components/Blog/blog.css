@@ -602,7 +602,7 @@ option.korean::after {
 .banner {
   display: flex;
   justify-content: space-between;
-  background-image: url('../../assets/bannerimg.png');
+  background-image: url('../../assets/bannerimg.webp');
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 

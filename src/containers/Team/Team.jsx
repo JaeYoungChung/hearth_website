@@ -2,11 +2,11 @@ import React from 'react';
 import './team.css';
 import { Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import white_logo from '../../assets/whitelogo.png'
-import blue_logo from '../../assets/bluelogo.png'
-import green_logo from '../../assets/greenlogo.png'
-import red_logo from '../../assets/redlogo.png'
-import yellow_logo from '../../assets/yellowlogo.png' 
+import white_logo from '../../assets/whitelogo.webp'
+import blue_logo from '../../assets/bluelogo.webp'
+import green_logo from '../../assets/greenlogo.webp'
+import red_logo from '../../assets/redlogo.webp'
+import yellow_logo from '../../assets/yellowlogo.webp' 
 import { useSwipeable } from 'react-swipeable';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
