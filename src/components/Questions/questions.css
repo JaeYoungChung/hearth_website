@@ -463,6 +463,7 @@ span {
   .question-text {
     height: 10dvh;
     font-size: 20px;
+    min-height: 5rem;
   }
 
   .survey-container {
