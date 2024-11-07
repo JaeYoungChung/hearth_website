@@ -45,13 +45,13 @@ const routeMetaTags = {
   '/blog': {
     title: "HEARTH Blog - Weekly Insights on Psychology and Philosophy",
     description: "Read weekly essays on psychology and philosophy to gain insights on human behavior, personal growth, and the fundamental questions of life and meaning.",
-    image: "https://hearthishere.com/blog/og_home.png",
+    image: "https://hearthishere.com/og_blog.png",
     type: "article"
   },
   '/test': {
     title: "HEARTH Test - Discover your Inner Flame",
     description: "Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color.",
-    image: "	https://hearthishere.com/test/og_home.png",
+    image: "	https://hearthishere.com/og_test.png",
     type: "website"
   },
 };
