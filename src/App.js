@@ -76,8 +76,8 @@ const MetaTags = () => {
       <meta property="og:title" content={currentMeta.title} />
       <meta property="og:description" content={currentMeta.description} />
       <meta property="og:image" content={currentMeta.image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      {/* <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" /> */}
 
       {/* Twitter Card Tags */}
       {/* <meta name="twitter:card" content="summary_large_image" /> */}
