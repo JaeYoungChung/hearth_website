@@ -51,7 +51,7 @@ const routeMetaTags = {
   '/test': {
     title: "HEARTH Test - Discover your Inner Flame",
     description: "Take the HEARTH Test to find out how you score on different Cognitive Forces and uncover your true color.",
-    image: "	https://hearthishere.com/og_test.png",
+    image: "https://hearthishere.com/og_test.png",
     type: "website"
   },
 };
