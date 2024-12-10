@@ -490,10 +490,10 @@ function PageHeader({ backgroundImage }) {
       <div className="post" onClick={onClick}>
         <div className="post-image">
           <img src={post.imageUrl} alt={post.title} />
-          <div className="overlay-top-left">
+          {/* <div className="overlay-top-left">
             <p>{post.month}</p>
             <p className='blog-date'>{post.date}</p>
-          </div>
+          </div> */}
           {/* <img className="overlay-bottom-right" src={post.overlayImage} alt="Overlay" /> */}
           {/* <img className="overlay-bottom-right" src={profile_K} alt="Overlay" /> */}
         </div>
