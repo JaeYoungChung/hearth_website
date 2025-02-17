@@ -6,17 +6,19 @@ import logo from '../../assets/home_logo.png'
 import resultfire from '../../assets/result_fire.mp4'
 import arrowright from '../../assets/arrow_right.png'
 import arrowleft from '../../assets/arrow_left.png'
+import closeFigure from '../../assets/close_figure.png'
 import rotateRight from '../../assets/right_arrow.png'
 import rotateLeft from '../../assets/left_arrow.png'
 import {db} from "../../firebase.js";
 import { uid } from "uid";
 import { ref, set } from "firebase/database";
-import { getResults } from '../../data.js';
+import { getResemble, getResults, getQuotes, getImages } from '../../data.js';
 import england_flag from '../../assets/england.png';
 import korea_flag from '../../assets/korea.png';
 import japan_flag from '../../assets/japan.png';
 import navbar_menu from '../../assets/navbar_menu.png'
 import close_btn from '../../assets/close_btn.png'
+import save_result from '../../assets/save_result.png'
 import icon_instagram from '../../assets/icon_instagram.png'
 import icon_facebook from '../../assets/icon_facebook.png'
 import icon_x from '../../assets/icon_x.png'
@@ -25,6 +27,7 @@ import email_img from '../../assets/email.png'
 import email_fire from '../../assets/email_fire.png'
 import read_more from '../../assets/read_more.png'
 import close_result from '../../assets/close_result.png'
+import return_btn from '../../assets/return_btn.png'
 import emailjs from 'emailjs-com';
 import app_attune from '../../assets/app_attune.webp';
 import app_envisage from '../../assets/app_envisage.webp';
@@ -34,6 +37,7 @@ import app_reverie from '../../assets/app_reverie.webp';
 import app_transcend from '../../assets/app_transcend.webp';
 import download_appstore from '../../assets/download_appstore.svg';
 import download_playstore from '../../assets/download_playstore.png';
+import musashi_img from '../../assets/figure_musashi.webp';
 import { hexToCSSFilter } from 'hex-to-css-filter';
 import { isVisible } from '@testing-library/user-event/dist/utils';
 
@@ -143,7 +147,7 @@ const Firecopy = () => {
     const green = rgbValues?.NewGreenValue;
     const blue = rgbValues?.NewBlueValue;     
     const maxminResult = sessionStorage.getItem('maxminResult');
-    const { max, min } = JSON.parse(maxminResult);
+    const { max, min, secondMax } = JSON.parse(maxminResult);
     const storedLetter = sessionStorage.getItem('selectedLetter');
 
     const imageMap = {
@@ -171,6 +175,24 @@ const Firecopy = () => {
       d: `#FFEF00`,
       e: `#DC143C`,
       f: `#FF00FF`
+    };
+
+    const colorFiguresMap = {
+      a: `#00FF00`,
+      b: `#0064FF`,
+      c: `#00FFFF`,
+      d: `#FFEF00`,
+      e: `#FF002D`,
+      f: `#FF00FF`
+    };
+
+    const colorQuotesMap = {
+      a: `#7DFF7D`,
+      b: `#7DB0FF`,
+      c: `#7DFFFF`,
+      d: `#FFF77D`,
+      e: `#FF7D94`,
+      f: `#FF7DFF`
     };
 
     const imageData = {
@@ -210,10 +232,16 @@ const Firecopy = () => {
     const hexCode = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
     const cssFilter = hexToCSSFilter(hexCode);
     let textToShow = 'No data found';
+    let resembleTextToShow = 'No data found';
+    let quoteTextToShow = 'No data found';
+    let resembleFigureToShow = 'No data found';
     const maxValue = labelMap[max] || 'Unknown';
     const minValue = labelMap[min] || 'Unknown';
+    const secondMaxValue = labelMap[secondMax] || 'Unkown';
     const maxColor = colorMap[max] || 'Unknown';
     const minColor = colorMap[min] || 'Unknown';
+    const maxFigureColor = colorFiguresMap[max] || 'Unknown';
+    const maxQuoteColor = colorQuotesMap[max] || 'Unknown';
     const maxImage = imageMap[max] || 'Unknown';
     const minImage = imageMap[min] || 'Unknown';
     const maxAppStore = imageData[max].apple_link || 'Unknown';
@@ -222,16 +250,24 @@ const Firecopy = () => {
     const minGoogleStore = imageData[min].google_link || 'Unknown';
 
     if (maxminResult) {
-      const { max, min } = JSON.parse(maxminResult);
+      const { max, min, secondMax } = JSON.parse(maxminResult);
       const combinationTexts = getResults(t);
+      const resembleTexts = getResemble(t);
+      const quoteTexts = getQuotes(t);
+      const resembleFigure = getImages(t);
       const key = `${max}-${min}`;
-      textToShow = combinationTexts[key] || 'No matching text found'; 
+      const resembleKey = `${max}-${secondMax}`;
+      textToShow = combinationTexts[key] || 'No matching text found';
+      resembleTextToShow = resembleTexts[resembleKey] || 'No matching text found';
+      quoteTextToShow = quoteTexts[resembleKey] || 'No matching text found';
+      resembleFigureToShow = resembleFigure[resembleKey] || 'No matching text found';
     }
 
     //references
     const videoRef = useRef(null);
     const overlayRef = useRef(null);
     const textContainerRef = useRef(null);
+    const contentWrapperRef = useRef(null);
     const bottomTextRef = useRef(null);
     const svgRef = useRef(null); 
     const svgRef2 = useRef(null);
@@ -245,6 +281,13 @@ const Firecopy = () => {
     const forceQuotient = useRef(null);
     const closeButton = useRef(null);
     const smallTextRef = useRef(null);
+    const smallTextMobileRef = useRef(null);
+
+    //new references for new design
+    //figure image + quote
+    const overlayContentRef = useRef(null);
+    const imageContainerRef = useRef(null);
+    const quoteContainerRef = useRef(null);
 
 
     //colors, labels
@@ -271,9 +314,12 @@ const Firecopy = () => {
     const [showBackButton, setShowBackButton] = useState(false);
     const [smallTextContent, setSmallTextContent] = useState("");
     const [showNewContent, setShowNewContent] = useState(false);
+    const [showWhiteBorder, setShowWhiteBorder] = useState(false);
     const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(false);
     const [rotationButton, setRotationButton] = useState(70);
     const [isCheckboxTextBlinking, setIsCheckboxTextBlinking] = useState(false);
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [showSaveNotification, setShowSaveNotification] = useState(false);
 
     useEffect(() => {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
@@ -281,20 +327,29 @@ const Firecopy = () => {
       i18n.changeLanguage(savedLanguage);
     }, [i18n]);
 
+    // WEB & Mobile : The whole animation sequence from Initial -> Letter
+    // WEB & Mobile : The whole animation sequence from Initial -> Letter
     useEffect(() => {
         const video = videoRef.current;
         const overlay = overlayRef.current;
         const textContainer = textContainerRef.current;
+        const contentWrapper = contentWrapperRef.current;
         const bottomText = bottomTextRef.current;
+        const overlayContent = overlayContentRef.current;
+        const imageContainer = imageContainerRef.current;
+        const quoteContainer = quoteContainerRef.current;    
         closeButton.current.style.pointerEvents = 'none';
+        smallTextMobileRef.current.style.pointerEvents = 'none';
+        smallTextMobileRef.current.style.opacity = 0;
+        readMoreRef.current.style.pointerEvents = 'none';
         viewRef.current.style.opacity = 0;
-        setSmallTextContent(t("firecopy.finishTest"));
-
         video.style.opacity = 0;
         overlay.style.opacity = 0;
         overlay.style.display = 'none';
         video.style.transition = 'opacity 1s ease-in-out';
         overlay.style.transition = 'opacity 1s ease-in-out';
+
+        //fire appears
         setTimeout(() => {
           video.style.opacity = 1;
           overlay.style.display = 'block';
@@ -307,49 +362,77 @@ const Firecopy = () => {
           }
         }, 1000);
       
-        // Trigger animations after initial fade-in
+        //fire moves to left, letter text appears
         setTimeout(() => {
           video.classList.add('moving');
-          textContainer.classList.add('appearing');
+          // textContainer.classList.add('appearing');
         }, 2000);
       
-        // Make the bottom text appear after 3 seconds
+        //see details text appears
         setTimeout(() => {
-          bottomText.style.opacity = 1;
-        }, 3000);
+      // Add blur to video
+      video.style.filter = 'blur(8px)';
+      // Show overlay content
+      overlayContent.style.opacity = 1;
+      imageContainer.style.opacity = 1;
+      quoteContainer.style.opacity = 1;
+      bottomText.style.opacity = 1;        }, 3000);
       }, []);
 
+
+      // WEB & Mobile : The whole animation sequence from Letter -> Test Results
+      // WEB & Mobile : The whole animation sequence from Letter -> Test Results
       const handleBottomTextClick = () => {
-        setShowContent(false); // Hide text container and bottom text
-        // Wait for fade out animation to complete before showing the SVG
+        setShowContent(false); // step 4 : hide letter text
+
+        // Remove blur from video
+        videoRef.current.style.filter = 'none';
+        
+        // Hide overlay content with fade out effect
+        if (overlayContentRef.current) {
+            overlayContentRef.current.style.opacity = 0;
+          }
+
+        // After fade out animation, completely remove overlay content
+        setTimeout(() => {
+          setShowOverlay(false);
+        }, 1000); // Match this with your transition duration
+
+        //show hexagon chart
         setTimeout(() => {
           if (window.matchMedia('(max-width: 1023px)').matches) {
             videoRef.current.style.opacity = 1;
           } 
           svgRef.current.style.opacity = 0.5;
-        }, 1000);
+        }, 0);
+        // show hexagon color
         setTimeout(() => {
-            setHexagonColor(`rgb(${red}, ${green}, ${blue})`); // Set hexagon color to fire color
+            setHexagonColor(`rgb(${red}, ${green}, ${blue})`);
             setChangeTextColor(true);
-          }, 2000);
+          }, 0);
         setTimeout(() => {
-            setTiltedSVG(true);
+            setTiltedSVG(true); // tilt the hexagon
             setTilted(true);
             setRotation(30);  // Set the rotation state to -60
             setMobileRotation(30);
-            if (svgRef2.current) {
-              svgRef2.current.classList.add('slide-bottom');
-            }
-            if (videoRef.current) {
-              videoRef.current.style.transform = 'none';
-              videoRef.current.classList.add('slide-right');
-              }
-            textContainerRef.current.classList.add('hidden');
+            // slide hexagon to bottom
+            // if (svgRef2.current) {
+            //   svgRef2.current.classList.add('slide-bottom');
+            // }
+            // slide hexagon to the right
+            // if (videoRef.current) {
+            //   videoRef.current.style.transform = 'none';
+            //   videoRef.current.classList.add('slide-right');
+            // }
+            // textContainerRef.current.classList.add('hidden');
+            // text on the left side shows up
             textLeftRef.current.style.opacity = 1;
             if (window.matchMedia('(max-width: 1023px)').matches) {
               textLeftLinesRef.current.style.opacity = 0;
               closeButton.current.style.opacity = 0;
+              smallTextMobileRef.current.style.opacity = 0;
             }
+            //rest of the contents show up
             svgRef.current.style.opacity = 1;
             forceQuotient.current.style.opacity = 1;
             leftArrowRef.current.style.opacity = 1;
@@ -359,9 +442,15 @@ const Firecopy = () => {
             smallTextRef.current.style.opacity = 1;
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
-        }, 3000);
+            bottomTextRef.current.style.display = 'none';
+            readMoreRef.current.style.pointerEvents = 'auto';
+            setSmallTextContent(t("firecopy.finishTest"));
+        }, 0);
       };
 
+
+      // The whole animation sequence from Test Results -> Final Page
+      // The whole animation sequence from Test Results -> Final Page
       const handleSmallTextClick = () => {
             textLeftRef.current.style.opacity = 0;
             leftArrowRef.current.style.opacity = 0;
@@ -370,16 +459,40 @@ const Firecopy = () => {
             readMoreRef.current.style.opacity = 0;
             smallTextRef.current.style.opacity = 0;
             smallTextRef.current.style.pointerEvents = 'none';
-            bottomTextRef.current.style.pointerEvents = 'auto';
+            bottomTextRef.current.style.pointerEvents = 'auto';  
+            bottomTextRef.current.style.display = 'flex';
+            readMoreRef.current.style.pointerEvents = 'none';       
             svgRef.current.style.opacity = 0;
+            closeButton.current.style.opacity = 0;
+            smallTextMobileRef.current.style.opacity = 0;
+            overlayContentRef.current.classList.add('hidden');
+            graphRef.current.classList.add('hidden');
             if (window.matchMedia('(max-width: 1023px)').matches) {
               videoRef.current.style.opacity = 0.5;}
             videoRef.current.classList.add('slide-bottom-big');
             setSmallTextContent(t("firecopy.finishTest"));
             setShowBackButton(true);
-            setTimeout(() => setShowNewContent(true), 1000);
+            // Use requestAnimationFrame to ensure DOM is ready
+            setTimeout(() => {
+              setShowContent(true);
+              setShowWhiteBorder(true);
+              // textContainerRef.current.classList.add('appearing');
+              // Wait for next frame to ensure container is mounted
+              // requestAnimationFrame(() => {
+              //     if (textContainerRef.current) {
+              //         textContainerRef.current.classList.add('appearing');
+              //     }
+              // });
+          }, 1000);
       };
-    
+
+      const handleNewContentClick = () => {
+        textContainerRef.current.classList.add('hidden');
+        setShowNewContent(true);
+      }
+
+      // The whole animation sequence from Final Page -> Test Results
+      // The whole animation sequence from Final Page -> Test Results
       const handleBackButtonClick = () => {
             textLeftRef.current.style.opacity = 1;
             leftArrowRef.current.style.opacity = 1;
@@ -391,12 +504,17 @@ const Firecopy = () => {
             videoRef.current.style.opacity = 1;
             smallTextRef.current.style.pointerEvents = 'auto';
             bottomTextRef.current.style.pointerEvents = 'none';
+            bottomTextRef.current.style.display = 'none';
             videoRef.current.classList.remove('slide-bottom-big');
             setSmallTextContent(t("firecopy.finishTest"));
             setShowBackButton(false);
-            setShowNewContent(false);
+            textContainerRef.current.classList.add('hidden');
+            setShowWhiteBorder(false);
+            // setShowNewContent(false);
       };
 
+      // MOBILE : The whole animation sequence for READ MORE
+      // MOBILE : The whole animation sequence for READ MORE
       const handleReadMoreClick = (originalIndex) => {
         const rotationValues = [30, 270, 330, 150, 90, 210];
         const newMobileRotation = rotationValues[originalIndex] || 0;
@@ -425,8 +543,12 @@ const Firecopy = () => {
         textLeftLinesRef.current.style.opacity = 1;
         closeButton.current.style.opacity = 1;
         closeButton.current.style.pointerEvents = 'auto';
+        smallTextMobileRef.current.style.opacity = 1;
+        smallTextMobileRef.current.style.pointerEvents = 'auto';
       };
 
+      // MOBILE : The whole animation sequence for go back from READ MORE
+      // MOBILE : The whole animation sequence for go back from READ MORE
       const closeResult = () => {
         videoRef.current.style.opacity = 1;
         setRotationButton(30);
@@ -435,10 +557,12 @@ const Firecopy = () => {
         readMoreRef.current.style.opacity = 1;
         forceQuotient.current.style.opacity = 1;
         closeButton.current.style.opacity = 0;
+        smallTextMobileRef.current.style.opacity = 0;
         smallTextRef.current.style.opacity = 1;
         viewRef.current.style.opacity = 0;
         textLeftLinesRef.current.style.opacity = 0;
-        closeButton.current.style.pointerEvents = 'none';            
+        closeButton.current.style.pointerEvents = 'none';      
+        smallTextMobileRef.current.style.opacity = 'none';      
       }
 
       const getHexagonPoints = (centerX, centerY, radius) => {
@@ -645,6 +769,15 @@ const Firecopy = () => {
           console.error('Failed to copy text: ', error);
         });
     };
+
+    const handleSave = () => {
+      setShowSaveNotification(!showSaveNotification);
+      if(showSaveNotification) {
+        contentWrapperRef.current.style.opacity = 1.0;
+      } else {
+        contentWrapperRef.current.style.opacity = 0.3;
+      }
+    };
     
     function TextSection({ color, text }) {
       return (
@@ -753,14 +886,35 @@ const Firecopy = () => {
                 '--overlay-color': `rgb(${red}, ${green}, ${blue})`,
                 }}
             ></div>
-          </div> 
+          </div>
+      {/* New Overlay Content */}
+        <div className="overlay-content" ref={overlayContentRef}>
+          <div className="image-container" ref={imageContainerRef}>
+            {/* <img src={musashi_img} alt="Musashi" className="musashi-image" /> */}
+            <img src= {resembleFigureToShow} alt="Resemble Figure" className="musashi-image" 
+            style={{ '--maxColor': maxFigureColor}}/>
+          </div>
+          <div className="quote-container" ref={quoteContainerRef}>
+            <p className="resemble-text">{t("firecopy.resemble")}</p>
+            <p className="figure-text" style={{ '--maxColor': maxFigureColor}}>{resembleTextToShow}</p>
+            <p className="quote-text" style={{ '--maxColor': maxQuoteColor}}>{quoteTextToShow}</p>
+          </div>
+          <div
+            className={`bottom-text ${!showContent ? 'fading' : ''}`}
+            ref={bottomTextRef}
+            onClick={handleBottomTextClick}
+            style={{
+              fontSize: 16,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+            <img src={closeFigure} style={{ marginLeft: '5px', width: '22px'}} />
+          </div>
+        </div>
             <div className='f-column'>
-              <div className={`f-text-container ${!showContent ? 'fading' : ''}`} ref={textContainerRef}>
-                  <p>To. {storedLetter}</p><br></br>
-                  <p>{textToShow}</p><br></br>
-                  <p className='third-line'>{t("firecopy.sincerely")}</p>
-              </div> 
-              <div
+              
+              {/* <div
                 className={`bottom-text ${!showContent ? 'fading' : ''}`}
                 ref={bottomTextRef}
                 onClick={handleBottomTextClick}
@@ -769,14 +923,14 @@ const Firecopy = () => {
                   display: 'flex',
                   alignItems: 'center',
                 }}
-                > 
-                <span>{t("firecopy.details")}</span>
-                <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
-              </div>
+                >  */}
+                {/* <span>{t("firecopy.details")}</span> */}
+                {/* <img src={arrowright} alt="Arrow Right" style={{ marginLeft: '5px', width: '22px'}} />
+              </div> */}
             </div>
           <img src={rotateLeft} className="arrow left-arrow" ref={leftArrowRef} onClick={rotateClockwise}></img>
           <img src={rotateRight} className="arrow right-arrow" ref={rightArrowRef} onClick={rotateCounterClockwise}></img>
-          <div className={tiltedsvg ? 'tilted-svg' : ''}>
+          <div className='tilted-svg'>
             <div className="svg-wrapper">
               <div
                 className={`f-svg-container ${showContent ? 'hidden' : ''} ${rotation !== 0 ? 'rotate' : ''}`}
@@ -784,7 +938,7 @@ const Firecopy = () => {
                 style={{ transform: rotationButton !== 0 ? `perspective(1000px) rotate3d(0, -2.747, 1, ${rotation}deg)` : null }}
               >
                 <svg
-                  className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :''}
+                  className={tilted ? (rotationButton !== 0) ? 'f-tilted' : 'f-tilted-reset' :'f-tilted'}
                   style={{ transform: rotationButton === 0 ? `translate(0px, -350px) scale(75%) rotate3d(0, 0, 1, ${mobileRotation}deg)` : null, overflow: 'visible'}}  
                 >
                   {/* Outer grey hexagon */}
@@ -862,13 +1016,34 @@ const Firecopy = () => {
               <p className='left-lastline2'>{t("firecopy.forceQuotient")}</p>
             </div>
         </div>
-        <img className='close-result' ref={closeButton} src={close_result} onClick={closeResult}></img>
-       
-       
-       
+        <img className='close-result' ref={closeButton} src={return_btn} onClick={closeResult}></img>
+        <div className="f-small-text" ref={smallTextRef}
+          onClick={smallTextRef.current && smallTextRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
+          style={{
+              opacity: 0,
+              fontSize: 17,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+          <span>{smallTextContent}</span>
+          {/* <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} /> */}
+        </div>
+
+    {showWhiteBorder && (
+      <div className='combined-content-wrapper'>
+        <div className={`f-text-container ${!showContent ? 'fading' : 'appearing'}`} ref={textContainerRef}>
+            <p>To. {storedLetter}</p><br></br>
+            <p>...{textToShow}</p><br></br>
+            {/* <p className='third-line'>{t("firecopy.sincerely")}</p> */}
+            <div className="button-wrapper">
+              <p className="insight-button" 
+                style={{ '--maxColor': maxFigureColor}}
+                onClick={handleNewContentClick}>{t("firecopy.unlockInsight")}</p>
+            </div>              
+        </div>
        {showNewContent && (
         <div className="f-new-content">
-
           {/* <div className="f-left-content">
             <div className="f-colored-square" style={{backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></div>
             <div className="color-square" ></div>
@@ -876,101 +1051,114 @@ const Firecopy = () => {
               {t("firecopy.copyCode")}
             </button>
           </div> */}
-
-<div className="content-wrapper">
-    <div className="register-section">
-      <p className='receive-result'>{t("firecopy.receiveResult")}</p>
-      <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
-        <input
-          type="text"
-          placeholder={t("community.email")}
-          value={email}
-          onChange={handleEmailChange}
-          id="f-inputID"
-          className={!isValidEmail ? 'invalid' : ''}
-        />                
-        <p
-          className={`register ${isRegistered ? 'registered-green' : ''}`}
-          onClick={!isRegistered ? handleRegister : null}
-          style={{color: !isRegistered ? 'white' : '#39FF14'}}
-        >
-          {isRegistered ? t("community.registered") : t("community.register")}
-        </p>
-      </div>
-        {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}     
-    </div> 
-    <hr className='f-hr' />
-    <div className="potential-section">
-      <p className='live-up'>{t("firecopy.liveUp")}</p>
-      <p className='get-app'>{t("firecopy.getApp")}</p>
-      <p className='personalize'>{t("firecopy.personalize")}  <span className='hex-code' style={{ '--red': red, '--green': green, '--blue': blue }}>{uniqueCode}</span></p>
-    </div>
-    <div className="app-section">
-      <div className="strength">
-        <p>{t("firecopy.furtherEnhance")} <span style={{color: maxColor, fontSize: `16px`}}>{t("firecopy.strength")}</span></p>
-        <div className="app-content">
-          <div className="app-left">
-            <img src={maxImage} alt="Helm App" className="app-helm-icon" />
-            <p>{maxValue}</p>
+        <img src={save_result}
+            style={{ '--red': red, '--green': green, '--blue': blue }}
+            className={`save-button ${showSaveNotification ? 'active' : ''}`} 
+            onClick={handleSave}/>
+        <div className="content-wrapper" ref={contentWrapperRef}>
+          <div className="register-section">
+            <p className='receive-result'>
+              {t("firecopy.myCode")}
+            </p>
+            <p className='hex-code' style={{ '--red': red, '--green': green, '--blue': blue }}>{uniqueCode}</p>
+          </div> 
+          {/* <hr className='f-hr' /> */}
+          <div className="potential-section">
+            {/* <p className='live-up'>{t("firecopy.liveUp")}</p> */}
+            {/* <p className='get-app'>{t("firecopy.getApp")}</p>
+            <p className='personalize'>{t("firecopy.personalize")}   */}
+            <p>{t("firecopy.download")}</p>
+            <p>{t("firecopy.enterCode")}</p>
+            {/* </p> */}
           </div>
-          <div className="app-right">
-            <a href={maxAppStore} target="_blank" rel="noopener noreferrer">
-              <img src={download_appstore} alt="Download on the App Store" className="f-ios-icon"/>
-            </a>
-            <a href={maxGoogleStore} target="_blank" rel="noopener noreferrer">
-              <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="weakness">
-        <p>{t("firecopy.improveOn")} <span style={{color: minColor, fontSize: `16px`}}>{t("firecopy.weakness")}</span></p>
-        <div className="app-content">
-          <div className="app-left">
-            <img src={minImage} alt="Helm App" className="app-helm-icon" />
-            <p>{minValue}</p>
-          </div>
-          <div className="app-right">
-            <a href={minAppStore} target="_blank" rel="noopener noreferrer">
-              <img src={download_appstore} alt="Download on App Store"  className="f-ios-icon"/>
-            </a>
-            <a href={minGoogleStore} target="_blank" rel="noopener noreferrer">
-              <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
-            </a>
-          </div>
-        </div>
-      </div>
-   
-
-            </div>
-            {/* <div className='check-text'>
-                <input
-                type="checkbox"
-                id="check1"
-                className="custom-checkbox"
-                style={{ '--red': red, '--green': green, '--blue': blue }}
-                checked={isFirstCheckboxChecked}
-                onChange={handleFirstCheckboxChange}
-              />
-              <label
-                  htmlFor="check1"
-                  className={`checkbox-label`}>
-                  {t("firecopy.subscribeLetter")}
-              </label>            
-            </div>
-            {copiedFireClipboard && (
-                <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
-                  {t("firecopy.copyClipboard")}
+          <div className="app-section">
+            <div className="strength">
+              <p>{t("firecopy.furtherEnhance")} <span style={{color: maxColor, fontSize: `16px`}}>{t("firecopy.strength")}</span></p>
+              <div className="app-content">
+                <div className="app-left">
+                  <img src={maxImage} alt="Helm App" className="app-helm-icon" />
+                  <p>{maxValue}</p>
                 </div>
-              )}  */}
+                <div className="app-right">
+                  <a href={maxAppStore} target="_blank" rel="noopener noreferrer">
+                    <img src={download_appstore} alt="Download on the App Store" className="f-ios-icon"/>
+                  </a>
+                  <a href={maxGoogleStore} target="_blank" rel="noopener noreferrer">
+                    <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="weakness">
+              <p>{t("firecopy.improveOn")} <span style={{color: minColor, fontSize: `16px`}}>{t("firecopy.weakness")}</span></p>
+              <div className="app-content">
+                <div className="app-left">
+                  <img src={minImage} alt="Helm App" className="app-helm-icon" />
+                  <p>{minValue}</p>
+                </div>
+                <div className="app-right">
+                  <a href={minAppStore} target="_blank" rel="noopener noreferrer">
+                    <img src={download_appstore} alt="Download on App Store"  className="f-ios-icon"/>
+                  </a>
+                  <a href={minGoogleStore} target="_blank" rel="noopener noreferrer">
+                    <img src={download_playstore} alt="Download on the Play Store"  className="f-android-icon"/>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+          <p className='gain-insight-text'>{t("firecopy.gainInsight")}</p>
+          <p className='gain-insight-text'>{t("firecopy.liveUpTo")}</p>
 
+                  {/* <div className='check-text'>
+                      <input
+                      type="checkbox"
+                      id="check1"
+                      className="custom-checkbox"
+                      style={{ '--red': red, '--green': green, '--blue': blue }}
+                      checked={isFirstCheckboxChecked}
+                      onChange={handleFirstCheckboxChange}
+                    />
+                    <label
+                        htmlFor="check1"
+                        className={`checkbox-label`}>
+                        {t("firecopy.subscribeLetter")}
+                    </label>            
+                  </div>
+                  {copiedFireClipboard && (
+                      <div style={{ position: 'fixed', top: '10px', right: '10px', backgroundColor: 'green', color: 'white', padding: '5px 10px', borderRadius: '4px' }}>
+                        {t("firecopy.copyClipboard")}
+                      </div>
+                    )}  */}
+                </div>
         </div>
       )}
-
-
-
-
+</div>
+)}
+{showSaveNotification && (
+            <div className={`save-notification ${showSaveNotification ? 'visible' : ''}`}>
+              <p className='save-result'>Save Test Results</p>
+              <div className="f-inputBox" style={{border: isRegistered ? `1px solid #39FF14` : `1px solid white`}}>
+                <input
+                  type="text"
+                  placeholder={t("community.email")}
+                  value={email}
+                  onChange={handleEmailChange}
+                  id="f-inputID"
+                  className={!isValidEmail ? 'invalid' : ''}
+                />
+                <p
+                  className={`register ${isRegistered ? 'registered-green' : ''}`}
+                  onClick={!isRegistered ? handleRegister : null}
+                  style={{color: !isRegistered ? 'white' : '#39FF14'}}
+                >
+                  {/* {isRegistered ? t("community.registered") : t("community.register")} */}
+                  {isRegistered ? 'Sent!' : 'Send'}
+                </p>
+              </div>
+                {!isValidEmail && <p className="error-message">{t("community.error_message")}</p>}     
+            </div>
+        )}
         <div className="f-legend-container" ref={graphRef}>
             <ul className="f-score-list">
               {['s1', 's2', 's3', 's4', 's5', 's6'].map((score, originalIndex) => {
@@ -988,10 +1176,10 @@ const Firecopy = () => {
               })}
             </ul>
         </div>
-        <div className="f-small-text" ref={smallTextRef}
-          onClick={smallTextRef.current && smallTextRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
+        <div className="f-small-text-mobile" ref={smallTextMobileRef}
+          onClick={smallTextMobileRef.current && smallTextMobileRef.current.style.opacity !== '0' ? handleSmallTextClick : undefined}
           style={{
-              opacity: 0,
+              opacity: 1,
               fontSize: 17,
               display: 'flex',
               alignItems: 'center',
@@ -1001,9 +1189,10 @@ const Firecopy = () => {
           {/* <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} /> */}
         </div>
         <button className="read_more" ref={readMoreRef} onClick={() => handleReadMoreClick(0)}>
-          {t("firecopy.readMore")}
+          {/* {t("firecopy.readMore")} */}
+          <span>{t("firecopy.details")}</span>
         </button>
-        {showBackButton && (
+        {/* {showBackButton && (
         <div className="f-back-button" onClick={handleBackButtonClick}
           style={{
             color: 'white',
@@ -1015,8 +1204,8 @@ const Firecopy = () => {
           <img src={arrowleft} alt="Arrow Left" style={{marginRight: '5px', width: '20px'}} />
           <span>{t("firecopy.results")}</span>
         </div>    
-      )}
-      {showBackButton && (
+      )} */}
+      {/* {showBackButton && (
       <NavLink to='/'>
         <div className="f-home-button" onClick={handleBackButtonClick}
           style={{
@@ -1030,7 +1219,7 @@ const Firecopy = () => {
           <img src={arrowright} alt="Arrow Right" style={{marginLeft: '5px', width: '20px'}} />
         </div> 
       </NavLink>
-      )}
+      )} */}
     </div>
   </div>
     );

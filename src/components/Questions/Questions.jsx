@@ -337,9 +337,10 @@ function Survey() {
         // Determine the maximum and minimum
         const max = sums.sort(findMax)[0].label;
         const min = sums.sort(findMin)[0].label;
+        const secondMax = sums.sort(findMax)[1].label;
 
         sessionStorage.setItem('maxminResult', JSON.stringify({
-          max, min
+          max, min, secondMax
         }));
 
         //Range -36 ~ 36
@@ -352,7 +353,7 @@ function Survey() {
         let AdjustedGreen = 2 * GreenValue + 72;
         let AdjustedBlue = 2 * BlueValue + 72;
 
-      //   // New adjustments based on max value
+        // New adjustments based on max value
         switch (max) {
           case 'a':
               AdjustedGreen += 20;
@@ -483,11 +484,34 @@ function Survey() {
         }, 500);
 
 
-      //generate unique fire code
+      // THE ORIGINAL UNIQUE CODE OF HEXCODE + RANDOMCHARS
+      // THE ORIGINAL UNIQUE CODE OF HEXCODE + RANDOMCHARS
+      // const generateUniqueCode = () => {
+      //   const hexCode = `#${AdjustedRed.toString(16).padStart(2, '0')}${AdjustedGreen.toString(16).padStart(2, '0')}${AdjustedBlue.toString(16).padStart(2, '0')}`;
+      //   const randomChars = generateRandomChars(4);
+      //   return `${hexCode}-${randomChars}`;
+      // };
+
       const generateUniqueCode = () => {
-        const hexCode = `#${AdjustedRed.toString(16).padStart(2, '0')}${AdjustedGreen.toString(16).padStart(2, '0')}${AdjustedBlue.toString(16).padStart(2, '0')}`;
-        const randomChars = generateRandomChars(4);
-        return `${hexCode}-${randomChars}`;
+        const encodeScore = (score) => {
+          // Convert 0-36 range to 0-35 range
+          const encodedVal = Math.min(Math.floor(score), 35);
+          
+          // For scores 0-25: use letters A-Z
+          // For scores 26-35: use numbers 0-9
+          if (encodedVal <= 25) {
+            // Convert to A-Z (ASCII: A=65)
+            return String.fromCharCode(65 + encodedVal); // Returns "A" through "Z"
+          } else {
+            // Convert 26-35 to 0-9
+            return (encodedVal - 26).toString(); // Returns "0" through "9"
+          }
+        };
+      
+        const code = `#${encodeScore(s1)}${encodeScore(s2)}${encodeScore(s3)}` +
+                     `${encodeScore(s4)}${encodeScore(s5)}${encodeScore(s6)}`;
+        
+        return code;
       };
       
       const generateRandomChars = (length) => {

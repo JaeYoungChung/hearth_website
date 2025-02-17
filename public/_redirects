@@ -7,5 +7,4 @@ https://hearthishere.com/*  https://www.hearthishere.com/:splat  301!
 
 # Handle other specific redirects if needed
 /blog  /blog  200
-/about /about 200
 /test  /test  200

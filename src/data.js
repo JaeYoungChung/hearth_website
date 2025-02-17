@@ -1,5 +1,36 @@
 import thumbsup from './assets/thumbs_up.png'
 import share from './assets/share.png'
+import popperHe from './assets/figure_popperHe.webp'
+import mandela from './assets/figure_mandela.webp'
+import galileo from './assets/figure_galileo.webp'
+import aurelius from './assets/figure_aurelius.webp'
+import nightingale from './assets/figure_nightingale.webp'
+import hypatia from './assets/figure_hypatia.webp'
+import zhuangzi from './assets/figure_zhuangzi.webp'
+import camus from './assets/figure_camus.webp'
+import senecaE from './assets/figure_senecaE.webp'
+import rumi from './assets/figure_rumi.webp'
+import ogai from './assets/figure_ogai.webp'
+import franklin from './assets/figure_franklin.webp'
+import davinci from './assets/figure_davinci.webp'
+import napoleon from './assets/figure_napoleon.webp'
+import gandhi from './assets/figure_gandhi.webp'
+import hesse from './assets/figure_hesse.webp'
+import einstein from './assets/figure_einstein.webp'
+import chopin from './assets/figure_chopin.webp'
+import gogh from './assets/figure_gogh.webp'
+import byron from './assets/figure_byron.webp'
+import helenkeller from './assets/figure_helenkeller.webp'
+import mariecurie from './assets/figure_mariecurie.webp'
+import senecaT from './assets/figure_senecaT.webp'
+import edison from './assets/figure_edison.webp'
+import alexander from './assets/figure_alexander.webp'
+import augustus from './assets/figure_augustus.webp'
+import popperHa from './assets/figure_popperHa.webp'
+import carnegie from './assets/figure_carnegie.webp'
+import hepburn from './assets/figure_hepburn.webp'
+import theodore from './assets/figure_theodore.webp'
+
 
   export const getQuestions = (t) => [
     //0
@@ -133,4 +164,112 @@ export const getResults = (t) => {
     "f-e": t("results.f-e"),
   };
   return combinationTexts;
+};
+
+export const getResemble = (t) => {
+  const resembleTexts = {
+    "a-b": t("resemble.a-b"),
+    "a-c": t("resemble.a-c"),
+    "a-d": t("resemble.a-d"),
+    "a-e": t("resemble.a-e"),
+    "a-f": t("resemble.a-f"),
+    "b-a": t("resemble.b-a"),
+    "b-c": t("resemble.b-c"),
+    "b-d": t("resemble.b-d"),
+    "b-e": t("resemble.b-e"),
+    "b-f": t("resemble.b-f"),
+    "c-a": t("resemble.c-a"),
+    "c-b": t("resemble.c-b"),
+    "c-d": t("resemble.c-d"),
+    "c-e": t("resemble.c-e"),
+    "c-f": t("resemble.c-f"),
+    "d-a": t("resemble.d-a"),
+    "d-b": t("resemble.d-b"),
+    "d-c": t("resemble.d-c"),
+    "d-e": t("resemble.d-e"),
+    "d-f": t("resemble.d-f"),
+    "e-a": t("resemble.e-a"),
+    "e-b": t("resemble.e-b"),
+    "e-c": t("resemble.e-c"),
+    "e-d": t("resemble.e-d"),
+    "e-f": t("resemble.e-f"),
+    "f-a": t("resemble.f-a"),
+    "f-b": t("resemble.f-b"),
+    "f-c": t("resemble.f-c"),
+    "f-d": t("resemble.f-d"),
+    "f-e": t("resemble.f-e"),
+  };
+  return resembleTexts;
+};
+
+export const getQuotes = (t) => {
+  const quoteTexts = {
+    "a-b": t("quote.a-b"),
+    "a-c": t("quote.a-c"),
+    "a-d": t("quote.a-d"),
+    "a-e": t("quote.a-e"),
+    "a-f": t("quote.a-f"),
+    "b-a": t("quote.b-a"),
+    "b-c": t("quote.b-c"),
+    "b-d": t("quote.b-d"),
+    "b-e": t("quote.b-e"),
+    "b-f": t("quote.b-f"),
+    "c-a": t("quote.c-a"),
+    "c-b": t("quote.c-b"),
+    "c-d": t("quote.c-d"),
+    "c-e": t("quote.c-e"),
+    "c-f": t("quote.c-f"),
+    "d-a": t("quote.d-a"),
+    "d-b": t("quote.d-b"),
+    "d-c": t("quote.d-c"),
+    "d-e": t("quote.d-e"),
+    "d-f": t("quote.d-f"),
+    "e-a": t("quote.e-a"),
+    "e-b": t("quote.e-b"),
+    "e-c": t("quote.e-c"),
+    "e-d": t("quote.e-d"),
+    "e-f": t("quote.e-f"),
+    "f-a": t("quote.f-a"),
+    "f-b": t("quote.f-b"),
+    "f-c": t("quote.f-c"),
+    "f-d": t("quote.f-d"),
+    "f-e": t("quote.f-e"),
+  };
+  return quoteTexts;
+};
+
+export const getImages = (t) => {
+  const resembleImages = {
+    "a-b": popperHe,
+    "a-c": mandela,
+    "a-d": galileo,
+    "a-e": aurelius,
+    "a-f": nightingale,
+    "b-a": hypatia,
+    "b-c": zhuangzi,
+    "b-d": camus,
+    "b-e": senecaE,
+    "b-f": rumi,
+    "c-a": ogai,
+    "c-b": franklin,
+    "c-d": davinci,
+    "c-e": napoleon,
+    "c-f": gandhi,
+    "d-a": hesse,
+    "d-b": einstein,
+    "d-c": chopin,
+    "d-e": gogh,
+    "d-f": byron,
+    "e-a": helenkeller,
+    "e-b": mariecurie,
+    "e-c": senecaT,
+    "e-d": edison,
+    "e-f": alexander,
+    "f-a": augustus,
+    "f-b": popperHa,
+    "f-c": carnegie,
+    "f-d": hepburn,
+    "f-e": theodore,
+  };
+  return resembleImages;
 };
